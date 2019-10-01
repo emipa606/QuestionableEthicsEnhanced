@@ -359,6 +359,19 @@ namespace QEthics
                             StopCrafting();
                         }
                     };
+                    if (Prefs.DevMode)
+                    {
+                        yield return new Command_Action()
+                        {
+                            defaultLabel = "QE_VatGrowerDebugFinishGrowing".Translate(),
+                            defaultDesc = "QE_OrganVatDebugFinishGrowingDescription".Translate(),
+                            //icon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel", true),
+                            action = delegate ()
+                            {
+                                craftingProgress = TicksNeededToCraft;
+                            }
+                        };
+                    }
                 }
             }
         }

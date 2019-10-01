@@ -113,4 +113,7 @@
 	<QE_OrgaVatMaintFailFallbackMessage>Organ creation failed. Reason - Vat not maintained</QE_OrgaVatMaintFailFallbackMessage>
 	<QE_MaxCloningTime>Max cloning time (days)</QE_MaxCloningTime>
 	<QE_MaxCloningTimeTooltip>A clone will not grow longer than this number of days in a Cloning Vat. Default = 60</QE_MaxCloningTimeTooltip>
+
+	<!-- version 1.04 Patch -->
+	<QE_OrganVatDebugFinishGrowingDescription>Instantly finishes growing the organ.</QE_OrganVatDebugFinishGrowingDescription>
 </LanguageData>
