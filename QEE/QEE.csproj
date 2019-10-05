@@ -95,8 +95,10 @@
     <Compile Include="Things\BrainScanTemplate.cs" />
     <Compile Include="Things\Building_AutoDoctor.cs" />
     <Compile Include="Things\Building_GrowerBase.cs" />
+    <Compile Include="Things\Building_GrowerBase_WorkTable.cs" />
     <Compile Include="Things\Building_PawnVatGrower.cs" />
     <Compile Include="Things\Building_VatGrower.cs" />
+    <Compile Include="Things\Building_OrganVat.cs" />
     <Compile Include="Things\GenomeSequence.cs" />
     <Compile Include="Things\Properties\RecipeOutcomeProperties.cs" />
     <Compile Include="Things\Properties\GrowerProperties.cs" />
