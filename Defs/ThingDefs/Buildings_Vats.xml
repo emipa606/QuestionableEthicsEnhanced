@@ -2,7 +2,7 @@
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>QE_OrganVat</defName>
-		<label>organ vat</label>
+		<label>organ vat (legacy)</label>
 		<description>A vat for growing various natural organs from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance.</description>
 		<thingClass>QEthics.Building_VatGrower</thingClass>
 		<tickerType>Normal</tickerType>
@@ -24,7 +24,6 @@
 		<fillPercent>0.5</fillPercent>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<designationCategory>Production</designationCategory>
 		<rotatable>true</rotatable>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
