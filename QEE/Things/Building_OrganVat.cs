@@ -125,15 +125,12 @@ namespace QEthics
 
             //Draw product
             drawAltitude += new Vector3(0f, 0.005f, 0f);
-            if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) && activeRecipe != null && 
-                activeRecipe.GetModExtension<RecipeGraphicProperties>().productGraphic != null)
-            {
-                //TODO - BETTER NULL CHECKING AND DEFAULT VALUES
-                RecipeGraphicProperties recipeProps = activeRecipe.GetModExtension<RecipeGraphicProperties>();
-                Material material = recipeProps.productGraphic.Graphic.MatSingle;
-                QEEMod.TryLog("defName: " + activeRecipe.defName + " | material texPath: " + 
-                    activeRecipe.GetModExtension<RecipeGraphicProperties>().productGraphic.texPath);
+            RecipeGraphicProperties recipeProps = activeRecipe?.GetModExtension<RecipeGraphicProperties>();
 
+            if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) && activeRecipe != null && 
+                recipeProps?.productGraphic?.Graphic?.MatSingle != null)
+            {
+                Material material = recipeProps.productGraphic.Graphic.MatSingle;
                 float scale = (0.2f + (CraftingProgressPercent * 0.8f)) * VatGrowerProps.productScaleModifier * recipeProps.scale;
                 Vector3 scaleVector = new Vector3(scale, 1f, scale);
                 Matrix4x4 matrix = default(Matrix4x4);
