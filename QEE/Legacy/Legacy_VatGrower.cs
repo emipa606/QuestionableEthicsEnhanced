@@ -10,6 +10,7 @@ using Verse.AI;
 namespace QEthics
 {
     /// <summary>
+    /// THIS IS A DEPRECATED CLASS. It is now only used in the legacy organ vat, and is here for save compatibility only.
     /// Building for growing things like organs. Requires constant maintenance in order to not botch the crafting. Dirty rooms increase maintenance drain even more.
     /// </summary>
     public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower

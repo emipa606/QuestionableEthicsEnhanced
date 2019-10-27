@@ -142,5 +142,55 @@ namespace QEthics
             else if (val.CompareTo(max) > 0) return max;
             else return val;
         }
+
+        public static Thing FindClosestIngForBill(Bill theBill, Pawn finder, ref int countForVat)
+        {
+            //loop through ingredients
+            foreach (IngredientCount curIng in theBill.recipe.ingredients)
+            {
+                Building_GrowerBase_WorkTable vat = theBill.billStack.billGiver as Building_GrowerBase_WorkTable;
+                ThingOwner vatStoredIngredients = vat.GetDirectlyHeldThings();
+                int countNeededFromRecipe = curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe);
+                int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
+                int countNeededForCrafting = countNeededFromRecipe - storedCount;
+                countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
+
+                QEEMod.TryLog(curIng.FixedIngredient.label + " | recipe: " + countNeededFromRecipe + " | stored: " + storedCount.ToString()
+                    + " | remaining: " + countNeededForCrafting);
+
+                //only check for Things if the vat still needs some of this ingredient
+                if (countNeededForCrafting > 0)
+                {
+                    //find the closest accessible Thing of that ThingDef on the map
+                    Thing result = GenClosest.ClosestThingReachable(finder.Position, finder.Map, ThingRequest.ForGroup(ThingRequestGroup.HaulableEver), PathEndMode.OnCell, TraverseParms.For(finder),
+                    validator:
+                    delegate (Thing testThing)
+                    {
+                        if (testThing.IsForbidden(finder))
+                        {
+                            return false;
+                        }
+
+                        if (testThing.def.defName == curIng.FixedIngredient.defName)
+                        {
+                            return true;
+                        }
+
+                        return false;
+                    });
+
+                    //return the Thing, if we found one
+                    if (result != null)
+                    {
+                        countForVat = countNeededForCrafting;
+                        QEEMod.TryLog("Found " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | countForVat: " + countForVat);
+                        return result;
+                    }
+                }
+            }
+
+            return null;
+        }
+
     }
 }

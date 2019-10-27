@@ -1,9 +1,11 @@
 using Verse;
 using RimWorld;
 using Harmony;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Verse.AI;
 
 namespace QEthics
 {
@@ -79,8 +81,10 @@ namespace QEthics
             }
         }
 
-        //this is a lightweight patch that will simply add any hediffs in the <addsHediff> element of the recipe
-        //for surgery involving natural body parts
+        /// <summary>
+        /// Lightweight patch that adds any hediffs in the <addsHediff> element of the recipe
+        /// after surgery involving natural body parts completes.
+        /// </summary>
         [HarmonyPatch(typeof(Recipe_InstallNaturalBodyPart))]
         [HarmonyPatch(nameof(Recipe_InstallNaturalBodyPart.ApplyOnPawn))]
         class ApplyOnPawn_Patch
@@ -94,5 +98,39 @@ namespace QEthics
                 }
             }
         }
+
+        /// <summary>
+        /// This patch allows GetWorkgiver() to return our custom workgiver, WorkGiver_DoBill_Grower. It will continue on to the vanilla function
+        /// if no BillGivers are of this class. 
+        /// </summary>
+        [HarmonyPatch(typeof(BillUtility))]
+        [HarmonyPatch(nameof(BillUtility.GetWorkgiver))]
+        class GetWorkgiver_Patch
+        {
+            [HarmonyPrefix]
+            static bool GetWorkgiver_Prefix(ref WorkGiverDef __result, IBillGiver billGiver) //pass the __result by ref to alter it.
+            {
+                Thing thing = billGiver as Thing;
+                if (thing == null)
+                {
+                    Log.ErrorOnce($"Attempting to get the workgiver for a non-Thing IBillGiver {billGiver.ToString()}", 96810282);
+                    __result = null;
+                    return false;
+                }
+                List<WorkGiverDef> allDefsListForReading = DefDatabase<WorkGiverDef>.AllDefsListForReading;
+                for (int i = 0; i < allDefsListForReading.Count; i++)
+                {
+                    WorkGiverDef workGiverDef = allDefsListForReading[i];
+                    WorkGiver_DoBill_Grower workGiver_DoBill = workGiverDef.Worker as WorkGiver_DoBill_Grower;
+                    if (workGiver_DoBill != null && workGiver_DoBill.ThingIsUsableBillGiver(thing))
+                    {
+                        __result = workGiverDef;
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
     }
 }

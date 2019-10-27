@@ -15,6 +15,11 @@ namespace QEthics
         private GrowerProperties growerPropsInt = null;
 
         /// <summary>
+        /// Current active recipe being crafted.
+        /// </summary>
+        public RecipeDef activeRecipe;
+
+        /// <summary>
         /// Grower building properties.
         /// </summary>
         public GrowerProperties GrowerProps
@@ -86,18 +91,11 @@ namespace QEthics
         /// <summary>
         /// Internal container representation of stored items.
         /// </summary>
-        protected ThingOwner innerContainer = null;
-
-        /// <summary>
-        /// The crafter order processor. Is set by the player during Idle status.
-        /// </summary>
-        public ThingOrderProcessor orderProcessor;
+        protected ThingOwner ingredientContainer = null;
 
         public Building_GrowerBase_WorkTable()
         {
-            innerContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
-            orderProcessor = new ThingOrderProcessor(this);
-            billStack = new BillStack(this);
+            ingredientContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
         }
 
         public override void ExposeData()
@@ -106,12 +104,7 @@ namespace QEthics
 
             Scribe_Values.Look(ref craftingProgress, "craftingProgress");
             Scribe_Values.Look(ref status, "status");
-            Scribe_Deep.Look(ref innerContainer, "innerContainer", this, false, LookMode.Deep);
-            Scribe_Deep.Look(ref orderProcessor, "orderProcessor", this);
-            /*if(Scribe.mode == LoadSaveMode.LoadingVars)
-            {
-                orderProcessor.Notify_ContentsChanged();
-            }*/
+            Scribe_Deep.Look(ref ingredientContainer, "ingredientContainer", this, false, LookMode.Deep);
         }
 
         public void GetChildHolders(List<IThingHolder> outChildren)
@@ -121,7 +114,7 @@ namespace QEthics
 
         public ThingOwner GetDirectlyHeldThings()
         {
-            return innerContainer;
+            return ingredientContainer;
         }
 
         public override string GetInspectString()
@@ -133,22 +126,37 @@ namespace QEthics
             builder.AppendLine("QE_GrowerStatus".Translate() + ": " + TransformStatusLabel(("QE_GrowerStatus_" + status.ToString()).Translate()));
 
             //Ingredients: Needed
-            if(status == CrafterStatus.Filling)
+            if (status == CrafterStatus.Filling)
             {
-                builder.AppendLine("QE_GrowerIngredientsNeeded".Translate() + ": " + orderProcessor.FormatCachedIngredientsInThingOrderProcessor());
+                builder.Append("QE_GrowerIngredientsNeeded".Translate() + ": " + FormatCachedIngredients());
             }
 
-            //Crafting Progress
-            /*if (status == CrafterStatus.Crafting)
-            {
-                builder.AppendLine("QE_GrowerCraftingProgress".Translate() + ": " + CraftingProgressPercent.ToStringPercent());
-            }*/
+            return builder.ToString().TrimEndNewlines();
+        }
 
-            //Ingredients: Filled
-            /*if (innerContainer.Count > 0)
+
+        public string FormatCachedIngredients(string format = "{0} x {1}", char delimiter = ',')
+        {
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < activeRecipe.ingredients.Count; i++)
             {
-                builder.AppendLine("QE_GrowerIngredientsFilled".Translate() + ": " + innerContainer.FormatIngredientsInThingOwner());
-            }*/
+                ThingDef currIngredient = activeRecipe.ingredients[i].FixedIngredient;
+                int remainingCount = RemainingCountForIngredient(currIngredient.defName);
+
+                if (remainingCount > 0)
+                {
+                    //add a delimiter if any ingredients were added in previous iterations
+                    if (builder.Length > 0)
+                    {
+                        builder.Append(delimiter);
+                        builder.Append(' ');
+                    }
+
+                    builder.Append(string.Format(format, currIngredient.LabelCap, remainingCount));
+                }
+
+            }
 
             return builder.ToString().TrimEndNewlines();
         }
@@ -174,21 +182,7 @@ namespace QEthics
                         break;
                     case CrafterStatus.Filling:
                         {
-                            //Check if any Things are lost in the order processor.
-                            orderProcessor.Cleanup();
-
-                            if (orderProcessor.requestsLost)
-                            {
-                                //Abort if any of the requests were lost.
-                                Reset();
-                                Notify_ThingLostInOrderProcessor();
-                                orderProcessor.requestsLost = false;
-                                Tick_Idle();
-                            }
-                            else
-                            {
-                                Tick_Filling();
-                            }
+                            Tick_Filling();
                         }
                         break;
                     case CrafterStatus.Crafting:
@@ -210,65 +204,13 @@ namespace QEthics
         /// </summary>
         public virtual void Tick_Idle()
         {
-            QEEMod.TryLog("All recipes: "+this.def.AllRecipes.Count);
 
-            List<RecipeDef> allDefsListForReading = DefDatabase<RecipeDef>.AllDefsListForReading;
-            for (int j = 0; j < allDefsListForReading.Count; j++)
-            {
-                if(allDefsListForReading[j].defName == "Natural_Heart" )
-                {
-
-                    if (allDefsListForReading[j].recipeUsers != null)
-                    {
-                        QEEMod.TryLog("heart recipeUsers: " + allDefsListForReading[j].recipeUsers.ToString());
-                    }
-                    else
-                        QEEMod.TryLog("heart doesn't have recipes");
-
-                    if (allDefsListForReading[j].recipeUsers != null && allDefsListForReading[j].recipeUsers.Contains(this.def))
-                    {
-                        QEEMod.TryLog("heart has recipes, but doesn't contain " + this.def.defName);
-                    }
-
-                    //else
-                    //    QEEMod.TryLog("heart recipeusers broken");
-                }
-                //if (allDefsListForReading[j].recipeUsers != null && allDefsListForReading[j].recipeUsers.Contains(this.def))
-                //{
-                //    QEEMod.TryLog("Adding " + allDefsListForReading[j].defName + " to the list");
-                //}
-            }
         }
 
         /// <summary>
         /// Filling tick.
         /// </summary>
         public virtual void Tick_Filling()
-        {
-            if(orderProcessor.PendingRequests.Count() <= 0)
-            {
-                //Log.Message("PendingRequests is 0. Starting crafting...");
-                status = CrafterStatus.Crafting;
-                Notify_CraftingStarted();
-            }
-        }
-
-        public virtual void Notify_ThingLostInOrderProcessor()
-        {
-
-        }
-
-        public virtual void Notify_StartedCarryThing(Pawn pawn)
-        {
-
-        }
-
-        public virtual void Notify_CraftingStarted()
-        {
-
-        }
-
-        public virtual void Notify_CraftingFinished()
         {
 
         }
@@ -280,11 +222,11 @@ namespace QEthics
         {
             //Increment crafting.
             bool doCrafting = true;
-            if(PowerTrader != null && !PowerTrader.PowerOn)
+            if (PowerTrader != null && !PowerTrader.PowerOn)
             {
                 doCrafting = false;
             }
-            if(doCrafting)
+            if (doCrafting)
             {
                 craftingProgress = craftingProgress + 60;
                 if (craftingProgress >= TicksNeededToCraft)
@@ -303,29 +245,34 @@ namespace QEthics
         /// </summary>
         public virtual void Tick_Finished()
         {
-            
+
         }
 
-        /// <summary>
-        /// The crafting has finished.
-        /// </summary>
-        public virtual void CraftingFinished()
+        public virtual void Notify_StartedCarryThing(Pawn pawn)
         {
-            Reset();
+
         }
 
-        public virtual void Reset()
+        public virtual void Notify_FillingStarted(RecipeDef recipeDef)
         {
-            craftingProgress = 0;
-            status = CrafterStatus.Idle;
+
+        }
+
+        public virtual void Notify_CraftingStarted()
+        {
+
+        }
+
+        public virtual void Notify_CraftingFinished()
+        {
+
         }
 
         public void FillThing(Thing thing)
         {
-            if(thing != null)
+            if (thing != null)
             {
-                innerContainer.TryAddOrTransfer(thing, true);
-                orderProcessor.Notify_ContentsChanged();
+                ingredientContainer.TryAddOrTransfer(thing, true);
             }
         }
 
@@ -334,6 +281,85 @@ namespace QEthics
             return true;
         }
 
+        /// <summary>
+        /// Stops the growing process and resets the vat. Refunds any ingredients used, if keepIngredients is true.
+        /// This function is called if growing fails, succeeds, or is manually stopped via the Stop gizmo.
+        /// It does not spawn any products.
+        /// </summary>
+        /// <param name="keepIngredients"></param>
+        /// 
+        public virtual void StopCrafting(bool keepIngredients = true)
+        {
+            QEEMod.TryLog("Stopping growing process. Keep Ingredients: " + keepIngredients);
 
+            craftingProgress = 0;
+            status = CrafterStatus.Idle;
+            activeRecipe = null;
+
+            if (ingredientContainer != null && ingredientContainer.Count > 0)
+            {
+                QEEMod.TryLog("Ingredient container count: " + ingredientContainer.Count);
+
+                if (keepIngredients)
+                {
+                    bool wasSuccess = ingredientContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
+                    //QEEMod.TryLog("TryDropAll() success: " + wasSuccess);
+                }
+            }
+
+            ingredientContainer.ClearAndDestroyContents();
+        }
+
+        /// <summary>
+        /// Returns count of ingredient in recipe - count of that ingredient in the ingredientContainer
+        /// </summary>
+        /// <param name="thingDefName"></param>
+        /// <returns></returns>
+        public virtual int RemainingCountForIngredient(string thingDefName)
+        {
+            for (int i = 0; i < activeRecipe.ingredients.Count; i++)
+            {
+                IngredientCount currIngredient = activeRecipe.ingredients[i];
+                string currIngName = currIngredient.FixedIngredient.defName;
+
+                if (thingDefName == currIngName)
+                {
+                    int wantedCount = (int)(currIngredient.GetBaseCount() * QEESettings.instance.organTotalResourcesFloat);
+
+                    int haveCount = ingredientContainer.FirstOrDefault(thing => thing.def.defName == currIngName) == null ?
+                        0 : ingredientContainer.FirstOrDefault(thing => thing.def.defName == currIngName).stackCount;
+
+                    int remainingCount = wantedCount - haveCount < 0 ? 0 : wantedCount - haveCount;
+                    //QEEMod.TryLog(currIngredient.FixedIngredient.LabelCap + " wanted: " + wantedCount + " have: " + haveCount);
+
+                    return remainingCount;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return -90909;
+        }
+
+        public virtual int RemainingCountForAllIngredients()
+        {
+            int totalCount = 0;
+            for (int i = 0; i < activeRecipe.ingredients.Count; i++)
+            {
+                IngredientCount currIngredient = activeRecipe.ingredients[i];
+                string currIngName = currIngredient.FixedIngredient.defName;
+
+                int wantedCount = (int)(currIngredient.GetBaseCount() * QEESettings.instance.organTotalResourcesFloat);
+
+                int haveCount = ingredientContainer.FirstOrDefault(thing => thing.def.defName == currIngName) == null ?
+                    0 : ingredientContainer.FirstOrDefault(thing => thing.def.defName == currIngName).stackCount;
+
+                int remainingCount = wantedCount - haveCount < 0 ? 0 : wantedCount - haveCount;
+
+                totalCount += remainingCount;
+            }
+            return totalCount;
+        }
     }
 }

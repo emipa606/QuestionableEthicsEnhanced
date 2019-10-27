@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,9 @@ using Verse.AI;
 namespace QEthics
 {
     /// <summary>
-    /// THIS IS A DEPRECATED CLASS. It is here for save compatibility only.
     /// Extracts the product out of a Grower.
     /// </summary>
-    public class JobDriver_ExtractGrowerProduct : JobDriver
+    public class JobDriver_ExtractProductFromGrower : JobDriver
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -36,7 +35,7 @@ namespace QEthics
             {
                 initAction = delegate()
                 {
-                    Building_GrowerBase grower = TargetThingA as Building_GrowerBase;
+                    Building_GrowerBase_WorkTable grower = TargetThingA as Building_GrowerBase_WorkTable;
                     if(grower != null)
                     {
                         grower.TryExtractProduct(GetActor());

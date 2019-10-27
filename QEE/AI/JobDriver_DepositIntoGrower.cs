@@ -8,6 +8,9 @@ using RimWorld;
 
 namespace QEthics
 {
+    /// <summary>
+    /// THIS IS CLASS WILL BE DEPRECATED SOON. Do not use in new development work. It is now only used in the Pawn Vat.
+    /// </summary>
     public class JobDriver_DepositIntoGrower : JobDriver
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)

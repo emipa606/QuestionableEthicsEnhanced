@@ -8,6 +8,9 @@ using Verse;
 
 namespace QEthics
 {
+    /// <summary>
+    /// THIS IS CLASS WILL BE DEPRECATED SOON. Do not use in new development work.
+    /// </summary>
     public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     {
         public PawnKindDef pawnKindToGrow;
