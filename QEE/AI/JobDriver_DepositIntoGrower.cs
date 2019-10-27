@@ -38,7 +38,9 @@ namespace QEthics
             this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
             this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
             yield return Toils_Reserve.Reserve(TargetIndex.A);
-            yield return Toils_Reserve.Reserve(TargetIndex.B);
+            
+            Toil reserveIngredient = Toils_Reserve.Reserve(TargetIndex.B);
+            yield return reserveIngredient;
 
             //Go and get the thing to carry.
             yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.OnCell);
@@ -53,6 +55,9 @@ namespace QEthics
                     }
                 });
             yield return carryThing;
+
+            //Opportunistically haul a nearby ingredient of same ThingDef. Checks 8 square radius.
+            yield return Toils_Haul.CheckForGetOpportunityDuplicate(reserveIngredient, TargetIndex.B, TargetIndex.None, takeFromValidStorage: true);
 
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
             yield return Toils_General.WaitWith(TargetIndex.A, 100, true);
