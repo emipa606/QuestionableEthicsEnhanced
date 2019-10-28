@@ -116,4 +116,11 @@
   <QE_MaxCloningTime>最大培養時間（日）</QE_MaxCloningTime>
   <QE_MaxCloningTimeTooltip>クローン培養槽でクローンを培養するのにかかる時間はこの日数より長くなりません。初期値は60日間</QE_MaxCloningTimeTooltip>
 
+  <!-- version 1.04 Patch -->
+  <QE_OrganVatDebugFinishGrowingDescription>臓器の成長を即時完了する。</QE_OrganVatDebugFinishGrowingDescription>
+  <QE_JobFailReasonNoBillsQueued>現在予約された加工命令はありません</QE_JobFailReasonNoBillsQueued>
+  <QE_JobFailReasonPawnRestriction>{0}は作業員の{PAWN_labelShort}に制限されます</QE_JobFailReasonPawnRestriction>
+  <QE_JobFailReasonGrowerBusy>{0}は既に培養中です</QE_JobFailReasonGrowerBusy>
+  <QE_JobFailReasonCannotReserve>{PAWN_labelShort}は{1}を予約できない</QE_JobFailReasonCannotReserve>
+
 </LanguageData>
