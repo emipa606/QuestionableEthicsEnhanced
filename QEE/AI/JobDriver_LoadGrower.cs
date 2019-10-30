@@ -140,26 +140,18 @@ namespace QEthics
                 {
                     Building_GrowerBase_WorkTable grower = job.GetTarget(BillGiverInd).Thing as Building_GrowerBase_WorkTable;
                     Pawn actor = GetActor();
-                    if (grower != null)
+                    if (grower != null && grower.RemainingCountForIngredient("all", true) == 0)
                     {
-                        if (grower.RemainingCountForAllIngredients() == 0)
-                        {
-                            //QEEMod.TryLog("Setting CrafterStatus to 'Crafting'");
-                            grower.Notify_CraftingStarted();
+                        grower.Notify_CraftingStarted();
 
-                            //decrement billcount by 1
-                            Bill_Production curBill = actor.CurJob.bill as Bill_Production;
-                            if (curBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
-                            {
-                                if (curBill.repeatCount > 0)
-                                {
-                                    curBill.repeatCount--;
-                                }
-                            }
-                        }
-                        else
+                        //decrement billcount by 1
+                        Bill_Production curBill = actor.CurJob.bill as Bill_Production;
+                        if (curBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
                         {
-                            QEEMod.TryLog("Ingredients not 100% fulfilled, holding off on crafting");
+                            if (curBill.repeatCount > 0)
+                            {
+                                curBill.repeatCount--;
+                            }
                         }
                     }
 

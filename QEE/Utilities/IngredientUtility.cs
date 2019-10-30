@@ -150,13 +150,13 @@ namespace QEthics
             {
                 Building_GrowerBase_WorkTable vat = theBill.billStack.billGiver as Building_GrowerBase_WorkTable;
                 ThingOwner vatStoredIngredients = vat.GetDirectlyHeldThings();
-                int countNeededFromRecipe = curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe);
+                int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * QEESettings.instance.organTotalResourcesFloat);
                 int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
                 int countNeededForCrafting = countNeededFromRecipe - storedCount;
                 countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
 
-                QEEMod.TryLog(curIng.FixedIngredient.label + " | recipe: " + countNeededFromRecipe + " | stored: " + storedCount.ToString()
-                    + " | remaining: " + countNeededForCrafting);
+                //QEEMod.TryLog(curIng.FixedIngredient.label + " | recipe: " + countNeededFromRecipe + " | stored: " + storedCount.ToString()
+                //    + " | remaining: " + countNeededForCrafting);
 
                 //only check for Things if the vat still needs some of this ingredient
                 if (countNeededForCrafting > 0)
@@ -183,7 +183,8 @@ namespace QEthics
                     if (result != null)
                     {
                         countForVat = countNeededForCrafting;
-                        QEEMod.TryLog("Found " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | countForVat: " + countForVat);
+                        QEEMod.TryLog("Ingredient found: " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | recipe: " 
+                            + countNeededFromRecipe + " | countForVat: " + countForVat);
                         return result;
                     }
                 }
