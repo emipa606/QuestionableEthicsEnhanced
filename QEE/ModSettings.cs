@@ -70,7 +70,6 @@ namespace QEthics
             listingStandard.CheckboxLabeled("QE_DebugLogging".Translate(), ref QEESettings.instance.debugLogging, "QE_DebugLoggingTooltip".Translate());
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
-            TryLog("Tooltip: " + "QE_MaxCloningTimeTooltip".Translate());
         }
 
         public static void TryLog(string message)
