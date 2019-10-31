@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+	<!-- Abstract bases -->
 	<RecipeDef Name="QE_NaturalOrganGrowerRecipeBase" Abstract="True">
 		<workAmount>300000</workAmount>
 		<ingredients>
@@ -70,79 +71,15 @@
         </modExtensions>
 	</RecipeDef>
 
+	
+	<!-- Organ Recipes -->
 	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Lung</defName>
-		<label>natural lung</label>
+		<defName>QE_Natural_Arm</defName>
+		<label>natural arm</label>
 		<products>
-			<Lung>1</Lung>
+			<QE_Organ_Arm>1</QE_Organ_Arm>
 		</products>
-		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Heart</defName>
-		<label>natural heart</label>
-		<products>
-			<Heart>1</Heart>
-		</products>
-		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Kidney</defName>
-		<label>natural kidney</label>
-		<products>
-			<Kidney>1</Kidney>
-		</products>
-		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Stomach</defName>
-		<label>natural stomach</label>
-		<products>
-			<QE_Organ_Stomach>1</QE_Organ_Stomach>
-		</products>
-		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
-		<modExtensions Inherit="False">
-            <li Class="QEthics.RecipeGraphicProperties">
-				<productGraphic>
-					<graphicClass>Graphic_Single</graphicClass>
-					<texPath>Effects/Organs/Beet_Organ</texPath>
-					<shaderType>MoteGlow</shaderType>
-					<drawRotated>false</drawRotated>
-				</productGraphic>
-				<scale>0.3</scale>
-            </li>
-        </modExtensions>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Liver</defName>
-		<label>natural liver</label>
-		<products>
-			<Liver>1</Liver>
-		</products>
-		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
-		<defName>QE_Natural_Eye</defName>
-		<label>natural eye</label>
-		<products>
-			<QE_Organ_Eye>1</QE_Organ_Eye>
-		</products>
-		<researchPrerequisite>QE_OrganVat_SensoryOrgans</researchPrerequisite>
-		<modExtensions Inherit="False">
-            <li Class="QEthics.RecipeGraphicProperties">
-				<productGraphic>
-					<texPath>Effects/Organs/Shinzy_Organ_Eyes</texPath>
-					<graphicClass>Graphic_Single</graphicClass>
-					<shaderType>MoteGlow</shaderType>
-					<drawRotated>false</drawRotated>
-				</productGraphic>
-            </li>
-        </modExtensions>
+		<researchPrerequisite>QE_OrganVat_Limbs</researchPrerequisite>
 	</RecipeDef>
 
 	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
@@ -155,46 +92,29 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
-		<defName>QE_Natural_Nose</defName>
-		<label>natural nose</label>
+		<defName>QE_Natural_Eye</defName>
+		<label>natural eye</label>
 		<products>
-			<QE_Organ_Nose>1</QE_Organ_Nose>
+			<QE_Organ_Eye>1</QE_Organ_Eye>
 		</products>
 		<researchPrerequisite>QE_OrganVat_SensoryOrgans</researchPrerequisite>
+		<modExtensions Inherit="False">
+			<li Class="QEthics.RecipeGraphicProperties">
+				<productGraphic>
+					<texPath>Effects/Organs/Shinzy_Organ_Eyes</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>MoteGlow</shaderType>
+					<drawRotated>false</drawRotated>
+				</productGraphic>
+			</li>
+		</modExtensions>
 	</RecipeDef>
-
+	
 	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
-		<defName>QE_Natural_Jaw</defName>
-		<label>natural jaw</label>
+		<defName>QE_Natural_Foot</defName>
+		<label>natural foot</label>
 		<products>
-			<QE_Organ_Jaw>1</QE_Organ_Jaw>
-		</products>
-		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Spine</defName>
-		<label>natural spine</label>
-		<products>
-			<QE_Organ_Spine>1</QE_Organ_Spine>
-		</products>
-		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Pelvis</defName>
-		<label>natural pelvis</label>
-		<products>
-			<QE_Organ_Pelvis>1</QE_Organ_Pelvis>
-		</products>
-		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
-		<defName>QE_Natural_Arm</defName>
-		<label>natural arm</label>
-		<products>
-			<QE_Organ_Arm>1</QE_Organ_Arm>
+			<QE_Organ_Foot>1</QE_Organ_Foot>
 		</products>
 		<researchPrerequisite>QE_OrganVat_Limbs</researchPrerequisite>
 	</RecipeDef>
@@ -209,6 +129,33 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Heart</defName>
+		<label>natural heart</label>
+		<products>
+			<Heart>1</Heart>
+		</products>
+		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
+		<defName>QE_Natural_Jaw</defName>
+		<label>natural jaw</label>
+		<products>
+			<QE_Organ_Jaw>1</QE_Organ_Jaw>
+		</products>
+		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Kidney</defName>
+		<label>natural kidney</label>
+		<products>
+			<Kidney>1</Kidney>
+		</products>
+		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
+	</RecipeDef>
+		
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
 		<defName>QE_Natural_Leg</defName>
 		<label>natural leg</label>
 		<products>
@@ -216,13 +163,69 @@
 		</products>
 		<researchPrerequisite>QE_OrganVat_Limbs</researchPrerequisite>
 	</RecipeDef>
+	
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Liver</defName>
+		<label>natural liver</label>
+		<products>
+			<Liver>1</Liver>
+		</products>
+		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Lung</defName>
+		<label>natural lung</label>
+		<products>
+			<Lung>1</Lung>
+		</products>
+		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
+	</RecipeDef>
 
 	<RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
-		<defName>QE_Natural_Foot</defName>
-		<label>natural foot</label>
+		<defName>QE_Natural_Nose</defName>
+		<label>natural nose</label>
 		<products>
-			<QE_Organ_Foot>1</QE_Organ_Foot>
+			<QE_Organ_Nose>1</QE_Organ_Nose>
 		</products>
-		<researchPrerequisite>QE_OrganVat_Limbs</researchPrerequisite>
+		<researchPrerequisite>QE_OrganVat_SensoryOrgans</researchPrerequisite>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Pelvis</defName>
+		<label>natural pelvis</label>
+		<products>
+			<QE_Organ_Pelvis>1</QE_Organ_Pelvis>
+		</products>
+		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Spine</defName>
+		<label>natural spine</label>
+		<products>
+			<QE_Organ_Spine>1</QE_Organ_Spine>
+		</products>
+		<researchPrerequisite>QE_OrganVat_Bones</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
+		<defName>QE_Natural_Stomach</defName>
+		<label>natural stomach</label>
+		<products>
+			<QE_Organ_Stomach>1</QE_Organ_Stomach>
+		</products>
+		<researchPrerequisite>QE_OrganVat_InternalOrgans</researchPrerequisite>
+		<modExtensions Inherit="False">
+			<li Class="QEthics.RecipeGraphicProperties">
+				<productGraphic>
+					<graphicClass>Graphic_Single</graphicClass>
+					<texPath>Effects/Organs/Beet_Organ</texPath>
+					<shaderType>MoteGlow</shaderType>
+					<drawRotated>false</drawRotated>
+				</productGraphic>
+				<scale>0.3</scale>
+			</li>
+		</modExtensions>
 	</RecipeDef>
 </Defs>
