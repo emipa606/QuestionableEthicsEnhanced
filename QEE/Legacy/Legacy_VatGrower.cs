@@ -206,8 +206,14 @@ namespace QEthics
 
         public override bool TryExtractProduct(Pawn actor)
         {
-            Thing product = ThingMaker.MakeThing(activeRecipe.productDef);
-            product.stackCount = activeRecipe.productAmount;
+            Thing product = ThingMaker.MakeThing(activeRecipe?.productDef);
+
+            if (product == null || actor == null)
+            {
+                return false;
+            }
+
+            product.stackCount = activeRecipe?.productAmount ?? 1;
 
             if(status == CrafterStatus.Finished)
             {
@@ -215,16 +221,22 @@ namespace QEthics
             }
 
             //place product on the interaction cell of the grower
-            GenPlace.TryPlaceThing(product, this.InteractionCell, this.Map, ThingPlaceMode.Near);
+            bool placeSucceeded = GenPlace.TryPlaceThing(product, this.InteractionCell, this.Map, ThingPlaceMode.Near);
 
-            //Pawn extracting product hauls product back to storage
+            //search for a better storage location
             IntVec3 storeCell;
             IHaulDestination haulDestination;
-            if (StoreUtility.TryFindBestBetterStorageFor(product, actor, product.Map, StoragePriority.Unstored, actor.Faction, out storeCell, out haulDestination, false))
+            if (placeSucceeded && StoreUtility.TryFindBestBetterStorageFor(product, actor, product.Map, StoragePriority.Unstored,
+                actor.Faction, out storeCell, out haulDestination, false))
             {
+                //try to haul product to better storage zone
                 if (storeCell.IsValid || haulDestination != null)
                 {
-                    actor.jobs.StartJob(HaulAIUtility.HaulToStorageJob(actor, product), JobCondition.Succeeded);
+                    Job haulProductJob = HaulAIUtility.HaulToStorageJob(actor, product);
+                    if (haulProductJob != null)
+                    {
+                        actor.jobs.StartJob(haulProductJob, JobCondition.Succeeded);
+                    }
                 }
             }
 

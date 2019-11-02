@@ -224,20 +224,32 @@ namespace QEthics
         /// <returns></returns>
         public override bool TryExtractProduct(Pawn actor)
         {
-            Thing product = ThingMaker.MakeThing(activeRecipe.products[0].thingDef);
-            product.stackCount = activeRecipe.products[0].count;
+            Thing product = ThingMaker.MakeThing(activeRecipe?.products[0]?.thingDef);
+
+            if(product == null || actor == null)
+            {
+                return false;
+            }
+
+            product.stackCount = activeRecipe.products[0]?.count ?? 1;
 
             //place product on the interaction cell of the grower
-            GenPlace.TryPlaceThing(product, this.InteractionCell, this.Map, ThingPlaceMode.Near);
+            bool placeSucceeded = GenPlace.TryPlaceThing(product, this.InteractionCell, this.Map, ThingPlaceMode.Near);
 
-            //Pawn extracting product hauls product back to storage
+            //search for a better storage location
             IntVec3 storeCell;
             IHaulDestination haulDestination;
-            if (StoreUtility.TryFindBestBetterStorageFor(product, actor, product.Map, StoragePriority.Unstored, actor.Faction, out storeCell, out haulDestination, false))
+            if (placeSucceeded && StoreUtility.TryFindBestBetterStorageFor(product, actor, product.Map, StoragePriority.Unstored, 
+                actor.Faction, out storeCell, out haulDestination, false))
             {
+                //try to haul product to better storage zone
                 if (storeCell.IsValid || haulDestination != null)
                 {
-                    actor.jobs.StartJob(HaulAIUtility.HaulToStorageJob(actor, product), JobCondition.Succeeded);
+                    Job haulProductJob = HaulAIUtility.HaulToStorageJob(actor, product);
+                    if (haulProductJob != null)
+                    {
+                        actor.jobs.StartJob(haulProductJob, JobCondition.Succeeded);
+                    }
                 }
             }
 
