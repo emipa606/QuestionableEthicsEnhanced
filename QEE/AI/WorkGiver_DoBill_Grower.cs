@@ -93,6 +93,8 @@ namespace QEthics
 
             if (thingToFill != null)
             {
+                grower.Notify_FillingStarted(theBill.recipe);
+
                 Job returnJob = new Job(QEJobDefOf.QE_LoadGrowerJob, t, thingToFill);
                 returnJob.count = countForVat;
                 returnJob.bill = theBill;

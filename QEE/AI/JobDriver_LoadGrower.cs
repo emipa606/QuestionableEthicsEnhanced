@@ -60,51 +60,54 @@ namespace QEthics
             this.FailOnDestroyedNullOrForbidden(BillGiverInd);
             this.FailOn(delegate
             {
-                //QEEMod.TryLog("start FailOn delegate");
                 Thing building = job.GetTarget(BillGiverInd).Thing;
                 IBillGiver billGiver = building as IBillGiver;
-                if (building != null && billGiver != null && job.bill != null)
+                if (building == null || billGiver == null || job.bill == null)
                 {
-                    if (job.bill.DeletedOrDereferenced)
-                    {
-                        //refund ingredients if player cancels bill during Filling phase
-                        Building_GrowerBase_WorkTable grower = job.GetTarget(BillGiverInd).Thing as Building_GrowerBase_WorkTable;
-                        if (grower != null && grower.status == CrafterStatus.Filling)
-                        {
-                            QEEMod.TryLog("Bill cancelled, refunding ingredients");
-                            grower.StopCrafting(true);
-                        }
-
-                        return true;
-                    }
-                    if (!billGiver.CurrentlyUsableForBills())
-                    {
-                        return true;
-                    }
+                    return true;
                 }
-                //else
-                //{
-                //    QEEMod.TryLog("something null. building: " + building.DestroyedOrNull() + "billGiver: " + billGiver?.ToString() + 
-                //        "job bill: " + job.bill?.ToString() );
-                //}
+
+                if (!billGiver.CurrentlyUsableForBills())
+                {
+                    return true;
+                }
+
+                Building_GrowerBase_WorkTable grower = job.GetTarget(BillGiverInd).Thing as Building_GrowerBase_WorkTable;
+                if (job.bill.DeletedOrDereferenced)
+                {
+                    //refund ingredients if player cancels bill during Filling phase
+                    if (grower != null && grower.status == CrafterStatus.Filling)
+                    {
+                        QEEMod.TryLog("Bill cancelled, refunding ingredients");
+                        grower.StopCrafting(true);
+                    }
+
+                    return true;
+                }
+
+                if(grower.status != CrafterStatus.Filling)
+                {
+                    return true;
+                }
+
                 return false;
             });
 
             //notify that we're starting the job
-            Toil notifyFillingStarted = new Toil()
-            {
-                initAction = delegate ()
-                {
-                    Building_GrowerBase_WorkTable vat = TargetThingA as Building_GrowerBase_WorkTable;
-                    if (vat != null && vat.status == CrafterStatus.Idle)
-                    {
-                        vat.Notify_FillingStarted(GetActor().CurJob.bill.recipe);
-                    }
+            //Toil notifyFillingStarted = new Toil()
+            //{
+            //    initAction = delegate ()
+            //    {
+            //        Building_GrowerBase_WorkTable vat = TargetThingA as Building_GrowerBase_WorkTable;
+            //        if (vat != null && vat.status == CrafterStatus.Idle)
+            //        {
+            //            vat.Notify_FillingStarted(GetActor().CurJob.bill.recipe);
+            //        }
 
-                    QEEMod.TryLog(pawn.Name + " starting new job 'QE_LoadGrowerJob'");
-                }
-            };
-            yield return notifyFillingStarted;
+            //        QEEMod.TryLog(pawn.Name + " starting new job 'QE_LoadGrowerJob'");
+            //    }
+            //};
+            //yield return notifyFillingStarted;
 
             //travel to ingredient and carry it
             Toil reserveIng = Toils_Reserve.Reserve(IngredientInd);
@@ -140,6 +143,8 @@ namespace QEthics
                 {
                     Building_GrowerBase_WorkTable grower = job.GetTarget(BillGiverInd).Thing as Building_GrowerBase_WorkTable;
                     Pawn actor = GetActor();
+
+                    //if all ingredients have been loaded, start crafting
                     if (grower != null && grower.RemainingCountForIngredient("all", true) == 0)
                     {
                         grower.Notify_CraftingStarted();
