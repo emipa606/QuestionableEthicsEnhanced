@@ -20,6 +20,26 @@ namespace QEthics
         public RecipeDef activeRecipe;
 
         /// <summary>
+        /// Current bill.loadID for the recipe being crafted.
+        /// </summary>
+        public string activeBillID;
+
+        public Bill_Production ActiveBill
+        {
+            get
+            {
+                foreach (Bill_Production curBill in billStack)
+                {
+                    if (curBill.GetUniqueLoadID() == activeBillID)
+                    {
+                        return curBill;
+                    }
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Grower building properties.
         /// </summary>
         public GrowerProperties GrowerProps
@@ -253,7 +273,7 @@ namespace QEthics
 
         }
 
-        public virtual void Notify_FillingStarted(RecipeDef recipeDef)
+        public virtual void Notify_FillingStarted(Bill activeBill)
         {
 
         }
@@ -276,9 +296,9 @@ namespace QEthics
             }
         }
 
-        public virtual bool TryExtractProduct(Pawn actor)
+        public virtual void Notify_ProductExtracted(Pawn actor)
         {
-            return true;
+
         }
 
         /// <summary>
@@ -295,6 +315,7 @@ namespace QEthics
             craftingProgress = 0;
             status = CrafterStatus.Idle;
             activeRecipe = null;
+            activeBillID = null;
 
             if (ingredientContainer != null && ingredientContainer.Count > 0)
             {

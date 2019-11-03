@@ -91,6 +91,7 @@ namespace QEthics
             Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
             Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
             Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
+            Scribe_Values.Look(ref activeBillID, "activeBillID");
         }
 
         public override string GetInspectString()
@@ -162,16 +163,18 @@ namespace QEthics
         }
 
         /// <summary>
-        /// Called from WorkGiver_DoBill_Grower.TryStartNewDoBillJob()
+        /// Initializes maintenance, active recipe, and bill variables used for growing. Sets CrafterStatus to 'Filling'.
+        /// Called from WorkGiver_DoBill_Grower.JobOnThing()
         /// </summary>
-        /// <param name="recipeDef"></param>
-        public override void Notify_FillingStarted(RecipeDef recipeDef)
+        /// <param name="billToUse"></param>
+        public override void Notify_FillingStarted(Bill billToUse)
         {
             //Initialize maintenance
             scientistMaintenance = 0.25f;
             doctorMaintenance = 0.25f;
 
-            activeRecipe = recipeDef;
+            activeRecipe = billToUse.recipe;
+            activeBillID = billToUse.GetUniqueLoadID();
             status = CrafterStatus.Filling;
         }
 
@@ -222,43 +225,12 @@ namespace QEthics
         /// </summary>
         /// <param name="actor"></param>
         /// <returns></returns>
-        public override bool TryExtractProduct(Pawn actor)
+        public override void Notify_ProductExtracted(Pawn actor)
         {
-            Thing product = ThingMaker.MakeThing(activeRecipe?.products[0]?.thingDef);
-
-            if(product == null || actor == null)
-            {
-                return false;
-            }
-
-            product.stackCount = activeRecipe.products[0]?.count ?? 1;
-
-            //place product on the interaction cell of the grower
-            bool placeSucceeded = GenPlace.TryPlaceThing(product, this.InteractionCell, this.Map, ThingPlaceMode.Near);
-
-            //search for a better storage location
-            IntVec3 storeCell;
-            IHaulDestination haulDestination;
-            if (placeSucceeded && StoreUtility.TryFindBestBetterStorageFor(product, actor, product.Map, StoragePriority.Unstored, 
-                actor.Faction, out storeCell, out haulDestination, false))
-            {
-                //try to haul product to better storage zone
-                if (storeCell.IsValid || haulDestination != null)
-                {
-                    Job haulProductJob = HaulAIUtility.HaulToStorageJob(actor, product);
-                    if (haulProductJob != null)
-                    {
-                        actor.jobs.StartJob(haulProductJob, JobCondition.Succeeded);
-                    }
-                }
-            }
-
             if (status == CrafterStatus.Finished)
             {
                 StopCrafting(false);
             }
-
-            return true;
         }
 
         public override string TransformStatusLabel(string label)

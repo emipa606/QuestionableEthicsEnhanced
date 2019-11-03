@@ -47,15 +47,6 @@ namespace QEthics
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            //AddEndCondition(delegate
-            //{
-            //    Thing thing = GetActor().jobs.curJob.GetTarget(BillGiverInd).Thing;
-            //    if (thing is Building && !thing.Spawned)
-            //    {
-            //        return JobCondition.Incompletable;
-            //    }
-            //    return JobCondition.Ongoing;
-            //});
             this.FailOnBurningImmobile(BillGiverInd);
             this.FailOnDestroyedNullOrForbidden(BillGiverInd);
             this.FailOn(delegate
@@ -92,22 +83,6 @@ namespace QEthics
 
                 return false;
             });
-
-            //notify that we're starting the job
-            //Toil notifyFillingStarted = new Toil()
-            //{
-            //    initAction = delegate ()
-            //    {
-            //        Building_GrowerBase_WorkTable vat = TargetThingA as Building_GrowerBase_WorkTable;
-            //        if (vat != null && vat.status == CrafterStatus.Idle)
-            //        {
-            //            vat.Notify_FillingStarted(GetActor().CurJob.bill.recipe);
-            //        }
-
-            //        QEEMod.TryLog(pawn.Name + " starting new job 'QE_LoadGrowerJob'");
-            //    }
-            //};
-            //yield return notifyFillingStarted;
 
             //travel to ingredient and carry it
             Toil reserveIng = Toils_Reserve.Reserve(IngredientInd);
@@ -148,16 +123,6 @@ namespace QEthics
                     if (grower != null && grower.RemainingCountForIngredient("all", true) == 0)
                     {
                         grower.Notify_CraftingStarted();
-
-                        //decrement billcount by 1
-                        Bill_Production curBill = actor.CurJob.bill as Bill_Production;
-                        if (curBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
-                        {
-                            if (curBill.repeatCount > 0)
-                            {
-                                curBill.repeatCount--;
-                            }
-                        }
                     }
 
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded);

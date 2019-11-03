@@ -63,6 +63,7 @@
     <Compile Include="AI\JobDriver_UseBrainTemplate.cs" />
     <Compile Include="AI\JobDriver_SalvageGenome.cs" />
     <Compile Include="AI\Properties\MaintainVatProperties.cs" />
+    <Compile Include="AI\QEEToils.cs" />
     <Compile Include="AI\WorkGiver_DoBill_Grower.cs" />
     <Compile Include="AI\WorkGiver_ExtractProductFromGrower.cs" />
     <Compile Include="AI\WorkGiver_GrowerMaintenance.cs" />
