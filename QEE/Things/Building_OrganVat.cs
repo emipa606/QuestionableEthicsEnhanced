@@ -12,47 +12,12 @@ namespace QEthics
     /// <summary>
     /// Building for growing things like organs. Requires constant maintenance in order to not botch the crafting. Dirty rooms increase maintenance drain even more.
     /// </summary>
-    public class Building_OrganVat : Building_GrowerBase_WorkTable, IMaintainableGrower
+    public class Building_OrganVat : Building_GrowerBase_WorkTable
     {
-        static Building_OrganVat()
-        {
-            cleanlinessCurve.Add(-5.0f, 5.00f);
-            cleanlinessCurve.Add(-2.0f, 1.75f);
-            cleanlinessCurve.Add(0.0f, 1.0f);
-            cleanlinessCurve.Add(0.4f, 0.35f);
-            cleanlinessCurve.Add(2.0f, 0.1f);
-        }
-
-        public static SimpleCurve cleanlinessCurve = new SimpleCurve();
-
         /// <summary>
         /// Ticks required to craft organ. Takes organGrowthRate ModSetting into account.
         /// </summary>
         public override int TicksNeededToCraft => (int)(activeRecipe?.workAmount * QEESettings.instance.organGrowthRateFloat ?? 0);
-
-        /// <summary>
-        /// From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
-        /// </summary>
-        public float scientistMaintenance;
-
-        /// <summary>
-        /// From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
-        /// </summary>
-        public float doctorMaintenance;
-
-        public float RoomCleanliness
-        {
-            get
-            {
-                Room room = this.GetRoom(RegionType.Set_Passable);
-                if (room != null)
-                {
-                    return room.GetStat(RoomStatDefOf.Cleanliness);
-                }
-
-                return 0f;
-            }
-        }
 
         private VatGrowerProperties vatGrowerPropsInt;
 
@@ -75,32 +40,13 @@ namespace QEthics
             }
         }
 
-        public float ScientistMaintenance { get => scientistMaintenance; set => scientistMaintenance = value; }
-
-        public float DoctorMaintenance { get => doctorMaintenance; set => doctorMaintenance = value; }
-
         public Building_OrganVat() : base()
         {
             
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-
-            Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
-            Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
-            Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
-            Scribe_Values.Look(ref activeBillID, "activeBillID");
-        }
-
         public override string GetInspectString()
         {
-            if(!(ParentHolder is Map))
-            {
-                return null;
-            }
-
             StringBuilder builder = new StringBuilder(base.GetInspectString());
 
             if (status == CrafterStatus.Crafting)
@@ -190,19 +136,7 @@ namespace QEthics
 
         public override void Tick_Crafting()
         {
-            base.Tick_Crafting();
-
-            //Deduct maintenance, fail if any of them go below 0%.
-            float powerModifier = 1f;
-            if (PowerTrader != null && !PowerTrader.PowerOn)
-            {
-                powerModifier = 15f;
-            }
-            float cleanlinessModifer = cleanlinessCurve.Evaluate(RoomCleanliness);
-            float decayRate = 0.0012f * cleanlinessModifer * powerModifier / (QEESettings.instance.maintRateFloat);
-
-            scientistMaintenance -= decayRate;
-            doctorMaintenance -= decayRate;
+            base.Tick_Crafting();           
 
             if(scientistMaintenance < 0f || doctorMaintenance < 0f)
             {

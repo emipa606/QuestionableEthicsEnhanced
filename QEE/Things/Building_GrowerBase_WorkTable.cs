@@ -10,7 +10,7 @@ namespace QEthics
     /// <summary>
     /// Base class for grower buildings.
     /// </summary>
-    public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThingHolder
+    public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThingHolder, IMaintainableGrower
     {
         private GrowerProperties growerPropsInt = null;
 
@@ -39,6 +39,50 @@ namespace QEthics
             }
         }
 
+
+        #region IMaintainableGrower Implementation
+
+        /// <summary>
+        /// From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
+        /// </summary>
+        public float scientistMaintenance = 0.25f;
+
+        /// <summary>
+        /// From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
+        /// </summary>
+        public float doctorMaintenance = 0.25f;
+
+        public static SimpleCurve cleanlinessCurve = new SimpleCurve();
+
+        static Building_GrowerBase_WorkTable()
+        {
+            cleanlinessCurve.Add(-5.0f, 5.00f);
+            cleanlinessCurve.Add(-2.0f, 1.75f);
+            cleanlinessCurve.Add(0.0f, 1.0f);
+            cleanlinessCurve.Add(0.4f, 0.35f);
+            cleanlinessCurve.Add(2.0f, 0.1f);
+        }
+
+        public float RoomCleanliness
+        {
+            get
+            {
+                Room room = this.GetRoom(RegionType.Set_Passable);
+                if (room != null)
+                {
+                    return room.GetStat(RoomStatDefOf.Cleanliness);
+                }
+
+                return 0f;
+            }
+        }
+
+        public float ScientistMaintenance { get => scientistMaintenance; set => scientistMaintenance = value; }
+
+        public float DoctorMaintenance { get => doctorMaintenance; set => doctorMaintenance = value; }
+
+        #endregion
+
         /// <summary>
         /// Grower building properties.
         /// </summary>
@@ -60,6 +104,7 @@ namespace QEthics
                 return growerPropsInt;
             }
         }
+
 
         public CompPowerTrader PowerTrader
         {
@@ -125,6 +170,10 @@ namespace QEthics
             Scribe_Values.Look(ref craftingProgress, "craftingProgress");
             Scribe_Values.Look(ref status, "status");
             Scribe_Deep.Look(ref ingredientContainer, "ingredientContainer", this, false, LookMode.Deep);
+            Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
+            Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
+            Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
+            Scribe_Values.Look(ref activeBillID, "activeBillID");
         }
 
         public void GetChildHolders(List<IThingHolder> outChildren)
@@ -139,6 +188,11 @@ namespace QEthics
 
         public override string GetInspectString()
         {
+            if (!(ParentHolder is Map))
+            {
+                return null;
+            }
+
             StringBuilder builder = new StringBuilder(base.GetInspectString());
 
             //Status
@@ -241,13 +295,10 @@ namespace QEthics
         public virtual void Tick_Crafting()
         {
             //Increment crafting.
-            bool doCrafting = true;
-            if (PowerTrader != null && !PowerTrader.PowerOn)
+            float powerModifier;
+            if (PowerTrader == null || PowerTrader.PowerOn)
             {
-                doCrafting = false;
-            }
-            if (doCrafting)
-            {
+                powerModifier = 1f;
                 craftingProgress = craftingProgress + 60;
                 if (craftingProgress >= TicksNeededToCraft)
                 {
@@ -258,6 +309,17 @@ namespace QEthics
                     Notify_CraftingFinished();
                 }
             }
+            else
+            {
+                powerModifier = 15f;
+            }
+
+            //Set maintenance to decay
+            float cleanlinessModifer = cleanlinessCurve.Evaluate(RoomCleanliness);
+            float decayRate = 0.0012f * cleanlinessModifer * powerModifier / (QEESettings.instance.maintRateFloat);
+
+            scientistMaintenance -= decayRate;
+            doctorMaintenance -= decayRate;
         }
 
         /// <summary>
