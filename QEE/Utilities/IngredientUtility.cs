@@ -171,6 +171,11 @@ namespace QEthics
                             return false;
                         }
 
+                        if (!finder.CanReserve(testThing))
+                        {
+                            return false;
+                        }
+
                         if (testThing.def.defName == curIng.FixedIngredient.defName)
                         {
                             return true;
