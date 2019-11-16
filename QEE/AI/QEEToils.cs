@@ -23,7 +23,7 @@ namespace QEthics
             toil.initAction = delegate
             {
                 Pawn actor = toil.actor;
-                Bill_Production activeBill = vat.ActiveBill;
+                Bill_Production activeBill = vat.billProc.ActiveBill;
 
                 if (vat?.activeRecipe?.products[0]?.thingDef == null)
                 {
@@ -43,6 +43,7 @@ namespace QEthics
                     //true if no output stockpile specified in bill options
 
                     Thing product = ThingMaker.MakeThing(vat.activeRecipe.products[0].thingDef);
+                    product.stackCount = vat.activeRecipe.products[0].count;
 
                     if (activeBill?.GetUniqueLoadID() != null)
                     {
@@ -85,7 +86,8 @@ namespace QEthics
                 //Skip null checking, as it was done in previous toil
 
                 Thing product = ThingMaker.MakeThing(vat.activeRecipe.products[0].thingDef);
-                Bill_Production activeBill = vat.ActiveBill;
+                product.stackCount = vat.activeRecipe.products[0].count;
+                Bill_Production activeBill = vat.billProc.ActiveBill;
 
                 //decrement billstack count
                 if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)

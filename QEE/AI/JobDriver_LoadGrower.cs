@@ -16,6 +16,7 @@ namespace QEthics
         public const PathEndMode GotoIngredientPathEndMode = PathEndMode.ClosestTouch;
         public const TargetIndex BillGiverInd = TargetIndex.A;
         public const TargetIndex IngredientInd = TargetIndex.B;
+        int logCounter = 1;
 
         public IBillGiver BillGiver
         {
@@ -42,30 +43,32 @@ namespace QEthics
                 return false;
             }
 
-            return pawn.Reserve(TargetThingA, job, errorOnFailed: errorOnFailed) && pawn.Reserve(TargetThingB, job, errorOnFailed: errorOnFailed);
+            bool shouldStart = pawn.Reserve(TargetThingA, job, errorOnFailed: errorOnFailed) && pawn.Reserve(TargetThingB, job, errorOnFailed: errorOnFailed);
+
+            //QEEMod.TryLog("TryMakePreToilRes for " + pawn.LabelShort + ": " + shouldStart);
+            return shouldStart;
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnBurningImmobile(BillGiverInd);
             this.FailOnDestroyedNullOrForbidden(BillGiverInd);
+            this.FailOnForbidden(IngredientInd);
             this.FailOn(delegate
             {
                 Thing building = job.GetTarget(BillGiverInd).Thing;
                 IBillGiver billGiver = building as IBillGiver;
                 if (building == null || billGiver == null || job.bill == null)
                 {
-                    return true;
-                }
-
-                if (!billGiver.CurrentlyUsableForBills())
-                {
+                    QEEMod.TryLog("something is null, failing job");
                     return true;
                 }
 
                 Building_GrowerBase_WorkTable grower = job.GetTarget(BillGiverInd).Thing as Building_GrowerBase_WorkTable;
                 if (job.bill.DeletedOrDereferenced)
                 {
+                    QEEMod.TryLog("Bill deleted, failing job");
+
                     //refund ingredients if player cancels bill during Filling phase
                     if (grower != null && grower.status == CrafterStatus.Filling)
                     {
@@ -78,25 +81,45 @@ namespace QEthics
 
                 if(grower.status != CrafterStatus.Filling)
                 {
+                    QEEMod.TryLog("Crafter is not 'filling', ending job");
                     return true;
                 }
 
                 return false;
             });
 
+
+            Toil logToil = new Toil()
+            {
+                initAction = delegate ()
+                {
+                    QEEMod.TryLog("Pawn " + GetActor().LabelShort +" | Toil: " + logCounter + " | Job: " + job.GetUniqueLoadID());
+                    logCounter++;
+                }
+            };
+            ////yield return logToil;
+
             //travel to ingredient and carry it
             Toil reserveIng = Toils_Reserve.Reserve(IngredientInd);
             yield return reserveIng;
+            //yield return logToil;
+
             Toil travelToil = Toils_Goto.GotoThing(IngredientInd, PathEndMode.OnCell);
             yield return travelToil;
+            //yield return logToil;
+
             Toil carryThing = Toils_Haul.StartCarryThing(IngredientInd, subtractNumTakenFromJobCount: true);
             yield return carryThing;
+            //yield return logToil;
 
             //Opportunistically haul a nearby ingredient of same ThingDef. Checks 8 square radius.
             yield return Toils_Haul.CheckForGetOpportunityDuplicate(reserveIng, IngredientInd, TargetIndex.None, takeFromValidStorage: true);
+            //yield return logToil;
+
 
             //head back to grower
             yield return Toils_Goto.GotoThing(BillGiverInd, PathEndMode.InteractionCell).FailOnDestroyedOrNull(IngredientInd);
+            //yield return logToil;
 
             //deposit into grower
             Toil depositIntoGrower = new Toil()

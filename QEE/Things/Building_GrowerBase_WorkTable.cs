@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
+using System.Diagnostics;
+using System.Threading;
 
 namespace QEthics
 {
     /// <summary>
     /// Base class for grower buildings.
     /// </summary>
-    public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThingHolder, IMaintainableGrower
+    public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThingHolder, IMaintainableGrower, IBillGiverExtension
     {
+        #region Members 
+
         private GrowerProperties growerPropsInt = null;
 
         /// <summary>
@@ -20,24 +24,99 @@ namespace QEthics
         public RecipeDef activeRecipe;
 
         /// <summary>
-        /// Current bill.loadID for the recipe being crafted.
+        /// Status of this crafter.
         /// </summary>
-        public string activeBillID;
+        public CrafterStatus status = CrafterStatus.Idle;
 
-        public Bill_Production ActiveBill
+        /// <summary>
+        /// Internal container representation of stored items.
+        /// </summary>
+        protected ThingOwner ingredientContainer = null;
+
+        /// <summary>
+        /// Current progress being made during crafting.
+        /// </summary>
+        public int craftingProgress;
+
+        /// <summary>
+        /// Helps process bills for this building.
+        /// </summary>
+        public BillProcessor billProc;
+
+        #endregion Members
+
+
+        #region Constructors
+        public Building_GrowerBase_WorkTable()
+        {
+            ingredientContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
+            billProc = new BillProcessor(this);
+        }
+        #endregion
+
+
+        #region Properties
+
+        /// <summary>
+        /// Grower building properties.
+        /// </summary>
+        public GrowerProperties GrowerProps
         {
             get
             {
-                foreach (Bill_Production curBill in billStack)
+                if (growerPropsInt == null)
                 {
-                    if (curBill.GetUniqueLoadID() == activeBillID)
+                    growerPropsInt = def.GetModExtension<GrowerProperties>();
+
+                    //Fallback; Is defaults.
+                    if (growerPropsInt == null)
                     {
-                        return curBill;
+                        growerPropsInt = new GrowerProperties();
                     }
                 }
-                return null;
+
+                return growerPropsInt;
             }
         }
+
+        public CompPowerTrader PowerTrader
+        {
+            get
+            {
+                return GetComp<CompPowerTrader>();
+            }
+        }
+
+        /// <summary>
+        /// Ticks needed until the crafting is finished.
+        /// </summary>
+        public abstract int TicksNeededToCraft { get; }
+
+        public int TicksLeftToCraft
+        {
+            get
+            {
+                return TicksNeededToCraft - craftingProgress;
+            }
+        }
+
+        public float CraftingProgressPercent
+        {
+            get
+            {
+                if (TicksNeededToCraft == 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    float percentComplete = (float)craftingProgress / (float)TicksNeededToCraft;
+                    return percentComplete > 1.0f ? 1.0f : percentComplete;
+                }
+            }
+        }
+
+        #endregion
 
 
         #region IMaintainableGrower Implementation
@@ -83,85 +162,26 @@ namespace QEthics
 
         #endregion
 
-        /// <summary>
-        /// Grower building properties.
-        /// </summary>
-        public GrowerProperties GrowerProps
+
+        #region IBillGiverExtension Implementation
+
+
+        public void Notify_BillAdded(Bill theBill)
         {
-            get
-            {
-                if (growerPropsInt == null)
-                {
-                    growerPropsInt = def.GetModExtension<GrowerProperties>();
-
-                    //Fallback; Is defaults.
-                    if (growerPropsInt == null)
-                    {
-                        growerPropsInt = new GrowerProperties();
-                    }
-                }
-
-                return growerPropsInt;
-            }
+            QEEMod.TryLog("Bill Added!");
+            billProc.UpdateDesiredRequests();
+            billProc.UpdateAvailIngredientsCache();
+        }
+        public void Notify_BillDeleted(Bill theBill)
+        {
+            QEEMod.TryLog("Bill Removed!");
+            billProc.UpdateDesiredRequests();
+            billProc.UpdateAvailIngredientsCache();
         }
 
+        #endregion
 
-        public CompPowerTrader PowerTrader
-        {
-            get
-            {
-                return GetComp<CompPowerTrader>();
-            }
-        }
-
-        /// <summary>
-        /// Ticks needed until the crafting is finished.
-        /// </summary>
-        public abstract int TicksNeededToCraft { get; }
-
-        /// <summary>
-        /// Current progress being made during crafting.
-        /// </summary>
-        public int craftingProgress;
-
-        public int TicksLeftToCraft
-        {
-            get
-            {
-                return TicksNeededToCraft - craftingProgress;
-            }
-        }
-
-        public float CraftingProgressPercent
-        {
-            get
-            {
-                if (TicksNeededToCraft == 0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    float percentComplete = (float)craftingProgress / (float)TicksNeededToCraft;
-                    return percentComplete > 1.0f ? 1.0f : percentComplete;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Status of this crafter.
-        /// </summary>
-        public CrafterStatus status = CrafterStatus.Idle;
-
-        /// <summary>
-        /// Internal container representation of stored items.
-        /// </summary>
-        protected ThingOwner ingredientContainer = null;
-
-        public Building_GrowerBase_WorkTable()
-        {
-            ingredientContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
-        }
+        #region Methods
 
         public override void ExposeData()
         {
@@ -173,7 +193,12 @@ namespace QEthics
             Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
             Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
             Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
-            Scribe_Values.Look(ref activeBillID, "activeBillID");
+            //Scribe_Deep.Look(ref billProc, "billProc", this, false, LookMode.Deep);
+
+            //if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            //{
+            //    billProc.anyBillIngredientsAvailable = true;
+            //}
         }
 
         public void GetChildHolders(List<IThingHolder> outChildren)
@@ -278,7 +303,14 @@ namespace QEthics
         /// </summary>
         public virtual void Tick_Idle()
         {
-
+            if (this.IsHashIntervalTick(60))
+            {
+                billProc.UpdateDesiredRequests();
+            }
+            if (this.IsHashIntervalTick(120))
+            {
+                billProc.UpdateAvailIngredientsCache();
+            }
         }
 
         /// <summary>
@@ -286,7 +318,21 @@ namespace QEthics
         /// </summary>
         public virtual void Tick_Filling()
         {
+            //Check if any Things are lost in the order processor.
+            billProc.ValidateDesiredRequests();
 
+            if (billProc.requestsLost)
+            {
+                //Abort if any of the requests were lost.
+                StopCrafting(true);
+                Notify_ThingLostInBillProcessor();
+                billProc.requestsLost = false;
+                Tick_Idle();
+            }
+            else if (this.IsHashIntervalTick(300))
+            {
+                billProc.UpdateAvailIngredientsCache();
+            }
         }
 
         /// <summary>
@@ -350,11 +396,17 @@ namespace QEthics
 
         }
 
+        public virtual void Notify_ThingLostInBillProcessor()
+        {
+
+        }
+
         public void FillThing(Thing thing)
         {
             if (thing != null)
             {
                 ingredientContainer.TryAddOrTransfer(thing, true);
+                billProc.Notify_ContentsChanged();
             }
         }
 
@@ -377,7 +429,7 @@ namespace QEthics
             craftingProgress = 0;
             status = CrafterStatus.Idle;
             activeRecipe = null;
-            activeBillID = null;
+            billProc.Reset();
 
             if (ingredientContainer != null && ingredientContainer.Count > 0)
             {
@@ -430,5 +482,7 @@ namespace QEthics
             }
             return totalCount;
         }
+
+        #endregion
     }
 }

@@ -132,5 +132,34 @@ namespace QEthics
             }
         }
 
+        [HarmonyPatch(typeof(BillStack))]
+        [HarmonyPatch(nameof(BillStack.AddBill))]
+        class AddBill_Patch
+        {
+            [HarmonyPostfix]
+            static void AddBillPostfix(BillStack __instance, Bill bill)
+            {
+                IBillGiverExtension extension = __instance.billGiver as IBillGiverExtension;
+                if (extension != null)
+                {
+                    extension.Notify_BillAdded(bill);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(BillStack))]
+        [HarmonyPatch(nameof(BillStack.Delete))]
+        class DeleteBill_Patch
+        {
+            [HarmonyPostfix]
+            static void DeleteBillPostfix(BillStack __instance, Bill bill)
+            {
+                IBillGiverExtension extension = __instance.billGiver as IBillGiverExtension;
+                if (extension != null)
+                {
+                    extension.Notify_BillDeleted(bill);
+                }
+            }
+        }
     }
 }

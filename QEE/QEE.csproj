@@ -87,8 +87,10 @@
     <Compile Include="Defs\BackstoryDef.cs" />
     <Compile Include="Legacy\Legacy_GrowerRecipeDef.cs" />
     <Compile Include="Legacy\Legacy_VatGrower.cs" />
+    <Compile Include="Logic\BillProcessor.cs" />
     <Compile Include="Logic\ComparableSkillRecord.cs" />
     <Compile Include="Logic\ExposedTraitEntry.cs" />
+    <Compile Include="Logic\IBillGiverExtension.cs" />
     <Compile Include="Logic\IMaintainableGrower.cs" />
     <Compile Include="Logic\ThingOrderProcessor.cs" />
     <Compile Include="Logic\ThingOrderRequest.cs" />

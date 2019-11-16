@@ -115,17 +115,25 @@ namespace QEthics
         /// <param name="billToUse"></param>
         public override void Notify_FillingStarted(Bill billToUse)
         {
+            //update Bill Processor
+            //IngredientUtility.UpdateBillProcessorDesiredIng(billProc, billToUse);
+
+            //TODO - is this necessary?
+            billProc.UpdateDesiredRequests();
+
             //Initialize maintenance
             scientistMaintenance = 0.25f;
             doctorMaintenance = 0.25f;
 
             activeRecipe = billToUse.recipe;
-            activeBillID = billToUse.GetUniqueLoadID();
+            
             status = CrafterStatus.Filling;
         }
 
         public override void Notify_CraftingStarted()
         {
+            billProc.Notify_ContentsChanged();
+
             status = CrafterStatus.Crafting;
         }
 
