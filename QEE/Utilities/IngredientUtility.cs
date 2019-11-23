@@ -364,9 +364,8 @@ namespace QEthics
         //    return null;
         //} //end FindClosestIngForBill
 
-        public static Thing FindClosestIngToBillGiver(Bill theBill)
+        public static Thing FindClosestIngToBillGiver(Bill theBill, IngredientCount curIng)
         {
-            //Building_GrowerBase_WorkTable vat = theBill.billStack.billGiver as Building_GrowerBase_WorkTable;
             IBillGiver billGiver = theBill.billStack.billGiver;
             IThingHolder holder = billGiver as IThingHolder;
             Thing building = billGiver as Thing;
@@ -377,53 +376,48 @@ namespace QEthics
                 return null;
             }
 
-            //TODO - change this to use billProc.desiredIngredients
-            //loop through ingredients
-            foreach (IngredientCount curIng in theBill.recipe.ingredients)
-            {
-                int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
-                int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * 
-                    QEESettings.instance.organTotalResourcesFloat);
+            int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
+            int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * 
+                QEESettings.instance.organTotalResourcesFloat);
                 
-                int countNeededForCrafting = countNeededFromRecipe - storedCount;
-                countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
+            int countNeededForCrafting = countNeededFromRecipe - storedCount;
+            countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
 
-                //only check the map for Things if the vat still needs some of this ingredient
-                if (countNeededForCrafting > 0)
+            //only check the map for Things if the vat still needs some of this ingredient
+            if (countNeededForCrafting > 0)
+            {
+                //find the closest accessible Thing of that ThingDef on the map
+                ThingRequest tRequest = ThingRequest.ForDef(curIng.FixedIngredient);
+
+                IEnumerable<Thing> searchSet = billGiver.Map.listerThings.ThingsMatching(tRequest);
+                Thing result = GenClosest.ClosestThing_Global(building.Position, searchSet, 
+                validator:
+                delegate (Thing testThing)
                 {
-                    //find the closest accessible Thing of that ThingDef on the map
-                    ThingRequest tRequest = ThingRequest.ForDef(curIng.FixedIngredient);
-
-                    IEnumerable<Thing> searchSet = billGiver.Map.listerThings.ThingsMatching(tRequest);
-                    Thing result = GenClosest.ClosestThing_Global(building.Position, searchSet, 
-                    validator:
-                    delegate (Thing testThing)
+                    if (testThing.def.defName != curIng.FixedIngredient.defName)
                     {
-                        if (testThing.def.defName != curIng.FixedIngredient.defName)
-                        {
-                            return false;
-                        }
-
-                        if(testThing.IsForbidden(building.Faction))
-                        {
-                            return false;
-                        }
-
-                        return true;
-                    });
-
-                    //return the Thing, if we found one
-                    if (result != null)
-                    {
-                        QEEMod.TryLog("Ingredient found: " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | recipe: "
-                            + countNeededFromRecipe);
-                        return result;
+                        return false;
                     }
+
+                    if(testThing.IsForbidden(building.Faction))
+                    {
+                        return false;
+                    }
+
+                    return true;
+                });
+
+                //return the Thing, if we found one
+                if (result != null)
+                {
+                    //QEEMod.TryLog("Ingredient found: " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | recipe: "
+                    //    + countNeededFromRecipe);
+                    return result;
                 }
             }
 
             return null;
-        } //end function FindClosestIngForGrower
+        } //end function FindClosestIngToBillGiver
 
 
     } //end class IngredientUtility

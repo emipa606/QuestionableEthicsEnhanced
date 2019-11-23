@@ -10,7 +10,7 @@ namespace QEthics
     /// <summary>
     /// Helps process orders for Things in bills.
     /// </summary>
-    public class BillProcessor //: IExposable
+    public class BillProcessor : IExposable
     {
 
         #region Members
@@ -36,6 +36,16 @@ namespace QEthics
         public Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
 
         private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 598);
+
+        /// <summary>
+        /// Unique LoadID of the bill being worked on. This value is saved in ExposeData().
+        /// </summary>
+        private string _activeBillID;
+
+        /// <summary>
+        /// Current bill being worked on. If null, crafter is not working on a bill. It is not saved in ExposeData().
+        /// </summary>
+        private Bill_Production _activeBill;
 
         #endregion Members
 
@@ -71,41 +81,49 @@ namespace QEthics
             }
         }
 
-        #endregion Properties
-
-        #region Methods
-
-        //is this expensive? Should I cache this?
         public Bill_Production ActiveBill
         {
             get
             {
-                //BillStack bills = (observedThingHolder as IBillGiver)?.BillStack;
-                Bill_Production billShouldDo = (observedThingHolder as IBillGiver)?.BillStack?.FirstShouldDoNow as Bill_Production;
-                if (billShouldDo == null)
-                {
-                    return null;
-                }
-
-                return billShouldDo;
+                return _activeBill;
+            }
+            set
+            {
+                _activeBill = value;
+                _activeBillID = value.GetUniqueLoadID();
             }
         }
+
+        #endregion Properties
+
+        #region Methods
 
         public bool UpdateAvailIngredientsCache()
         {
             //QEEMod.TryLog("Updating bill ingredients cache");
-            BillStack bills = (observedThingHolder as IBillGiver)?.BillStack;
+            anyBillIngredientsAvailable = false;
+            ingredientsAvailableNow.Clear();
 
-            if(bills == null || AnyPendingRequests == false)
+            if (AnyPendingRequests == false)
             {
-                anyBillIngredientsAvailable = false;
                 return false;
             }
 
-            //TODO - loop over desiredRequests instead of bill ingredients?
+            List<Bill> bills = new List<Bill>();
+            if (_activeBill != null)
+            {
+                bills.Add(_activeBill);
+            }
+            else
+            {
+                bills = (observedThingHolder as IBillGiver)?.BillStack.Bills;
+            }
+
+            Dictionary<string, Thing> ingsFoundOnMap = new Dictionary<string, Thing>();
             for (int i = 0; i < bills.Count; i++)
             {
-                Bill curBill = bills[i];
+                Bill_Production curBill = bills[i] as Bill_Production;
+
                 if (Find.TickManager.TicksGame < curBill.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange)
                 {
                     QEEMod.TryLog("checked " + curBill.GetUniqueLoadID() + " for avail. ingredients recently, skipping");
@@ -116,27 +134,45 @@ namespace QEthics
                 if (curBill.ShouldDoNow())
                 {
 
-                    //check if there are ingredients that this bill can use
-                    Thing ing = IngredientUtility.FindClosestIngToBillGiver(curBill);
-                    if (ing != null)
+                    //loop through ingredients
+                    foreach (IngredientCount curIng in curBill.recipe.ingredients)
                     {
-                        QEEMod.TryLog("Found " + ing.Label + " on map, adding to ingredient cache");
-                        ingredientsAvailableNow[curBill.GetUniqueLoadID()] = ing;
-                        anyBillIngredientsAvailable = true;
-                        return true;
+                        Thing ing;
+
+                        //if same ingredient was found on map in previous loop iteration, don't search map again
+                        ingsFoundOnMap.TryGetValue(curIng.FixedIngredient.defName, out ing);
+                        if (ing != null)
+                        {
+                            ingredientsAvailableNow[curBill.GetUniqueLoadID()] = ing;
+                            //QEEMod.TryLog("Already found " + ing.Label + " on previous iteration. Skipping");
+                            break;
+                        }
+
+                        //check if this ingredient is on the map
+                        ing = IngredientUtility.FindClosestIngToBillGiver(curBill, curIng);
+                        if (ing != null)
+                        {
+                            QEEMod.TryLog("Found " + ing.Label + " on map, adding to ingredient cache");
+                            ingsFoundOnMap[curIng.FixedIngredient.defName] = ing;
+                            ingredientsAvailableNow[curBill.GetUniqueLoadID()] = ing;
+                            anyBillIngredientsAvailable = true;
+                            break;
+                        }
+                        else
+                        {
+                            //QEEMod.TryLog("no ingredients available");
+                        }
                     }
-                    else
+
+                    Thing dummy;
+                    if(!ingredientsAvailableNow.TryGetValue(curBill.GetUniqueLoadID(), out dummy))
                     {
-                        QEEMod.TryLog("no ingredients available");
                         curBill.lastIngredientSearchFailTicks = Find.TickManager.TicksGame;
                     }
                 }
             }
 
-            ingredientsAvailableNow.Clear();
-
-            anyBillIngredientsAvailable = false;
-            return false;
+            return anyBillIngredientsAvailable;
         }
 
         /// <summary>
@@ -183,9 +219,13 @@ namespace QEthics
         public void Reset()
         {
             //Log.Message("QEE: Resetting desired ingredients...");
-            desiredRequests.Clear();
             //ValidateDesiredRequests();
-            ingredientsAvailableNow.Clear();
+            _activeBillID = null;
+            _activeBill = null;
+
+            //recache desired requests and available ingredients
+            UpdateDesiredRequests();
+            UpdateAvailIngredientsCache();
         }
 
         /// <summary>
@@ -203,10 +243,25 @@ namespace QEthics
         {
             desiredRequests.Clear();
 
-            Bill_Production theBill = ActiveBill;
-
-            if (theBill?.recipe?.ingredients != null)
+            List<Bill> bills = new List<Bill>();
+            if (_activeBill != null)
             {
+                bills.Add(_activeBill);
+            }
+            else
+            {
+                bills = (observedThingHolder as IBillGiver)?.BillStack.Bills;
+            }
+
+            for (int i = 0; i < bills.Count; i++)
+            {
+                Bill_Production theBill = bills[i] as Bill_Production;
+
+                if(theBill?.recipe?.ingredients == null)
+                {
+                    continue;
+                }
+
                 foreach (IngredientCount curIng in theBill.recipe.ingredients)
                 {
                     ThingFilter filterCopy = new ThingFilter();
@@ -214,7 +269,6 @@ namespace QEthics
 
                     ThingOrderRequest request = new ThingOrderRequest(filterCopy);
 
-                    //int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
                     int storedCount = request.TotalStackCountForOrderRequestInContainer(ObservedThingOwner);
                     int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) *
                         QEESettings.instance.organTotalResourcesFloat);
@@ -224,26 +278,53 @@ namespace QEthics
 
                     if (countNeededForCrafting > 0)
                     {
-                        QEEMod.TryLog("Adding " + curIng.FixedIngredient.label + " amount: " + countNeededForCrafting);
+                        //QEEMod.TryLog("Adding " + curIng.FixedIngredient.label + " amount: " + countNeededForCrafting);
 
                         request.amount = countNeededForCrafting;
 
                         desiredRequests[curIng.FixedIngredient.defName] = request;
                     }
+                } //end foreach loop
+            }//end for loop
+        }//end UpdateDesiredRequests
+
+        /// <summary>
+        /// Updates the _activeBill variable from the billID. Should only need to be called when loading a save.
+        /// </summary>
+        public void UpdateActiveBill()
+        {
+            BillStack bills = (observedThingHolder as IBillGiver)?.BillStack;
+            if (bills == null)
+            {
+                return;
+            }
+
+            foreach (Bill_Production curBill in bills)
+            {
+                if (curBill.GetUniqueLoadID() == _activeBillID)
+                {
+                    _activeBill = curBill;
                 }
             }
         }
 
         //Inherited
-        //public void ExposeData()
-        //{
-        //    //Scribe_Collections.Look(ref desiredRequests, "desiredRequests", LookMode.Deep);
-        //    Scribe_Values.Look(ref anyBillIngredientsAvailable, "anyBillIngredientsAvailable");
-        //    if (Scribe.mode == LoadSaveMode.PostLoadInit)
-        //    {
-        //        Notify_ContentsChanged();
-        //    }
-        //}
+        public void ExposeData()
+        {
+            //Scribe_Collections.Look(ref desiredRequests, "desiredRequests", LookMode.Deep);
+            Scribe_Values.Look(ref anyBillIngredientsAvailable, "anyBillIngredientsAvailable");
+            Scribe_Values.Look(ref _activeBillID, "_activeBillID");
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if(_activeBillID != null)
+                {
+                    UpdateActiveBill();
+                }
+
+                //Notify_ContentsChanged();
+            }
+        }
 
         #endregion Methods
     }

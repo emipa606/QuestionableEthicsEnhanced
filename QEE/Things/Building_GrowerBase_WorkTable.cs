@@ -193,7 +193,7 @@ namespace QEthics
             Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
             Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
             Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
-            //Scribe_Deep.Look(ref billProc, "billProc", this, false, LookMode.Deep);
+            Scribe_Deep.Look(ref billProc, "billProc", this);
 
             //if (Scribe.mode == LoadSaveMode.PostLoadInit)
             //{

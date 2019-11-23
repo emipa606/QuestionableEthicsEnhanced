@@ -38,8 +38,6 @@ namespace QEthics
         #region Constructors
         public WorkGiver_DoBill_Grower()
         {
-            //QEEMod.TryLog("**** WORKGIVER INIT!!! :) :) ****");
-
             //DEBUGGING ONLY
             ticks = new List<long>();
 
@@ -97,7 +95,6 @@ namespace QEthics
                 /*////////////////////////////////////////////////////////*/
                 swList[0].Start();
 
-                //if (grower.status != CrafterStatus.Idle && grower.status != CrafterStatus.Filling)
                 if (grower.status == CrafterStatus.Crafting || grower.status == CrafterStatus.Finished)
                 {
                     //~50 ticks
@@ -180,7 +177,19 @@ namespace QEthics
                 swList[6].Start();
 
                 string reason = "";
-                if (!PawnCanDoThisBill(pawn, grower.billProc.ActiveBill, target, out reason))
+
+                //if the grower isn't growing anything, loop through the billstack and check for any bill the pawn can do
+                if (grower.billProc.ActiveBill == null)
+                {
+                    if (GetBillPawnCanDo(pawn, grower, out reason) == null)
+                    {
+                        JobFailReason.Is(reason);
+                        swList[6].Stop();
+                        return false;
+                    }
+                }
+
+                else if (!PawnCanDoThisBill(pawn, grower.billProc.ActiveBill, target, out reason))
                 {
                     JobFailReason.Is(reason);
                     swList[6].Stop();
@@ -294,6 +303,50 @@ namespace QEthics
 
         /// <summary>
         /// Checks if a pawn can be assigned to a bill based on factors including PawnRestrictions, workSkills, etc.
+        /// If a bill passes all the checks, it's assigned as the ActiveBill in the billProcessor.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="grower"></param>
+        /// <param name="reason"></param>
+        /// <returns></returns>
+        public Bill GetBillPawnCanDo(Pawn p, Building_GrowerBase_WorkTable grower, out string reason)
+        {
+            reason = GenericFailReasonTrans;
+
+            BillStack bills = grower.billStack;
+            LocalTargetInfo target = grower;
+
+            //loop through bills
+            for (int i = 0; i < bills.Count; i++)
+            {
+                Bill_Production theBill = bills[i] as Bill_Production;
+
+                if(!PawnCanDoThisBill(p, theBill, target, out reason))
+                {
+                    continue;
+                }
+
+                //check if cached ingredients search found ingredients for this bill
+                Thing cachedThing;
+                grower.billProc.ingredientsAvailableNow.TryGetValue(theBill.GetUniqueLoadID(), out cachedThing);
+                if (cachedThing == null)
+                {
+                    QEEMod.TryLog("GetBillPawnCanDo - no ingredients available");
+                    reason = NoIngredientsTrans;
+                    continue;
+                }
+
+                grower.billProc.ActiveBill = theBill;
+                QEEMod.TryLog(p.LabelShort + " can do bill " + theBill.GetUniqueLoadID());
+                return theBill;
+            }
+            return null;
+
+        } //end GetBillPawnCanDo()
+
+
+        /// <summary>
+        /// Checks if a pawn can be assigned to a bill based on factors including PawnRestrictions, workSkills, etc.
         /// Does not check if ingredients are nearby.
         /// </summary>
         /// <param name="p"></param>
@@ -311,7 +364,7 @@ namespace QEthics
 
             var tacho = System.Diagnostics.Stopwatch.StartNew();
 
-            if (theBill.recipe.requiredGiverWorkType != null && theBill.recipe.requiredGiverWorkType != def.workType)
+            if (theBill?.recipe?.requiredGiverWorkType != null && theBill.recipe.requiredGiverWorkType != def.workType)
             {
                 reason = WorkTypeMismatchTrans;
                 return false;
@@ -330,11 +383,10 @@ namespace QEthics
 
             if (!shouldDo)
             {
-                //reason = "ShouldDoNow() returned false";
                 reason = ShouldDoFalseTrans;
                 return false;
             }
-                
+
             var three = System.Diagnostics.Stopwatch.StartNew();
 
             if (theBill.pawnRestriction != null && theBill.pawnRestriction != p)
@@ -342,12 +394,12 @@ namespace QEthics
                 reason = string.Format(PawnRestrictionTrans, theBill.pawnRestriction.LabelShort);
 
                 three.Stop();
-                Log.Message(string.Format("3: {0}", three.ElapsedTicks));
+                //Log.Message(string.Format("3: {0}", three.ElapsedTicks));
                 return false;
             }
 
             three.Stop();
-           Log.Message(string.Format("3: {0}", three.ElapsedTicks));
+            //Log.Message(string.Format("3: {0}", three.ElapsedTicks));
 
 
             if (theBill.recipe.workSkill != null)
