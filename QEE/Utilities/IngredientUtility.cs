@@ -136,33 +136,6 @@ namespace QEthics
             }
         }
 
-        //may not use this, in favor of BillProcessor.UpdateDesiredIngredients()
-        //public static void UpdateBillProcessorDesiredIng(BillProcessor processor, Bill billToUse)
-        //{
-        //    processor.activeBillID = billToUse.GetUniqueLoadID();
-
-        //    List<IngredientCount> ingredients = processor.ActiveBill?.recipe?.ingredients;
-        //    if (ingredients != null)
-        //    {
-        //        foreach (IngredientCount ingredientCount in processor.ActiveBill.recipe.ingredients)
-        //        {
-        //            ThingFilter filterCopy = new ThingFilter();
-        //            filterCopy.CopyAllowancesFrom(ingredientCount.filter);
-
-        //            ThingOrderRequest copy = new ThingOrderRequest(filterCopy);
-        //            copy.amount = (int)(ingredientCount.GetBaseCount() * QEESettings.instance.organTotalResourcesFloat);
-
-        //            processor.desiredIngredients.Add(copy);
-        //        }
-
-        //        QEEMod.TryLog("billProc.desiredIngredients count: " + processor.desiredIngredients.Count());
-        //    }
-        //    else
-        //    {
-        //        QEEMod.TryLog("Could not retrieve ingredients list from Active Bill!");
-        //    }
-        //}
-
         public static T Clamp<T>(this T val, T min, T max) where T : IComparable<T>
         {
             if (val.CompareTo(min) < 0) return min;
@@ -201,23 +174,7 @@ namespace QEthics
             ThingRequest tRequest;
             ThingOrderRequest desiredRequest;
 
-            //QEEMod.TryLog("getting desired request with same defName as cached Thing");
-            //QEEMod.TryLog("cachedThing.def.defName null: " + (cachedThing?.def?.defName == null));
-
             vat.billProc.desiredRequests.TryGetValue(cachedThing.def.defName, out desiredRequest);
-
-            //QEEMod.TryLog("desiredRequest.amount null: " + (desiredRequest?.amount == null));
-
-            //DEBUGGING ONLY
-            //if (desiredRequest?.amount == null)
-            //{
-            //    QEEMod.TryLog("desiredRequest amount is null");
-            //    //return null;
-            //}
-            //else if (desiredRequest.amount <= 0)
-            //{
-            //    QEEMod.TryLog(desiredRequest.Label + " amount is less than 0");
-            //}
 
             //check that the vat still needs the cached ingredient before searching the map for the same ThingDef
             if (desiredRequest == null || desiredRequest.amount <= 0)
@@ -268,8 +225,6 @@ namespace QEthics
                 validator:
                 delegate (Thing testThing)
                 {
-
-                    //if (testThing.def.defName == cachedThing.def.defName)
                     if (tRequest.Accepts(testThing))
                     {
                         if (testThing.IsForbidden(finder))
@@ -296,73 +251,6 @@ namespace QEthics
             return result;
 
         } //end FindClosestIngForBill
-
-
-        //BEFORE INGREDIENT CACHING CHANGE
-        //public static Thing FindClosestIngForBill(Bill theBill, Pawn finder, ref int countForVat)
-        //{
-        //    Building_GrowerBase_WorkTable vat = theBill.billStack.billGiver as Building_GrowerBase_WorkTable;
-        //    ThingOwner vatStoredIngredients = vat.GetDirectlyHeldThings();
-
-        //    //loop through ingredients
-        //    foreach (IngredientCount curIng in theBill.recipe.ingredients)
-        //    {
-        //        int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * QEESettings.instance.organTotalResourcesFloat);
-        //        int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
-        //        int countNeededForCrafting = countNeededFromRecipe - storedCount;
-        //        countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
-
-        //        //only check for Things if the vat still needs some of this ingredient
-        //        if (countNeededForCrafting > 0)
-        //        {
-        //            //find the closest accessible Thing of that ThingDef on the map
-        //            var swClosestThing = System.Diagnostics.Stopwatch.StartNew();
-
-        //            int itemsChecked = 0;
-        //            ThingRequest tRequest = ThingRequest.ForDef(curIng.FixedIngredient);
-
-        //            Thing result = GenClosest.ClosestThingReachable(finder.Position, finder.Map, tRequest,
-        //                PathEndMode.OnCell, TraverseParms.For(finder),
-        //                    validator:
-        //                    delegate (Thing testThing)
-        //                    {
-        //                        itemsChecked++;
-
-        //                        if (testThing.def.defName == curIng.FixedIngredient.defName)
-        //                        {
-        //                            if (testThing.IsForbidden(finder))
-        //                            {
-        //                                return false;
-        //                            }
-
-        //                            if (!finder.CanReserve(testThing))
-        //                            {
-        //                                return false;
-        //                            }
-        //                            return true;
-        //                        }
-
-        //                        return false;
-        //                    });
-
-
-        //            swClosestThing.Stop();
-        //            //Log.Message(string.Format("closest: {1} | itemsChecked: {3} | pawn: {0} | {2}", finder.LabelShort, 
-        //            //    swClosestThing.ElapsedTicks, curIng.FixedIngredient.label, itemsChecked));
-
-        //            //return the Thing, if we found one
-        //            if (result != null)
-        //            {
-        //                countForVat = countNeededForCrafting;
-        //                //QEEMod.TryLog("Ingredient found: " + curIng.FixedIngredient.label + " | stackCount: " + result.stackCount + " | recipe: "
-        //                //   + countNeededFromRecipe + " | countForVat: " + countForVat);
-        //                return result;
-        //            }
-        //        }
-        //    }
-
-        //    return null;
-        //} //end FindClosestIngForBill
 
         public static Thing FindClosestIngToBillGiver(Bill theBill, IngredientCount curIng)
         {

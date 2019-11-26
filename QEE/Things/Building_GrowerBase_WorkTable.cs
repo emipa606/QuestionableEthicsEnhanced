@@ -168,13 +168,13 @@ namespace QEthics
 
         public void Notify_BillAdded(Bill theBill)
         {
-            QEEMod.TryLog("Bill Added!");
+            //QEEMod.TryLog("Bill Added!");
             billProc.UpdateDesiredRequests();
             billProc.UpdateAvailIngredientsCache();
         }
         public void Notify_BillDeleted(Bill theBill)
         {
-            QEEMod.TryLog("Bill Removed!");
+            //QEEMod.TryLog("Bill Removed!");
             billProc.UpdateDesiredRequests();
             billProc.UpdateAvailIngredientsCache();
         }

@@ -18,7 +18,6 @@ namespace QEthics
         /// Things we desire that can be anything.
         /// </summary>
         public Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
-        //public List<ThingOrderRequest> desiredIngredients = new List<ThingOrderRequest>();
 
         /// <summary>
         /// Cached value that is updated after a function checks for recipe ingredients on a interval. Designed to be checked 
@@ -218,8 +217,6 @@ namespace QEthics
 
         public void Reset()
         {
-            //Log.Message("QEE: Resetting desired ingredients...");
-            //ValidateDesiredRequests();
             _activeBillID = null;
             _activeBill = null;
 
@@ -311,7 +308,6 @@ namespace QEthics
         //Inherited
         public void ExposeData()
         {
-            //Scribe_Collections.Look(ref desiredRequests, "desiredRequests", LookMode.Deep);
             Scribe_Values.Look(ref anyBillIngredientsAvailable, "anyBillIngredientsAvailable");
             Scribe_Values.Look(ref _activeBillID, "_activeBillID");
 
