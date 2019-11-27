@@ -114,7 +114,7 @@
 	<QE_MaxCloningTime>Max cloning time (days)</QE_MaxCloningTime>
 	<QE_MaxCloningTimeTooltip>A clone will not grow longer than this number of days in a Cloning Vat. Default = 60</QE_MaxCloningTimeTooltip>
 
-	<!-- version 1.1 Patch -->
+	<!-- version 1.1.0 Patch -->
 	<QE_OrganVatDebugFinishGrowingDescription>Instantly finishes growing the organ.</QE_OrganVatDebugFinishGrowingDescription>
 	<QE_JobFailReasonNoBillsQueued>No bills currently queued</QE_JobFailReasonNoBillsQueued>
 	<QE_JobFailReasonPawnRestriction>Bill is restricted to pawn {0}</QE_JobFailReasonPawnRestriction>
