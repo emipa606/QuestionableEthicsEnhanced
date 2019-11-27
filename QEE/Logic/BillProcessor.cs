@@ -34,7 +34,7 @@ namespace QEthics
 
         public Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
 
-        private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 598);
+        //private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 598);
 
         /// <summary>
         /// Unique LoadID of the bill being worked on. This value is saved in ExposeData().
@@ -99,7 +99,6 @@ namespace QEthics
 
         public bool UpdateAvailIngredientsCache()
         {
-            //QEEMod.TryLog("Updating bill ingredients cache");
             anyBillIngredientsAvailable = false;
             ingredientsAvailableNow.Clear();
 
@@ -107,6 +106,9 @@ namespace QEthics
             {
                 return false;
             }
+
+            //Thing giver = (observedThingHolder as Thing);
+            //QEEMod.TryLog("Updating available ingredients cache for " + giver.ThingID);
 
             List<Bill> bills = new List<Bill>();
             if (_activeBill != null)
@@ -119,11 +121,12 @@ namespace QEthics
             }
 
             Dictionary<string, Thing> ingsFoundOnMap = new Dictionary<string, Thing>();
+            int checkIntervalTicks = QEESettings.instance.ingredientCheckIntervalSeconds * 60;
             for (int i = 0; i < bills.Count; i++)
             {
                 Bill_Production curBill = bills[i] as Bill_Production;
 
-                if (Find.TickManager.TicksGame < curBill.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange)
+                if (Find.TickManager.TicksGame < curBill.lastIngredientSearchFailTicks + checkIntervalTicks)
                 {
                     QEEMod.TryLog("checked " + curBill.GetUniqueLoadID() + " for avail. ingredients recently, skipping");
                     continue;

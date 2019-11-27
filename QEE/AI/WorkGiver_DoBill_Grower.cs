@@ -243,7 +243,7 @@ namespace QEthics
         public bool PawnCanDoThisBill(Pawn p, Bill theBill, LocalTargetInfo target, out string reason)
         {
             reason = GenericFailReasonTrans;
-            if (Find.TickManager.TicksGame < theBill.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange)
+            if (Find.TickManager.TicksGame < theBill.lastIngredientSearchFailTicks + (QEESettings.instance.ingredientCheckIntervalSeconds * 60))
             {
                 reason = RecentIngSearchTrans;
                 return false;
@@ -320,7 +320,7 @@ namespace QEthics
         // Unchanged members and functions from Workgiver_DoBill class
         // -------------------------------------------------------------------
 
-        private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 600);
+        //private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 600);
 
         public override ThingRequest PotentialWorkThingRequest
         {

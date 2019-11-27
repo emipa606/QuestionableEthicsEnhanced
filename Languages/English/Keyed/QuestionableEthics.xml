@@ -124,4 +124,6 @@
 	<QE_JobFailReasonWorkTypeMismatch>Recipe WorkType doesn't match the type in the workgiver</QE_JobFailReasonWorkTypeMismatch>
 	<QE_JobFailReasonShouldDoFalse>Bill is suspended or TargetCount is zero</QE_JobFailReasonShouldDoFalse>
 	<QE_JobFailReasonGeneric>Pawn can't do this bill</QE_JobFailReasonGeneric>
+	<QE_IngredientCheckInterval>Ingredient map scanning interval (seconds)</QE_IngredientCheckInterval>
+	<QE_IngredientCheckIntervalDescription>[Performance] Organ Vats will scan the map for available ingredients on this interval. They only check for ingredients when Idle or Filling. Default = 3 seconds</QE_IngredientCheckIntervalDescription>
 </LanguageData>

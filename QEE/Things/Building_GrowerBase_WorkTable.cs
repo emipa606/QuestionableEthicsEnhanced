@@ -306,10 +306,11 @@ namespace QEthics
             if (this.IsHashIntervalTick(60))
             {
                 billProc.UpdateDesiredRequests();
-            }
-            if (this.IsHashIntervalTick(120))
-            {
-                billProc.UpdateAvailIngredientsCache();
+
+                if (this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+                {
+                    billProc.UpdateAvailIngredientsCache();
+                }
             }
         }
 
@@ -318,20 +319,23 @@ namespace QEthics
         /// </summary>
         public virtual void Tick_Filling()
         {
-            //Check if any Things are lost in the order processor.
-            billProc.ValidateDesiredRequests();
+            if (this.IsHashIntervalTick(60))
+            {
+                //Check if any Things are lost in the order processor.
+                billProc.ValidateDesiredRequests();
 
-            if (billProc.requestsLost)
-            {
-                //Abort if any of the requests were lost.
-                StopCrafting(true);
-                Notify_ThingLostInBillProcessor();
-                billProc.requestsLost = false;
-                Tick_Idle();
-            }
-            else if (this.IsHashIntervalTick(300))
-            {
-                billProc.UpdateAvailIngredientsCache();
+                if (billProc.requestsLost)
+                {
+                    //Abort if any of the requests were lost.
+                    StopCrafting(true);
+                    Notify_ThingLostInBillProcessor();
+                    billProc.requestsLost = false;
+                    Tick_Idle();
+                }
+                else if (this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+                {
+                    billProc.UpdateAvailIngredientsCache();
+                }
             }
         }
 
