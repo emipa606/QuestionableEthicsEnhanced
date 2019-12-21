@@ -51,6 +51,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 
 **Partially Compatible**
 * Races from Lord of the Rims by Jecrell - Races can be cloned, but won't have their racial bonus. Workaround - Add the racial hediff to your save file for the pawn. Looking into adding this information to genome templates in a future patch.
+* Warforged - Warforged pawns can't be cloned (they are robots that have no meat). See the GitHub issue for more details.
 
 **Incompatible**
 * Multiplayer
