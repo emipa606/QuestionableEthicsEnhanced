@@ -36,6 +36,15 @@ namespace QEthics
                         QEEMod.TryLog("No product found in recipe. Ending extract Job.");
                     }
 
+                    //decrement billstack count
+                    if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
+                    {
+                        if (activeBill.repeatCount > 0)
+                        {
+                            activeBill.repeatCount--;
+                        }
+                    }
+
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded);
                 }
                 else if (activeBill == null || activeBill.GetStoreMode() == BillStoreModeDefOf.DropOnFloor)
@@ -60,6 +69,15 @@ namespace QEthics
                     else
                     {
                         QEEMod.TryLog(actor + " could not drop recipe product " + product + " near " + actor.Position + ". Ending extract job.");
+                    }
+
+                    //decrement billstack count
+                    if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
+                    {
+                        if (activeBill.repeatCount > 0)
+                        {
+                            activeBill.repeatCount--;
+                        }
                     }
 
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded);
