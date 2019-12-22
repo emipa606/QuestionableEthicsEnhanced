@@ -20,6 +20,39 @@ namespace QEthics
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
+        /// <summary>
+        /// This patch will cause IsClean() to return false if BodyParts with child parts, like 'arm' or 'leg', have any bad hediffs. 
+        /// With this patch, only clean limbs can be harvested.
+        /// </summary>
+        [HarmonyPatch(typeof(MedicalRecipesUtility))]
+        [HarmonyPatch(nameof(MedicalRecipesUtility.IsClean))]
+        static class IsClean_Patch
+        {
+            [HarmonyPostfix]
+            static void IsCleanPostfix(ref bool __result, Pawn pawn, BodyPartRecord part)
+            {
+                //skip any action if vanilla already determined this isn't clean or if no child body parts
+                if (__result == true && part?.parts?.Count > 0 && pawn.health?.hediffSet?.hediffs != null)
+                {
+                    QEEMod.TryLog("Checking child parts of " + part.LabelShort + " | Child parts: " + part.parts.Count + 
+                        " | Total hediffs: " + pawn.health.hediffSet.hediffs.Count);
+
+                    foreach (BodyPartRecord childPart in part.parts)
+                    {                            
+                        foreach (Hediff currHediff in pawn.health.hediffSet.hediffs)
+                        {
+                            if(currHediff.Part != null && currHediff.Part == childPart && currHediff.def.isBad)
+                            {
+                                QEEMod.TryLog("IsClean() false for " + part.Label + " because " + childPart.Label + " has bad Hediffs");
+                                __result = false;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }//end postfix
+        }//end patch class
+
         [HarmonyPatch(typeof(MedicalRecipesUtility))]
         [HarmonyPatch(nameof(MedicalRecipesUtility.SpawnNaturalPartIfClean))]
         static class SpawnNaturalPartIfClean_Patch
