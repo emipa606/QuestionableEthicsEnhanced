@@ -5,7 +5,7 @@
 		<defName>QE_InstallNaturalEye</defName>
 		<label>install eye</label>
 		<description>Install a biological eye.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing eye.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -49,7 +49,7 @@
 		<defName>QE_InstallNaturalEar</defName>
 		<label>install ear</label>
 		<description>Install a biological ear.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing ear.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -93,7 +93,7 @@
 		<defName>QE_InstallNaturalNose</defName>
 		<label>install nose</label>
 		<description>Install a biological nose.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing nose.</jobString>
 		<workAmount>1500</workAmount>
 		<skillRequirements>
@@ -137,7 +137,7 @@
 		<defName>QE_InstallNaturalJaw</defName>
 		<label>install jaw</label>
 		<description>Install a biological jaw.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing jaw.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -181,7 +181,7 @@
 		<defName>QE_InstallNaturalStomach</defName>
 		<label>install stomach</label>
 		<description>Install a biological stomach.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing stomach.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -225,7 +225,7 @@
 		<defName>QE_InstallNaturalSpine</defName>
 		<label>install spine</label>
 		<description>Install a biological spine.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing spine.</jobString>
 		<workAmount>6000</workAmount>
 		<skillRequirements>
@@ -269,7 +269,7 @@
 		<defName>QE_InstallNaturalPelvis</defName>
 		<label>install pelvis</label>
 		<description>Install a biological pelvis.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing pelvis.</jobString>
 		<workAmount>3500</workAmount>
 		<skillRequirements>
@@ -313,7 +313,7 @@
 		<defName>QE_InstallNaturalArm</defName>
 		<label>install arm</label>
 		<description>Install a biological arm.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing arm.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -357,7 +357,7 @@
 		<defName>QE_InstallNaturalHand</defName>
 		<label>install hand</label>
 		<description>Install a biological hand.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing hand.</jobString>
 		<workAmount>1500</workAmount>
 		<skillRequirements>
@@ -401,7 +401,7 @@
 		<defName>QE_InstallNaturalLeg</defName>
 		<label>install leg</label>
 		<description>Install a biological leg.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing leg.</jobString>
 		<workAmount>2500</workAmount>
 		<skillRequirements>
@@ -445,7 +445,7 @@
 		<defName>QE_InstallNaturalFoot</defName>
 		<label>install foot</label>
 		<description>Install a biological foot.</description>
-		<workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing foot.</jobString>
 		<workAmount>1500</workAmount>
 		<skillRequirements>

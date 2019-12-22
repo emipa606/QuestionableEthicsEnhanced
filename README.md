@@ -65,7 +65,6 @@ If you run into errors when adding this mod to your modlist, please let me know 
 
 ## Harmony Patches
 * MedicalRecipesUtility.SpawnNaturalPartIfClean() - Postfix
-* Recipe_InstallNaturalBodyPart.ApplyOnPawn() - Postfix
 * BillUtility.GetWorkgiver() - Prefix
 
 ## Links

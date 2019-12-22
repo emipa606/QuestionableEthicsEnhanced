@@ -115,24 +115,6 @@ namespace QEthics
         }
 
         /// <summary>
-        /// Lightweight patch that adds any hediffs in the <addsHediff> element of the recipe
-        /// after surgery involving natural body parts completes.
-        /// </summary>
-        [HarmonyPatch(typeof(Recipe_InstallNaturalBodyPart))]
-        [HarmonyPatch(nameof(Recipe_InstallNaturalBodyPart.ApplyOnPawn))]
-        class ApplyOnPawn_Patch
-        {
-            [HarmonyPostfix]
-            static void ApplyOnPawnPostfix(Pawn pawn, BodyPartRecord part, Pawn billDoer, List<Thing> ingredients, Bill bill)
-            {
-                if (MedicalRecipesUtility.IsCleanAndDroppable(pawn, part) && bill.recipe.addsHediff != null)
-                {
-                    pawn.health.AddHediff(bill.recipe.addsHediff, part);
-                }
-            }
-        }
-
-        /// <summary>
         /// This patch allows GetWorkgiver() to return our custom workgiver, WorkGiver_DoBill_Grower. It will continue on to the vanilla function
         /// if no BillGivers are of this class. 
         /// </summary>
