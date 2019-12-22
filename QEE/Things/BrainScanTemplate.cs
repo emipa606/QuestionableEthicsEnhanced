@@ -15,6 +15,7 @@ namespace QEthics
     public class BrainScanTemplate : ThingWithComps
     {
         public string sourceName = null;
+        public PawnKindDef kindDef = null;
 
         //Humanoid only
         public Backstory backStoryChild;
@@ -31,6 +32,7 @@ namespace QEthics
             base.ExposeData();
 
             Scribe_Values.Look(ref sourceName, "sourceName");
+            Scribe_Defs.Look(ref kindDef, "kindDef");
 
             string childhoodIdentifier = (backStoryChild == null) ? null : backStoryChild.identifier;
             Scribe_Values.Look(ref childhoodIdentifier, "backStoryChild");
@@ -92,6 +94,10 @@ namespace QEthics
                 {
                     builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
                 }
+                if (kindDef?.race != null)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
+                }
                 if (backStoryChild != null)
                     builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
                 if (backStoryAdult != null)
@@ -132,6 +138,10 @@ namespace QEthics
                 {
                     builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
                 }
+                if (kindDef?.race != null)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
+                }
                 if (backStoryChild != null)
                     builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
                 if(backStoryAdult != null)
@@ -168,6 +178,7 @@ namespace QEthics
             {
                 //Shared
                 brainScan.sourceName = sourceName;
+                brainScan.kindDef = kindDef;
 
                 //Humanoid
                 brainScan.backStoryChild = backStoryChild;
@@ -226,7 +237,9 @@ namespace QEthics
                 DefMapsEqual(trainingLearned, brainScan.trainingLearned) &&
                 DefMapsEqual(trainingSteps, brainScan.trainingSteps)
                 && SkillsEqual(brainScan.skills)
-                && sourceName == brainScan.sourceName)
+                && sourceName == brainScan.sourceName &&
+                (kindDef?.defName != null && brainScan.kindDef?.defName != null && kindDef.defName == brainScan.kindDef.defName
+                    || kindDef == null && brainScan.kindDef == null))
             {
                 return base.CanStackWith(other);
             }

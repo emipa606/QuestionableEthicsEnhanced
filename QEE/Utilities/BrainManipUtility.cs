@@ -54,36 +54,37 @@ namespace QEthics
                 return false;
             }
 
-            //fail if trying to apply animal template to non-animal
-            else if(template.isAnimal && !targetPawn.RaceProps.Animal)
+            if(template.isAnimal)
             {
-                failReason = "QE_BrainScanningRejectNotAnimal".Translate(targetPawn.LabelShort);
-                return false;
+                //fail if trying to apply template with different PawnKindDefs. Only do this for animals, because cloned humanlikes have different KindDefs
+                if (template.kindDef?.race != null && template.kindDef.defName != targetPawn.kindDef.defName)
+                {
+                    failReason = "QE_BrainScanningRejectWrongKind".Translate(targetPawn.LabelShort, template.kindDef.race.LabelCap);
+                    return false;
+                }
             }
 
-            //fail if trying to apply non-animal template to animal
-            else if (!template.isAnimal && targetPawn.RaceProps.Animal)
+            //fail if trying to apply non-animal template to animal pawn
+            else if (targetPawn.RaceProps.Animal)
             {
                 failReason = "QE_BrainScanningRejectNotHumanlike".Translate(targetPawn.LabelShort);
                 return false;
             }
 
             //fail if pawn doesn't have the Clone hediff
-            else if (!targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_CloneStatus, false))
+            if (!targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_CloneStatus, false))
             {
                 failReason = "QE_BrainScanningRejectNotClone".Translate(targetPawn.Named("PAWN"));
                 return false;
             }
             //fail if they have been templated in the past
-            else if (targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_BrainTemplated, false))
+            if (targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_BrainTemplated, false))
             {
                 failReason = "QE_BrainScanningRejectAlreadyTemplated".Translate(targetPawn.Named("PAWN"));
                 return false;
             }
-            else
-            {
-                return true;
-            }
+
+            return true;
         }
 
         public static Thing MakeBrainScan(Pawn pawn, ThingDef genomeDef)
@@ -94,6 +95,7 @@ namespace QEthics
             {
                 //Standard.
                 brainScan.sourceName = pawn?.Name?.ToStringFull ?? null;
+                brainScan.kindDef = pawn?.kindDef ?? null;
 
                 //Backgrounds
                 Pawn_StoryTracker story = pawn.story;

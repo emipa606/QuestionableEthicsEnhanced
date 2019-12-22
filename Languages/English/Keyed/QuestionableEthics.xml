@@ -126,4 +126,8 @@
 	<QE_JobFailReasonGeneric>Pawn can't do this bill</QE_JobFailReasonGeneric>
 	<QE_IngredientCheckInterval>Ingredient map scanning interval (seconds)</QE_IngredientCheckInterval>
 	<QE_IngredientCheckIntervalDescription>[Performance] Organ Vats will scan the map for available ingredients on this interval. They only check for ingredients when Idle or Filling. Default = 3 seconds</QE_IngredientCheckIntervalDescription>
+
+	<!-- version 1.2.0 Patch -->
+	<QE_BrainScanningRejectWrongKind>{0} was rejected because this template can only be applied to race '{1}'</QE_BrainScanningRejectWrongKind>
+
 </LanguageData>
