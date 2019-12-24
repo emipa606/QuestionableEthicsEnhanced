@@ -34,19 +34,17 @@ namespace QEthics
                 //skip any action if vanilla already determined this isn't clean or if no child body parts
                 if (__result == true && part?.parts?.Count > 0 && pawn.health?.hediffSet?.hediffs != null)
                 {
-                    QEEMod.TryLog("Checking child parts of " + part.LabelShort + " | Child parts: " + part.parts.Count + 
+                    QEEMod.TryLog("Checking child parts of " + part.Label + " | Child parts: " + part.parts.Count +
                         " | Total hediffs: " + pawn.health.hediffSet.hediffs.Count);
 
                     foreach (BodyPartRecord childPart in part.parts)
-                    {                            
-                        foreach (Hediff currHediff in pawn.health.hediffSet.hediffs)
+                    {
+                        BodyPartRecord diseasedPart = null;
+                        if(PawnUtility.childPartHasHediffs(pawn, childPart, out diseasedPart))
                         {
-                            if(currHediff.Part != null && currHediff.Part == childPart && currHediff.def.isBad)
-                            {
-                                QEEMod.TryLog("IsClean() false for " + part.Label + " because " + childPart.Label + " has bad Hediffs");
-                                __result = false;
-                                return;
-                            }
+                            QEEMod.TryLog("IsClean() false for " + part.Label + " because " + diseasedPart.Label + " has bad Hediffs");
+                            __result = false;
+                            return;
                         }
                     }
                 }

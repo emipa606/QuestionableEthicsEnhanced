@@ -149,5 +149,52 @@ namespace QEthics
         }
 
         private static List<ThingDef> bedDefsBestToWorst_Medical;
+
+        public static bool childPartHasHediffs(Pawn aPawn, BodyPartRecord part, out BodyPartRecord damagedChildPart)
+        {
+            damagedChildPart = null;
+
+            foreach (Hediff curHediff in aPawn.health.hediffSet.hediffs)
+            {
+                //check if the hediff is attached to a body part
+                if (curHediff?.Part != null)
+                {
+                    //is this hediff attached to this body part?
+                    if (curHediff.Part == part)
+                    {
+                        damagedChildPart = curHediff.Part;
+                    }
+
+                    //is this the hediff's parent BodyPart? Example: bodypart is hand and hediff is missing finger
+                    if (curHediff.Part?.parent != null && curHediff.Part.parent.Label != "torso")
+                    {
+                        if (curHediff.Part.parent == part)
+                        {
+                            damagedChildPart = curHediff.Part.parent;
+                        }
+
+                        //is this the hediff's grandparent BodyPart? Example: bodypart is arm and hediff is missing finger
+                        if (curHediff.Part.parent?.parent != null && curHediff.Part.parent.parent.Label != "torso")
+                        {
+                            if (curHediff.Part.parent.parent == part)
+                            {
+                                damagedChildPart = curHediff.Part.parent.parent;
+                            }
+
+                            //is this the hediff's great-grandparent BodyPart? Example: Nothing I can think of. In here for good measure
+                            if (curHediff?.Part?.parent?.parent?.parent != null && curHediff.Part.parent.parent.parent.Label != "torso")
+                            {
+                                if (curHediff.Part.parent.parent.parent == part)
+                                {
+                                    damagedChildPart = curHediff.Part.parent.parent.parent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return (damagedChildPart != null);
+        }
     }
 }
