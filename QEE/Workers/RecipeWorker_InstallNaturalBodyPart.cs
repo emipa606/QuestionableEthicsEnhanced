@@ -34,9 +34,8 @@ namespace QEthics
                         //true if this body part has hediffs
                         //pawn.health.hediffSet.hediffs.Any((Hediff x) => x.Part == record) &&
                         pawn.health.hediffSet.hediffs.Any((Hediff x) => x.Part == record || 
-                        
-                        //true if any child parts have hediffs
-                        (x.Part?.parent != null && x.Part.parent == record)) &&
+                            //true if any child parts have hediffs
+                            (x.Part?.parent != null && x.Part.parent == record)) &&
 
                         //true if NOT a finger/toe or true if finger where hand is still attached (for example)
                         (record.parent == null || pawn.health.hediffSet.GetNotMissingParts().Contains(record.parent)) &&
@@ -69,7 +68,7 @@ namespace QEthics
             }
 
             //add any hediffs in the <addsHediff> element of the recipe after surgery involving natural body parts completes.
-            if (MedicalRecipesUtility.IsCleanAndDroppable(pawn, part) && bill.recipe.addsHediff != null)
+            if (bill.recipe.addsHediff != null)
             {
                 pawn.health.AddHediff(bill.recipe.addsHediff, part);
             }

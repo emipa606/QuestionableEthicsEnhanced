@@ -38,7 +38,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
-			<li>Arm</li>
+			<li>Shoulder</li>
 		</appliedOnFixedBodyParts>
 		<recipeUsers>
 			<li>Human</li>
