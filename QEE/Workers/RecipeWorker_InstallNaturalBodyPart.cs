@@ -70,7 +70,25 @@ namespace QEthics
             //add any hediffs in the <addsHediff> element of the recipe after surgery involving natural body parts completes.
             if (bill.recipe.addsHediff != null)
             {
-                pawn.health.AddHediff(bill.recipe.addsHediff, part);
+                if (part.LabelShort == "shoulder")
+                {
+                    //add hediff to arm bodypart
+                    //foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(def => def.category == ThingCategory.Pawn))
+                    foreach (BodyPartRecord childPart in part.parts)
+                    {
+                        if (childPart.def == BodyPartDefOf.Arm)
+                        {
+                            pawn.health.AddHediff(bill.recipe.addsHediff, childPart);
+                            //QEEMod.TryLog("Spawn natural arm from shoulder replacement");
+                            //__result = GenSpawn.Spawn(QEThingDefOf.QE_Organ_Arm, pos, map);
+                        }
+                    }
+                }
+                else
+                {
+                    pawn.health.AddHediff(bill.recipe.addsHediff, part);
+                }
+                    
             }
         }
     }

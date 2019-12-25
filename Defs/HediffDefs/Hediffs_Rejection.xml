@@ -3,7 +3,7 @@
 <Defs>
 
     <HediffDef Name="QE_AddedPartRejection" Abstract="True">
-        <hediffClass>Hediff_AddedPart</hediffClass>
+        <hediffClass>Hediff_Implant</hediffClass>
         <isBad>false</isBad>
         <defaultLabelColor>(255, 255, 240)</defaultLabelColor>
         <tendable>true</tendable>
