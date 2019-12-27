@@ -68,7 +68,7 @@ namespace QEthics
             }
 
             //add any hediffs in the <addsHediff> element of the recipe after surgery involving natural body parts completes.
-            if (bill.recipe.addsHediff != null)
+            if (bill.recipe.addsHediff != null && RBSECompat.GetOrganRejectionSetting() == true)
             {
                 if (part.LabelShort == "shoulder")
                 {
@@ -78,14 +78,17 @@ namespace QEthics
                     {
                         if (childPart.def == BodyPartDefOf.Arm)
                         {
+                            QEEMod.TryLog("Adding hediff to installed BodyPart " + childPart.Label);
                             pawn.health.AddHediff(bill.recipe.addsHediff, childPart);
-                            //QEEMod.TryLog("Spawn natural arm from shoulder replacement");
-                            //__result = GenSpawn.Spawn(QEThingDefOf.QE_Organ_Arm, pos, map);
+                            return;
                         }
                     }
+
+                    QEEMod.TryLog("No arm found in shoulder replacement!");
                 }
                 else
                 {
+                    QEEMod.TryLog("Adding hediff to installed BodyPart " + part.Label);
                     pawn.health.AddHediff(bill.recipe.addsHediff, part);
                 }
                     

@@ -42,6 +42,10 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="RBSE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\RBSE.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,6 +80,7 @@
     <Compile Include="Compatibility\AlienRaceCompat.cs" />
     <Compile Include="Compatibility\GeneralCompatibility.cs" />
     <Compile Include="Compatibility\Properties\RaceExclusionProperties.cs" />
+    <Compile Include="Compatibility\RBSECompat.cs" />
     <Compile Include="DefOfs\QEHediffDefOf.cs" />
     <Compile Include="DefOfs\QEJobDefOf.cs" />
     <Compile Include="DefOfs\QERecipeDefOf.cs" />
