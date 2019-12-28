@@ -4,7 +4,7 @@
 ## Features
 
 * **Grow organs** in vats!
-* **Clone** animals and humanoids! Clones have the traits of their "parent".
+* **Clone** animals and humanoids! Clones have the traits and physical appearance of their "parent".
 * **Scan brains** to preserve the skill levels and passions of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
 * **Recruit** hostile pawns instantly with nerve stapling!
 * **Balance** the mod as you wish, with the Mod Settings menu (see preview image above)
