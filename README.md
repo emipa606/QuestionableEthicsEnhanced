@@ -4,8 +4,8 @@
 ## Features
 
 * **Grow organs** in vats!
-* **Clone** animals and humanoids! Clones have the traits and passions of their "parent".
-* **Scan brains** to preserve the skill levels of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
+* **Clone** animals and humanoids! Clones have the traits of their "parent".
+* **Scan brains** to preserve the skill levels and passions of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
 * **Recruit** hostile pawns instantly with nerve stapling!
 * **Balance** the mod as you wish, with the Mod Settings menu (see preview image above)
 * **Enhancements** to the original Questionable Ethics mod
@@ -41,7 +41,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 * Rah's Bionics and Surgery Expansion (RBSE)
   * Organ installation requires RBSE research pre-req 'Organ Transplantation'
   * Organs need to be refrigerated
-  * Organ Rejection hediff added when organs are implanted
+  * Organ Rejection hediff added when organs are implanted, if the RBSE ModSetting for this is enabled.
 
 **Fully Compatible**
 * Bioreactor
@@ -64,7 +64,9 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems. [Post an issue on Github for maximum visibility](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues). The more information you include, the easier it will be for me to fix it.
 
 ## Harmony Patches
-* MedicalRecipesUtility.SpawnNaturalPartIfClean() - Postfix
+* MedicalRecipesUtility.IsClean - Postfix
+* BillStack.AddBill() - Postfix
+* BillStack.Delete() - Postfix
 * BillUtility.GetWorkgiver() - Prefix
 
 ## Links
@@ -84,7 +86,7 @@ This mod has been translated to the following languages:
 * EvaineQ - Cloning vat art
 
 ## Special Thanks
-* erdelf, Mehni, Bar0th and Jamaican Castle for answering my modding questions
+* erdelf, Mehni, Bar0th, lbmaian, and Jamaican Castle for answering my modding questions
 * Everyone in the Rimworld Discord that helps keep the Rimworld mod scene vibrant.
 
 ## Questionable Ethics Credits ##
