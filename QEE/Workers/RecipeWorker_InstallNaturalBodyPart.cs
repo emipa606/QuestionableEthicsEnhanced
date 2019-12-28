@@ -29,13 +29,10 @@ namespace QEthics
                 for (int i = 0; i < bpList.Count; i++)
                 {
                     BodyPartRecord record = bpList[i];
+                    BodyPartRecord dummy = null;
                     if (record.def == recipePart &&
-
-                        //true if this body part has hediffs
-                        //pawn.health.hediffSet.hediffs.Any((Hediff x) => x.Part == record) &&
-                        pawn.health.hediffSet.hediffs.Any((Hediff x) => x.Part == record || 
-                            //true if any child parts have hediffs
-                            (x.Part?.parent != null && x.Part.parent == record)) &&
+                        
+                        PawnUtility.bodyPartOrChildHasHediffs(pawn, record, out dummy) &&
 
                         //true if NOT a finger/toe or true if finger where hand is still attached (for example)
                         (record.parent == null || pawn.health.hediffSet.GetNotMissingParts().Contains(record.parent)) &&
@@ -67,18 +64,17 @@ namespace QEthics
                 MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(pawn, part, billDoer.Position, billDoer.Map);
             }
 
-            //add any hediffs in the <addsHediff> element of the recipe after surgery involving natural body parts completes.
+            //add any hediffs in the <addsHediff> element of the recipe, after surgery involving natural body parts completes.
             if (bill.recipe.addsHediff != null && RBSECompat.GetOrganRejectionSetting() == true)
             {
                 if (part.LabelShort == "shoulder")
                 {
                     //add hediff to arm bodypart
-                    //foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(def => def.category == ThingCategory.Pawn))
                     foreach (BodyPartRecord childPart in part.parts)
                     {
                         if (childPart.def == BodyPartDefOf.Arm)
                         {
-                            QEEMod.TryLog("Adding hediff to installed BodyPart " + childPart.Label);
+                            QEEMod.TryLog("Adding hediff " + bill.recipe.addsHediff.label + " to installed BodyPart " + childPart.Label);
                             pawn.health.AddHediff(bill.recipe.addsHediff, childPart);
                             return;
                         }
@@ -88,7 +84,7 @@ namespace QEthics
                 }
                 else
                 {
-                    QEEMod.TryLog("Adding hediff to installed BodyPart " + part.Label);
+                    QEEMod.TryLog("Adding hediff " + bill.recipe.addsHediff.label + " to installed BodyPart " + part.Label);
                     pawn.health.AddHediff(bill.recipe.addsHediff, part);
                 }
                     
