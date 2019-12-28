@@ -17,6 +17,7 @@ namespace QEthics
         public bool giveCloneNegativeThought = true;
         public int maxCloningTimeDays = 60;
         public int ingredientCheckIntervalSeconds = 3;
+        public bool brainTemplatingRequiresClone = true;
 
         public QEESettings()
         {
@@ -38,6 +39,7 @@ namespace QEthics
             Scribe_Values.Look(ref giveCloneNegativeThought, "giveCloneNegativeThought", true);
             Scribe_Values.Look(ref maxCloningTimeDays, "maxCloningTimeDays", 60);
             Scribe_Values.Look(ref ingredientCheckIntervalSeconds, "ingredientCheckIntervalSeconds", 3);
+            Scribe_Values.Look(ref brainTemplatingRequiresClone, "brainTemplatingRequiresClone", true);
             base.ExposeData();
         }
     }
@@ -70,6 +72,7 @@ namespace QEthics
             listingStandard.SliderLabeled("QE_VatMaintTime".Translate(), ref QEESettings.instance.maintRateFloat, QEESettings.instance.maintRateFloat.ToString("0.00"), 0.01f, 4.0f, "QE_VatMaintTimeTooltip".Translate());
             listingStandard.SliderLabeled("QE_MaintenanceWorkThreshold".Translate(), ref QEESettings.instance.maintWorkThresholdFloat, QEESettings.instance.maintWorkThresholdFloat.ToStringPercent(), 0.00f, 1.0f, "QE_MaintenanceWorkThresholdTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_GiveCloneNegativeThought".Translate(), ref QEESettings.instance.giveCloneNegativeThought, "QE_GiveCloneNegativeThoughtTooltip".Translate());
+            listingStandard.CheckboxLabeled("QE_BrainTemplatingRequiresClone".Translate(), ref QEESettings.instance.brainTemplatingRequiresClone, "QE_BrainTemplatingRequiresCloneTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_DebugLogging".Translate(), ref QEESettings.instance.debugLogging, "QE_DebugLoggingTooltip".Translate());
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);

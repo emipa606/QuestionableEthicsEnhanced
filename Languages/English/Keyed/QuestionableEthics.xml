@@ -129,5 +129,7 @@
 
 	<!-- version 1.2.0 Patch -->
 	<QE_BrainScanningRejectWrongKind>{0} was rejected because this template can only be applied to race '{1}'</QE_BrainScanningRejectWrongKind>
+	<QE_BrainTemplatingRequiresClone>Brain Template surgery requires Clone</QE_BrainTemplatingRequiresClone>
+	<QE_BrainTemplatingRequiresCloneTooltip>When true, only allows Brain Templates to be applied to pawns with 'Clone' hediff. Default = true</QE_BrainTemplatingRequiresCloneTooltip>
 
 </LanguageData>

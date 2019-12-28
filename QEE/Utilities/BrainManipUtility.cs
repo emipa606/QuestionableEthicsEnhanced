@@ -72,7 +72,7 @@ namespace QEthics
             }
 
             //fail if pawn doesn't have the Clone hediff
-            if (!targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_CloneStatus, false))
+            if (QEESettings.instance.brainTemplatingRequiresClone && !targetPawn.health.hediffSet.HasHediff(QEHediffDefOf.QE_CloneStatus, false))
             {
                 failReason = "QE_BrainScanningRejectNotClone".Translate(targetPawn.Named("PAWN"));
                 return false;
