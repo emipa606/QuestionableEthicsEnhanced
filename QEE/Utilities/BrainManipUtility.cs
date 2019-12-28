@@ -56,8 +56,14 @@ namespace QEthics
 
             if(template.isAnimal)
             {
+                //fail if trying to apply animal template to non-animal
+                if (!targetPawn.RaceProps.Animal)
+                {
+                    failReason = "QE_BrainScanningRejectNotAnimal".Translate(targetPawn.LabelShort);
+                    return false;
+                }
                 //fail if trying to apply template with different PawnKindDefs. Only do this for animals, because cloned humanlikes have different KindDefs
-                if (template.kindDef?.race != null && template.kindDef.defName != targetPawn.kindDef.defName)
+                else if (template.kindDef?.race != null && template.kindDef.defName != targetPawn.kindDef.defName)
                 {
                     failReason = "QE_BrainScanningRejectWrongKind".Translate(targetPawn.LabelShort, template.kindDef.race.LabelCap);
                     return false;
