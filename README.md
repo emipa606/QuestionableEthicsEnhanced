@@ -48,6 +48,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 * Combat Extended - no patch required
 * EPOE - Duplicated natural organ defs (two 'Eye' organs with different descriptions, for example). Outside of this, you should have no issues running with both mods enabled.
 * Harvest Organs Post-Mortem (HOPM) - All natural organs from QEE have a chance to spawn after autopsy
+* Pawnmorpher
 
 **Partially Compatible**
 * Races from Lord of the Rims by Jecrell - Races can be cloned, but won't have their racial bonus. Workaround - Add the racial hediff to your save file for the pawn. Looking into adding this information to genome templates in a future patch.
@@ -59,7 +60,6 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 
 **Investigating...**
 * Harvest Everything (a lot of duplicate functionality)
-* Pawnmorpher
 
 If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems. [Post an issue on Github for maximum visibility](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues). The more information you include, the easier it will be for me to fix it.
 
