@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using Verse;
 
 namespace QEthics
@@ -7,7 +8,6 @@ namespace QEthics
     public static class CompatibilityTracker
     {
         private static bool alienRacesActiveInt = false;
-        private static string[] incompatibleModArr = { "Questionable Ethics", "Multiplayer" };
 
         public static bool AlienRacesActive
         {
@@ -17,33 +17,32 @@ namespace QEthics
             }
         }
 
-        public static string[] IncompatibleMods
-        {
-            get
-            {
-                return incompatibleModArr;
-            }
-            set
-            {
-                incompatibleModArr = value;
-            }
-        }
-
         static CompatibilityTracker()
         {
-            foreach (string s in incompatibleModArr)
+            foreach (ModMetaData m in ModsConfig.ActiveModsInLoadOrder)
             {
-                if (ModsConfig.ActiveModsInLoadOrder.Any((ModMetaData m) => m.Name == s))
-                {
-                    Log.Error("Questionable Ethics Enhanced is incompatible with " + s);
-                }
-            }
+                string modName = m.Name;
 
-            //Check for Alien Races Compatiblity
-            if (GenTypes.AllTypes.Any(type => type.FullName == "AlienRace.ThingDef_AlienRace"))
-            {
-                alienRacesActiveInt = true;
-                QEEMod.TryLog("Humanoid Alien Races detected");
+                //Fully incompatible mods
+                if (modName == "Questionable Ethics")
+                {
+                    Log.Error("Questionable Ethics Enhanced is incompatible with " + modName);
+                    continue;
+                }
+
+                //Partially incompatible mods
+                else if(modName == "Multiplayer")
+                {
+                    Log.Warning("Questionable Ethics Enhanced works with the Multiplayer mod, but is incompatible with the Multiplayer game mode.");
+                    continue;
+                }
+
+                //Enhanced compatibility mods
+                else if (modName.Contains("Humanoid Alien Races 2.0"))
+                {
+                    alienRacesActiveInt = true;
+                    QEEMod.TryLog("Humanoid Alien Races detected");
+                }
             }
         }
     }
