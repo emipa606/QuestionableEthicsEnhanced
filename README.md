@@ -46,7 +46,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 **Fully Compatible**
 * Bioreactor
 * Combat Extended - no patch required
-* EPOE - Duplicated natural organ defs (two 'Eye' organs with different descriptions, for example). Outside of this, you should have no issues running with both mods enabled.
+* EPOE - Use the version of EPOE posted by Aurani, Victorique, and Tarojun for best compatibility
 * Harvest Organs Post-Mortem (HOPM) - All natural organs from QEE have a chance to spawn after autopsy
 * Pawnmorpher
 
