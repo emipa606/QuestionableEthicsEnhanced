@@ -17,6 +17,7 @@ namespace QEthics
         public string sourceName = "QE_BlankGenomeTemplateName".Translate() ?? "Do Not Use This";
         public PawnKindDef pawnKindDef = PawnKindDefOf.Colonist;
         public Gender gender = Gender.None;
+        public List<Hediff> hediffs = new List<Hediff>();
 
         //Only relevant for humanoids.
         public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
@@ -58,6 +59,7 @@ namespace QEthics
                 Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
                 Scribe_Defs.Look(ref hair, "hair");
                 Scribe_Values.Look(ref headGraphicPath, "headGraphicPath");
+                Scribe_Collections.Look(ref hediffs, "hediffs", LookMode.Deep);
 
                 //Values that could be null in save file go here
                 if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -103,7 +105,9 @@ namespace QEthics
                 crownTypeAlien == otherGenome.crownTypeAlien &&
                 (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
                     || hair == null && otherGenome.hair == null) &&
-                traits.SequenceEqual(otherGenome.traits))
+                traits.SequenceEqual(otherGenome.traits) &&
+                (hediffs != null && otherGenome.hediffs != null && hediffs.SequenceEqual(otherGenome.hediffs)
+                    || hediffs == null && otherGenome.hediffs == null))
             {
                 return base.CanStackWith(other);
             }
@@ -141,6 +145,11 @@ namespace QEthics
                 foreach (ExposedTraitEntry traitEntry in traits)
                 {
                     splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));
+                }
+
+                foreach(Hediff h in hediffs)
+                {
+                    splitThingStack.hediffs.Add(h);
                 }
 
                 //Alien Compat.
@@ -232,6 +241,16 @@ namespace QEthics
                     foreach (ExposedTraitEntry traitEntry in traits)
                     {
                         builder.AppendLine("    " + traitEntry.def.DataAtDegree(traitEntry.degree).label.CapitalizeFirst());
+                    }
+                }
+
+                //Hediffs
+                if(hediffs.Count > 0)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
+                    foreach (Hediff h in hediffs)
+                    {
+                        builder.AppendLine("    " + h.LabelCap);
                     }
                 }
             }

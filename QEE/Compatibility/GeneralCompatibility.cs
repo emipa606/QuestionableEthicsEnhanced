@@ -13,5 +13,7 @@ namespace QEthics
     {
         public static List<ThingDef> excludedRaces = new List<ThingDef>();
         public static List<HediffDef> excludedHediffs = new List<HediffDef>();
+        public static List<HediffDef> includedGenomeTemplateHediffs = new List<HediffDef>();
+        public static List<HediffDef> includedBrainTemplateHediffs = new List<HediffDef>();
     }
 }

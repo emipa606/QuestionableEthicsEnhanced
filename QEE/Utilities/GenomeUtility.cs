@@ -26,6 +26,22 @@ namespace QEthics
                 genomeSequence.pawnKindDef = pawn.kindDef;
                 genomeSequence.gender = pawn.gender;
 
+                if (pawn?.health?.hediffSet?.hediffs != null)
+                {
+                    List<Hediff> pawnHediffs = pawn.health.hediffSet.hediffs;
+                    if (pawnHediffs.Count > 0)
+                    {
+                        foreach(Hediff h in pawnHediffs)
+                        {
+                            if (GeneralCompatibility.includedGenomeTemplateHediffs.Any(hediffDef => h.def.defName == hediffDef.defName) )
+                            {
+                                QEEMod.TryLog("Hediff " + h.def.defName + " will be added to genome template");
+                                genomeSequence.hediffs.Add(h);
+                            }
+                        }
+                    }
+                }
+
                 //Humanoid only.
                 Pawn_StoryTracker story = pawn.story;
                 if(story != null)
@@ -75,6 +91,11 @@ namespace QEthics
 
             //No pregenerated hediffs.
             pawn.health.hediffSet.Clear();
+
+            if (genomeSequence.hediffs != null && genomeSequence.hediffs.Count > 0)
+            {
+                pawn.health.hediffSet.hediffs = genomeSequence.hediffs;
+            }
 
             //Set everything else.
             if (pawn.story is Pawn_StoryTracker storyTracker)

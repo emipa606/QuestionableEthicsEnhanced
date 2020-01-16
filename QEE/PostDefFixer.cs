@@ -84,6 +84,24 @@ namespace QEthics
                 def.identifier = backstory.identifier;
                 //Log.Message("'" + def.defName + "' identifier is '" + backstory.identifier + "'");
             }
+
+            foreach (HediffDef def in DefDatabase<HediffDef>.AllDefs)
+            {
+                if (def.GetModExtension<HediffTemplateProperties>() is HediffTemplateProperties props)
+                {
+                    if (props.includeInBrainTemplate)
+                    {
+                        QEEMod.TryLog(def.defName + " added to list of Hediffs applied to brain templates");
+                        GeneralCompatibility.includedBrainTemplateHediffs.Add(def);
+                    }
+
+                    if (props.includeInGenomeTemplate)
+                    {
+                        QEEMod.TryLog(def.defName + " added to list of Hediffs applied to genome templates");
+                        GeneralCompatibility.includedGenomeTemplateHediffs.Add(def);
+                    }
+                }
+            }
         }
     }
 }
