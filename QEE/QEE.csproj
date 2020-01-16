@@ -79,6 +79,7 @@
     <Compile Include="CompatibilityTracker.cs" />
     <Compile Include="Compatibility\AlienRaceCompat.cs" />
     <Compile Include="Compatibility\GeneralCompatibility.cs" />
+    <Compile Include="Compatibility\Properties\HediffTemplateProperties.cs" />
     <Compile Include="Compatibility\Properties\RaceExclusionProperties.cs" />
     <Compile Include="Compatibility\RBSECompat.cs" />
     <Compile Include="DefOfs\QEHediffDefOf.cs" />
