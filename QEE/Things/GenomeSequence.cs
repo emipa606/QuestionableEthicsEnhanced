@@ -17,7 +17,6 @@ namespace QEthics
         public string sourceName = "QE_BlankGenomeTemplateName".Translate() ?? "Do Not Use This";
         public PawnKindDef pawnKindDef = PawnKindDefOf.Colonist;
         public Gender gender = Gender.None;
-        public List<Hediff> hediffs = new List<Hediff>();
 
         //Only relevant for humanoids.
         public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
@@ -27,6 +26,11 @@ namespace QEthics
         public float skinMelanin = 0f;
         public HairDef hair = null;
         public string headGraphicPath = null;
+
+        /// <summary>
+        /// List containing all hediff def information that should be saved and applied to clones 
+        /// </summary>
+        public List<HediffInfo> hediffInfos = new List<HediffInfo>();
 
         //AlienRace compatibility.
         /// <summary>
@@ -59,7 +63,7 @@ namespace QEthics
                 Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
                 Scribe_Defs.Look(ref hair, "hair");
                 Scribe_Values.Look(ref headGraphicPath, "headGraphicPath");
-                Scribe_Collections.Look(ref hediffs, "hediffs", LookMode.Deep);
+                Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
 
                 //Values that could be null in save file go here
                 if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -76,6 +80,11 @@ namespace QEthics
 
                         headGraphicPath = gender == Gender.Male ? "Things/Pawn/Humanlike/Heads/Male/Male_Average_Normal" :
                             "Things/Pawn/Humanlike/Heads/Female/Female_Narrow_Normal";
+                    }
+                    if(hediffInfos != null)
+                    {
+                        //remove any hediffs where the def is missing. Most commonly occurs when a mod is removed from a save.
+                        hediffInfos.RemoveAll(h => h.def == null);
                     }
                 }
             }
@@ -106,8 +115,8 @@ namespace QEthics
                 (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
                     || hair == null && otherGenome.hair == null) &&
                 traits.SequenceEqual(otherGenome.traits) &&
-                (hediffs != null && otherGenome.hediffs != null && hediffs.SequenceEqual(otherGenome.hediffs)
-                    || hediffs == null && otherGenome.hediffs == null))
+                (hediffInfos != null && otherGenome.hediffInfos != null && hediffInfos.SequenceEqual(otherGenome.hediffInfos)
+                    || hediffInfos == null && otherGenome.hediffInfos == null))
             {
                 return base.CanStackWith(other);
             }
@@ -147,9 +156,9 @@ namespace QEthics
                     splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));
                 }
 
-                foreach(Hediff h in hediffs)
+                foreach(HediffInfo h in hediffInfos)
                 {
-                    splitThingStack.hediffs.Add(h);
+                    splitThingStack.hediffInfos.Add(h);
                 }
 
                 //Alien Compat.
@@ -245,12 +254,21 @@ namespace QEthics
                 }
 
                 //Hediffs
-                if(hediffs.Count > 0)
+                var hediffsOrdered = hediffInfos.Where(h => h.def != null);
+                if (hediffsOrdered != null)
                 {
                     builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
-                    foreach (Hediff h in hediffs)
+
+                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
                     {
-                        builder.AppendLine("    " + h.LabelCap);
+                        if(h.part != null)
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
+                        }
+                        else
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap);
+                        }
                     }
                 }
             }

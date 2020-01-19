@@ -36,7 +36,8 @@ namespace QEthics
                             if (GeneralCompatibility.includedGenomeTemplateHediffs.Any(hediffDef => h.def.defName == hediffDef.defName) )
                             {
                                 QEEMod.TryLog("Hediff " + h.def.defName + " will be added to genome template");
-                                genomeSequence.hediffs.Add(h);
+
+                                genomeSequence.hediffInfos.Add(new HediffInfo(h));
                             }
                         }
                     }
@@ -92,9 +93,13 @@ namespace QEthics
             //No pregenerated hediffs.
             pawn.health.hediffSet.Clear();
 
-            if (genomeSequence.hediffs != null && genomeSequence.hediffs.Count > 0)
+            if (genomeSequence.hediffInfos != null && genomeSequence.hediffInfos.Count > 0)
             {
-                pawn.health.hediffSet.hediffs = genomeSequence.hediffs;
+                //add hediffs to pawn from defs in HediffInfo class
+                foreach(HediffInfo h in genomeSequence.hediffInfos)
+                {
+                    pawn.health.AddHediff(h.def, h.part);
+                }
             }
 
             //Set everything else.

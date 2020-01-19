@@ -96,6 +96,7 @@
     <Compile Include="Logic\BillProcessor.cs" />
     <Compile Include="Logic\ComparableSkillRecord.cs" />
     <Compile Include="Logic\ExposedTraitEntry.cs" />
+    <Compile Include="Logic\HediffInfo.cs" />
     <Compile Include="Logic\IBillGiverExtension.cs" />
     <Compile Include="Logic\IMaintainableGrower.cs" />
     <Compile Include="Logic\ThingOrderProcessor.cs" />
