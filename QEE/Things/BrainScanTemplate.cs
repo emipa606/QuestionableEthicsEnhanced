@@ -22,6 +22,11 @@ namespace QEthics
         public Backstory backStoryAdult;
         public List<ComparableSkillRecord> skills = new List<ComparableSkillRecord>();
 
+        /// <summary>
+        /// List containing all hediff def information that should be saved and applied to clones 
+        /// </summary>
+        public List<HediffInfo> hediffInfos = new List<HediffInfo>();
+
         //Animals only
         public bool isAnimal;
         public DefMap<TrainableDef, bool> trainingLearned = new DefMap<TrainableDef, bool>();
@@ -60,6 +65,13 @@ namespace QEthics
             Scribe_Values.Look(ref isAnimal, "isAnimal");
             Scribe_Deep.Look(ref trainingLearned, "trainingLearned");
             Scribe_Deep.Look(ref trainingSteps, "trainingSteps");
+            Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
+
+            if (Scribe.mode == LoadSaveMode.LoadingVars && hediffInfos != null)
+            {
+                //remove any hediffs where the def is missing. Most commonly occurs when a mod is removed from a save.
+                hediffInfos.RemoveAll(h => h.def == null);
+            }
         }
 
         public override string LabelNoCount
@@ -122,6 +134,25 @@ namespace QEthics
                     }
                 }
 
+                //Hediffs
+                var hediffsOrdered = hediffInfos.Where(h => h.def != null);
+                if (hediffsOrdered != null)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
+
+                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
+                    {
+                        if (h.part != null)
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
+                        }
+                        else
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap);
+                        }
+                    }
+                }
+
                 return builder.ToString().TrimEndNewlines();
             }
         }
@@ -166,6 +197,25 @@ namespace QEthics
                     }
                 }
 
+                //Hediffs
+                var hediffsOrdered = hediffInfos.Where(h => h.def != null);
+                if (hediffsOrdered != null)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
+
+                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
+                    {
+                        if (h.part != null)
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
+                        }
+                        else
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap);
+                        }
+                    }
+                }
+
                 return builder.ToString().TrimEndNewlines();
             }
         }
@@ -191,6 +241,11 @@ namespace QEthics
                         level = skill.level,
                         passion = skill.passion
                     });
+                }
+
+                foreach (HediffInfo h in hediffInfos)
+                {
+                    brainScan.hediffInfos.Add(h);
                 }
 
                 //Animal
@@ -239,7 +294,9 @@ namespace QEthics
                 && SkillsEqual(brainScan.skills)
                 && sourceName == brainScan.sourceName &&
                 (kindDef?.defName != null && brainScan.kindDef?.defName != null && kindDef.defName == brainScan.kindDef.defName
-                    || kindDef == null && brainScan.kindDef == null))
+                    || kindDef == null && brainScan.kindDef == null) &&
+                (hediffInfos != null && brainScan.hediffInfos != null && hediffInfos.SequenceEqual(brainScan.hediffInfos)
+                    || hediffInfos == null && brainScan.hediffInfos == null))
             {
                 return base.CanStackWith(other);
             }

@@ -3,6 +3,7 @@ using System.Linq;
 using Verse;
 using RimWorld;
 using Harmony;
+using System.Collections.Generic;
 
 namespace QEthics
 {
@@ -146,6 +147,24 @@ namespace QEthics
                         brainScan.trainingSteps[item.Key] = item.Value;
                     }
                 }
+
+                //Hediffs
+                if (pawn?.health?.hediffSet?.hediffs != null)
+                {
+                    List<Hediff> pawnHediffs = pawn.health.hediffSet.hediffs;
+                    if (pawnHediffs.Count > 0)
+                    {
+                        foreach (Hediff h in pawnHediffs)
+                        {
+                            if (GeneralCompatibility.includedBrainTemplateHediffs.Any(hediffDef => h.def.defName == hediffDef.defName))
+                            {
+                                QEEMod.TryLog("Hediff " + h.def.defName + " will be added to brain template");
+
+                                brainScan.hediffInfos.Add(new HediffInfo(h));
+                            }
+                        }
+                    }
+                }
             }
 
             return brainScanThing;
@@ -200,8 +219,16 @@ namespace QEthics
                     }
                 }
 
-                //Apply Hediff
+                //Add Hediffs
                 thePawn.health.AddHediff(QEHediffDefOf.QE_BrainTemplated);
+                if (brainScan.hediffInfos != null && brainScan.hediffInfos.Count > 0)
+                {
+                    //add hediffs to pawn from defs in HediffInfo class
+                    foreach (HediffInfo h in brainScan.hediffInfos)
+                    {
+                        thePawn.health.AddHediff(h.def, h.part);
+                    }
+                }
 
                 Messages.Message("QE_BrainTemplatingComplete".Translate(thePawn.Named("PAWN")), MessageTypeDefOf.PositiveEvent, false);
             }
