@@ -135,8 +135,8 @@ namespace QEthics
                 }
 
                 //Hediffs
-                var hediffsOrdered = hediffInfos.Where(h => h.def != null);
-                if (hediffsOrdered != null)
+                var hediffsOrdered = hediffInfos?.Where(h => h.def != null);
+                if (hediffsOrdered != null && hediffsOrdered.Any())
                 {
                     builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
 
@@ -198,8 +198,8 @@ namespace QEthics
                 }
 
                 //Hediffs
-                var hediffsOrdered = hediffInfos.Where(h => h.def != null);
-                if (hediffsOrdered != null)
+                var hediffsOrdered = hediffInfos?.Where(h => h.def != null);
+                if (hediffsOrdered != null && hediffsOrdered.Any())
                 {
                     builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
 
