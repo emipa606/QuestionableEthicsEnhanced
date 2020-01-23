@@ -54,6 +54,8 @@ namespace QEthics
             //Load first humanoid value
             Scribe_Values.Look(ref crownType, "crownType");
 
+            Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
+
             //Save/Load rest of the humanoid values. CrownType will be Undefined for animals.
             if (crownType != CrownType.Undefined)
             {
@@ -63,9 +65,8 @@ namespace QEthics
                 Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
                 Scribe_Defs.Look(ref hair, "hair");
                 Scribe_Values.Look(ref headGraphicPath, "headGraphicPath");
-                Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
 
-                //Values that could be null in save file go here
+                //Humanoid values that could be null in save file go here
                 if (Scribe.mode == LoadSaveMode.PostLoadInit)
                 {
                     if (hair == null)
@@ -81,11 +82,16 @@ namespace QEthics
                         headGraphicPath = gender == Gender.Male ? "Things/Pawn/Humanlike/Heads/Male/Male_Average_Normal" :
                             "Things/Pawn/Humanlike/Heads/Female/Female_Narrow_Normal";
                     }
-                    if(hediffInfos != null)
-                    {
-                        //remove any hediffs where the def is missing. Most commonly occurs when a mod is removed from a save.
-                        hediffInfos.RemoveAll(h => h.def == null);
-                    }
+                }
+            }
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit && hediffInfos != null)
+            {
+                //remove any hediffs where the def is missing. Most commonly occurs when a mod is removed from a save.
+                int removed = hediffInfos.RemoveAll(h => h.def == null);
+                if(removed > 0)
+                {
+                    QEEMod.TryLog("Removed " + removed + " null hediffs from hediffInfo list for " + sourceName + "'s genome template ");
                 }
             }
 
@@ -115,7 +121,8 @@ namespace QEthics
                 (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
                     || hair == null && otherGenome.hair == null) &&
                 traits.SequenceEqual(otherGenome.traits) &&
-                (hediffInfos != null && otherGenome.hediffInfos != null && hediffInfos.SequenceEqual(otherGenome.hediffInfos)
+                (hediffInfos != null && otherGenome.hediffInfos != null && 
+                    hediffInfos.OrderBy(h => h.def.LabelCap).SequenceEqual(otherGenome.hediffInfos.OrderBy(h => h.def.LabelCap))
                     || hediffInfos == null && otherGenome.hediffInfos == null))
             {
                 return base.CanStackWith(other);
@@ -254,23 +261,7 @@ namespace QEthics
                 }
 
                 //Hediffs
-                var hediffsOrdered = hediffInfos?.Where(h => h.def != null);
-                if (hediffsOrdered != null && hediffsOrdered.Any())
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
-
-                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
-                    {
-                        if(h.part != null)
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
-                        }
-                        else
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap);
-                        }
-                    }
-                }
+                HediffInfo.GenerateDescForHediffList(ref builder, hediffInfos);
             }
             else
             {

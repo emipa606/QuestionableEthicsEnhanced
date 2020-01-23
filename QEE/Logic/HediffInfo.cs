@@ -40,8 +40,9 @@ namespace QEthics
 
             if ((def?.defName == null && other.def?.defName == null ||
                 def?.defName == other.def?.defName) &&
+                
                 (part == null && other.part == null ||
-                part == other.part))
+                part.LabelCap == other.part.LabelCap))
             {
                 return true;
             }
@@ -50,7 +51,41 @@ namespace QEthics
 
         public override int GetHashCode()
         {
-            return def.defName.GetHashCode() * 19 + part.GetHashCode();
+            int hash = 19;
+            hash = hash * 23 + (def?.GetHashCode() ?? 0);
+            //the LabelCap field should be unique enough for the hash
+            hash = hash * 23 + (part?.LabelCap.GetHashCode() ?? 0);
+            return hash;
+        }
+
+        public static void GenerateDescForHediffList(ref StringBuilder builder, List<HediffInfo> hediffs)
+        {
+            var hediffsNonNull = hediffs?.Where(h => h.def != null);
+            
+            if (hediffsNonNull != null)
+            {
+                if (hediffsNonNull.Any())
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
+
+                    //sort hediffs in alphabetical order
+                    var ordered = hediffsNonNull.OrderBy(h => h.def.LabelCap);
+
+                    //loop through hediffs and add line to StringBuilder for each
+                    foreach (HediffInfo h in ordered)
+                    {
+                        if (h.part != null)
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
+                        }
+                        else
+                        {
+                            builder.AppendLine("    " + h.def.LabelCap);
+                        }
+                    }
+                }
+            }
+          
         }
     }
 }

@@ -70,7 +70,11 @@ namespace QEthics
             if (Scribe.mode == LoadSaveMode.LoadingVars && hediffInfos != null)
             {
                 //remove any hediffs where the def is missing. Most commonly occurs when a mod is removed from a save.
-                hediffInfos.RemoveAll(h => h.def == null);
+                int removed = hediffInfos.RemoveAll(h => h.def == null);
+                if (removed > 0)
+                {
+                    QEEMod.TryLog("Removed " + removed + " null hediffs from hediffInfo list for " + sourceName + "'s brain template ");
+                }
             }
         }
 
@@ -98,62 +102,7 @@ namespace QEthics
         {
             get
             {
-                StringBuilder builder = new StringBuilder(base.DescriptionDetailed);
-
-                builder.AppendLine();
-                builder.AppendLine();
-                if (sourceName != null)
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
-                }
-                if (kindDef?.race != null)
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
-                }
-                if (backStoryChild != null)
-                    builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
-                if (backStoryAdult != null)
-                    builder.AppendLine("QE_BrainScanDescription_BackshortAdult".Translate() + ": " + backStoryAdult.title.CapitalizeFirst());
-
-                //Skills
-                if (!isAnimal && skills.Count > 0)
-                {
-                    builder.AppendLine("QE_BrainScanDescription_Skills".Translate());
-                    foreach (ComparableSkillRecord skill in skills.OrderBy(skillRecord => skillRecord.def.index))
-                    {
-                        builder.AppendLine(skill.ToString());
-                    }
-                }
-
-                if (isAnimal)
-                {
-                    builder.AppendLine("QE_BrainScanDescription_Training".Translate());
-                    foreach (var training in trainingSteps.OrderBy(trainingPair => trainingPair.Key.index))
-                    {
-                        builder.AppendLine("    " + training.Key.LabelCap + ": " + training.Value);
-                    }
-                }
-
-                //Hediffs
-                var hediffsOrdered = hediffInfos?.Where(h => h.def != null);
-                if (hediffsOrdered != null && hediffsOrdered.Any())
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
-
-                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
-                    {
-                        if (h.part != null)
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
-                        }
-                        else
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap);
-                        }
-                    }
-                }
-
-                return builder.ToString().TrimEndNewlines();
+                return CustomDescriptionString(base.DescriptionDetailed);
             }
         }
 
@@ -161,63 +110,52 @@ namespace QEthics
         {
             get
             {
-                StringBuilder builder = new StringBuilder(base.DescriptionFlavor);
-
-                builder.AppendLine();
-                builder.AppendLine();
-                if (sourceName != null)
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
-                }
-                if (kindDef?.race != null)
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
-                }
-                if (backStoryChild != null)
-                    builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
-                if(backStoryAdult != null)
-                    builder.AppendLine("QE_BrainScanDescription_BackshortAdult".Translate() + ": " + backStoryAdult.title.CapitalizeFirst());
-
-                //Skills
-                if (!isAnimal && skills.Count > 0)
-                {
-                    builder.AppendLine("QE_BrainScanDescription_Skills".Translate());
-                    foreach (ComparableSkillRecord skill in skills.OrderBy(skillRecord => skillRecord.def.index))
-                    {
-                        builder.AppendLine(skill.ToString());
-                    }
-                }
-
-                if (isAnimal)
-                {
-                    builder.AppendLine("QE_BrainScanDescription_Training".Translate());
-                    foreach (var training in trainingSteps.OrderBy(trainingPair => trainingPair.Key.index))
-                    {
-                        builder.AppendLine("    " + training.Key.LabelCap + ": " + training.Value);
-                    }
-                }
-
-                //Hediffs
-                var hediffsOrdered = hediffInfos?.Where(h => h.def != null);
-                if (hediffsOrdered != null && hediffsOrdered.Any())
-                {
-                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
-
-                    foreach (HediffInfo h in hediffsOrdered.OrderBy(h => h.def.LabelCap))
-                    {
-                        if (h.part != null)
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap + " [" + h.part.LabelCap + "]");
-                        }
-                        else
-                        {
-                            builder.AppendLine("    " + h.def.LabelCap);
-                        }
-                    }
-                }
-
-                return builder.ToString().TrimEndNewlines();
+                return CustomDescriptionString(base.DescriptionFlavor);
             }
+        }
+
+        public string CustomDescriptionString(string baseDescription)
+        {
+            StringBuilder builder = new StringBuilder(baseDescription);
+
+            builder.AppendLine();
+            builder.AppendLine();
+            if (sourceName != null)
+            {
+                builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
+            }
+            if (kindDef?.race != null)
+            {
+                builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
+            }
+            if (backStoryChild != null)
+                builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
+            if (backStoryAdult != null)
+                builder.AppendLine("QE_BrainScanDescription_BackshortAdult".Translate() + ": " + backStoryAdult.title.CapitalizeFirst());
+
+            //Skills
+            if (!isAnimal && skills.Count > 0)
+            {
+                builder.AppendLine("QE_BrainScanDescription_Skills".Translate());
+                foreach (ComparableSkillRecord skill in skills.OrderBy(skillRecord => skillRecord.def.index))
+                {
+                    builder.AppendLine(skill.ToString());
+                }
+            }
+
+            if (isAnimal)
+            {
+                builder.AppendLine("QE_BrainScanDescription_Training".Translate());
+                foreach (var training in trainingSteps.OrderBy(trainingPair => trainingPair.Key.index))
+                {
+                    builder.AppendLine("    " + training.Key.LabelCap + ": " + training.Value);
+                }
+            }
+
+            //Hediffs
+            HediffInfo.GenerateDescForHediffList(ref builder, hediffInfos);
+
+            return builder.ToString().TrimEndNewlines();
         }
 
         public override Thing SplitOff(int count)
@@ -295,7 +233,8 @@ namespace QEthics
                 && sourceName == brainScan.sourceName &&
                 (kindDef?.defName != null && brainScan.kindDef?.defName != null && kindDef.defName == brainScan.kindDef.defName
                     || kindDef == null && brainScan.kindDef == null) &&
-                (hediffInfos != null && brainScan.hediffInfos != null && hediffInfos.SequenceEqual(brainScan.hediffInfos)
+                (hediffInfos != null && brainScan.hediffInfos != null &&
+                    hediffInfos.OrderBy(h => h.def.LabelCap).SequenceEqual(brainScan.hediffInfos.OrderBy(h => h.def.LabelCap))
                     || hediffInfos == null && brainScan.hediffInfos == null))
             {
                 return base.CanStackWith(other);
@@ -420,35 +359,6 @@ namespace QEthics
                         },
                         caster: selPawn);
                 });
-
-            //Find valid brain scanning target and medical bed on the map.
-            /*var eligibleTargets = Map.mapPawns.FreeColonistsAndPrisonersSpawned.Where(pawn => pawn.IsValidBrainTemplatingTarget());
-            if(eligibleTargets != null)
-            {
-                foreach(Pawn pawn in eligibleTargets)
-                {
-                    Building_Bed validBed = RestUtility.FindPatientBedFor(pawn);
-
-                    bool disabled = validBed == null;
-                    string label = null;
-                    if(disabled)
-                    {
-                        label = "QE_BrainScanningFloatMenuLabelDisabled".Translate(pawn.LabelCap);
-                    }
-                    else
-                    {
-                        label = "QE_BrainScanningFloatMenuLabel".Translate(pawn.LabelCap);
-                    }
-
-                    FloatMenuOption option = new FloatMenuOption(label, delegate()
-                    {
-
-                    });
-                    option.Disabled = disabled;
-
-                    yield return option;
-                }
-            }*/
         }
     }
 }
