@@ -163,9 +163,12 @@ namespace QEthics
                     splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));
                 }
 
-                foreach(HediffInfo h in hediffInfos)
+                if (hediffInfos != null)
                 {
-                    splitThingStack.hediffInfos.Add(h);
+                    foreach (HediffInfo h in hediffInfos)
+                    {
+                        splitThingStack.hediffInfos.Add(h);
+                    }
                 }
 
                 //Alien Compat.

@@ -212,9 +212,12 @@ namespace QEthics
                     });
                 }
 
-                foreach (HediffInfo h in hediffInfos)
+                if (hediffInfos != null)
                 {
-                    brainScan.hediffInfos.Add(h);
+                    foreach (HediffInfo h in hediffInfos)
+                    {
+                        brainScan.hediffInfos.Add(h);
+                    }
                 }
 
                 //Animal
