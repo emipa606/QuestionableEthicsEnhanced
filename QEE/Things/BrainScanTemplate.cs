@@ -158,6 +158,37 @@ namespace QEthics
             return builder.ToString().TrimEndNewlines();
         }
 
+        //this changes the text displayed in the bottom-left info panel when you select the item
+        public override string GetInspectString()
+        {
+            StringBuilder builder = new StringBuilder(base.GetInspectString());
+
+            if (kindDef != null)
+            {
+                builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + kindDef.race.LabelCap);
+            }
+
+            if (backStoryChild != null)
+            {
+                builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
+            }
+
+            if (backStoryAdult != null)
+            {
+                builder.AppendLine("QE_BrainScanDescription_BackshortAdult".Translate() + ": " + backStoryAdult.title.CapitalizeFirst());
+            }
+
+            if (hediffInfos != null)
+            {
+                if (hediffInfos.Count > 0)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate() + ": " + hediffInfos.Count);
+                }
+            }
+
+            return builder.ToString().TrimEndNewlines();
+        }
+
         public override Thing SplitOff(int count)
         {
             Thing splitThing = base.SplitOff(count);

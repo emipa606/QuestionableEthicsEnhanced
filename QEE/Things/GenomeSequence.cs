@@ -271,5 +271,24 @@ namespace QEthics
             return builder.ToString().TrimEndNewlines();
         }
 
+        //this changes the text displayed in the bottom-left info panel when you select the item
+        public override string GetInspectString()
+        {
+            StringBuilder builder = new StringBuilder(base.GetInspectString());
+
+            builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + pawnKindDef.race.LabelCap);
+            builder.AppendLine("QE_GenomeSequencerDescription_Gender".Translate() + ": " + GenderUtility.GetLabel(gender, pawnKindDef.race.race.Animal).CapitalizeFirst());
+
+            if(hediffInfos != null)
+            {
+                if (hediffInfos.Count > 0)
+                {
+                    builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate() + ": " + hediffInfos.Count);
+                }
+            }
+
+            return builder.ToString().TrimEndNewlines();
+        }
+
     }
 }
