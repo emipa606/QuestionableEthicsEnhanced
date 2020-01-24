@@ -93,6 +93,9 @@ namespace QEthics
             //No pregenerated hediffs.
             pawn.health.hediffSet.Clear();
 
+            //Add Hediff marking them as a clone.
+            pawn.health.AddHediff(QEHediffDefOf.QE_CloneStatus);
+
             if (genomeSequence.hediffInfos != null && genomeSequence.hediffInfos.Count > 0)
             {
                 //add hediffs to pawn from defs in HediffInfo class
@@ -213,9 +216,6 @@ namespace QEthics
 
             PortraitsCache.SetDirty(pawn);
             PortraitsCache.PortraitsCacheUpdate();
-
-            //Add Hediff marking them as a clone.
-            pawn.health.AddHediff(QEHediffDefOf.QE_CloneStatus);
 
             return pawn;
         }
