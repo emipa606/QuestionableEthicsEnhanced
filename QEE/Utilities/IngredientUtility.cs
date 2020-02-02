@@ -264,17 +264,7 @@ namespace QEthics
                 return null;
             }
 
-            int storedCount = 0;
-            if (vatStoredIngredients != null && curIng?.filter != null)
-            {
-                storedCount = curIng.filter.TotalStackCountForFilterInContainer(vatStoredIngredients);
-            }
-
-            int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * 
-                QEESettings.instance.organTotalResourcesFloat);
-                
-            int countNeededForCrafting = countNeededFromRecipe - storedCount;
-            countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
+            int countNeededForCrafting = IngredientUtility.RemainingCountForIngredient(vatStoredIngredients, theBill.recipe, curIng);
 
             //only check the map for Things if the vat still needs some of this ingredient
             if (countNeededForCrafting > 0)
@@ -312,6 +302,23 @@ namespace QEthics
             return null;
         } //end function FindClosestIngToBillGiver
 
+        public static int RemainingCountForIngredient(ThingOwner container, RecipeDef recipe, IngredientCount ingCount)
+        {
+            int remainingCount = 0;
+
+            int wantedCount = (int)(ingCount.CountRequiredOfFor(ingCount.FixedIngredient, recipe) *
+                        QEESettings.instance.organTotalResourcesFloat);
+
+            int haveCount = 0;
+            if (container != null && ingCount?.filter != null)
+            {
+                haveCount = ingCount.filter.TotalStackCountForFilterInContainer(container);
+            }
+
+            remainingCount = wantedCount - haveCount < 0 ? 0 : wantedCount - haveCount;
+
+            return remainingCount;
+        }
 
     } //end class IngredientUtility
 }

@@ -143,9 +143,12 @@ namespace QEthics
                     Pawn actor = GetActor();
 
                     //if all ingredients have been loaded, start crafting
-                    if (grower != null && grower.RemainingCountForIngredient("all", true) == 0)
+                    if(grower?.billProc != null)
                     {
-                        grower.Notify_CraftingStarted();
+                        if (grower.billProc.AnyPendingRequests == false)
+                        {
+                            grower.Notify_CraftingStarted();
+                        }
                     }
 
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded);

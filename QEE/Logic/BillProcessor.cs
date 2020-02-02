@@ -269,12 +269,7 @@ namespace QEthics
 
                     ThingOrderRequest request = new ThingOrderRequest(filterCopy);
 
-                    int storedCount = request.TotalStackCountForOrderRequestInContainer(ObservedThingOwner);
-                    int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) *
-                        QEESettings.instance.organTotalResourcesFloat);
-
-                    int countNeededForCrafting = countNeededFromRecipe - storedCount;
-                    countNeededForCrafting = countNeededForCrafting < 0 ? 0 : countNeededForCrafting;
+                    int countNeededForCrafting = IngredientUtility.RemainingCountForIngredient(ObservedThingOwner, theBill.recipe, curIng);
 
                     if (countNeededForCrafting > 0)
                     {

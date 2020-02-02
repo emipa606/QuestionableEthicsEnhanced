@@ -240,8 +240,8 @@ namespace QEthics
 
             for (int i = 0; i < activeRecipe.ingredients.Count; i++)
             {
-                ThingDef currIngredient = activeRecipe.ingredients[i].FixedIngredient;
-                int remainingCount = RemainingCountForIngredient(currIngredient.defName);
+                IngredientCount currIngredient = activeRecipe.ingredients[i];
+                int remainingCount = IngredientUtility.RemainingCountForIngredient(ingredientContainer, activeRecipe, currIngredient);
 
                 if (remainingCount > 0)
                 {
@@ -252,7 +252,7 @@ namespace QEthics
                         builder.Append(' ');
                     }
 
-                    builder.Append(string.Format(format, currIngredient.LabelCap, remainingCount));
+                    builder.Append(string.Format(format, currIngredient.FixedIngredient.LabelCap, remainingCount));
                 }
 
             }
@@ -447,48 +447,6 @@ namespace QEthics
             }
 
             ingredientContainer.ClearAndDestroyContents();
-        }
-
-        /// <summary>
-        /// Returns count of ingredient in recipe - count of that ingredient in the ingredientContainer
-        /// </summary>
-        /// <param name="thingDefName"></param>
-        /// <returns></returns>
-        public virtual int RemainingCountForIngredient(string thingDefName, bool countAll = false)
-        {
-            int totalCount = 0;
-            for (int i = 0; i < activeRecipe.ingredients.Count; i++)
-            {
-                IngredientCount currIngredient = activeRecipe.ingredients[i];
-                string currIngName = currIngredient.FixedIngredient.defName;
-
-                if (thingDefName == currIngName || countAll == true)
-                {
-                    int wantedCount = (int)(currIngredient.CountRequiredOfFor(currIngredient.FixedIngredient, activeRecipe) * 
-                        QEESettings.instance.organTotalResourcesFloat);
-
-                    int haveCount = 0;
-                    if (ingredientContainer != null && currIngredient?.filter != null)
-                    {
-                        haveCount = currIngredient.filter.TotalStackCountForFilterInContainer(ingredientContainer);
-                    }
-
-                    int remainingCount = wantedCount - haveCount < 0 ? 0 : wantedCount - haveCount;
-                    //QEEMod.TryLog(currIngredient.FixedIngredient.LabelCap + " wanted: " + wantedCount + " have: " + haveCount);
-
-                    totalCount += remainingCount;
-
-                    if (thingDefName == currIngName)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            return totalCount;
         }
 
         #endregion
