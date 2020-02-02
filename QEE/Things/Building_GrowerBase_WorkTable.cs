@@ -467,7 +467,11 @@ namespace QEthics
                     int wantedCount = (int)(currIngredient.CountRequiredOfFor(currIngredient.FixedIngredient, activeRecipe) * 
                         QEESettings.instance.organTotalResourcesFloat);
 
-                    int haveCount = ingredientContainer?.FirstOrDefault(thing => thing?.def?.defName == currIngName)?.stackCount ?? 0;
+                    int haveCount = 0;
+                    if (ingredientContainer != null && currIngredient?.filter != null)
+                    {
+                        haveCount = currIngredient.filter.TotalStackCountForFilterInContainer(ingredientContainer);
+                    }
 
                     int remainingCount = wantedCount - haveCount < 0 ? 0 : wantedCount - haveCount;
                     //QEEMod.TryLog(currIngredient.FixedIngredient.LabelCap + " wanted: " + wantedCount + " have: " + haveCount);

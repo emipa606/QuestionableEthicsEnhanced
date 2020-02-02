@@ -264,7 +264,12 @@ namespace QEthics
                 return null;
             }
 
-            int storedCount = vatStoredIngredients.FirstOrDefault(thing => thing.def == curIng.FixedIngredient)?.stackCount ?? 0;
+            int storedCount = 0;
+            if (vatStoredIngredients != null && curIng?.filter != null)
+            {
+                storedCount = curIng.filter.TotalStackCountForFilterInContainer(vatStoredIngredients);
+            }
+
             int countNeededFromRecipe = (int)(curIng.CountRequiredOfFor(curIng.FixedIngredient, theBill.recipe) * 
                 QEESettings.instance.organTotalResourcesFloat);
                 
