@@ -65,7 +65,7 @@ namespace QEthics
             }
 
             //add any hediffs in the <addsHediff> element of the recipe, after surgery involving natural body parts completes.
-            if (bill.recipe.addsHediff != null && RBSECompat.GetOrganRejectionSetting() == true)
+            if (bill.recipe.addsHediff != null && CompatibilityTracker.RBSEActive && RBSECompat.GetOrganRejectionSetting() == true)
             {
                 if (part.LabelShort == "shoulder")
                 {

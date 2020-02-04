@@ -14,41 +14,50 @@ namespace QEthics
         {
             //only set rejectionEnabled to true if the mod loads successfully and we can retrieve the value from settings
             bool rejectionEnabled = false;
-            var rbseMod = LoadedModManager.GetMod<RBSE.Mod>();
 
-            if (rbseMod != null)
+            var rbseModType = GenTypes.GetTypeInAnyAssemblyNew("RBSE.Mod", "RBSE");
+            if (rbseModType != null)
             {
-                //The RBSE.Settings class is not available w/ public modifier. Use Reflection to get the Type
-                var rbseSettingsType = typeof(RBSE.Mod).Assembly.GetType("RBSE.Settings");
-                if (rbseSettingsType != null)
+                var rbseMod = LoadedModManager.GetMod(rbseModType);
+
+                if (rbseMod != null)
                 {
-                    var settings = typeof(Mod)?.GetMethod(nameof(Mod.GetSettings), Type.EmptyTypes)?.MakeGenericMethod(rbseSettingsType)?.Invoke(rbseMod, new object[0]);
-                    if (settings != null)
+                    //The RBSE.Settings class is not available w/ public modifier. Use Reflection to get the Type
+                    var rbseSettingsType = rbseModType.Assembly.GetType("RBSE.Settings");
+                    if (rbseSettingsType != null)
                     {
-                        var toggleActiveRejection = settings?.GetType()?.GetField("ToggleActiveRejection", AccessTools.all)?.GetValue(settings);
-                        if (toggleActiveRejection != null)
+                        var settings = typeof(Mod)?.GetMethod(nameof(Mod.GetSettings), Type.EmptyTypes)?.MakeGenericMethod(rbseSettingsType)?.Invoke(rbseMod, new object[0]);
+                        if (settings != null)
                         {
-                            QEEMod.TryLog("toggleActiveRejection value: " + toggleActiveRejection);
-                            rejectionEnabled = (bool)toggleActiveRejection;
+                            var toggleActiveRejection = settings?.GetType()?.GetField("ToggleActiveRejection", AccessTools.all)?.GetValue(settings);
+                            if (toggleActiveRejection != null)
+                            {
+                                QEEMod.TryLog("toggleActiveRejection value: " + toggleActiveRejection);
+                                rejectionEnabled = (bool)toggleActiveRejection;
+                            }
+                            else
+                            {
+                                QEEMod.TryLog("Problem retrieving toggleActiveRejection ModSetting value from RBSE mod. Organ rejection hediff will not be added.");
+                            }
                         }
                         else
                         {
-                            QEEMod.TryLog("Problem retrieving toggleActiveRejection ModSetting value from RBSE mod");
+                            QEEMod.TryLog("Error making generic GetSettings() method for RBSE compatibility. Organ rejection hediff will not be added.");
                         }
                     }
                     else
                     {
-                        QEEMod.TryLog("Error making generic GetSettings() method for RBSE compatibility");
+                        QEEMod.TryLog("RBSE class 'RBSE.Settings' not found. Organ rejection hediff will not be added.");
                     }
                 }
                 else
                 {
-                    QEEMod.TryLog("RBSE loaded but class 'RBSE.Settings' not found");
+                    QEEMod.TryLog("GetMod() returned null for RBSE. Organ rejection hediff will not be added.");
                 }
             }
             else
             {
-                QEEMod.TryLog("RBSE not loaded");
+                QEEMod.TryLog("Class 'RBSE.Mod' not found. Organ rejection hediff will not be added.");
             }
 
             return rejectionEnabled;

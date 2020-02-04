@@ -10,6 +10,7 @@ namespace QEthics
     {
         private static bool alienRacesActiveInt = false;
         private static bool psychicAwakeningActiveInt = false;
+        private static bool rbseActiveInt = false;
 
         public static bool AlienRacesActive
         {
@@ -24,6 +25,14 @@ namespace QEthics
             get
             {
                 return psychicAwakeningActiveInt;
+            }
+        }
+
+        public static bool RBSEActive
+        {
+            get
+            {
+                return rbseActiveInt;
             }
         }
 
@@ -59,6 +68,11 @@ namespace QEthics
                     QEEMod.TryLog("Psychic Awakening detected");
 
                     psychicAwakeningActiveInt = PsychicAwakeningCompat.Init();                   
+                }
+                else if (modName.Contains("Rah's Bionics and Surgery Expansion") || modName.Contains("RBSE Hardcore Edition"))
+                {
+                    rbseActiveInt = true;
+                    QEEMod.TryLog("RBSE detected");
                 }
             }
         }
