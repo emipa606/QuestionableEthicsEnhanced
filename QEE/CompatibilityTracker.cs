@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Harmony;
+using System.Diagnostics;
 using System.Linq;
 using Verse;
 
@@ -8,12 +9,21 @@ namespace QEthics
     public static class CompatibilityTracker
     {
         private static bool alienRacesActiveInt = false;
+        private static bool psychicAwakeningActiveInt = false;
 
         public static bool AlienRacesActive
         {
             get
             {
                 return alienRacesActiveInt;
+            }
+        }
+
+        public static bool PsychicAwakeningActive
+        {
+            get
+            {
+                return psychicAwakeningActiveInt;
             }
         }
 
@@ -42,6 +52,13 @@ namespace QEthics
                 {
                     alienRacesActiveInt = true;
                     QEEMod.TryLog("Humanoid Alien Races detected");
+                }
+
+                else if (modName.Contains("Psychic Awakening"))
+                {
+                    QEEMod.TryLog("Psychic Awakening detected");
+
+                    psychicAwakeningActiveInt = PsychicAwakeningCompat.Init();                   
                 }
             }
         }

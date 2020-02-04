@@ -4,6 +4,7 @@ using Verse;
 using RimWorld;
 using Harmony;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace QEthics
 {
@@ -221,12 +222,45 @@ namespace QEthics
 
                 //Add Hediffs
                 thePawn.health.AddHediff(QEHediffDefOf.QE_BrainTemplated);
-                if (brainScan.hediffInfos != null && brainScan.hediffInfos.Count > 0)
+                if (brainScan.hediffInfos != null && brainScan.hediffInfos?.Count > 0)
                 {
                     //add hediffs to pawn from defs in HediffInfo class
                     foreach (HediffInfo h in brainScan.hediffInfos)
                     {
-                        thePawn.health.AddHediff(h.def, h.part);
+                        Hediff addedHediff = thePawn.health.AddHediff(h.def, h.part);
+
+                        //Psychic Awakened compatibility
+                        if(h.psychicAwakeningPowersKnownDefNames != null && h.psychicAwakeningPowersKnownDefNames?.Count > 0)
+                        {
+                            //create a List of the type PsychicPowerDef via Reflection. Cast it as IList to interact with it.
+                            var listType = typeof(List<>).MakeGenericType(PsychicAwakeningCompat.PsychicPowerDefType);
+                            var powers = Activator.CreateInstance(listType);
+                            IList powersInterface = (IList)powers;
+
+                            //iterate through the defNames saved in the list inside HediffInfo
+                            foreach (string defName in h.psychicAwakeningPowersKnownDefNames)
+                            {
+                                //look for this PsychicPowerDef in the DefDatabase
+                                var psychicPowerDef = GenDefDatabase.GetDef(PsychicAwakeningCompat.PsychicPowerDefType, defName, false);
+
+                                if (psychicPowerDef != null)
+                                {
+                                    //add this to the list
+                                    powersInterface.Add(psychicPowerDef);
+                                }
+                                else
+                                {
+                                    QEEMod.TryLog("Psychic Power def " + defName + " not loaded in database of Rimworld Defs. This power will not be applied.");
+                                }
+                            }
+
+                            if(powersInterface.Count > 0)
+                            {
+                                QEEMod.TryLog("assigning " + powersInterface.Count + " psychic powers to " + thePawn.LabelCap + " from brain template");
+
+                                PsychicAwakeningCompat.powersKnownField.SetValue(addedHediff, powers);
+                            }
+                        }                       
                     }
                 }
 

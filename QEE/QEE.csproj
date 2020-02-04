@@ -81,6 +81,7 @@
     <Compile Include="Compatibility\GeneralCompatibility.cs" />
     <Compile Include="Compatibility\Properties\HediffTemplateProperties.cs" />
     <Compile Include="Compatibility\Properties\RaceExclusionProperties.cs" />
+    <Compile Include="Compatibility\PsychicAwakeningCompat.cs" />
     <Compile Include="Compatibility\RBSECompat.cs" />
     <Compile Include="DefOfs\QEHediffDefOf.cs" />
     <Compile Include="DefOfs\QEJobDefOf.cs" />
