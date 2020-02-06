@@ -14,12 +14,13 @@ namespace QEthics
         public static FieldInfo powersKnownField;
 
         /// <summary>
-        /// Instantiate any Types that exist in the mod for later use in the QEE codebase.
+        /// Instantiate any Types that exist in the other mod for later use in the QEE codebase.
         /// </summary>
-        /// <returns>this value indicates whether all types and members were loaded successfully from the other mod</returns>
-        public static bool Init()
+        /// <param name="assemblies">The list of the other mod's loaded assemblies</param>
+        /// <returns>Indicates whether all types and members were loaded successfully from the other mod</returns>
+        public static bool Init(List<Assembly> assemblies)
         {
-            HediffPsychicAwakenedType = GenTypes.GetTypeInAnyAssemblyNew("RimWorld.HediffPsychicAwakened",null);
+            HediffPsychicAwakenedType = assemblies.Select(assembly => assembly.GetType("RimWorld.HediffPsychicAwakened")).FirstOrDefault(type => type != null);
 
             if (HediffPsychicAwakenedType != null)
             {           

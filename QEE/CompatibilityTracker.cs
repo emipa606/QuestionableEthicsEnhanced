@@ -38,7 +38,7 @@ namespace QEthics
 
         static CompatibilityTracker()
         {
-            foreach (ModMetaData m in ModsConfig.ActiveModsInLoadOrder)
+            foreach(ModContentPack m in LoadedModManager.RunningMods)
             {
                 string modName = m.Name;
 
@@ -50,7 +50,7 @@ namespace QEthics
                 }
 
                 //Partially incompatible mods
-                else if(modName == "Multiplayer")
+                else if (modName == "Multiplayer")
                 {
                     Log.Warning("Questionable Ethics Enhanced works with the Multiplayer mod, but is incompatible with the Multiplayer game mode.");
                     continue;
@@ -67,7 +67,7 @@ namespace QEthics
                 {
                     QEEMod.TryLog("Psychic Awakening detected");
 
-                    psychicAwakeningActiveInt = PsychicAwakeningCompat.Init();                   
+                    psychicAwakeningActiveInt = PsychicAwakeningCompat.Init(m.assemblies.loadedAssemblies);
                 }
                 else if (modName.Contains("Rah's Bionics and Surgery Expansion") || modName.Contains("RBSE Hardcore Edition"))
                 {
