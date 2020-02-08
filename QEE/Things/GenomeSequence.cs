@@ -126,7 +126,8 @@ namespace QEthics
                 (hediffInfos != null && otherGenome.hediffInfos != null && 
                     hediffInfos.OrderBy(h => h.def.LabelCap).SequenceEqual(otherGenome.hediffInfos.OrderBy(h => h.def.LabelCap))
                     || hediffInfos == null && otherGenome.hediffInfos == null) &&
-                addonVariants.SequenceEqual(otherGenome.addonVariants))
+                (addonVariants != null && otherGenome.addonVariants != null && addonVariants.SequenceEqual(otherGenome.addonVariants)
+                    || addonVariants == null && otherGenome.addonVariants == null))
             {
                 return base.CanStackWith(other);
             }
@@ -180,7 +181,11 @@ namespace QEthics
                 splitThingStack.skinColorSecond = skinColorSecond;
                 splitThingStack.hairColorSecond = hairColorSecond;
                 splitThingStack.crownTypeAlien = crownTypeAlien;
-                splitThingStack.addonVariants = addonVariants;
+
+                if (addonVariants != null)
+                {
+                    splitThingStack.addonVariants = addonVariants;
+                }
             }
 
             return splitThing;
