@@ -41,6 +41,7 @@ namespace QEthics
         public Color skinColorSecond = new Color();
         public Color hairColorSecond = new Color();
         public string crownTypeAlien = "";
+        public List<int> addonVariants = new List<int>();
 
         public override void ExposeData()
         {
@@ -101,6 +102,7 @@ namespace QEthics
             Scribe_Values.Look(ref skinColorSecond, "skinColorSecond");
             Scribe_Values.Look(ref hairColorSecond, "hairColorSecond");
             Scribe_Values.Look(ref crownTypeAlien, "crownTypeAlien");
+            Scribe_Collections.Look(ref addonVariants, "addonVariants");
         }
 
         public override bool CanStackWith(Thing other)
@@ -123,7 +125,8 @@ namespace QEthics
                 traits.SequenceEqual(otherGenome.traits) &&
                 (hediffInfos != null && otherGenome.hediffInfos != null && 
                     hediffInfos.OrderBy(h => h.def.LabelCap).SequenceEqual(otherGenome.hediffInfos.OrderBy(h => h.def.LabelCap))
-                    || hediffInfos == null && otherGenome.hediffInfos == null))
+                    || hediffInfos == null && otherGenome.hediffInfos == null) &&
+                addonVariants.SequenceEqual(otherGenome.addonVariants))
             {
                 return base.CanStackWith(other);
             }
@@ -177,6 +180,7 @@ namespace QEthics
                 splitThingStack.skinColorSecond = skinColorSecond;
                 splitThingStack.hairColorSecond = hairColorSecond;
                 splitThingStack.crownTypeAlien = crownTypeAlien;
+                splitThingStack.addonVariants = addonVariants;
             }
 
             return splitThing;

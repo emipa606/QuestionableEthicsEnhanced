@@ -26,6 +26,11 @@ namespace QEthics
                 genomeSequence.skinColorSecond = alienComp.skinColorSecond;
                 genomeSequence.hairColorSecond = alienComp.hairColorSecond;
                 genomeSequence.crownTypeAlien = alienComp.crownType;
+
+                if (alienComp.addonVariants != null && alienComp.addonVariants.Count > 0)
+                {
+                    genomeSequence.addonVariants = alienComp.addonVariants;
+                }
             }
         }
 
@@ -38,6 +43,11 @@ namespace QEthics
                 alienComp.skinColorSecond = genomeSequence.skinColorSecond;
                 alienComp.hairColorSecond = genomeSequence.hairColorSecond;
                 alienComp.crownType = genomeSequence.crownTypeAlien;
+
+                if (genomeSequence.addonVariants.Count > 0)
+                {
+                    alienComp.addonVariants = genomeSequence.addonVariants;
+                }
             }
         }
     }
