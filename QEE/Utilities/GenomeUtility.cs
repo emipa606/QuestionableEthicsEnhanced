@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -74,6 +74,7 @@ namespace QEthics
         {
             //int adultAge = (int)genome.pawnKindDef.RaceProps.lifeStageAges.Last().minAge;
 
+            QEEMod.TryLog("Generating pawn...");
             PawnGenerationRequest request = new PawnGenerationRequest(
                 genomeSequence.pawnKindDef,
                 faction: creator.Faction,
@@ -94,6 +95,7 @@ namespace QEthics
             pawn.health.hediffSet.Clear();
 
             //Add Hediff marking them as a clone.
+            QEEMod.TryLog("Adding hediffs to generated pawn");
             pawn.health.AddHediff(QEHediffDefOf.QE_CloneStatus);
 
             if (genomeSequence.hediffInfos != null && genomeSequence.hediffInfos.Count > 0)
@@ -108,6 +110,7 @@ namespace QEthics
             //Set everything else.
             if (pawn.story is Pawn_StoryTracker storyTracker)
             {
+                QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn...");
                 storyTracker.bodyType = genomeSequence.bodyType;
                 storyTracker.crownType = genomeSequence.crownType;
                 storyTracker.hairColor = genomeSequence.hairColor;
@@ -117,6 +120,7 @@ namespace QEthics
                 //headGraphicPath is private, so we need Harmony to set its value
                 if (genomeSequence.headGraphicPath != null)
                 {
+                    QEEMod.TryLog("Setting headGraphicPath for generated pawn");
                     AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath").SetValue(storyTracker, genomeSequence.headGraphicPath);
                 }
                 else
@@ -124,20 +128,21 @@ namespace QEthics
                     //could use this code to make a random head, instead of the static graphic paths.
                     //AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath").SetValue(storyTracker,
                     //GraphicDatabaseHeadRecords.GetHeadRandom(genomeSequence.gender, PawnSkinColors.GetSkinColor(genomeSequence.skinMelanin), genomeSequence.crownType).GraphicPath);
-
+                    QEEMod.TryLog("No headGraphicPath in genome template, setting to default head");
                     string path = genomeSequence.gender == Gender.Male ? "Things/Pawn/Humanlike/Heads/Male/Male_Average_Normal" :
                             "Things/Pawn/Humanlike/Heads/Female/Female_Narrow_Normal";
                     AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath").SetValue(storyTracker, path);
                 }
 
                 storyTracker.traits.allTraits.Clear();
+                QEEMod.TryLog("Setting traits for generated pawn");
                 foreach (ExposedTraitEntry trait in genomeSequence.traits)
                 {
                     //storyTracker.traits.GainTrait(new Trait(trait.def, trait.degree));
                     storyTracker.traits.allTraits.Add(new Trait(trait.def, trait.degree));
                     if (pawn.workSettings != null)
                     {
-                        pawn.workSettings.Notify_GainedTrait();
+                        pawn.workSettings.Notify_DisabledWorkTypesChanged();
                     }
                     if (pawn.skills != null)
                     {
@@ -149,14 +154,10 @@ namespace QEthics
                     }
                 }
 
+                QEEMod.TryLog("Setting backstory for generated pawn");
                 //Give random vatgrown backstory.
                 storyTracker.childhood = DefDatabase<BackstoryDef>.GetNamed("Backstory_ColonyVatgrown").GetFromDatabase();
                 storyTracker.adulthood = null;
-
-                //Dirty hack ahoy!
-                AccessTools.Field(typeof(Pawn_StoryTracker), "cachedDisabledWorkTypes").SetValue(storyTracker, null);
-                //typeof(Pawn_StoryTracker).GetField("cachedDisabledWorkTypes", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(storyTracker, null);
-                //typeof(PawnGenerator).GetMethod("GenerateSkills", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod).Invoke(null, new object[] { pawn });
             }
 
             if(pawn.skills is Pawn_SkillTracker skillsTracker)

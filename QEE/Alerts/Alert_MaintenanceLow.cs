@@ -33,10 +33,7 @@ namespace QEthics
                 List<GlobalTargetInfo> culprits = new List<GlobalTargetInfo>();
                 foreach(Building grower in growersNeedingMaintenance)
                 {
-                    culprits.Add(grower);
-                    AlertReport report = new AlertReport();
-                    report.culprits = culprits;
-                    report.active = true;
+                    AlertReport report = AlertReport.CulpritIs(grower);
                     return report;
                 }
             }

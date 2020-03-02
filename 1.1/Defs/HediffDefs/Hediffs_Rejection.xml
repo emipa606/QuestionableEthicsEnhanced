@@ -77,6 +77,7 @@
     <HediffDef ParentName="QE_AddedPartRejection">
         <defName>QE_OrganRejection</defName>
         <label>organ transplant</label>
+        <description>Organ Transplant</description>
     </HediffDef>
 
 </Defs>

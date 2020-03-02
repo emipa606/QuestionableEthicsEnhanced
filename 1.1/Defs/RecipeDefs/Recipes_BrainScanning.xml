@@ -40,7 +40,7 @@
 		<label>make brain scanner</label>
 		<description>Make a brain scanner.</description>
 		<jobString>Making brain scanner.</jobString>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
 		<soundWorking>Recipe_Machining</soundWorking>
 		<workAmount>8500</workAmount>

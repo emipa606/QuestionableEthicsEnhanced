@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace QEthics
             //only set rejectionEnabled to true if the mod loads successfully and we can retrieve the value from settings
             bool rejectionEnabled = false;
 
-            var rbseModType = GenTypes.GetTypeInAnyAssemblyNew("RBSE.Mod", "RBSE");
+            var rbseModType = GenTypes.GetTypeInAnyAssembly("RBSE.Mod", "RBSE");
             if (rbseModType != null)
             {
                 var rbseMod = LoadedModManager.GetMod(rbseModType);

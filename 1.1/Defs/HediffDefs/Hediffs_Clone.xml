@@ -3,6 +3,7 @@
 	<HediffDef>
 		<defName>QE_CloneStatus</defName>
 		<label>clone</label>
+		<description>Clone</description>
 		<defaultLabelColor>(0.2, 0.8, 0.2)</defaultLabelColor>
 		<initialSeverity>1.0</initialSeverity>
 		<isBad>false</isBad>
@@ -16,6 +17,7 @@
 	<HediffDef>
 		<defName>QE_BrainTemplated</defName>
 		<label>brain templated</label>
+		<description>Brain Templated</description>
 		<defaultLabelColor>(0.8, 0.2, 0.2)</defaultLabelColor>
 		<initialSeverity>1.0</initialSeverity>
 		<stages>
@@ -28,6 +30,7 @@
 	<HediffDef>
 		<defName>QE_Headache</defName>
 		<label>headache</label>
+		<description>Headache</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
 		<initialSeverity>1.0</initialSeverity>

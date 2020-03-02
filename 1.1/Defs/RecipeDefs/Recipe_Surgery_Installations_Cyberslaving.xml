@@ -54,7 +54,7 @@
 		<label>make nerve staples</label>
 		<description>Make a nerve staple.</description>
 		<jobString>Making nerve staples.</jobString>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
 		<soundWorking>Recipe_Machining</soundWorking>
 		<workAmount>8000</workAmount>

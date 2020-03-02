@@ -1,6 +1,6 @@
 using Verse;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace QEthics
     {
         static HarmonyPatches()
         {
-            HarmonyInstance harmony = HarmonyInstance.Create("KongMD.QEE");
+            var harmony = new Harmony("KongMD.QEE");
             //HarmonyInstance.DEBUG = true;
 
             harmony.PatchAll(Assembly.GetExecutingAssembly());

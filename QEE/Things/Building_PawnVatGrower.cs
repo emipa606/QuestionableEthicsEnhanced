@@ -494,7 +494,7 @@ namespace QEthics
                 {
                     defaultLabel = "QE_VatGrowerStartCraftingGizmoLabel".Translate(),
                     defaultDesc = "QE_VatGrowerStartCraftingGizmoDescription".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("Things/Item/Health/HealthItemNatural", true),
+                    icon = ContentFinder<Texture2D>.Get("Things/Item/Health/HealthItem", true),
                     order = -100,
                     action = delegate ()
                     {

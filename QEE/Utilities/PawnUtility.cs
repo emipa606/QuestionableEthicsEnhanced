@@ -85,7 +85,8 @@ namespace QEthics
                 QEEMod.TryLog("QE_BedSurgeonAlreadyReserved".Translate(building_Bed.def.defName, traveler.Named("SURGEON")));
                 return false;
             }
-            else if (!building_Bed.AnyUnoccupiedSleepingSlot && (!sleeper.InBed() || sleeper.CurrentBed() != building_Bed) && !building_Bed.AssignedPawns.Contains(sleeper))
+            else if (!building_Bed.AnyUnoccupiedSleepingSlot && (!sleeper.InBed() || sleeper.CurrentBed() != building_Bed) &&
+                !building_Bed.CompAssignableToPawn.AssignedPawns.Contains(sleeper))
             {
                 QEEMod.TryLog("QE_BedOccupied".Translate(building_Bed.def.defName));
                 return false;
@@ -132,7 +133,7 @@ namespace QEthics
                 }
             }
             //fail if bed is owned
-            if (building_Bed.owners.Any() && !building_Bed.owners.Contains(sleeper) && !building_Bed.AnyUnownedSleepingSlot)
+            if (building_Bed.OwnersForReading.Any() && !building_Bed.OwnersForReading.Contains(sleeper) && !building_Bed.AnyUnownedSleepingSlot)
             {
                 QEEMod.TryLog("QE_BedHasAnotherOwner".Translate(building_Bed.def.defName));
                 return false;

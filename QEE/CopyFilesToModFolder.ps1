@@ -9,11 +9,10 @@ function Copy-Modfiles()
     $switches = @("/MIR", "/COPY:DAT", "/XO", "/NP", "/R:5", "/W:5")
     If (Test-Path "..\Textures") {
         Robocopy.exe "..\About" "$localModDir\About" *.* $switches
-        Robocopy.exe "..\Assemblies" "$localModDir\Assemblies" *.* $switches
-        Robocopy.exe "..\Defs" "$localModDir\Defs" *.* $switches
         Robocopy.exe "..\Languages" "$localModDir\Languages" *.* $switches
-        Robocopy.exe "..\Patches" "$localModDir\Patches" *.* $switches
         Robocopy.exe "..\Textures" "$localModDir\Textures" *.* $switches
+        Robocopy.exe "..\1.0" "$localModDir\1.0" *.* $switches
+        Robocopy.exe "..\1.1" "$localModDir\1.1" *.* $switches
     }
     Else {
         Write-Output "Mod sub-directories not found! Verify your current Powershell directory is the mod project folder"

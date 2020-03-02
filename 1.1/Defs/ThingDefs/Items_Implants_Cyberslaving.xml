@@ -24,7 +24,7 @@
 			<li Class="CompProperties_Forbiddable"/>
 		</comps>
 		<thingCategories>
-			<li>BodyPartsArtificial</li>
+			<li>BodyPartsBionic</li>
 		</thingCategories>
 		<pathCost>10</pathCost>
 	</ThingDef>
@@ -34,9 +34,10 @@
 		<label>nerve staples</label>
 		<description>A brain implant that forces the being to join your colony by stimulating the brain's loyalty pathways. This stimulation also brings the pawn persistent joy, but reduces their work speed. These implants have been used to great effect on frontier planets to subdue rebellious factions from a glitterworld colony ship.</description>
 		<graphicData>
-			<texPath>Things/Item/Health/HealthItemBionic</texPath>
+			<texPath>Things/Item/Health/HealthItem</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>0.80</drawSize>
+			<color>(189,169,118)</color>
 		</graphicData>
 		<statBases>
 			<MarketValue>300</MarketValue>

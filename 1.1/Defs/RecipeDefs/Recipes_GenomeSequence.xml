@@ -40,7 +40,7 @@
 		<label>make genome sequencer</label>
 		<description>Make a genome sequencer.</description>
 		<jobString>Making genome sequencer.</jobString>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
 		<soundWorking>Recipe_Machining</soundWorking>
 		<workAmount>5000</workAmount>

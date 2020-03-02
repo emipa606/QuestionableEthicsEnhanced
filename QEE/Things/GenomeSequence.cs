@@ -14,7 +14,8 @@ namespace QEthics
     public class GenomeSequence : ThingWithComps
     {
         //Relevant for all genomes.
-        public string sourceName = "QE_BlankGenomeTemplateName".Translate() ?? "Do Not Use This";
+        public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
+        //public string sourceName = (new TaggedString("QE_BlankGenomeTemplateName")).Translate() ?? "Do Not Use This";
         public PawnKindDef pawnKindDef = PawnKindDefOf.Colonist;
         public Gender gender = Gender.None;
 

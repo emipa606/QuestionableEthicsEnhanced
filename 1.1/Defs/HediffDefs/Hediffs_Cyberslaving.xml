@@ -10,6 +10,7 @@
 		<defName>QE_NerveStaple</defName>
 		<label>nerve stapled</label>
 		<labelNoun>a nerve stapling</labelNoun>
+		<description>Nerve Stapled</description>
 		<defaultLabelColor>(0.85, 0.15, 0.35)</defaultLabelColor>
 		<stages>
 			<li>

@@ -2,7 +2,7 @@
 using System.Linq;
 using Verse;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -194,12 +194,6 @@ namespace QEthics
                         pawnSkill.passion = skill.passion;
                         pawnSkill.Notify_SkillDisablesChanged();
                     }
-                }
-
-                //Dirty hack ahoy!
-                if(storyTracker != null)
-                {
-                    AccessTools.Field(typeof(Pawn_StoryTracker), "cachedDisabledWorkTypes").SetValue(storyTracker, null);
                 }
 
                 //Training
