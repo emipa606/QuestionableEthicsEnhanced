@@ -4,6 +4,10 @@
 		<defName>QE_Building_OrganVat</defName>
 		<label>organ vat</label>
 		<description>A vat for growing various natural organs from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_ProteinMash</ThingDef>
+			<ThingDef>QE_NutrientSolution</ThingDef>
+		</descriptionHyperlinks>
 		<thingClass>QEthics.Building_OrganVat</thingClass>
 		<tickerType>Normal</tickerType>
 		<graphicData>
@@ -109,6 +113,10 @@
 		<defName>QE_OrganVat</defName>
 		<label>organ vat (legacy)</label>
 		<description>This building has been updated in the latest version of Questionable Ethics Enhanced. It will continue to function, but will be unsupported in future updates. Build a new Organ Vat (or replace this one with debug tools) to see the changes!</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_ProteinMash</ThingDef>
+			<ThingDef>QE_NutrientSolution</ThingDef>
+		</descriptionHyperlinks>
 		<thingClass>QEthics.Building_VatGrower</thingClass>
 		<tickerType>Normal</tickerType>
 		<graphicData>
@@ -206,6 +214,10 @@
 		<defName>QE_PawnVat</defName>
 		<label>clone vat</label>
 		<description>An enormous vat for growing clones of organisms from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_ProteinMash</ThingDef>
+			<ThingDef>QE_NutrientSolution</ThingDef>
+		</descriptionHyperlinks>
 		<thingClass>QEthics.Building_PawnVatGrower</thingClass>
 		<tickerType>Normal</tickerType>
 		<graphicData>

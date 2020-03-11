@@ -4,6 +4,7 @@
 		<defName>QE_BrainScanning</defName>
 		<label>scan brain</label>
 		<description>Exhaustively scans the brain of the patient. They will become quite dizzy after surgery. Doing this on beings in neutral or allied factions will be considered a violation.</description>
+		<descriptionHyperlinks><ThingDef>QE_BrainScanner</ThingDef></descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_CreateBrainScan</workerClass>
 		<jobString>Scanning brain.</jobString>
 		<workAmount>2000</workAmount>
@@ -39,6 +40,7 @@
 		<defName>QE_Make_BrainScanner</defName>
 		<label>make brain scanner</label>
 		<description>Make a brain scanner.</description>
+		<descriptionHyperlinks><ThingDef>QE_BrainScanner</ThingDef></descriptionHyperlinks>
 		<jobString>Making brain scanner.</jobString>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>

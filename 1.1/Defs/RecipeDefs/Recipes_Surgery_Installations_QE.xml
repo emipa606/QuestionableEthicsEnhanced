@@ -5,6 +5,9 @@
 		<defName>QE_InstallNaturalArm</defName>
 		<label>install arm</label>
 		<description>Install a biological arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Arm</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing arm.</jobString>
 		<workAmount>2500</workAmount>
@@ -49,6 +52,9 @@
 		<defName>QE_InstallNaturalEar</defName>
 		<label>install ear</label>
 		<description>Install a biological ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Ear</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing ear.</jobString>
 		<workAmount>2500</workAmount>
@@ -93,6 +99,9 @@
 		<defName>QE_InstallNaturalEye</defName>
 		<label>install eye</label>
 		<description>Install a biological eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Eye</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing eye.</jobString>
 		<workAmount>2500</workAmount>
@@ -137,6 +146,9 @@
 		<defName>QE_InstallNaturalFoot</defName>
 		<label>install foot</label>
 		<description>Install a biological foot.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Foot</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing foot.</jobString>
 		<workAmount>1500</workAmount>
@@ -181,6 +193,9 @@
 		<defName>QE_InstallNaturalHand</defName>
 		<label>install hand</label>
 		<description>Install a biological hand.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Hand</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing hand.</jobString>
 		<workAmount>1500</workAmount>
@@ -225,6 +240,9 @@
 		<defName>QE_InstallNaturalJaw</defName>
 		<label>install jaw</label>
 		<description>Install a biological jaw.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Jaw</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing jaw.</jobString>
 		<workAmount>2500</workAmount>
@@ -269,6 +287,9 @@
 		<defName>QE_InstallNaturalLeg</defName>
 		<label>install leg</label>
 		<description>Install a biological leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Leg</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing leg.</jobString>
 		<workAmount>2500</workAmount>
@@ -313,6 +334,9 @@
 		<defName>QE_InstallNaturalNose</defName>
 		<label>install nose</label>
 		<description>Install a biological nose.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Nose</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing nose.</jobString>
 		<workAmount>1500</workAmount>
@@ -357,6 +381,9 @@
 		<defName>QE_InstallNaturalPelvis</defName>
 		<label>install pelvis</label>
 		<description>Install a biological pelvis.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Pelvis</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing pelvis.</jobString>
 		<workAmount>3500</workAmount>
@@ -401,6 +428,9 @@
 		<defName>QE_InstallNaturalSpine</defName>
 		<label>install spine</label>
 		<description>Install a biological spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Spine</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing spine.</jobString>
 		<workAmount>6000</workAmount>
@@ -445,6 +475,9 @@
 		<defName>QE_InstallNaturalStomach</defName>
 		<label>install stomach</label>
 		<description>Install a biological stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>QE_Organ_Stomach</ThingDef>
+		</descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
 		<jobString>Installing stomach.</jobString>
 		<workAmount>2500</workAmount>

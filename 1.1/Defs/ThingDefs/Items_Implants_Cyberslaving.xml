@@ -33,6 +33,10 @@
 		<defName>QE_NerveStaple</defName>
 		<label>nerve staples</label>
 		<description>A brain implant that forces the being to join your colony by stimulating the brain's loyalty pathways. This stimulation also brings the pawn persistent joy, but reduces their work speed. These implants have been used to great effect on frontier planets to subdue rebellious factions from a glitterworld colony ship.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>QE_InstallNerveStaple</RecipeDef>
+			<RecipeDef>QE_Make_NerveStaples</RecipeDef>
+		</descriptionHyperlinks>
 		<graphicData>
 			<texPath>Things/Item/Health/HealthItem</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

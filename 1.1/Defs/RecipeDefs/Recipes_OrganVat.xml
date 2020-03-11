@@ -2,6 +2,10 @@
 <Defs>
 	<!-- Abstract bases -->
 	<RecipeDef Name="QE_NaturalOrganGrowerRecipeBase" Abstract="True">
+		<descriptionHyperlinks>
+			<ThingDef>QE_ProteinMash</ThingDef>
+			<ThingDef>QE_NutrientSolution</ThingDef>
+		</descriptionHyperlinks>
 		<workAmount>300000</workAmount>
 		<ingredients>
 			<li>
@@ -37,6 +41,10 @@
 	</RecipeDef>
 
 	<RecipeDef Name="QE_SmallOrganGrowerRecipeBase" Abstract="True">
+		<descriptionHyperlinks>
+			<ThingDef>QE_ProteinMash</ThingDef>
+			<ThingDef>QE_NutrientSolution</ThingDef>
+		</descriptionHyperlinks>
 		<workAmount>120000</workAmount>
 		<ingredients>
 			<li>

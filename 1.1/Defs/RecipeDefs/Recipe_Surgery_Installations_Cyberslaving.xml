@@ -4,6 +4,7 @@
 		<defName>QE_InstallNerveStaple</defName>
 		<label>install nerve staple</label>
 		<description>Install a nerve staple, forcing the victim to join the colony.</description>
+		<descriptionHyperlinks><ThingDef>QE_NerveStaple</ThingDef></descriptionHyperlinks>
 		<workerClass>QEthics.RecipeWorker_NerveStapling</workerClass>
 		<jobString>Nerve stapling.</jobString>
 		<workAmount>3700</workAmount>
@@ -53,6 +54,7 @@
 		<defName>QE_Make_NerveStaples</defName>
 		<label>make nerve staples</label>
 		<description>Make a nerve staple.</description>
+		<descriptionHyperlinks><ThingDef>QE_NerveStaple</ThingDef></descriptionHyperlinks>
 		<jobString>Making nerve staples.</jobString>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>

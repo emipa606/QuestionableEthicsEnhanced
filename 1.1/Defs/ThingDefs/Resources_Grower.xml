@@ -4,6 +4,13 @@
 		<defName>QE_NutrientSolution</defName>
 		<label>nutrient solution</label>
 		<description>A mixture of water, amino acids, fats &amp; vitamins used to grow clones or organs.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>Make_NutrientSolutionFromOrganics</RecipeDef>
+			<RecipeDef>Make_ProteinMashFromNutrientSolution</RecipeDef>
+			<RecipeDef>Make_QENutrientPaste</RecipeDef>
+			<ThingDef>QE_Building_OrganVat</ThingDef>
+			<ThingDef>QE_PawnVat</ThingDef>
+		</descriptionHyperlinks>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Things/Item/Resource/NutrientSolution</texPath>
@@ -27,6 +34,14 @@
 		<defName>QE_ProteinMash</defName>
 		<label>protein mash</label>
 		<description>Protein from different sources mixed together into a disgusting mash. Perfect for growing organs and living beings.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>Make_ProteinMashFromOrganics</RecipeDef>
+			<RecipeDef>Make_ProteinMashFromNutrientSolution</RecipeDef>
+			<RecipeDef>Make_QESynthMeat</RecipeDef>
+			<RecipeDef>Make_QENeutroamine</RecipeDef>
+			<ThingDef>QE_Building_OrganVat</ThingDef>
+			<ThingDef>QE_PawnVat</ThingDef>
+		</descriptionHyperlinks>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Things/Item/Resource/ProteinMash</texPath>
@@ -50,6 +65,9 @@
 		<defName>Meat_QESynthMeat</defName>
 		<label>synthetic meat</label>
 		<description>It looks like meat, including several tendons and slabs of fat. The taste leaves a lot to be desired, however.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>Make_QESynthMeat</RecipeDef>
+		</descriptionHyperlinks>
 		<category>Item</category>
 		<thingClass>ThingWithComps</thingClass>
 		<graphicData>
