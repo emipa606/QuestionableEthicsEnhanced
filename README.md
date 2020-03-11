@@ -38,6 +38,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 * Bionic Icons - Textures from this mod will be used for the organs. Highly recommended upgrade over vanilla textures!
 * Evolved Organs - Has exciting changes to its mechanics when QEE is enabled. There are too many to list, but [go here]([https://github.com/Xahkarias/Evolved-Organs/blob/master/About/Patch%20Notes.txt) for more details.
 * Humanoid Alien Races 2.0 - Race mods built with this framework will be able to to be cloned in the Cloning Vat.
+* Psychic Awakening - Psychic Powers gained by a pawn are stored in the brain template after a brain scan.
 * Rah's Bionics and Surgery Expansion (RBSE)
   * Organ installation requires RBSE research pre-req 'Organ Transplantation'
   * Organs need to be refrigerated
@@ -49,13 +50,13 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 * EPOE - Use the version of EPOE posted by Aurani, Victorique, and Tarojun for best compatibility
 * Harvest Organs Post-Mortem (HOPM) - All natural organs from QEE have a chance to spawn after autopsy
 * Pawnmorpher
+* Races from Lord of the Rims by Jecrell
 
 **Partially Compatible**
-* Races from Lord of the Rims by Jecrell - Races can be cloned, but won't have their racial bonus. Workaround - Add the racial hediff to your save file for the pawn. Looking into adding this information to genome templates in a future patch.
+* Multiplayer - The multiplayer mode of the game will not work properly, but single player should work fine.
 * Warforged - Warforged pawns can't be cloned (they are robots that have no meat). See the GitHub issue for more details.
 
 **Incompatible**
-* Multiplayer
 * Questionable Ethics
 
 **Investigating...**
