@@ -22,9 +22,9 @@ namespace QEthics
             if(alienComp != null)
             {
                 genomeSequence.isAlien = true;
-                genomeSequence.skinColor = alienComp.skinColor;
-                genomeSequence.skinColorSecond = alienComp.skinColorSecond;
-                genomeSequence.hairColorSecond = alienComp.hairColorSecond;
+                genomeSequence.skinColor = alienComp.GetChannel("skin").first;
+                genomeSequence.skinColorSecond = alienComp.GetChannel("skin").second;
+                genomeSequence.hairColorSecond = alienComp.GetChannel("hair").second;
                 genomeSequence.crownTypeAlien = alienComp.crownType;
 
                 if (alienComp.addonVariants != null && alienComp.addonVariants.Count > 0)
@@ -39,9 +39,10 @@ namespace QEthics
             AlienComp alienComp = pawn.TryGetComp<AlienComp>();
             if (alienComp != null)
             {
-                alienComp.skinColor = genomeSequence.skinColor;
-                alienComp.skinColorSecond = genomeSequence.skinColorSecond;
-                alienComp.hairColorSecond = genomeSequence.hairColorSecond;
+
+                alienComp.GetChannel("skin").first = genomeSequence.skinColor;
+                alienComp.GetChannel("skin").second = genomeSequence.skinColorSecond;
+                alienComp.GetChannel("hair").second = genomeSequence.hairColorSecond;
                 alienComp.crownType = genomeSequence.crownTypeAlien;
 
                 if (genomeSequence.addonVariants.Count > 0)

@@ -13,6 +13,7 @@ function Copy-Modfiles()
         Robocopy.exe "..\Textures" "$localModDir\Textures" *.* $switches
         Robocopy.exe "..\1.0" "$localModDir\1.0" *.* $switches
         Robocopy.exe "..\1.1" "$localModDir\1.1" *.* $switches
+        Robocopy.exe "..\1.2" "$localModDir\1.2" *.* $switches
     }
     Else {
         Write-Output "Mod sub-directories not found! Verify your current Powershell directory is the mod project folder"
