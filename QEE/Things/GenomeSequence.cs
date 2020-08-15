@@ -233,7 +233,7 @@ namespace QEthics
         /// </summary>
         public bool IsValidTemplate()
         {
-            if (sourceName != null && pawnKindDef != null && (sourceName != "QE_BlankGenomeTemplateName".Translate() && gender != Gender.None))
+            if (sourceName != null && sourceName != "QE_BlankGenomeTemplateName".Translate() && pawnKindDef != null)
             {
                 return true;
             }
