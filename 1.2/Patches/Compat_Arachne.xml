@@ -5,7 +5,12 @@
             <li>Arachne Race</li>
         </mods>
         <match Class ="PatchOperationSequence">
+            <success>Always</success>
             <operations>
+                <li Class="PatchOperationTest">
+                    <xpath>/Defs/HediffDef[defName="Arachne_Regen"]</xpath>
+                    <success>Always</success>
+                </li>
                 <li Class ="PatchOperationAddModExtension">
                     <xpath>/Defs/HediffDef[defName="Arachne_Regen"]</xpath>
                     <value>
