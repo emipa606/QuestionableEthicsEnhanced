@@ -50,6 +50,35 @@ namespace QEthics
         }//end patch class
 
         /// <summary>
+        /// This function spawns a BodyPart item on the map after surgery. This patch allows an arm to spawn if 
+        /// the shoulder is the BodyPart being operated on.
+        /// </summary>
+        [HarmonyPatch(typeof(MedicalRecipesUtility))]
+        [HarmonyPatch(nameof(MedicalRecipesUtility.SpawnNaturalPartIfClean))]
+        static class SpawnNaturalPartIfClean_Patch
+        {
+            [HarmonyPostfix]
+            static void SpawnNaturalPartIfCleanPostfix(ref Thing __result, Pawn pawn, BodyPartRecord part, IntVec3 pos, Map map)
+            {
+                //spawn a biological arm when a shoulder is removed with a healthy arm attached (e.g. from installing a prosthetic on a healthy arm)
+                if (part.LabelShort == "shoulder")
+                {
+                    foreach (BodyPartRecord childPart in part.parts)
+                    {
+                        bool isHealthy = MedicalRecipesUtility.IsClean(pawn, childPart);
+                        QEEMod.TryLog("body part: " + childPart.LabelShort + " IsClean: " + isHealthy);
+
+                        if (childPart.def == BodyPartDefOf.Arm && isHealthy)
+                        {
+                            QEEMod.TryLog("Spawn natural arm from shoulder replacement");
+                            __result = GenSpawn.Spawn(QEThingDefOf.QE_Organ_Arm, pos, map);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// This patch allows GetWorkgiver() to return our custom workgiver, WorkGiver_DoBill_Grower. It will continue on to the vanilla function
         /// if no BillGivers are of this class. 
         /// </summary>
