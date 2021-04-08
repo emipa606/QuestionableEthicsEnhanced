@@ -17,7 +17,7 @@
 
 Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14 bugs fixed, 15 new enhancements, and a few new compatibility patches that were not in QE. [Full list here](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&q=is%3Aissue+is%3Aclosed). Here are the big changes:
 
-* The [Life Support System](https://steamcommunity.com/sharedfiles/filedetails/?id=1778018794) & [Crude Bionics](https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951) have been moved to standalone mods, to improve mod compatibility.
+* The [Life Support System](https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082) & [Crude Bionics](https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951) have been moved to standalone mods, to improve mod compatibility.
 * All descriptions have been re-written with an emphasis on **discoverability** (how do I use this item and where do I obtain it) and **correct grammar**.
 * **Failed cloning no longer causes Cloning Vat ingredient loading to break**. This was a high-impact bug in QE and many people asked for a fix.
 * Nutrient Solution and Protein Mash recipes, output, and costs have been rebalanced across the board. See mod preview image for details.
@@ -45,27 +45,30 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
   * Organ Rejection hediff added when organs are implanted, if the RBSE ModSetting for this is enabled.
 
 **Fully Compatible**
+* Android Tiers - TX Series
 * Bioreactor
 * Combat Extended - no patch required
-* EPOE - Use the version of EPOE posted by Aurani, Victorique, and Tarojun for best compatibility
+* EPOE - Use the 'EPOE - Forked' version posted by Aurani, Victorique, and Tarojun, for best compatibility
 * Harvest Organs Post-Mortem (HOPM) - All natural organs from QEE have a chance to spawn after autopsy
 * Pawnmorpher
-* Races from Lord of the Rims by Jecrell
+* Races from Lord of the Rims by Jecrell (and the LOTR Continued mods by Mile)
 
 **Partially Compatible**
+* [Beta] METRO 2033 - Mutants - Custom AI code that will cause cloned animals to attack colonists or colony buildings
+* Harvest Everything - A lot of duplicate functionality
+* Hospitality - A Postfix from Hospitality can cause performance drain while organ and pawn vats are active/loading. The impact of this drain will be more noticeable with large modlists. To minimize the perf. drain, remove Bills from organ vats when done. The fix for this is non-trivial, but it's on the to-do list.
 * Multiplayer - The multiplayer mode of the game will not work properly, but single player should work fine.
+* Vanilla Factions Expanded - Insectoids - Technically cloneable, but has custom AI code that will cause cloned insectoids to always go Manhunter after cloning
 * Warforged - Warforged pawns can't be cloned (they are robots that have no meat). See the GitHub issue for more details.
 
 **Incompatible**
 * Questionable Ethics
 
-**Investigating...**
-* Harvest Everything (a lot of duplicate functionality)
-
 If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems. [Post an issue on Github for maximum visibility](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues). The more information you include, the easier it will be for me to fix it.
 
 ## Harmony Patches
 * MedicalRecipesUtility.IsClean - Postfix
+* MedicalRecipesUtility.SpawnNaturalPartIfClean - Postfix
 * BillStack.AddBill() - Postfix
 * BillStack.Delete() - Postfix
 * BillUtility.GetWorkgiver() - Prefix
