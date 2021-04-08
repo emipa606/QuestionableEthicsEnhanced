@@ -3,6 +3,7 @@
     <Operation Class="PatchOperationFindMod">
         <mods>
             <li>Lord of the Rims - Dwarves</li>
+            <li>Lord of the Rims - Dwarves (Continued)</li>
         </mods>
         <match Class ="PatchOperationSequence">
             <operations>
