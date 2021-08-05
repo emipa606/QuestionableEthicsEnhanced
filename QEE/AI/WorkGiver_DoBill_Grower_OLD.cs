@@ -56,7 +56,7 @@ namespace QEthics
             b) status is 'Idle'
             c) the usual reservation and forbidden checks pass 
         */
-        public override bool HasJobOnThing(Pawn pawn, Thing aThing, bool forced = false)
+       /** public override bool HasJobOnThing(Pawn pawn, Thing aThing, bool forced = false)
         {
             Building_GrowerBase_WorkTable grower = aThing as Building_GrowerBase_WorkTable;
             IBillGiver billGiver = aThing as IBillGiver;
@@ -122,15 +122,15 @@ namespace QEthics
             }
 
             return true;
-
+            
         }//end HasJobOnThing()
-
-        public override Job JobOnThing(Pawn p, Thing t, bool forced = false)
+       */
+       /** public override Job JobOnThing(Pawn p, Thing t, bool forced = false)
         {
             IBillGiver billGiver = t as IBillGiver;
             Building_GrowerBase_WorkTable grower = t as Building_GrowerBase_WorkTable;
             BillProcessor processor = grower.billProc;
-
+            
             //if null is returned from this function, the game will throw an error. Instead,
             //return this simple wait job to avoid unnecessary errors.
             Job returnJobOnFailure = new Job(JobDefOf.Wait, 5);
@@ -170,7 +170,7 @@ namespace QEthics
             //get the nearest Thing to the Pawn with the same ThingDef
             int countForVat = 0;
             Thing thingToFill = IngredientUtility.ThingPawnShouldRetrieveForBill(theBill, p, ref countForVat);
-            if (thingToFill == null)
+            if(thingToFill == null)
             {
                 grower.billProc.anyBillIngredientsAvailable = false;
                 QEEMod.TryLog("ThingPawnShouldRetrieveForBill() is null for " + theBill.GetUniqueLoadID());
@@ -180,14 +180,14 @@ namespace QEthics
 
             //all checks have passed! Return the Job and notify the grower that it's time to start Filling
             grower.Notify_FillingStarted(theBill);
-
+                
             Job returnJob = new Job(QEJobDefOf.QE_LoadGrowerJob, t, thingToFill);
             returnJob.count = countForVat;
             returnJob.bill = theBill;
             return returnJob;
 
         }//end JobOnThing()
-
+       */
         /// <summary>
         /// Checks if a pawn can be assigned to a bill based on factors including PawnRestrictions, workSkills, etc.
         /// If a bill passes all the checks, it's assigned as the ActiveBill in the billProcessor.
@@ -208,7 +208,7 @@ namespace QEthics
             {
                 Bill_Production theBill = bills[i] as Bill_Production;
 
-                if (!PawnCanDoThisBill(p, theBill, target, out reason))
+                if(!PawnCanDoThisBill(p, theBill, target, out reason))
                 {
                     continue;
                 }
@@ -243,7 +243,7 @@ namespace QEthics
         public bool PawnCanDoThisBill(Pawn p, Bill theBill, LocalTargetInfo target, out string reason)
         {
             reason = GenericFailReasonTrans;
-            if (Find.TickManager.TicksGame < theBill.lastIngredientSearchFailTicks + (QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+            /** (Find.TickManager.TicksGame < theBill.lastIngredientSearchFailTicks + (QEESettings.instance.ingredientCheckIntervalSeconds * 60))
             {
                 reason = RecentIngSearchTrans;
                 return false;
@@ -263,13 +263,7 @@ namespace QEthics
                 return false;
             }
 
-            if (theBill.PawnRestriction != null && theBill.PawnRestriction != p)
-            {
-                reason = string.Format(PawnRestrictionTrans, theBill.PawnRestriction.LabelShort);
-
-                return false;
-            }
-
+            
             if (theBill.recipe.workSkill != null)
             {
                 int level = p.skills.GetSkill(theBill.recipe.workSkill).Level;
@@ -299,9 +293,9 @@ namespace QEthics
                 }
 
                 return false;
-            }
+            }*/
 
-            QEEMod.TryLog(p.LabelShort + " can do bill " + theBill.GetUniqueLoadID());
+            //QEEMod.TryLog(p.LabelShort + " can do bill " + theBill.GetUniqueLoadID());
             return true;
 
         } //end PawnCanDoThisBill()

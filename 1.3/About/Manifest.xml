@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
     <identifier>QuestionableEthicsPlus</identifier>
-    <version>1.4.6.1</version>
+    <version>1.4.5</version>
     <incompatibleWith>
         <li>QuestionableEthics</li>
       <li>QuestionableEthicsEnhanced</li>
@@ -11,5 +11,5 @@
     </suggests>
     <showCrossPromotions>true</showCrossPromotions>
     <manifestUri>https://raw.githubusercontent.com/KongMD-Steam/QuestionableEthicsEnhanced/master/About/Manifest.xml</manifestUri>
-    <downloadUri>https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342</downloadUri>
+    <downloadUri>https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/releases/latest</downloadUri>
 </Manifest>

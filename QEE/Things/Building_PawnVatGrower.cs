@@ -409,7 +409,7 @@ namespace QEthics
                     {
                         int size = 256;
                         RenderTexture renderTextureTemp = new RenderTexture(size, size, 24);
-                        Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
+                        //Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
 
                         renderTexture = renderTextureTemp;
                         Texture2D tempTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);

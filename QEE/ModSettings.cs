@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Verse;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ namespace QEthics
 {
     public class QEESettings : ModSettings
     {
-        public static QEESettings instance; 
+        public static QEESettings instance;
         public float maintRateFloat = 1.0f;
         public float organGrowthRateFloat = 1.0f;
         public float cloneGrowthRateFloat = 1.0f;
@@ -91,9 +91,8 @@ namespace QEthics
         /// Using .Translate() is optional, but does allow for localisation.
         /// </summary>
         /// <returns>The (translated) mod name.</returns>
-        public override string SettingsCategory() => "Questionable Ethics Enhanced";
+        public override string SettingsCategory() => "Questionable Ethics Plus";
     }
 
 
 }
-

@@ -4,7 +4,7 @@
 	<!-- Research Tabs -->
 	<ResearchTabDef>
 		<defName>QE_ResearchTab</defName>
-		<label>Questionable Ethics</label>
+		<label>Questionable Ethics Plus</label>
 	</ResearchTabDef>
 
 	<!-- Main research path to cloning -->
