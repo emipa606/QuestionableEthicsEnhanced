@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-    <identifier>QuestionableEthicsPlus</identifier>
-    <version>1.4.6.1</version>
+    <identifier>QuestionableEthicsEnhanced</identifier>
+    <version>1.4.6.2</version>
     <incompatibleWith>
         <li>QuestionableEthics</li>
-      <li>QuestionableEthicsEnhanced</li>
+      
     </incompatibleWith>
     <suggests>
         <li>1677616980</li> <!-- Bionic icons -->

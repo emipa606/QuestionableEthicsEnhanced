@@ -506,11 +506,10 @@ namespace QEthics
                         {
                             otherVats.AddRange(otherVatGrowers);
                         }
-                        ThingRequest tRequest = ThingRequest.ForDef(QEThingDefOf.QE_GenomeSequencerFilled);
-                        IEnumerable<Thing> validGenomes = Map.listerThings.ThingsMatching(tRequest)?.
-                        Where(thing => !thing.Position.Fogged(Map) && !thing.IsForbidden(Faction.OfPlayer) &&
-                        (thing.stackCount - otherVats.Count(vat => vat.status == CrafterStatus.Filling && vat.orderProcessor.desiredIngredients.FirstOrDefault(req => req.HasThing && req.thing == thing) != null) > 0));
-                        if(validGenomes != null)
+                        IEnumerable<Thing> validGenomes = Map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)?.
+Where(thing => !thing.Position.Fogged(Map) && thing is GenomeSequence && !thing.IsForbidden(Faction.OfPlayer) &&
+(thing.stackCount - otherVats.Count(vat => vat.status == CrafterStatus.Filling && vat.orderProcessor.desiredIngredients.FirstOrDefault(req => req.HasThing && req.thing == thing) != null) > 0));
+                        if (validGenomes != null)
                         {
                             foreach (Thing genomeThing in validGenomes)
                             {
