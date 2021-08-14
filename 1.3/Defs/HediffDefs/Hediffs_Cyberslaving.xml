@@ -13,14 +13,16 @@
 		<description>Nerve Stapled</description>
 		<descriptionHyperlinks><ThingDef>QE_NerveStaple</ThingDef></descriptionHyperlinks>
 		<defaultLabelColor>(0.85, 0.15, 0.35)</defaultLabelColor>
-		<stages>
-			<li>
-				<partEfficiencyOffset>-0.1</partEfficiencyOffset>
-				<statOffsets>
-					<GlobalLearningFactor>-0.8</GlobalLearningFactor>
-				</statOffsets>
-			</li>
-		</stages>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.1</partEfficiencyOffset>
+        <statOffsets>
+          <GlobalLearningFactor>-0.8</GlobalLearningFactor>
+          
+        </statOffsets>
+      </li>
+      
+    </stages>
 		<spawnThingOnRemoved>QE_NerveStaple</spawnThingOnRemoved>
 	</HediffDef>
 </Defs>

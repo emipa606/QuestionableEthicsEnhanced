@@ -11,6 +11,7 @@ namespace QEthics
     {
         public override void ApplyOnPawn(Pawn pawn, BodyPartRecord part, Pawn billDoer, List<Thing> ingredients, Bill bill)
         {
+
             base.ApplyOnPawn(pawn, part, billDoer, ingredients, bill);
 
             //Check if the Hediff got applied.
@@ -24,6 +25,7 @@ namespace QEthics
             if (pawn.Faction != billDoer.Faction)
             {
                 pawn.SetFaction(billDoer.Faction, billDoer);
+               
             }
 
             //Apply thoughts.

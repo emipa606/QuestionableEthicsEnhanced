@@ -91,7 +91,7 @@ namespace QEthics
         /// Using .Translate() is optional, but does allow for localisation.
         /// </summary>
         /// <returns>The (translated) mod name.</returns>
-        public override string SettingsCategory() => "Questionable Ethics Plus";
+        public override string SettingsCategory() => "Questionable Ethics Enhanced";
     }
 
 
