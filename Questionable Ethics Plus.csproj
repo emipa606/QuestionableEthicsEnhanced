@@ -147,7 +147,6 @@
     <Content Include="1.3\Defs\WorkGiverDefs\WorkGivers_Grower.xml" />
     <Content Include="1.3\Defs\WorkTypeDefs\WorkTypes_QuestionableEthics.xml" />
     <Content Include="1.3\Patches\Compat_Arachne.xml" />
-    <Content Include="1.3\Patches\Compat_EvolvedOrgans.xml" />
     <Content Include="1.3\Patches\Compat_LOTR_Dwarves.xml" />
     <Content Include="1.3\Patches\Compat_LOTR_Elves.xml" />
     <Content Include="1.3\Patches\Compat_LOTR_Hobbits.xml" />
