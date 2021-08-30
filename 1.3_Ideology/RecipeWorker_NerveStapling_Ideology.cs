@@ -23,11 +23,9 @@ namespace QEthics
 
 			//Convert to billDoer faction.
 			bool isColonist = pawn.Faction == billDoer.Faction;
-			if (pawn.Faction != billDoer.Faction)
-			{
+			
 				CyberEnslave(billDoer, pawn);
 
-			}
 			//Apply thoughts.
 			pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_RecentlyNerveStapled);
 			pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledMe, billDoer);

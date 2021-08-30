@@ -1,22 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Questionable Ethics Enhanced</name>
-	<author>Mario55770</author>
-	<packageId>Mario55770.qee</packageId>
-	<supportedVersions>
+  <name>Questionable Ethics Enhanced</name>
+  <author>Mario55770</author>
+  <packageId>Mario.QEE</packageId>
+  <supportedVersions>
     <li>1.3</li>
-	</supportedVersions>
-	<modDependencies>
-		<li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li>
-	</modDependencies>
-	<description>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <description>
     ATTENTION. This mod needs to go after humanoid alien races, and before any other race mods.
-    ATTENTION. Colored mood bars is incompatable. Theoretically less errors occur putting it before there, but I can't figure out why, so at least for now Im marking it incompatable and leaving it at that. Use at your own risk.
     
     If any of the past authors want me to take this down, I will do so. However, I made this so theres at least a 1.3 up today.
     Contains organ growing, organ extraction, animal/humanoid cloning, brain reprogramming... and all manner of ethically questionable stuff!
@@ -32,5 +31,6 @@
 * &lt;b&gt;Enhancements&lt;/b&gt; to the original Questionable Ethics mod
 
 Thanks to Mehni for getting me answers to the questions I needed to get this thing done. 
+Thanks StatistNo1(current mod dev at evolved organs redux) for dealing with my stupidity and assisting. 
 Supports Alien Races out of the box. See the mod description page on Steam for more details!</description>
 </ModMetaData>

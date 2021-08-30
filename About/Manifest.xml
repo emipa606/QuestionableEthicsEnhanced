@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
   <identifier>QuestionableEthicsEnhanced</identifier>
-  <version>1.4.6.4</version>
+  <version>1.4.7</version>
   <incompatibleWith>
     <li>QuestionableEthics</li>
   </incompatibleWith>
@@ -9,9 +9,6 @@
     <li>1677616980</li>
     <!-- Bionic icons -->
   </suggests>
-  <incompatibleWith>
-    <li>CMColorCodedMoodBar[1.1+]</li>
-    </incompatibleWith>
   <loadAfter>
   <li>HumanoidAlienRaces</li>
   </loadAfter>

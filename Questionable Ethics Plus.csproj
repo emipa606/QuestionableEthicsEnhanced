@@ -30,7 +30,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>Questionable_Ethics_Plus</RootNamespace>
+    <RootNamespace>QEthics</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -158,7 +158,8 @@
     <Content Include="1.3\Patches\Patch_Compatibility_TiberiumRim.xml" />
     <Content Include="1.3\Patches\Patch_Organs.xml" />
     <Content Include="1.3\Patches\Patch_Relations.xml" />
-    <Content Include="1.3\Patches\Ideology_Features.xml" />
+    <Content Include="1.3_Ideology\Patches\Ideology_Features.xml" />
+    <Content Include="LoadFolders.xml" />
     <Content Include="About\About.xml" />
     <Content Include="About\Manifest.xml" />
     <Content Include="About\Preview.png" />
@@ -228,7 +229,9 @@
     <Content Include="Textures\Things\Item\Resource\ProteinMash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1.3\Ideology_Features\RecipeWorker_NerveStapling_Ideology.cs" />
+    <Compile Include="1.3_Ideology\QEE_HediffCompProperties_CyberSuppressed.cs" />
+    <Compile Include="1.3_Ideology\QEE_HediffComp_CyberSuppresed.cs" />
+    <Compile Include="1.3_Ideology\RecipeWorker_NerveStapling_Ideology.cs" />
     <Compile Include="QEE\AI\JobDriver_DepositIntoGrower.cs" />
     <Compile Include="QEE\AI\JobDriver_ExtractGrowerProduct.cs" />
     <Compile Include="QEE\AI\JobDriver_ExtractProductFromGrower.cs" />

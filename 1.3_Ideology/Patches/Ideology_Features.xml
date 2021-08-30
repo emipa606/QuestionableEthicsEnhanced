@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/workerClass</xpath>
+        <value>
+          <workerClass>QEthics.RecipeWorker_NerveStapling_Ideology</workerClass>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/description</xpath>
+        <value>
+          <description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them.</description>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/HediffDef[defName="QE_NerveStaple"]</xpath>
+    <value>
+      <comps>
+        <li Class="QEthics.QEE_HediffCompProperties_CyberSuppressed"/>
+      </comps>
+    </value>
+  </Operation>
+</Patch>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <loadFolders>
-	<v1.3>
-		<li>1.3</li>
-		<li IfModActive="Ludeon.Rimworld.Ideology">Ideology_Features</li>
-	</v1.3>
+<v1.3>
+  <li>1.3</li>
+  <li IfModActive="Ludeon.Rimworld.Ideology">1.3_Ideology</li>
+</v1.3>
 </loadFolders>
