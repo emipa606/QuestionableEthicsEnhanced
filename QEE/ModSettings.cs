@@ -18,7 +18,7 @@ namespace QEthics
         public int maxCloningTimeDays = 60;
         public int ingredientCheckIntervalSeconds = 3;
         public bool brainTemplatingRequiresClone = true;
-        //public bool doIdeologyFeatures = true;
+        public bool doIdeologyFeatures = true;
         public QEESettings()
         {
             instance = this;
@@ -40,7 +40,7 @@ namespace QEthics
             Scribe_Values.Look(ref maxCloningTimeDays, "maxCloningTimeDays", 60);
             Scribe_Values.Look(ref ingredientCheckIntervalSeconds, "ingredientCheckIntervalSeconds", 3);
             Scribe_Values.Look(ref brainTemplatingRequiresClone, "brainTemplatingRequiresClone", true);
-            //Scribe_Values.Look(ref doIdeologyFeatures, "doIdeologyFeatures", true);
+            Scribe_Values.Look(ref doIdeologyFeatures, "doIdeologyFeatures", true);
             base.ExposeData();
         }
     }
@@ -75,8 +75,13 @@ namespace QEthics
             listingStandard.CheckboxLabeled("QE_GiveCloneNegativeThought".Translate(), ref QEESettings.instance.giveCloneNegativeThought, "QE_GiveCloneNegativeThoughtTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_BrainTemplatingRequiresClone".Translate(), ref QEESettings.instance.brainTemplatingRequiresClone, "QE_BrainTemplatingRequiresCloneTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_DebugLogging".Translate(), ref QEESettings.instance.debugLogging, "QE_DebugLoggingTooltip".Translate());
-            //listingStandard.CheckboxLabeled("QE_DoIdeologyFeatures".Translate(), ref QEESettings.instance.doIdeologyFeatures, "QE_Use the ideology features(requires ideology)".Translate());
-            listingStandard.End();
+            //TODO if Ideology is installed, show the config for if the features should be used. 
+            //if (Verse.ModLister.IdeologyInstalled)
+            //if (Verse.ModLister.GetActiveModWithIdentifier(Verse.ModContentPack.IdeologyModPackageId).Active)
+                //{
+                listingStandard.CheckboxLabeled("Enable Ideology Features(Requires Ideology)", ref QEESettings.instance.doIdeologyFeatures, "Whether or not to use the ideology feature. Requires restart");
+            //}
+                listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }
 

@@ -85,6 +85,9 @@
 			<categories>
 				<li>MeatRaw</li>
 			</categories>
+      <disallowedThingDefs>
+        <li>Meat_QESynthMeat</li>
+      </disallowedThingDefs>
 		</defaultIngredientFilter>
 		<products>
 			<QE_ProteinMash>25</QE_ProteinMash>
@@ -173,7 +176,7 @@
 			</thingDefs>
 		</defaultIngredientFilter>
 		<products>
-			<Meat_QESynthMeat>50</Meat_QESynthMeat>
+			<Meat_QESynthMeat>80</Meat_QESynthMeat>
 		</products>
 		<recipeUsers>
 			<li>ElectricStove</li>
