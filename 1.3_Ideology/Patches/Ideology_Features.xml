@@ -11,7 +11,7 @@
       <li Class="PatchOperationReplace">
         <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/description</xpath>
         <value>
-          <description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them.</description>
+          <description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them. Automatically shuts down any signs of mental breaks.</description>
         </value>
       </li>
       <li Class="PatchOperationAdd">

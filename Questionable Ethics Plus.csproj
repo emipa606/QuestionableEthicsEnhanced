@@ -114,6 +114,8 @@
     <None Include="QEE\Art\QEE_Previews_Modsettings.xcf" />
     <None Include="QEE\Art\QEE_Vat.xcf" />
     <None Include="QEE\CopyFilesToModFolder.ps1" />
+    <None Include="QEE\Legacy\.vs\slnx.sqlite" />
+    <None Include="QEE\Legacy\.vs\VSWorkspaceState.json" />
     <None Include="QEE\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="QEE\obj\Debug\QEE.csproj.AssemblyReference.cache" />
     <None Include="QEE\obj\Debug\QEE.csproj.CoreCompileInputs.cache" />
@@ -122,6 +124,7 @@
   <ItemGroup>
     <Content Include="1.3\Assemblies\QuestionableEthicsEnhanced.dll" />
     <Content Include="1.3\Defs\HediffDefs\Hediffs_Clone.xml" />
+    <Content Include="1.3\Defs\HediffDefs\Hediffs_NeuralDisruption.xml" />
     <Content Include="1.3\Defs\HediffDefs\Hediffs_Cyberslaving.xml" />
     <Content Include="1.3\Defs\HediffDefs\Hediffs_Rejection.xml" />
     <Content Include="1.3\Defs\JobDefs\Jobs_Cloning.xml" />
@@ -159,6 +162,7 @@
     <Content Include="1.3\Patches\Patch_Compatibility_TiberiumRim.xml" />
     <Content Include="1.3\Patches\Patch_Organs.xml" />
     <Content Include="1.3\Patches\Patch_Relations.xml" />
+    <Content Include="1.3_Ideology\HistoryEventDefs.xml" />
     <Content Include="1.3_Ideology\Patches\Ideology_Features.xml" />
     <Content Include="1.3_Ideology\Precepts\QE_NerveStaplingPrecepts.xml" />
     <Content Include="LoadFolders.xml" />
@@ -231,9 +235,9 @@
     <Content Include="Textures\Things\Item\Resource\ProteinMash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1.3_Ideology\PatchOperationdoIdeoFeatures.cs" />
-    <Compile Include="1.3_Ideology\QEE_HediffCompProperties_CyberSuppressed.cs" />
-    <Compile Include="1.3_Ideology\QEE_HediffComp_CyberSuppresed.cs" />
+    <Compile Include="1.3_Ideology\Patches\PatchOperationdoIdeoFeatures.cs" />
+    <Compile Include="1.3_Ideology\Hediffs\QEE_HediffCompProperties_CyberSuppressed.cs" />
+    <Compile Include="1.3_Ideology\Hediffs\QEE_HediffComp_CyberSuppresed.cs" />
     <Compile Include="1.3_Ideology\RecipeWorker_NerveStapling_Ideology.cs" />
     <Compile Include="QEE\AI\JobDriver_DepositIntoGrower.cs" />
     <Compile Include="QEE\AI\JobDriver_ExtractGrowerProduct.cs" />
@@ -253,6 +257,8 @@
     <Compile Include="QEE\AI\WorkGiver_MaintainGrower.cs" />
     <Compile Include="QEE\Alerts\Alert_GrowerMaintence.cs" />
     <Compile Include="QEE\Alerts\Alert_MaintenanceLow.cs" />
+    <Compile Include="QEE\Legacy\Legacy_GrowerRecipeDef.cs" />
+    <Compile Include="QEE\Legacy\Legacy_VatGrower.cs" />
     <Compile Include="QEE\ModSettings.cs" />
     <Compile Include="QEE\CompatibilityTracker.cs" />
     <Compile Include="QEE\Compatibility\AlienRaceCompat.cs" />
@@ -271,8 +277,6 @@
     <Compile Include="QEE\DefOfs\QEWorkTypeDefOf.cs" />
     <Compile Include="QEE\Defs\BackstoryDef.cs" />
     <Compile Include="QEE\HarmonyPatches.cs" />
-    <Compile Include="QEE\Legacy\Legacy_GrowerRecipeDef.cs" />
-    <Compile Include="QEE\Legacy\Legacy_VatGrower.cs" />
     <Compile Include="QEE\Logic\BillProcessor.cs" />
     <Compile Include="QEE\Logic\ComparableSkillRecord.cs" />
     <Compile Include="QEE\Logic\ExposedTraitEntry.cs" />
@@ -317,6 +321,7 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include="Assemblies\" />
+    <Folder Include="QEE\Legacy\.vs\Legacy\v16\" />
     <Folder Include="QEE\obj\Debug\TempPE\" />
     <Folder Include="QEE\obj\Release\" />
   </ItemGroup>

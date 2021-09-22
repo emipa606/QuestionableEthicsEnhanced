@@ -52,11 +52,12 @@ namespace QEthics
 				bool everEnslaved = stapledPawn.guest.EverEnslaved;
 				stapledPawn.guest.SetGuestStatus(surgeon.Faction, GuestStatus.Slave);
 				Messages.Message("MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon), new LookTargets(stapledPawn, surgeon), MessageTypeDefOf.NeutralEvent);
-				Find.HistoryEventsManager.RecordEvent(new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, surgeon.Named(HistoryEventArgsNames.Doer)));
-				if (!everEnslaved)
+				Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHediffDefOf.NerveStapled, surgeon.Named(HistoryEventArgsNames.Doer)));
+				//HistoryEventDefOf.EnslavedPrisoner
+				/**if (!everEnslaved)
 				{
 					Find.HistoryEventsManager.RecordEvent(new HistoryEvent(HistoryEventDefOf.EnslavedPrisonerNotPreviouslyEnslaved, surgeon.Named(HistoryEventArgsNames.Doer)));
-				}
+				}*/
 			}
 		}
 	}

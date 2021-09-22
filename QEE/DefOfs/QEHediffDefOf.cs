@@ -10,5 +10,6 @@ namespace QEthics
         public static HediffDef QE_BrainTemplated;
         public static HediffDef QE_Headache;
         public static HediffDef QE_OrganRejection;
+        public static HediffDef QE_NeuralDisruption;
     }
 }
