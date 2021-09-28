@@ -36,11 +36,13 @@ namespace QEthics
 				{
 					if (isColonist)
 					{
-						thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledColonist);
+						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledColonist, billDoer.Named(HistoryEventArgsNames.Doer)));
+						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledColonist);
 					}
 					else
 					{
-						thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledPawn);
+						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledPawn, billDoer.Named(HistoryEventArgsNames.Doer)));
+						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledPawn);
 					}
 				}
 			}
@@ -52,7 +54,7 @@ namespace QEthics
 				bool everEnslaved = stapledPawn.guest.EverEnslaved;
 				stapledPawn.guest.SetGuestStatus(surgeon.Faction, GuestStatus.Slave);
 				Messages.Message("MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon), new LookTargets(stapledPawn, surgeon), MessageTypeDefOf.NeutralEvent);
-				Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHediffDefOf.NerveStapled, surgeon.Named(HistoryEventArgsNames.Doer)));
+				
 				//HistoryEventDefOf.EnslavedPrisoner
 				/**if (!everEnslaved)
 				{

@@ -4,8 +4,9 @@ using Verse;
 namespace QEthics
 {
     [DefOf]
-    public static class QEHediffDefOf
+    public static class QEHistoryDefOf
     {
-        public static HistoryDef NerveStapled;
+        public static HistoryEventDef NerveStapledPawn;
+        public static HistoryEventDef NerveStapledColonist;
     }
 }
