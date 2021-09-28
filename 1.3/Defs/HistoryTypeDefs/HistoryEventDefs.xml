@@ -1,5 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
-<HistoryEventDef>
-    <defName>NerveStapled</defName>
-    <label>A pawn has been nerve stapled.</label>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <HistoryEventDef>
+    <defName>NerveStapledColonist</defName>
+    <label>A colonist has been nerve stapled.</label>
   </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>NerveStapledPawn</defName>
+    <label>A colonist has been nerve stapled.</label>
+  </HistoryEventDef>
+</Defs>

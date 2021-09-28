@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IssueDef>
+    <defName>QE_NerveStapling</defName>
+    <label>Nerve Stapling</label>
+    <iconPath>UI/Issues/Slavery</iconPath>
+  </IssueDef>
+<PreceptDef>
+  <defName>QE_NerveStaplingAbhorrent</defName>
+  <issue>QE_NerveStapling</issue>
+  <label>abhorrent</label>
+  <description>Taking away the free will of someone, and reducing them just to manual labor is incredibly and undeniably unethical.</description>
+  <impact>Low</impact>
+  <displayOrderInIssue>20</displayOrderInIssue>
+  <displayOrderInImpact>1000</displayOrderInImpact>
+  <associatedMemes>
+    <li>HumanPrimacy</li>
+    <li>FleshPurity</li>
+  </associatedMemes>
+  <comps>
+    <li Class="QEthics.PreceptComp_NerveStaple">
+      <eventDef>NerveStapledPawn</eventDef>
+      <thought>QE_NerveStapledPawn</thought>
+      
+      </li>
+    <li Class="QEthics.PreceptComp_NerveStaple">
+      <eventDef>NerveStapledColonist</eventDef>
+      <thought>QE_NerveStapledColonist</thought>
+    </li>
+  </comps>
+</PreceptDef>
+</Defs>
