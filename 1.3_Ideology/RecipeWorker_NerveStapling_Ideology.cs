@@ -24,7 +24,7 @@ namespace QEthics
 			//Convert to billDoer faction.
 			bool isColonist = pawn.Faction == billDoer.Faction;
 			
-				CyberEnslave(billDoer, pawn);
+				
 
 			//Apply thoughts.
 			pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_RecentlyNerveStapled);
@@ -37,15 +37,16 @@ namespace QEthics
 					if (isColonist)
 					{
 						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledColonist, billDoer.Named(HistoryEventArgsNames.Doer)));
-						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledColonist);
+						
 					}
 					else
 					{
 						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledPawn, billDoer.Named(HistoryEventArgsNames.Doer)));
-						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledPawn);
+						
 					}
 				}
 			}
+			CyberEnslave(billDoer, pawn);
 		}
 		public static void CyberEnslave(Pawn surgeon, Pawn stapledPawn)
 		{ 

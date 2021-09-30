@@ -18,14 +18,16 @@
     <li>FleshPurity</li>
   </associatedMemes>
   <comps>
-    <li Class="QEthics.PreceptComp_NerveStaple">
+    <li Class="PreceptComp_KnowsMemoryThought">
       <eventDef>NerveStapledPawn</eventDef>
       <thought>QE_NerveStapledPawn</thought>
+      <description>test</description>
       
       </li>
-    <li Class="QEthics.PreceptComp_NerveStaple">
+    <li Class="PreceptComp_KnowsMemoryThought">
       <eventDef>NerveStapledColonist</eventDef>
       <thought>QE_NerveStapledColonist</thought>
+      <description>test</description>
     </li>
   </comps>
 </PreceptDef>

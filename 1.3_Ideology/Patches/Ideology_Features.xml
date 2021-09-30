@@ -23,13 +23,14 @@
         </value>
       </li>
 
-        <!--precepts added...hopefully-->
+        <!--precepts added...hopefully
       <li Class="PatchOperationAdd">
         <xpath>/Defs/PreceptDef[defName = "QE_NerveStaplingAbhorrent"]/comps</xpath>
         <value>
           <li>QE_NerveStaplingPrecepts</li>
         </value>
       </li>
+      -->
       </operations>
   </Operation>
 </Patch>
