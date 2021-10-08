@@ -23,14 +23,49 @@
         </value>
       </li>
 
-        <!--precepts added...hopefully
+        <!--Tells flesh purity meme to require nerve stapling as unacceptable-->
       <li Class="PatchOperationAdd">
-        <xpath>/Defs/PreceptDef[defName = "QE_NerveStaplingAbhorrent"]/comps</xpath>
+        <xpath>/Defs/MemeDef[defName="FleshPurity"]/requireOne</xpath>
         <value>
-          <li>QE_NerveStaplingPrecepts</li>
+          <li><li>QE_NerveStaplingAbhorrent</li>
+          </li>
         </value>
       </li>
-      -->
-      </operations>
+      <!--patches slavery to exclude the possiblity of having nerve stapling approved but slavery disapproved by adding exclusion tag-->
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Abhorrent"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Horrible"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Disapproved"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <!--add incompatiblity with organ in vats and organ use totally abhorrent-->
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/PreceptDef[defName="OrganUse_Abhorrent"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>organusetotallyabhorrent</li>
+          </exclusionTags>
+        </value>
+      </li>
+      
+    </operations>
   </Operation>
 </Patch>
