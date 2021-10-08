@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IssueDef>
+    <defName>QE_BrainScanning</defName>
+    <label>BrainScanning</label>
+    <iconPath>UI/Issues/BodyModifications</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>QE_BrainScanningAbhorrent</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Unethical</label>
+    <description>BrainScanning bad placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    
+  </PreceptDef>
+  <PreceptDef>
+    <defName>QE_BrainScanningNeutral</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Neutral</label>
+    <description>BrainScanning neutral placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>cloningbadbrainscangood</li>
+    </exclusionTags>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>QE_BrainScanningApproved</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Approved</label>
+    <description>BrainScanning Good placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>cloningbadbrainscangood</li>
+    </exclusionTags>
+  </PreceptDef>
+  
+</Defs>

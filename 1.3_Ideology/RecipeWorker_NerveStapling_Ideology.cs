@@ -24,28 +24,29 @@ namespace QEthics
 			//Convert to billDoer faction.
 			bool isColonist = pawn.Faction == billDoer.Faction;
 			
-				CyberEnslave(billDoer, pawn);
+				
 
 			//Apply thoughts.
 			pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_RecentlyNerveStapled);
 			pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledMe, billDoer);
-
-			foreach (Pawn thoughtReciever in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners)
-			{
-				if (thoughtReciever != pawn)
-				{
+			//deprecated for loop that is no longer neccessary. Code now decides whether pawn is colonist or not and sends out the appropiate history event.
+			//foreach (Pawn thoughtReciever in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners)
+			//{
+				//if (thoughtReciever != pawn)
+				//{
 					if (isColonist)
 					{
 						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledColonist, billDoer.Named(HistoryEventArgsNames.Doer)));
-						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledColonist);
+						
 					}
 					else
 					{
 						Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.NerveStapledPawn, billDoer.Named(HistoryEventArgsNames.Doer)));
-						//thoughtReciever.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledPawn);
+						
 					}
-				}
-			}
+				//}
+			//}
+			CyberEnslave(billDoer, pawn);
 		}
 		public static void CyberEnslave(Pawn surgeon, Pawn stapledPawn)
 		{ 
@@ -54,12 +55,6 @@ namespace QEthics
 				bool everEnslaved = stapledPawn.guest.EverEnslaved;
 				stapledPawn.guest.SetGuestStatus(surgeon.Faction, GuestStatus.Slave);
 				Messages.Message("MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon), new LookTargets(stapledPawn, surgeon), MessageTypeDefOf.NeutralEvent);
-				
-				//HistoryEventDefOf.EnslavedPrisoner
-				/**if (!everEnslaved)
-				{
-					Find.HistoryEventsManager.RecordEvent(new HistoryEvent(HistoryEventDefOf.EnslavedPrisonerNotPreviouslyEnslaved, surgeon.Named(HistoryEventArgsNames.Doer)));
-				}*/
 			}
 		}
 	}
