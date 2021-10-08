@@ -198,6 +198,14 @@
 		</products>
 		<researchPrerequisite>QE_OrganVat_SensoryOrgans</researchPrerequisite>
 	</RecipeDef>
+  <RecipeDef ParentName="QE_SmallOrganGrowerRecipeBase">
+    <defName>QE_Natural_Tongue</defName>
+    <label>natural tongue</label>
+    <products>
+      <QE_Organ_Tongue>1</QE_Organ_Tongue>
+    </products>
+    <researchPrerequisite>QE_OrganVat_SensoryOrgans</researchPrerequisite>
+  </RecipeDef>
 	
 	<RecipeDef ParentName="QE_NaturalOrganGrowerRecipeBase">
 		<defName>QE_Natural_Pelvis</defName>
