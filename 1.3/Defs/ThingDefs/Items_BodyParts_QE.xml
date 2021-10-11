@@ -42,6 +42,19 @@
 			<Mass>1</Mass>
 		</statBases>
 	</ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Tongue</defName>
+    <label>tongue</label>
+    <description>A biological human tongue. Allows convinces such as speaking and tasting.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Tongue</RecipeDef>
+      <RecipeDef>QE_InstallNaturalTongue</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
 
 	<ThingDef ParentName="BodyPartNaturalBase">
 		<defName>QE_Organ_Jaw</defName>

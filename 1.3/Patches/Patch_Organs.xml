@@ -50,8 +50,24 @@
 			</li>
 		</operations>
 	</Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Tongue"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Tongue"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Tongue</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
 
-	<Operation Class="PatchOperationSequence">
+  <Operation Class="PatchOperationSequence">
 		<success>Always</success>
 		<operations>
 			<li Class="PatchOperationTest">

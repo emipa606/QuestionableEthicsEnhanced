@@ -8,5 +8,10 @@ namespace QEthics
     {
         public static HistoryEventDef NerveStapledPawn;
         public static HistoryEventDef NerveStapledColonist;
+        public static HistoryEventDef PawnCloned;
+        public static HistoryEventDef GenomeSequenced;
+        public static HistoryEventDef OrganGrown;
+        public static HistoryEventDef BrainScan;
+        public static HistoryEventDef BrainUploaded;
     }
 }

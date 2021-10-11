@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IssueDef>
+    <defName>QE_OrganGrowing</defName>
+    <label>Vat Grown Organs</label>
+    <iconPath>UI/Issues/OrganUse</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>QE_OrganGrowingAbhorrent</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Unethical</label>
+    <description>Organ growing bad placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>QE_OrganGrowingNeutral</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Neutral</label>
+    <description>Organ Growing neutral placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>organusetotallyabhorrent</li>
+    </exclusionTags>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>QE_OrganGrowingApproved</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Approved</label>
+    <description>Organ growing Good placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>organusetotallyabhorrent</li>
+    </exclusionTags>
+  </PreceptDef>
+  
+</Defs>

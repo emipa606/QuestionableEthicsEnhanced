@@ -87,4 +87,30 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_NerveStapledColonist_Approved</defName>
+    <durationDays>8</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>nerve stapled colonist</label>
+        <description>It is unfortunate it was one of our own, but they should be honored to serve us.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>QE_NerveStapledPawn_Approved</defName>
+    <durationDays>8</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>nerve stapled someone</label>
+        <description>What could be more honorable than serving us for the rest of their lives, without any resistance?</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
 </Defs>

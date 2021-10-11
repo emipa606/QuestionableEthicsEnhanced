@@ -329,7 +329,54 @@
 			<li>Human</li>
 		</recipeUsers>
 	</RecipeDef>
-
+  
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>QE_InstallNaturalTongue</defName>
+    <label>install tongue</label>
+    <description>Install a biological tongue.</description>
+    <descriptionHyperlinks>
+      <ThingDef>QE_Organ_Tongue</ThingDef>
+    </descriptionHyperlinks>
+    <workerClass>QEthics.RecipeWorker_InstallNaturalBodyPart</workerClass>
+    <jobString>Installing Tongue.</jobString>
+    <workAmount>1500</workAmount>
+    <skillRequirements>
+      <Medicine>4</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>QE_Organ_Tongue</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>QE_Organ_Tongue</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Tongue</li>
+    </appliedOnFixedBodyParts>
+    <recipeUsers>
+      <li>Human</li>
+    </recipeUsers>
+  </RecipeDef>
+  
 	<RecipeDef ParentName="SurgeryFlesh">
 		<defName>QE_InstallNaturalNose</defName>
 		<label>install nose</label>
