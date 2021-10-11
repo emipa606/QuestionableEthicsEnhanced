@@ -75,8 +75,8 @@ namespace QEthics
             listingStandard.CheckboxLabeled("QE_GiveCloneNegativeThought".Translate(), ref QEESettings.instance.giveCloneNegativeThought, "QE_GiveCloneNegativeThoughtTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_BrainTemplatingRequiresClone".Translate(), ref QEESettings.instance.brainTemplatingRequiresClone, "QE_BrainTemplatingRequiresCloneTooltip".Translate());
             //TODO if Ideology is installed, show the config for if the features should be used. 
-            //if (Verse.ModLister.IdeologyInstalled)
-            if (Verse.ModLister.GetActiveModWithIdentifier(Verse.ModContentPack.IdeologyModPackageId).Active)
+            if (Verse.ModLister.IdeologyInstalled)
+            //if (Verse.ModLister.GetActiveModWithIdentifier(Verse.ModContentPack.IdeologyModPackageId).Active)
             {
                 listingStandard.CheckboxLabeled("Enable Ideology Features(Requires Ideology)", ref QEESettings.instance.doIdeologyFeatures, "Whether or not to use the ideology feature. Requires restart");
             }

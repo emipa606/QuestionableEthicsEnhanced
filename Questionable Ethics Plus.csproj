@@ -153,6 +153,7 @@
     <Content Include="1.3\Defs\ThingDefs\Items_GenomeSequencer.xml" />
     <Content Include="1.3\Defs\ThingDefs\Items_Implants_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThingDefs\Resources_Grower.xml" />
+    <Content Include="1.3\Defs\ThoughtDefs\Thoughts_CloningPrecept.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Memory_VatgrownClone.xml" />
     <Content Include="1.3\Defs\WorkGiverDefs\WorkGivers_Grower.xml" />
@@ -328,6 +329,7 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include="1.3\Assemblies\" />
+    <Folder Include="1.3_Ideology\Replacement Code\" />
     <Folder Include="Assemblies\" />
     <Folder Include="QEE\Legacy\.vs\Legacy\v16\" />
     <Folder Include="QEE\obj\Debug\TempPE\" />
