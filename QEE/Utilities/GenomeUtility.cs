@@ -66,7 +66,8 @@ namespace QEthics
                     AlienRaceCompat.GetFieldsFromAlienComp(pawn, genomeSequence);
                 }
             }
-
+            //Creates a history event.
+            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.GenomeSequenced));
             return genomeThing;
         }
 

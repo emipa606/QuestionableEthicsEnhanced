@@ -9,18 +9,29 @@
     <defName>QE_BrainScanningAbhorrent</defName>
     <issue>QE_BrainScanning</issue>
     <label>Unethical</label>
-    <description>BrainScanning bad placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>Partly implemented brain scan precept. Currently only catches creation of brain scan. Brain scan applied forthcoming</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Unethical</thought>
+         </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Unethical</thought>
+     
+      </li>
+    </comps>
     
   </PreceptDef>
   <PreceptDef>
     <defName>QE_BrainScanningNeutral</defName>
     <issue>QE_BrainScanning</issue>
     <label>Neutral</label>
-    <description>BrainScanning neutral placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>So long as the brain scan is as perfect as it is...what does it matter? The knowledge may make a difference in our very survival.</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
@@ -41,6 +52,18 @@
     <exclusionTags>
       <li>cloningbadbrainscangood</li>
     </exclusionTags>
+  <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Approved</thought>
+         </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Approved</thought>
+     
+      </li>
+    </comps>
   </PreceptDef>
+  
   
 </Defs>

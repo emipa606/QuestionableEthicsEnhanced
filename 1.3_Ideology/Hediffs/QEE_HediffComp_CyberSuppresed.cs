@@ -1,16 +1,19 @@
 ﻿using RimWorld;
 
-public class QEE_HediffComp_CyberSuppressed : Verse.HediffComp
+namespace QEthics
 {
-    public override void CompPostTick(ref float var)
+    public class QEE_HediffComp_CyberSuppressed : Verse.HediffComp
     {
-        //Sets the pawn suppression to max, an rather inelegant, but simple and workable solition to maxing suppression for the 
-        Pawn.needs.TryGetNeed<RimWorld.Need_Suppression>().CurLevelPercentage = Pawn.needs.TryGetNeed<RimWorld.Need_Suppression>().MaxLevel;
-        //if pawn enters an aggressive mental state, anesthese them. Should work with all mental breaks tagged as aggressive.
-        if(Pawn.InAggroMentalState==true ||SlaveRebellionUtility.IsRebelling(Pawn) || PrisonBreakUtility.IsPrisonBreaking(Pawn))
+        public override void CompPostTick(ref float var)
         {
-            Pawn.health.AddHediff(QEthics.QEHediffDefOf.QE_NeuralDisruption);
+            //Sets the pawn suppression to max, an rather inelegant, but simple and workable solition to maxing suppression for the 
+            Pawn.needs.TryGetNeed<RimWorld.Need_Suppression>().CurLevelPercentage = Pawn.needs.TryGetNeed<RimWorld.Need_Suppression>().MaxLevel;
+            //if pawn enters an aggressive mental state, anesthese them. Should work with all mental breaks tagged as aggressive.
+            if ((Pawn.InAggroMentalState == true || SlaveRebellionUtility.IsRebelling(Pawn) || PrisonBreakUtility.IsPrisonBreaking(Pawn)) && QEESettings.instance.neuralDisrupt)
+            {
+                Pawn.health.AddHediff(QEthics.QEHediffDefOf.QE_NeuralDisruption);
+            }
+
         }
-        
     }
 }

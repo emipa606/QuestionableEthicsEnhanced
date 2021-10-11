@@ -329,7 +329,11 @@ namespace QEthics
                     if (QEESettings.instance.giveCloneNegativeThought)
                     {
                         tempPawn.needs?.mood?.thoughts?.memories?.TryGainMemory(QEThoughtDefOf.QE_VatGrownCloneConfusion);
+
                     }
+                    //Adds history event used by precepts, done hear since its easier than patching it just for ideology
+                    Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.PawnCloned));
+
                 }
 
                 //Place new clone on the vat's Interaction Cell

@@ -102,8 +102,6 @@
     <None Include=".git\refs\heads\master" />
     <None Include=".git\refs\remotes\origin\HEAD" />
     <None Include=".vs\ProjectSettings.json" />
-    <None Include=".vs\QEE+\v16\.suo" />
-    <None Include=".vs\QEE\v16\.suo" />
     <None Include=".vs\QuestionableEthicsEnhanced\v16\.suo" />
     <None Include=".vs\slnx.sqlite" />
     <None Include="Docs\QE_Legacy_Save_Instructions.md" />
@@ -153,6 +151,7 @@
     <Content Include="1.3\Defs\ThingDefs\Items_GenomeSequencer.xml" />
     <Content Include="1.3\Defs\ThingDefs\Items_Implants_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThingDefs\Resources_Grower.xml" />
+    <Content Include="1.3\Defs\ThoughtDefs\Thoughts_BrainScanningPrecept.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_CloningPrecept.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Memory_VatgrownClone.xml" />
@@ -329,7 +328,6 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include="1.3\Assemblies\" />
-    <Folder Include="1.3_Ideology\Replacement Code\" />
     <Folder Include="Assemblies\" />
     <Folder Include="QEE\Legacy\.vs\Legacy\v16\" />
     <Folder Include="QEE\obj\Debug\TempPE\" />

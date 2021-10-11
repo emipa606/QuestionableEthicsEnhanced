@@ -56,6 +56,7 @@ namespace QEthics
                         Corpse corpse = TargetThingA as Corpse;
                         Thing genomeSequence = GenomeUtility.MakeGenomeSequence(corpse.InnerPawn, props.outputThingDef);
                         GenPlace.TryPlaceThing(genomeSequence, pawn.Position, pawn.Map, ThingPlaceMode.Near);
+                        Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.GenomeSalvagedFromCorpse)); 
                     }
                 }
             };

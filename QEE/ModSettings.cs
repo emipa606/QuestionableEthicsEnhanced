@@ -18,6 +18,7 @@ namespace QEthics
         public int maxCloningTimeDays = 60;
         public int ingredientCheckIntervalSeconds = 3;
         public bool brainTemplatingRequiresClone = true;
+        public bool neuralDisrupt = true;
         public bool doIdeologyFeatures = true;
         public QEESettings()
         {
@@ -41,6 +42,7 @@ namespace QEthics
             Scribe_Values.Look(ref ingredientCheckIntervalSeconds, "ingredientCheckIntervalSeconds", 3);
             Scribe_Values.Look(ref brainTemplatingRequiresClone, "brainTemplatingRequiresClone", true);
             Scribe_Values.Look(ref doIdeologyFeatures, "doIdeologyFeatures", true);
+            Scribe_Values.Look(ref neuralDisrupt, "neuralDisrupt", true);
             base.ExposeData();
         }
     }
@@ -78,7 +80,8 @@ namespace QEthics
             if (Verse.ModLister.IdeologyInstalled)
             //if (Verse.ModLister.GetActiveModWithIdentifier(Verse.ModContentPack.IdeologyModPackageId).Active)
             {
-                listingStandard.CheckboxLabeled("Enable Ideology Features(Requires Ideology)", ref QEESettings.instance.doIdeologyFeatures, "Whether or not to use the ideology feature. Requires restart");
+                listingStandard.CheckboxLabeled("Enables Neural Disruption on pawns who rebel while nerve stapled.", ref QEESettings.instance.neuralDisrupt, "Whether or not to allow nerve stapling to end violent mental breaks");
+                listingStandard.CheckboxLabeled("Enable Ideology Features", ref QEESettings.instance.doIdeologyFeatures, "Whether or not to use the ideology feature. Requires restart");
             }
             
             //enables debug logging

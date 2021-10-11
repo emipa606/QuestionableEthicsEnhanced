@@ -26,7 +26,8 @@ namespace QEthics
                 Thing brainScan = BrainManipUtility.MakeBrainScan(pawn, props.outputThingDef);
                 GenPlace.TryPlaceThing(brainScan, billDoer.Position, billDoer.Map, ThingPlaceMode.Near);
             }
-
+            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.BrainScan, billDoer.Named(HistoryEventArgsNames.Doer)));
+            
             //Give headache
             pawn.health.AddHediff(QEHediffDefOf.QE_Headache, pawn.health.hediffSet.GetBrain());
         }
