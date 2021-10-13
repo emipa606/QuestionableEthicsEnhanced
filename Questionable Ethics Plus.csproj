@@ -131,11 +131,9 @@
     <Content Include="1.3\Defs\HistoryTypeDefs\HistoryEventDefs.xml" />
     <Content Include="1.3\Defs\JobDefs\Jobs_Cloning.xml" />
     <Content Include="1.3\Defs\JobDefs\Jobs_Grower.xml" />
-    <Content Include="1.3\Defs\LegacyDefs\Legacy_Recipes.xml" />
-    <Content Include="1.3\Defs\LegacyDefs\Legacy_WorkGivers.xml" />
-    <Content Include="1.3\Defs\PreceptDefs\QE_BrainScanPrecepts.xml" />
-    <Content Include="1.3\Defs\PreceptDefs\QE_OrganVatPrecepts.xml" />
-    <Content Include="1.3\Defs\PreceptDefs\QE_CloningPrecepts.xml" />
+    <Content Include="1.3_Ideology\Defs\PreceptDefs\QE_BrainScanPrecepts.xml" />
+    <Content Include="1.3_Ideology\Defs\PreceptDefs\QE_OrganVatPrecepts.xml" />
+    <Content Include="1.3_Ideology\Defs\PreceptDefs\QE_CloningPrecepts.xml" />
     <Content Include="1.3\Defs\RecipeDefs\Recipes_BrainScanning.xml" />
     <Content Include="1.3\Defs\RecipeDefs\Recipes_GenomeSequence.xml" />
     <Content Include="1.3\Defs\RecipeDefs\Recipes_Nutrients.xml" />
@@ -155,6 +153,7 @@
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_CloningPrecept.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Memory_VatgrownClone.xml" />
+    <Content Include="1.3\Defs\ThoughtDefs\Thoughts_OrganGrowingPrecept.xml" />
     <Content Include="1.3\Defs\WorkGiverDefs\WorkGivers_Grower.xml" />
     <Content Include="1.3\Defs\WorkTypeDefs\WorkTypes_QuestionableEthics.xml" />
     <Content Include="1.3\Patches\Compat_Arachne.xml" />
@@ -170,7 +169,7 @@
     <Content Include="1.3\Patches\Patch_Organs.xml" />
     <Content Include="1.3\Patches\Patch_Relations.xml" />
     <Content Include="1.3_Ideology\Patches\Ideology_Features.xml" />
-    <Content Include="1.3\Defs\PreceptDefs\QE_NerveStaplingPrecepts.xml" />
+    <Content Include="1.3_Ideology\Defs\PreceptDefs\QE_NerveStaplingPrecepts.xml" />
     <Content Include="LoadFolders.xml" />
     <Content Include="About\About.xml" />
     <Content Include="About\Manifest.xml" />
@@ -241,9 +240,9 @@
     <Content Include="Textures\Things\Item\Resource\ProteinMash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1.3\HediffComps\QEE_HediffCompProperties_CyberSuppressed.cs" />
+    <Compile Include="1.3\HediffComps\QEE_HediffComp_CyberSuppresed.cs" />
     <Compile Include="1.3_Ideology\Patches\PatchOperationdoIdeoFeatures.cs" />
-    <Compile Include="1.3_Ideology\Hediffs\QEE_HediffCompProperties_CyberSuppressed.cs" />
-    <Compile Include="1.3_Ideology\Hediffs\QEE_HediffComp_CyberSuppresed.cs" />
     <Compile Include="1.3_Ideology\RecipeWorker_NerveStapling_Ideology.cs" />
     <Compile Include="QEE\AI\JobDriver_DepositIntoGrower.cs" />
     <Compile Include="QEE\AI\JobDriver_ExtractGrowerProduct.cs" />
@@ -328,8 +327,11 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include="1.3\Assemblies\" />
+    <Folder Include="1.3\Defs\LegacyDefs\" />
+    <Folder Include="1.3_Ideology\Things\" />
+    <Folder Include="1.3_Ideology\Utilities\" />
     <Folder Include="Assemblies\" />
-    <Folder Include="QEE\Legacy\.vs\Legacy\v16\" />
+    <Folder Include="QEE\Legacy\.vs\Legacy\" />
     <Folder Include="QEE\obj\Debug\TempPE\" />
     <Folder Include="QEE\obj\Release\" />
   </ItemGroup>

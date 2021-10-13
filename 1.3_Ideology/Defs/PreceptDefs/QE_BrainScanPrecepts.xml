@@ -9,7 +9,7 @@
     <defName>QE_BrainScanningAbhorrent</defName>
     <issue>QE_BrainScanning</issue>
     <label>Unethical</label>
-    <description>Partly implemented brain scan precept. Currently only catches creation of brain scan. Brain scan applied forthcoming</description>
+    <description>Brain scanning is immoral. Never mind actually uploading it and using it, and ereasing a clones mind.</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
@@ -23,6 +23,11 @@
         <eventDef>BrainScan</eventDef>
         <thought>QE_BrainScanned_Unethical</thought>
      
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainUploaded</eventDef>
+        <thought>QE_BrainUpload_Unethical</thought>
+
       </li>
     </comps>
     
@@ -44,7 +49,7 @@
     <defName>QE_BrainScanningApproved</defName>
     <issue>QE_BrainScanning</issue>
     <label>Approved</label>
-    <description>BrainScanning Good placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>Brainscanning preserves the mind of our own, transferring skills and knowledge forward to a new being, even if the original dies.</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
@@ -62,7 +67,12 @@
         <thought>QE_BrainScanned_Approved</thought>
      
       </li>
-    </comps>
+    <li Class="PreceptComp_KnowsMemoryThought">
+      <eventDef>BrainUploaded</eventDef>
+      <thought>QE_BrainUploaded_Approved</thought>
+
+    </li>
+  </comps>
   </PreceptDef>
   
   

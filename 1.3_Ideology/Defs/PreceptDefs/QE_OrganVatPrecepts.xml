@@ -9,17 +9,23 @@
     <defName>QE_OrganGrowingAbhorrent</defName>
     <issue>QE_OrganGrowing</issue>
     <label>Unethical</label>
-    <description>Organ growing bad placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>We should not grow organs in vats for transplant.</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+            <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>OrganGrown</eventDef>
+        <thought>QE_OrganGrowing_Unethical</thought>
+      </li>
+    </comps>
   </PreceptDef>
   <PreceptDef>
     <defName>QE_OrganGrowingNeutral</defName>
     <issue>QE_OrganGrowing</issue>
     <label>Neutral</label>
-    <description>Organ Growing neutral placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>Vat grown organs are a useful tool for survival. Should we really complain beyond that?</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
@@ -32,7 +38,7 @@
     <defName>QE_OrganGrowingApproved</defName>
     <issue>QE_OrganGrowing</issue>
     <label>Approved</label>
-    <description>Organ growing Good placeholder. Added to allow you to pick it so you dont need dev mode/to restart colony to add</description>
+    <description>Think of the lifes we could save like this. Instead of ripping hearts from people to save others, or clunky prosthetics...we can just...grow them</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
     <displayOrderInImpact>1000</displayOrderInImpact>
@@ -40,6 +46,12 @@
     <exclusionTags>
       <li>organusetotallyabhorrent</li>
     </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>OrganGrown</eventDef>
+        <thought>QE_OrganGrowing_Approved</thought>
+      </li>
+    </comps>
   </PreceptDef>
   
 </Defs>

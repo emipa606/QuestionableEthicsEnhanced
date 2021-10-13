@@ -24,4 +24,29 @@
       </li>
     </stages>
   </ThoughtDef>
+  <!--Brain upload thoughts-->
+  <ThoughtDef>
+    <defName>QE_BrainUpload_Unethical</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>applied brain scan</label>
+        <description>We...we recorded and then overrode a persons thoughts. This...this is...abhorrent.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_BrainUploaded_Approved</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>brain scanned someone</label>
+        <description>We have passed forward thoughts, skills and memories from one individual to another.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>
