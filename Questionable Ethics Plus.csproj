@@ -155,6 +155,7 @@
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_CloningPrecept.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Cyberslaving.xml" />
     <Content Include="1.3\Defs\ThoughtDefs\Thoughts_Memory_VatgrownClone.xml" />
+    <Content Include="1.3\Defs\ThoughtDefs\Thoughts_OrganGrowingPrecept.xml" />
     <Content Include="1.3\Defs\WorkGiverDefs\WorkGivers_Grower.xml" />
     <Content Include="1.3\Defs\WorkTypeDefs\WorkTypes_QuestionableEthics.xml" />
     <Content Include="1.3\Patches\Compat_Arachne.xml" />

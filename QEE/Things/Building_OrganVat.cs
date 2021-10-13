@@ -136,10 +136,12 @@ namespace QEthics
 
             status = CrafterStatus.Crafting;
         }
-
+        
+        //now also does a history event. Should work...I think.
         public override void Notify_CraftingFinished()
         {
             Messages.Message("QE_MessageGrowingDone".Translate(activeRecipe.products[0].thingDef.LabelCap), new LookTargets(this), MessageTypeDefOf.PositiveEvent, false);
+            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.OrganGrown));
         }
 
         public override void Tick_Crafting()
