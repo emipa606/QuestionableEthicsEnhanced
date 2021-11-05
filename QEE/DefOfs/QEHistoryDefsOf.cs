@@ -6,6 +6,7 @@ namespace QEthics
     [DefOf]
     public static class QEHistoryDefOf
     {
+        public static HistoryEventDef GenomeSalvagedFromCorpse;
         public static HistoryEventDef NerveStapledPawn;
         public static HistoryEventDef NerveStapledColonist;
         public static HistoryEventDef PawnCloned;

@@ -19,8 +19,11 @@
         <statOffsets>
           <GlobalLearningFactor>-0.8</GlobalLearningFactor>
         </statOffsets>
-      </li>
+      </li> 
     </stages>
+    <comps>
+      <li Class="QEthics.QEE_HediffCompProperties_CyberSuppressed"/>
+    </comps>
 		<spawnThingOnRemoved>QE_NerveStaple</spawnThingOnRemoved>
 	</HediffDef>
 </Defs>

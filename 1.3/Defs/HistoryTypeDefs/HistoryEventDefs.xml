@@ -18,6 +18,10 @@
     <defName>GenomeSequenced</defName>
     <label>A genome has been sequenced in preperation of cloning efforts</label>
   </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>GenomeSalvagedFromCorpse</defName>
+    <label>A genome has been sequenced from a corpse.</label>
+  </HistoryEventDef>
   <!--organ growing events-->
   <HistoryEventDef>
     <defName>OrganGrown</defName>
