@@ -240,7 +240,6 @@
     <Content Include="Textures\Things\Item\Resource\ProteinMash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1.3\HediffComps\QEE_HediffCompProperties_CyberSuppressed.cs" />
     <Compile Include="1.3\HediffComps\QEE_HediffComp_CyberSuppresed.cs" />
     <Compile Include="1.3_Ideology\Patches\PatchOperationdoIdeoFeatures.cs" />
     <Compile Include="1.3_Ideology\RecipeWorker_NerveStapling_Ideology.cs" />

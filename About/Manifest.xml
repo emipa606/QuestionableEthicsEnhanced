@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
   <identifier>QuestionableEthicsEnhanced</identifier>
-  <version>1.5.2</version>
+  <version>1.5.3</version>
   <incompatibleWith>
     <li>QuestionableEthics</li>
-    <li>Colored Mood Bars</li>
+    <li>Color Coded Mood Bar</li>
   </incompatibleWith>
   <suggests>
     <li>1677616980</li>
