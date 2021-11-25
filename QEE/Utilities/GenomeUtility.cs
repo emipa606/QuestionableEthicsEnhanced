@@ -66,7 +66,8 @@ namespace QEthics
                     AlienRaceCompat.GetFieldsFromAlienComp(pawn, genomeSequence);
                 }
             }
-
+            //Creates a history event.
+            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.GenomeSequenced));
             return genomeThing;
         }
 
@@ -123,7 +124,7 @@ namespace QEthics
                 }
 
                 storyTracker.hairColor = genomeSequence.hairColor;
-                storyTracker.hairDef = genomeSequence.hair ?? PawnHairChooser.RandomHairDefFor(pawn, pawn.Faction.def);
+                //storyTracker.hairDef = genomeSequence.hair ?? PawnHairChooser.RandomHairDefFor(pawn, pawn.Faction.def);
                 storyTracker.melanin = genomeSequence.skinMelanin;
 
                 //headGraphicPath is private, so we need Harmony to set its value

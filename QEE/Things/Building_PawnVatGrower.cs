@@ -329,7 +329,11 @@ namespace QEthics
                     if (QEESettings.instance.giveCloneNegativeThought)
                     {
                         tempPawn.needs?.mood?.thoughts?.memories?.TryGainMemory(QEThoughtDefOf.QE_VatGrownCloneConfusion);
+
                     }
+                    //Adds history event used by precepts, done hear since its easier than patching it just for ideology
+                    Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.PawnCloned));
+
                 }
 
                 //Place new clone on the vat's Interaction Cell
@@ -409,7 +413,7 @@ namespace QEthics
                     {
                         int size = 256;
                         RenderTexture renderTextureTemp = new RenderTexture(size, size, 24);
-                        Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
+                        //Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
 
                         renderTexture = renderTextureTemp;
                         Texture2D tempTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
@@ -506,11 +510,10 @@ namespace QEthics
                         {
                             otherVats.AddRange(otherVatGrowers);
                         }
-                        ThingRequest tRequest = ThingRequest.ForDef(QEThingDefOf.QE_GenomeSequencerFilled);
-                        IEnumerable<Thing> validGenomes = Map.listerThings.ThingsMatching(tRequest)?.
-                        Where(thing => !thing.Position.Fogged(Map) && !thing.IsForbidden(Faction.OfPlayer) &&
-                        (thing.stackCount - otherVats.Count(vat => vat.status == CrafterStatus.Filling && vat.orderProcessor.desiredIngredients.FirstOrDefault(req => req.HasThing && req.thing == thing) != null) > 0));
-                        if(validGenomes != null)
+                        IEnumerable<Thing> validGenomes = Map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)?.
+Where(thing => !thing.Position.Fogged(Map) && thing is GenomeSequence && !thing.IsForbidden(Faction.OfPlayer) &&
+(thing.stackCount - otherVats.Count(vat => vat.status == CrafterStatus.Filling && vat.orderProcessor.desiredIngredients.FirstOrDefault(req => req.HasThing && req.thing == thing) != null) > 0));
+                        if (validGenomes != null)
                         {
                             foreach (Thing genomeThing in validGenomes)
                             {

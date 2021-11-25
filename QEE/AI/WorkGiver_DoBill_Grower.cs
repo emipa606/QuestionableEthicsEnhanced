@@ -122,7 +122,7 @@ namespace QEthics
             }
 
             return true;
-            
+
         }//end HasJobOnThing()
 
         public override Job JobOnThing(Pawn p, Thing t, bool forced = false)
@@ -130,7 +130,7 @@ namespace QEthics
             IBillGiver billGiver = t as IBillGiver;
             Building_GrowerBase_WorkTable grower = t as Building_GrowerBase_WorkTable;
             BillProcessor processor = grower.billProc;
-            
+
             //if null is returned from this function, the game will throw an error. Instead,
             //return this simple wait job to avoid unnecessary errors.
             Job returnJobOnFailure = new Job(JobDefOf.Wait, 5);
@@ -170,7 +170,7 @@ namespace QEthics
             //get the nearest Thing to the Pawn with the same ThingDef
             int countForVat = 0;
             Thing thingToFill = IngredientUtility.ThingPawnShouldRetrieveForBill(theBill, p, ref countForVat);
-            if(thingToFill == null)
+            if (thingToFill == null)
             {
                 grower.billProc.anyBillIngredientsAvailable = false;
                 QEEMod.TryLog("ThingPawnShouldRetrieveForBill() is null for " + theBill.GetUniqueLoadID());
@@ -180,7 +180,7 @@ namespace QEthics
 
             //all checks have passed! Return the Job and notify the grower that it's time to start Filling
             grower.Notify_FillingStarted(theBill);
-                
+
             Job returnJob = new Job(QEJobDefOf.QE_LoadGrowerJob, t, thingToFill);
             returnJob.count = countForVat;
             returnJob.bill = theBill;
@@ -208,7 +208,7 @@ namespace QEthics
             {
                 Bill_Production theBill = bills[i] as Bill_Production;
 
-                if(!PawnCanDoThisBill(p, theBill, target, out reason))
+                if (!PawnCanDoThisBill(p, theBill, target, out reason))
                 {
                     continue;
                 }
@@ -263,9 +263,9 @@ namespace QEthics
                 return false;
             }
 
-            if (theBill.pawnRestriction != null && theBill.pawnRestriction != p)
+            if (theBill.PawnRestriction != null && theBill.PawnRestriction != p)
             {
-                reason = string.Format(PawnRestrictionTrans, theBill.pawnRestriction.LabelShort);
+                reason = string.Format(PawnRestrictionTrans, theBill.PawnRestriction.LabelShort);
 
                 return false;
             }

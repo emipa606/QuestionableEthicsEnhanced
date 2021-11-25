@@ -15,8 +15,8 @@
 
 ## Changes to Questionable Ethics mechanics
 
-Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14 bugs fixed, 15 new enhancements, and a few new compatibility patches that were not in QE. [Full list here](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&q=is%3Aissue+is%3Aclosed). Here are the big changes:
-
+Questionable Ethics Plus is a successor to Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release of QEE, there are 14 bugs fixed, 15 new enhancements, and a few new compatibility patches that were not in QE. [Full list here](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&q=is%3Aissue+is%3Aclosed). Here are the big changes:
+At release of questionable ethics plus, we are 1.3 compatible, may or may not break in old versions, and show up twice in mod settings. 
 * The [Life Support System](https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082) & [Crude Bionics](https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951) have been moved to standalone mods, to improve mod compatibility.
 * All descriptions have been re-written with an emphasis on **discoverability** (how do I use this item and where do I obtain it) and **correct grammar**.
 * **Failed cloning no longer causes Cloning Vat ingredient loading to break**. This was a high-impact bug in QE and many people asked for a fix.

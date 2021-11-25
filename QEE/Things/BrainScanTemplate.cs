@@ -10,10 +10,11 @@ using Verse.AI;
 namespace QEthics
 {
     /// <summary>
-    /// A template of a pawns brain. Stores skills and backstories.
+    /// A template of a pawns brain. Stores skills and backstories
     /// </summary>
     public class BrainScanTemplate : ThingWithComps
     {
+        public Ideo scannedIdeology = null;
         public string sourceName = null;
         public PawnKindDef kindDef = null;
 
@@ -132,7 +133,9 @@ namespace QEthics
                 builder.AppendLine("QE_BrainScanDescription_BackshortChild".Translate() + ": " + backStoryChild.title.CapitalizeFirst());
             if (backStoryAdult != null)
                 builder.AppendLine("QE_BrainScanDescription_BackshortAdult".Translate() + ": " + backStoryAdult.title.CapitalizeFirst());
-
+            //ideo
+            if(scannedIdeology!=null)
+            { builder.AppendLine("Scanned Ideology" + ": " + scannedIdeology); }
             //Skills
             if (!isAnimal && skills.Count > 0)
             {

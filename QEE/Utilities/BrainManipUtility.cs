@@ -101,6 +101,12 @@ namespace QEthics
             BrainScanTemplate brainScan = brainScanThing as BrainScanTemplate;
             if (brainScan != null)
             {
+                //ideology stuff
+                if(pawn.Ideo!=null)
+                {
+
+                    brainScan.scannedIdeology = pawn.Ideo;
+                }
                 //Standard.
                 brainScan.sourceName = pawn?.Name?.ToStringFull ?? null;
                 brainScan.kindDef = pawn?.kindDef ?? null;
@@ -175,6 +181,14 @@ namespace QEthics
         {
             if(thePawn.IsValidBrainScanningTarget())
             {
+                //ideo
+                if(brainScan.scannedIdeology!=null)
+                {
+                    thePawn.ideo.SetIdeo(brainScan.scannedIdeology);
+                    // brainScan.scannedIdeology;
+
+                }
+
                 //Backgrounds
                 Pawn_StoryTracker storyTracker = thePawn.story;
                 if (storyTracker != null)
@@ -257,7 +271,7 @@ namespace QEthics
                         }                       
                     }
                 }
-
+                Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.BrainUploaded));
                 Messages.Message("QE_BrainTemplatingComplete".Translate(thePawn.Named("PAWN")), MessageTypeDefOf.PositiveEvent, false);
             }
         }

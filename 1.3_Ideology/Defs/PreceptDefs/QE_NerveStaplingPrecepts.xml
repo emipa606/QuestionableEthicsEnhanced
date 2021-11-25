@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IssueDef>
+    <defName>QE_NerveStapling</defName>
+    <label>Nerve Stapling</label>
+    <iconPath>UI/Issues/Slavery</iconPath>
+  </IssueDef>
+<PreceptDef>
+  <defName>QE_NerveStaplingAbhorrent</defName>
+  <issue>QE_NerveStapling</issue>
+  <label>abhorrent</label>
+  <description>Taking away the free will of someone, and reducing them just to manual labor is incredibly and undeniably unethical.</description>
+  <impact>Low</impact>
+  <displayOrderInIssue>20</displayOrderInIssue>
+  <displayOrderInImpact>1000</displayOrderInImpact>
+  <defaultSelectionWeight>1</defaultSelectionWeight>
+  <comps>
+    <li Class="PreceptComp_SelfTookMemoryThought">
+      <eventDef>NerveStapledPawn</eventDef>
+      <thought>QE_NerveStapledPawn</thought>
+    </li>
+    <li Class="PreceptComp_SelfTookMemoryThought">
+      <eventDef>NerveStapledColonist</eventDef>
+      <thought>QE_NerveStapledColonist</thought>
+    </li>
+    <li Class="PreceptComp_KnowsMemoryThought">
+      <eventDef>NerveStapledPawn</eventDef>
+      <thought>QE_NerveStapledPawn</thought>
+      <description>No one deserves to lose their free will.</description>
+      
+      </li>
+    <li Class="PreceptComp_KnowsMemoryThought">
+      <eventDef>NerveStapledColonist</eventDef>
+      <thought>QE_NerveStapledColonist</thought>
+      <description>It is even worse taking the free will of one of our own.</description>
+    </li>
+  </comps>
+</PreceptDef>
+  <PreceptDef>
+    <defName>QE_NerveStaplingOutsidersOnly</defName>
+    <issue>QE_NerveStapling</issue>
+    <label>Outsiders Only</label>
+    <description>It is abhorrent to staple one of our own, but an outsider is fair game.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>SlaveryDisapproved</li>
+    </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>NerveStapledColonist</eventDef>
+        <thought>QE_NerveStapledColonist</thought>
+        <description>It is unacceptable to staple one of our own when outsiders can work for us instead.</description>
+      </li>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>NerveStapledColonist</eventDef>
+        <thought>QE_NerveStapledColonist</thought>
+      </li>
+    </comps>
+   
+    
+    
+  </PreceptDef>
+  
+  <PreceptDef>
+    <defName>QE_NerveStaplingNeutral</defName>
+    <issue>QE_NerveStapling</issue>
+    <label>Neutral</label>
+    <description>Nerve stapling is merely what it is. It is nothing exceptional to do anything to survive.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>SlaveryDisapproved</li>
+    </exclusionTags>
+  </PreceptDef>
+  
+  
+  
+ 
+  <PreceptDef>
+    <defName>QE_NerveStaplingApproved</defName>
+    <issue>QE_NerveStapling</issue>
+    <label>Approved</label>
+    <description>It is such an increase in effeciency. And besides, its not like they care anymore, right...?</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>SlaveryDisapproved</li>
+    </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>NerveStapledPawn</eventDef>
+        <thought>QE_NerveStapledPawn_Approved</thought>
+      </li>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>NerveStapledColonist</eventDef>
+        <thought>QE_NerveStapledColonist_Approved</thought>
+       
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>NerveStapledColonist</eventDef>
+        <thought>QE_NerveStapledColonist_Approved</thought>
+        <description>It is honorable for a colonist to serve us unyieldingly. Unfortante if needed, but honorable.</description>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>NerveStapledPawn</eventDef>
+        <thought>QE_NerveStapledPawn_Approved</thought>
+        <description>Removing their resistance greatly increases efficiency, as well as removes some of the ambiguity of keeping an objecting person.</description>
+      </li>
+    </comps>
+  </PreceptDef>
+</Defs>
