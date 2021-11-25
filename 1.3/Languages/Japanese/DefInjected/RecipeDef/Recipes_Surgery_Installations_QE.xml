@@ -31,6 +31,10 @@
   <QE_InstallNaturalLeg.description>生体脚を移植します。</QE_InstallNaturalLeg.description>
   <QE_InstallNaturalLeg.jobString>生体脚を移植中</QE_InstallNaturalLeg.jobString>
 
+  <QE_InstallNaturalTongue.label>生体舌 移植</QE_InstallNaturalTongue.label>
+  <QE_InstallNaturalTongue.description>生体舌を移植します。</QE_InstallNaturalTongue.description>
+  <QE_InstallNaturalTongue.jobString>生体舌を移植中</QE_InstallNaturalTongue.jobString>
+
   <QE_InstallNaturalNose.label>生体鼻 移植</QE_InstallNaturalNose.label>
   <QE_InstallNaturalNose.description>生体鼻を移植します。</QE_InstallNaturalNose.description>
   <QE_InstallNaturalNose.jobString>生体鼻を移植中</QE_InstallNaturalNose.jobString>
