@@ -112,7 +112,16 @@ namespace QEthics
             {
                 QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn...");
                 storyTracker.bodyType = genomeSequence.bodyType;
-                storyTracker.crownType = genomeSequence.crownType;
+                //sanity check to remove possibility of an Undefined crownType
+                if (genomeSequence.crownType == CrownType.Undefined)
+                {
+                    storyTracker.crownType = CrownType.Average;
+                }
+                else
+                {
+                    storyTracker.crownType = genomeSequence.crownType;
+                }
+
                 storyTracker.hairColor = genomeSequence.hairColor;
                 storyTracker.hairDef = genomeSequence.hair ?? PawnHairChooser.RandomHairDefFor(pawn, pawn.Faction.def);
                 storyTracker.melanin = genomeSequence.skinMelanin;

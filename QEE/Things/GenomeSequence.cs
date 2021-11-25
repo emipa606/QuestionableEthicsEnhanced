@@ -21,7 +21,7 @@ namespace QEthics
 
         //Only relevant for humanoids.
         public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
-        public CrownType crownType = CrownType.Undefined;
+        public CrownType crownType = CrownType.Average;
         public List<ExposedTraitEntry> traits = new List<ExposedTraitEntry>();
         public Color hairColor = new Color(0.0f,0.0f,0.0f);
         public float skinMelanin = 0f;
@@ -233,7 +233,7 @@ namespace QEthics
         /// </summary>
         public bool IsValidTemplate()
         {
-            if (sourceName != null && pawnKindDef != null && (sourceName != "QE_BlankGenomeTemplateName".Translate() && gender != Gender.None))
+            if (sourceName != null && sourceName != "QE_BlankGenomeTemplateName".Translate() && pawnKindDef != null)
             {
                 return true;
             }
