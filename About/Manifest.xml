@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
   <identifier>QuestionableEthicsEnhanced</identifier>
-  <version>1.5.4</version>
+  <version>1.5.5</version>
   <incompatibleWith>
     <li>QuestionableEthics</li>
     <li>Color Coded Mood Bar</li>
@@ -11,6 +11,7 @@
   </suggests>
   <loadAfter>
   <li>HumanoidAlienRaces</li>
+  <li>Rah's Bionics and Surgery Expansion</li>
   </loadAfter>
   <showCrossPromotions>true</showCrossPromotions>
   <manifestUri>https://raw.githubusercontent.com/KongMD-Steam/QuestionableEthicsEnhanced/master/About/Manifest.xml</manifestUri>
