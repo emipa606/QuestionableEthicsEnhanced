@@ -12,6 +12,9 @@
   <QE_Organ_Nose.label>鼻（生体）</QE_Organ_Nose.label>
   <QE_Organ_Nose.description>移植用の鼻です。顔面を形成して、匂いと味覚を感じることを可能にします。</QE_Organ_Nose.description>
 
+  <QE_Organ_Tongue.label>舌（生体）</QE_Organ_Tongue.label>
+  <QE_Organ_Tongue.description>移植用の舌です。会話や食事の味を感じたり説得する事を可能にします。</QE_Organ_Tongue.description>
+
   <QE_Organ_Jaw.label>顎（生体）</QE_Organ_Jaw.label>
   <QE_Organ_Jaw.description>移植用の顎です。舌と歯を備えており、食べ物を咀嚼する力と味覚を感じられます。</QE_Organ_Jaw.description>
 

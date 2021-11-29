@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <QE_NerveStapling.label>神経ステープル</QE_NerveStapling.label>
+
+  <QE_NerveStaplingAbhorrent.label>嫌悪</QE_NerveStaplingAbhorrent.label>
+  <QE_NerveStaplingAbhorrent.description>誰かの自由意志を奪って,単純労働に従事させることは,信じがたい行為で,明らかに倫理上許されない行為です.</QE_NerveStaplingAbhorrent.description>
+  <QE_NerveStaplingAbhorrent.comps.2.description>誰であろうと自由意志を奪われるべきではない.</QE_NerveStaplingAbhorrent.comps.2.description>
+  <QE_NerveStaplingAbhorrent.comps.3.description>私たち自身の自由意志を奪うことはさらに悪いことです.</QE_NerveStaplingAbhorrent.comps.3.description>
+
+  <QE_NerveStaplingOutsidersOnly.label>仲間以外</QE_NerveStaplingOutsidersOnly.label>
+  <QE_NerveStaplingOutsidersOnly.description>私たちの仲間の自由意志を奪うのは忌まわしい行為ですが,部外者にそのルールは適用されません.</QE_NerveStaplingOutsidersOnly.description>
+  <QE_NerveStaplingOutsidersOnly.comps.0.eventLabel>部外者を私たちの代わりに労働させても,仲間の1人に神経ステープルを移植することは受け入れられません.</QE_NerveStaplingOutsidersOnly.comps.0.eventLabel>
+
+  <QE_NerveStaplingNeutral.label>中立</QE_NerveStaplingNeutral.label>
+  <QE_NerveStaplingNeutral.description>神経ステープルとは何なのか知るべきです.生き残るための手段に例外はありません.</QE_NerveStaplingNeutral.description>
+
+  <QE_NerveStaplingApproved.label>賛成</QE_NerveStaplingApproved.label>
+  <QE_NerveStaplingApproved.description>効率性を向上させる素晴らしい事に過ぎません.それにもう彼らはもう気にしてないですよ...?</QE_NerveStaplingApproved.description>
+  <QE_NerveStaplingApproved.comps.2.eventLabel>入植者が私たちに対して疑いを持たずに奉仕することは名誉なことです.不幸な事かもしれませんが,立派です.</QE_NerveStaplingApproved.comps.2.eventLabel>
+  <QE_NerveStaplingApproved.comps.3.eventLabel>彼らの抵抗を取り除くことは,労働効率を大幅に向上させて,反抗する人々を維持するのに不必要な不安要素を取り除きます.</QE_NerveStaplingApproved.comps.3.eventLabel>
+
+</LanguageData>
