@@ -15,6 +15,7 @@
   <QE_Natural_Liver.label>肝臓（生体）</QE_Natural_Liver.label>
   <QE_Natural_Lung.label>肺（生体）</QE_Natural_Lung.label>
   <QE_Natural_Nose.label>鼻（生体）</QE_Natural_Nose.label>
+  <QE_Natural_Tongue.label>舌（生体）</QE_Natural_Tongue.label>
   <QE_Natural_Pelvis.label>骨盤（生体）</QE_Natural_Pelvis.label>
   <QE_Natural_Spine.label>背骨（生体）</QE_Natural_Spine.label>
   <QE_Natural_Stomach.label>胃（生体）</QE_Natural_Stomach.label>
@@ -27,6 +28,7 @@
   <QE_Natural_Eye.jobString>未知のレシピです。</QE_Natural_Eye.jobString>
   <QE_Natural_Ear.jobString>未知のレシピです。</QE_Natural_Ear.jobString>
   <QE_Natural_Nose.jobString>未知のレシピです。</QE_Natural_Nose.jobString>
+  <QE_Natural_Tongue.jobString>未知のレシピです。</QE_Natural_Tongue.jobString>
   <QE_Natural_Jaw.jobString>未知のレシピです。</QE_Natural_Jaw.jobString>
   <QE_Natural_Spine.jobString>未知のレシピです。</QE_Natural_Spine.jobString>
   <QE_Natural_Pelvis.jobString>未知のレシピです。</QE_Natural_Pelvis.jobString>

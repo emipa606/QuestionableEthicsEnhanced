@@ -5,7 +5,7 @@
     <ProjectGuid>{56776A13-CA4E-479F-9574-C5C90691D9E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <AssemblyName>ClassLibrary</AssemblyName>
+    <AssemblyName>QEE</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -240,7 +240,6 @@
     <Content Include="Textures\Things\Item\Resource\ProteinMash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1.3\HediffComps\QEE_HediffCompProperties_CyberSuppressed.cs" />
     <Compile Include="1.3\HediffComps\QEE_HediffComp_CyberSuppresed.cs" />
     <Compile Include="1.3_Ideology\Patches\PatchOperationdoIdeoFeatures.cs" />
     <Compile Include="1.3_Ideology\RecipeWorker_NerveStapling_Ideology.cs" />

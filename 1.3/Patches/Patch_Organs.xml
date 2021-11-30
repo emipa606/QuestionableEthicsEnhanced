@@ -84,6 +84,27 @@
 		</operations>
 	</Operation>
 
+
+  <!--Theoretically shouldve been friendly-->
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/BodyPartDef[defName="Stomach"]/spawnThingOnRemoved</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <order>Append</order>
+      <xpath>Defs/BodyPartDef[defName="Stomach"]</xpath>
+      <value>
+        <spawnThingOnRemoved>QE_Organ_Stomach</spawnThingOnRemoved>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/BodyPartDef[defName="Stomach"]/spawnThingOnRemoved</xpath>
+      <value>
+        <spawnThingOnRemoved>QE_Organ_Stomach</spawnThingOnRemoved>
+      </value>
+    </match>
+  </Operation>
+
+  <!--
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
 		<operations>
@@ -100,7 +121,7 @@
 			</li>
 		</operations>
 	</Operation>
-
+-->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
 		<operations>
