@@ -11,7 +11,7 @@
   </suggests>
   <loadAfter>
   <li>HumanoidAlienRaces</li>
-  <li>Rah's Bionics and Surgery Expansion</li>
+  <li>Rah.RBSE</li>
   </loadAfter>
   <showCrossPromotions>true</showCrossPromotions>
   <manifestUri>https://raw.githubusercontent.com/KongMD-Steam/QuestionableEthicsEnhanced/master/About/Manifest.xml</manifestUri>
