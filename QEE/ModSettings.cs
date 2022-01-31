@@ -43,7 +43,7 @@ namespace QEthics
             Scribe_Values.Look(ref ingredientCheckIntervalSeconds, "ingredientCheckIntervalSeconds", 3);
             Scribe_Values.Look(ref brainTemplatingRequiresClone, "brainTemplatingRequiresClone", true);
             Scribe_Values.Look(ref doIdeologyFeatures, "doIdeologyFeatures", true);
-            Scribe_Values.Look(ref oldCloningRender, "doIdeologyFeatures", true);
+            Scribe_Values.Look(ref oldCloningRender, "oldCloningRender", false);
             Scribe_Values.Look(ref neuralDisrupt, "neuralDisrupt", true);
             base.ExposeData();
         }
