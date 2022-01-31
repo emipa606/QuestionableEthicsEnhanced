@@ -72,7 +72,7 @@ namespace QEthics
                 else if (modName.Contains("Rah's Bionics and Surgery Expansion") || modName.Contains("RBSE Hardcore Edition"))
                 {
                     rbseActiveInt = true;
-                    QEEMod.TryLog("RBSE detected");
+                    QEEMod.TryLog("RBSE detected. Make sure it loads first");
                 }
             }
         }

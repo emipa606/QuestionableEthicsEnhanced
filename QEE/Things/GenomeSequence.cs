@@ -27,7 +27,7 @@ namespace QEthics
         public float skinMelanin = 0f;
         public HairDef hair = null;
         public string headGraphicPath = null;
-
+        
         /// <summary>
         /// List containing all hediff def information that should be saved and applied to clones 
         /// </summary>
