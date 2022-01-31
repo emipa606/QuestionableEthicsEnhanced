@@ -114,9 +114,6 @@
     <None Include="QEE\Art\QEE_Vat.xcf" />
     <None Include="QEE\Legacy\.vs\slnx.sqlite" />
     <None Include="QEE\Legacy\.vs\VSWorkspaceState.json" />
-    <None Include="QEE\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="QEE\obj\Debug\QEE.csproj.AssemblyReference.cache" />
-    <None Include="QEE\obj\Debug\QEE.csproj.CoreCompileInputs.cache" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -204,7 +201,6 @@
     <Content Include="QEE\Art\QEE_Previews_Default_Costs.jpg" />
     <Content Include="QEE\Art\QEE_Previews_Modsettings.jpg" />
     <Content Include="QEE\Art\QEVatGlowMask.png" />
-    <Content Include="QEE\obj\Debug\QEE.csproj.FileListAbsolute.txt" />
     <Content Include="Textures\Effects\Organs\Beet_Organ.png" />
     <Content Include="Textures\Effects\Organs\Shinzy_Organ.png" />
     <Content Include="Textures\Effects\Organs\Shinzy_Organ_Eyes.png" />
@@ -310,7 +306,7 @@
     <Folder Include="1.3\Defs\LegacyDefs\" />
     <Folder Include="Assemblies\" />
     <Folder Include="QEE\Legacy\.vs\Legacy\" />
-    <Folder Include="QEE\obj\Debug\TempPE\" />
+    <Folder Include="QEE\obj\Debug\" />
     <Folder Include="QEE\obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
