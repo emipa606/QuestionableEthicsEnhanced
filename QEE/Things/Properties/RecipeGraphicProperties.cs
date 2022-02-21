@@ -8,6 +8,7 @@ using RimWorld;
 
 namespace QEthics
 {
+    
     public class RecipeGraphicProperties : DefModExtension
     {
         /// <summary>

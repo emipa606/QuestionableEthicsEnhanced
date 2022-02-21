@@ -241,13 +241,14 @@ namespace QEthics
 
                 if (pawnBeingGrown.RaceProps.Humanlike && pawnBeingGrown.story != null)
                 {
+                    
                     //HairDef hairDef = PawnHairChooser.RandomHairDefFor(pawnBeingGrown, Faction.def);
                     //pawnBeingGrown.story.hairDef = hairDef;
                     pawnBeingGrown.Drawer.renderer.graphics.ResolveAllGraphics();
                     PortraitsCache.SetDirty(pawnBeingGrown);
                     PortraitsCache.PortraitsCacheUpdate();
                 }
-
+                
                 //set minimum age manually as an extra check against negative ages
                 float minAge = pawnKindToGrow.RaceProps.lifeStageAges.Last().minAge;
                 long calculatedAgeTicks = (long)(minAge * (float)GenDate.TicksPerYear);
@@ -396,6 +397,7 @@ namespace QEthics
 
         public override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
+            Log.Message("TEST");
             //Draw bottom graphic
             Vector3 drawAltitude = drawLoc;
             if (VatGrowerProps.bottomGraphic != null)
@@ -407,41 +409,50 @@ namespace QEthics
             drawAltitude += new Vector3(0f, 0.005f, 0f);
             if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) && pawnBeingGrown != null)
             {
-                if(pawnBeingGrown.RaceProps.Humanlike)
+                //code has been commented out as a seemingly nonworking pawn renderer? Legacy switch has been added
+                if (QEESettings.instance.oldCloningRender)
                 {
-                    if (renderTexture == null)
+                    if (pawnBeingGrown.RaceProps.Humanlike)
                     {
-                        int size = 256;
-                        RenderTexture renderTextureTemp = new RenderTexture(size, size, 24);
-                        //Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
+                        Log.Message("Pawn being grown is humanoid");
+                        if (renderTexture == null)
+                        {
+                            Log.Message("Pawn being grown is nulltexture");
+                            int size = 256;
+                            RenderTexture renderTextureTemp = new RenderTexture(size, size, 24);
+                            //Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
 
-                        renderTexture = renderTextureTemp;
-                        Texture2D tempTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-                        RenderTexture.active = renderTexture;
-                        tempTexture.ReadPixels(new Rect(0, 0, size, size), 0, 0);
-                        tempTexture.Apply();
-                        RenderTexture.active = null;
+                            renderTexture = renderTextureTemp;
+                            Texture2D tempTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
+                            RenderTexture.active = renderTexture;
+                            tempTexture.ReadPixels(new Rect(0, 0, size, size), 0, 0);
+                            tempTexture.Apply();
+                            RenderTexture.active = null;
 
-                        MaterialRequest req2 = new MaterialRequest(tempTexture);
-                        req2.shader = ShaderDatabase.Mote;
-                        renderMaterial = MaterialPool.MatFrom(req2);
+                            MaterialRequest req2 = new MaterialRequest(tempTexture);
+                            req2.shader = ShaderDatabase.Mote;
+                            renderMaterial = MaterialPool.MatFrom(req2);
 
-                        //Log.Message("DrawAt: New render texture");
+                            //Log.Message("DrawAt: New render texture");
+                        }
+
+                        float scale = (0.2f + (CraftingProgressPercent * 0.8f)) * 1.75f;
+
+                        Vector3 scaleVector = new Vector3(scale, 1f, scale);
+                        Matrix4x4 matrix = default(Matrix4x4);
+                        matrix.SetTRS(drawAltitude + VatGrowerProps.productOffset, Quaternion.AngleAxis(0f, Vector3.up), scaleVector);
+
+                        Graphics.DrawMesh(MeshPool.plane10, matrix, renderMaterial, 0);
+                        //pawnBeingGrown.DrawAt(drawAltitude);
                     }
+                    else
+                    { 
 
-                    float scale = (0.2f + (CraftingProgressPercent * 0.8f)) * 1.75f;
-
-                    Vector3 scaleVector = new Vector3(scale, 1f, scale);
-                    Matrix4x4 matrix = default(Matrix4x4);
-                    matrix.SetTRS(drawAltitude + VatGrowerProps.productOffset, Quaternion.AngleAxis(0f, Vector3.up), scaleVector);
-                    
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, renderMaterial, 0);
-                    //pawnBeingGrown.DrawAt(drawAltitude);
-                }
+                         pawnBeingGrown.DrawAt(drawAltitude + VatGrowerProps.productOffset);
+                        }
+                    }
                 else
-                {
-                    pawnBeingGrown.DrawAt(drawAltitude + VatGrowerProps.productOffset);
-                }
+                { pawnBeingGrown.DrawAt(drawAltitude + VatGrowerProps.productOffset); }
             }
 
             //Draw top graphic

@@ -19,6 +19,7 @@ namespace QEthics
         public int ingredientCheckIntervalSeconds = 3;
         public bool brainTemplatingRequiresClone = true;
         public bool neuralDisrupt = true;
+        public bool oldCloningRender = false;
         public bool doIdeologyFeatures = true;
         public QEESettings()
         {
@@ -42,6 +43,7 @@ namespace QEthics
             Scribe_Values.Look(ref ingredientCheckIntervalSeconds, "ingredientCheckIntervalSeconds", 3);
             Scribe_Values.Look(ref brainTemplatingRequiresClone, "brainTemplatingRequiresClone", true);
             Scribe_Values.Look(ref doIdeologyFeatures, "doIdeologyFeatures", true);
+            Scribe_Values.Look(ref oldCloningRender, "oldCloningRender", false);
             Scribe_Values.Look(ref neuralDisrupt, "neuralDisrupt", true);
             base.ExposeData();
         }
@@ -77,6 +79,7 @@ namespace QEthics
             listingStandard.CheckboxLabeled("QE_GiveCloneNegativeThought".Translate(), ref QEESettings.instance.giveCloneNegativeThought, "QE_GiveCloneNegativeThoughtTooltip".Translate());
             listingStandard.CheckboxLabeled("QE_BrainTemplatingRequiresClone".Translate(), ref QEESettings.instance.brainTemplatingRequiresClone, "QE_BrainTemplatingRequiresCloneTooltip".Translate());
             listingStandard.CheckboxLabeled("Enables Neural Disruption on pawns who rebel while nerve stapled.", ref QEESettings.instance.neuralDisrupt, "Whether or not to allow nerve stapling to end violent mental breaks");
+            listingStandard.CheckboxLabeled("Use legacy rendering process", ref QEESettings.instance.oldCloningRender, "This is a deprecated mode of rendering left only as possible compatiblity.");
             //if ideology is installed, show those mod settings
             if (Verse.ModLister.IdeologyInstalled)
             //if (Verse.ModLister.GetActiveModWithIdentifier(Verse.ModContentPack.IdeologyModPackageId).Active)
