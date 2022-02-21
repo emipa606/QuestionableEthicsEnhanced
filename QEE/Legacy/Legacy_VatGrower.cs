@@ -15,6 +15,7 @@ namespace QEthics
     /// </summary>
     public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
     {
+        
         static Building_VatGrower()
         {
             cleanlinessCurve.Add(-5.0f, 5.00f);

@@ -22,7 +22,9 @@
       </li> 
     </stages>
     <comps>
-      <li Class="QEthics.QEE_HediffCompProperties_CyberSuppressed"/>
+      <li>
+        <compClass>QEthics.QEE_HediffComp_CyberSuppressed</compClass>
+      </li>
     </comps>
 		<spawnThingOnRemoved>QE_NerveStaple</spawnThingOnRemoved>
 	</HediffDef>

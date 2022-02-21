@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <QE_CloningAbhorrent.label>嫌悪</QE_CloningAbhorrent.label>
+  <QE_CloningAbhorrent.description>この世界に,試験管の中で創り出された新しい生命をもたらすことは,恐怖そのものであり,倫理に完全に反しています.</QE_CloningAbhorrent.description>
+
+  <QE_CloningNeutral.label>中立</QE_CloningNeutral.label>
+  <QE_CloningNeutral.description>クローニングとは何なのか知るべきです.それは善でも悪でもありません.</QE_CloningNeutral.description>
+
+  <QE_CloningApproved.label>賛成</QE_CloningApproved.label>
+  <QE_CloningApproved.description>クローニングは非常に簡単な作業であって,新しい世代を簡単にもたらします.</QE_CloningApproved.description>
+
+</LanguageData>

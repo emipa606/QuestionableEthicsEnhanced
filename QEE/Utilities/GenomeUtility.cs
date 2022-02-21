@@ -67,8 +67,11 @@ namespace QEthics
                 }
             }
             //Creates a history event.
-            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.GenomeSequenced));
-            return genomeThing;
+            if (!pawn.health.Dead)
+            {
+                Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.GenomeSequenced));
+            }
+                return genomeThing;
         }
 
         public static Pawn MakePawnFromGenomeSequence(GenomeSequence genomeSequence, Thing creator)

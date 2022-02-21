@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.label>臓器を培養した</QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.label>
+  <QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.description>私たちは人工的な臓器を作りました.それは臓器培養槽で培養されたのに自然な臓器と呼ばれていました.</QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.description>
+
+  <QE_OrganGrowing_Approved.stages.grew_organ_in_vat.label>臓器を培養した</QE_OrganGrowing_Approved.stages.grew_organ_in_vat.label>
+  <QE_OrganGrowing_Approved.stages.grew_organ_in_vat.description>私たちは生きているヒトから臓器を奪うことなく培養するのに成功した.この移植用臓器は多くの命を救うことができます.</QE_OrganGrowing_Approved.stages.grew_organ_in_vat.description>
+
+</LanguageData>

@@ -18,4 +18,10 @@
 
   <QE_NerveStapledMe.stages.nerve_stapled_me.label>私は神経ステープルされた</QE_NerveStapledMe.stages.nerve_stapled_me.label>
 
+  <QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.label>入植者が神経ステープルされた</QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.label>
+  <QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.description>それが私たちの仲間に行われてことは残念ですが,彼らは私たちに仕えることを光栄に思うべきです.</QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.description>
+
+  <QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.label>誰かが神経ステープルされた</QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.label>
+  <QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.description>抵抗することもなく,彼らの残りの人生を私たちに奉仕すること以上に名誉なことはありません.</QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.description>
+
 </LanguageData>

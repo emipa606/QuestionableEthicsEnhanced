@@ -13,11 +13,11 @@
 			</li>
 		</stages>
 	</HediffDef>
-
+<!--Appears to be responsible for preventing a second brain scan from being applied. Name and description has been updated for debug readablity.-->
 	<HediffDef>
 		<defName>QE_BrainTemplated</defName>
-		<label>brain templated</label>
-		<description>Brain Templated</description>
+		<label>brain template applied</label>
+		<description>Brain template has been applied at some point in this pawns past. (If you want to reapply one, and are using debug mode to see this, removing this hediff should let you)</description>
 		<defaultLabelColor>(0.8, 0.2, 0.2)</defaultLabelColor>
 		<initialSeverity>1.0</initialSeverity>
 		<stages>

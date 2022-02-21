@@ -46,7 +46,8 @@ namespace QEthics
             {
                 if (!BackstoryDatabase.TryGetWithIdentifier(childhoodIdentifier, out backStoryChild, true))
                 {
-                    Log.Error("Couldn't load child backstory with identifier " + childhoodIdentifier + ". Giving random.", false);
+                    //removed the booleans as it appears to be obsolete
+                    Log.Error("Couldn't load child backstory with identifier " + childhoodIdentifier + ". Giving random.");
                     backStoryChild = BackstoryDatabase.RandomBackstory(BackstorySlot.Childhood);
                 }
             }
@@ -57,7 +58,8 @@ namespace QEthics
             {
                 if (!BackstoryDatabase.TryGetWithIdentifier(adulthoodIdentifier, out backStoryAdult, true))
                 {
-                    Log.Error("Couldn't load adult backstory with identifier " + adulthoodIdentifier + ". Giving random.", false);
+                    //removed boolean as it appeared to be obsolete
+                    Log.Error("Couldn't load adult backstory with identifier " + adulthoodIdentifier + ". Giving random.");
                     backStoryAdult = BackstoryDatabase.RandomBackstory(BackstorySlot.Adulthood);
                 }
             }
