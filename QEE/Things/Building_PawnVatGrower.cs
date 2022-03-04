@@ -397,7 +397,6 @@ namespace QEthics
 
         public override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
-            Log.Message("TEST");
             //Draw bottom graphic
             Vector3 drawAltitude = drawLoc;
             if (VatGrowerProps.bottomGraphic != null)
