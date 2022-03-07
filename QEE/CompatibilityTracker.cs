@@ -57,7 +57,7 @@ namespace QEthics
                 }
 
                 //Enhanced compatibility mods
-                else if (modName.Contains("Humanoid Alien Races 2.0"))
+                else if (modName.Contains("Humanoid Alien Races"))
                 {
                     alienRacesActiveInt = true;
                     QEEMod.TryLog("Humanoid Alien Races detected");

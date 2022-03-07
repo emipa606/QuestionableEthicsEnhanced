@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
 	<identifier>QuestionableEthicsEnhanced</identifier>
-	<version>1.5.3</version>
+	<version>1.5.8</version>
 	<incompatibleWith>
 		<li>QuestionableEthics</li>
 		<li>Colored Mood Bars</li>
@@ -19,4 +19,23 @@
 	<showCrossPromotions>true</showCrossPromotions>
 	<manifestUri>https://raw.githubusercontent.com/KongMD-Steam/QuestionableEthicsEnhanced/master/About/Manifest.xml</manifestUri>
 	<downloadUri>https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342</downloadUri>
+  <identifier>QuestionableEthicsEnhanced</identifier>
+  <version>1.5.3</version>
+  <incompatibleWith>
+    <li>QuestionableEthics</li>
+    <li>Colored Mood Bars</li>
+  </incompatibleWith>
+  <suggests>
+    <li>1677616980</li>
+  </suggests>
+  <loadAfter>
+	  <li>Medical.Mods.Loms</li>
+  <li>HumanoidAlienRaces</li>
+  </loadAfter>
+	<loadBefore>
+		<li>Naughty.Mods.Loms</li>
+	</loadBefore>
+  <showCrossPromotions>true</showCrossPromotions>
+  <manifestUri>https://raw.githubusercontent.com/KongMD-Steam/QuestionableEthicsEnhanced/master/About/Manifest.xml</manifestUri>
+  <downloadUri>https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342</downloadUri>
 </Manifest>
