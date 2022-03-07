@@ -127,7 +127,7 @@ namespace QEthics
                 }
 
                 storyTracker.hairColor = genomeSequence.hairColor;
-                //storyTracker.hairDef = genomeSequence.hair ?? PawnHairChooser.RandomHairDefFor(pawn, pawn.Faction.def);
+                storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
                 storyTracker.melanin = genomeSequence.skinMelanin;
 
                 //headGraphicPath is private, so we need Harmony to set its value
