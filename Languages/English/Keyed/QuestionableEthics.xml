@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Grower Building -->
+  <QE_GrowerCraftingProgress>Status</QE_GrowerCraftingProgress>
+  <!-- Status -->
+  <QE_GrowerStatus>Status</QE_GrowerStatus>
+  <QE_GrowerStatus_Idle>Idle</QE_GrowerStatus_Idle>
+  <QE_GrowerStatus_Filling>Filling for</QE_GrowerStatus_Filling>
+  <QE_GrowerStatus_Crafting>Growing</QE_GrowerStatus_Crafting>
+  <QE_GrowerStatus_Finished>Finished</QE_GrowerStatus_Finished>
+  <!-- Ingredients -->
+  <QE_GrowerIngredientsNeeded>Need</QE_GrowerIngredientsNeeded>
+  <QE_GrowerIngredientsFilled>Filled</QE_GrowerIngredientsFilled>
+  <!-- Vat grower -->
+  <QE_VatGrowerProduct>Product</QE_VatGrowerProduct>
+  <QE_VatGrowerMaintenance>Maintenance: {0} Scientist, {1} Doctor</QE_VatGrowerMaintenance>
+  <QE_VatGrowerCleanlinessMult>Cleanliness maint. multiplier: {0}</QE_VatGrowerCleanlinessMult>
+  <QE_VatGrowerDaysRemaining>days remaining</QE_VatGrowerDaysRemaining>
+  <QE_VatGrowerHoursRemaining>hours remaining</QE_VatGrowerHoursRemaining>
+  <QE_VatGrowerNoLivingBeing>no living being</QE_VatGrowerNoLivingBeing>
+  <QE_VatGrowerNoRecipe>no recipe</QE_VatGrowerNoRecipe>
+  <!-- Gizmos -->
+  <QE_VatGrowerStartCraftingGizmoLabel>Start growing</QE_VatGrowerStartCraftingGizmoLabel>
+  <QE_VatGrowerStartCraftingGizmoDescription>Select an organ to grow. Colonists will begin filling the vat with the required ingredients.</QE_VatGrowerStartCraftingGizmoDescription>
+  <QE_VatGrowerStartCraftingFloatMenuDisabled>{0} (Require research: {1})</QE_VatGrowerStartCraftingFloatMenuDisabled>
+  <QE_VatGrowerStopCraftingGizmoLabel>Stop growing</QE_VatGrowerStopCraftingGizmoLabel>
+  <QE_VatGrowerStopCraftingGizmoDescription>Stops the growing process. Refunds inserted ingredients if the process was not started.</QE_VatGrowerStopCraftingGizmoDescription>
+  <QE_CustomNameCompGizmoLabel>Set custom name</QE_CustomNameCompGizmoLabel>
+  <QE_CustomNameCompGizmoDescription>Sets a custom name which can be easily identifiable.</QE_CustomNameCompGizmoDescription>
+  <QE_VatGrowerGenomesHint>No available genomes. Get them by making 'Genome Sequencers' in machining tables, then use them.</QE_VatGrowerGenomesHint>
+  <QE_VatGrowerDebugFinishGrowing>DEBUG: Finish growing</QE_VatGrowerDebugFinishGrowing>
+  <QE_VatGrowerDebugFinishGrowingDescription>Instantly finishes growing the pawn.</QE_VatGrowerDebugFinishGrowingDescription>
+  <!-- UI -->
+  <QE_CustomNameCompDialogTitle>Set custom name for {0}</QE_CustomNameCompDialogTitle>
+  <!-- Genome Sequencer -->
+  <QE_GenomeSequencerDescription_Name>Source name</QE_GenomeSequencerDescription_Name>
+  <QE_GenomeSequencerDescription_Race>Race</QE_GenomeSequencerDescription_Race>
+  <QE_GenomeSequencerDescription_Gender>Gender</QE_GenomeSequencerDescription_Gender>
+  <QE_GenomeSequencerDescription_Traits>Traits</QE_GenomeSequencerDescription_Traits>
+  <QE_GenomeSequencerSalvage>Salvage genome from corpse ({0} chance)</QE_GenomeSequencerSalvage>
+  <!-- Alerts -->
+  <QE_AlertMaintenanceRequiredLabel>Vat maintenance required</QE_AlertMaintenanceRequiredLabel>
+  <QE_AlertMaintenanceRequiredExplanation>These growers require maintenance or they will lose what they are growing and materials will be wasted!\n\nSend a doctor or researcher to maintain at once.</QE_AlertMaintenanceRequiredExplanation>
+  <!-- Messages -->
+  <QE_MessageGrowingDone>Growing {0} is done.</QE_MessageGrowingDone>
+  <!-- Letters -->
+  <QE_LetterHumanlikeGrownLabel>Vatgrown clone made</QE_LetterHumanlikeGrownLabel>
+  <QE_LetterHumanlikeGrownDescription>Welcome vatgrown clone {PAWN_labelShort} to the colony!\n\n{PAWN_pronoun} has no natural skills, but you can apply a brain scan template on {PAWN_objective} to give {PAWN_objective} a skillset right away.</QE_LetterHumanlikeGrownDescription>
+  <!-- Brain scanning -->
+  <QE_BrainScanningRejectNoValidBed>{0} is a valid target, but no available bed could be found.</QE_BrainScanningRejectNoValidBed>
+  <QE_BrainScanningRejectDead>{PAWN_labelShort} was rejected because {PAWN_pronoun} is dead and has no brain activity.</QE_BrainScanningRejectDead>
+  <QE_BrainScanningRejectNotClone>{PAWN_labelShort} was rejected because {PAWN_pronoun} is not a clone.</QE_BrainScanningRejectNotClone>
+  <QE_BrainScanningRejectAlreadyTemplated>{PAWN_labelShort} was rejected because {PAWN_pronoun} already has a brain template.</QE_BrainScanningRejectAlreadyTemplated>
+  <QE_BrainScanningRejectExcludedHediff>{PAWN_labelShort} was rejected because {PAWN_pronoun} has a hediff that excludes {PAWN_objective} from brain scanning.</QE_BrainScanningRejectExcludedHediff>
+  <QE_BrainScanningRejectExcludedRace>{0} is not a valid race for brain scanning.</QE_BrainScanningRejectExcludedRace>
+  <QE_BrainScanningRejectNotAnimal>{0} was rejected because this template can only be applied to animals.</QE_BrainScanningRejectNotAnimal>
+  <QE_BrainScanningRejectNotHumanlike>{0} was rejected because this template can't be applied to an animal.</QE_BrainScanningRejectNotHumanlike>
+  <QE_BrainScanningApplyTemplate>Apply brain scan template</QE_BrainScanningApplyTemplate>
+  <QE_BrainScanningFloatMenuLabel>Apply brain scan template to {0}</QE_BrainScanningFloatMenuLabel>
+  <QE_BrainScanningFloatMenuLabelDisabled>{0} (No bed)</QE_BrainScanningFloatMenuLabelDisabled>
+  <QE_BrainScanDescription_BackshortChild>Childhood backstory</QE_BrainScanDescription_BackshortChild>
+  <QE_BrainScanDescription_BackshortAdult>Adulthood backstory</QE_BrainScanDescription_BackshortAdult>
+  <QE_BrainScanDescription_Skills>Stored skills (passions denoted with asterisks)</QE_BrainScanDescription_Skills>
+  <QE_BrainScanDescription_Training>Stored training</QE_BrainScanDescription_Training>
+  <QE_BrainTemplatingComplete>Brain template successfully applied to {PAWN_labelShort}.</QE_BrainTemplatingComplete>
+  <!-- Bed validation checks for applying brain templates. Enable debug logging in the Mod Settings to see these in the log. -->
+  <QE_BedInvalid>{0} is not a valid bed</QE_BedInvalid>
+  <QE_BedIsNotMedical>Invalid bed '{0}'. Reason - bed is not medical</QE_BedIsNotMedical>
+  <QE_BedUnreachableBySurgeon>Invalid bed '{0}'. Reason - {SURGEON_labelShort} can't reach or reserve it</QE_BedUnreachableBySurgeon>
+  <QE_BedTooDangerous>Invalid bed '{0}'. Reason - too dangerous for {PATIENT_labelShort}</QE_BedTooDangerous>
+  <QE_BedSurgeonAlreadyReserved>Invalid bed '{0}'. Reason - bed is already reserved by {SURGEON_labelShort}</QE_BedSurgeonAlreadyReserved>
+  <QE_BedOccupied>Invalid bed '{0}'. Reason - bed is already occupied</QE_BedOccupied>
+  <QE_BedForbidden>Invalid bed '{0}'. Reason - bed is forbidden</QE_BedForbidden>
+  <QE_BedIsBurning>Invalid bed '{0}'. Reason - bed is burning</QE_BedIsBurning>
+  <QE_BedImproperForPrisoner>Invalid bed '{0}'. Reason - {PATIENT_labelShort} is prisoner, bed not for prisoners</QE_BedImproperForPrisoner>
+  <QE_BedNotInPrisonCell>Invalid bed '{0}'. Reason - {PATIENT_labelShort} is prisoner, bed not in prison cell</QE_BedNotInPrisonCell>
+  <QE_BedImproperFaction>Invalid bed '{0}'. Reason - bed not owned by {SURGEON_labelShort}'s faction</QE_BedImproperFaction>
+  <QE_PrisonerBedForNonPrisoner>Invalid bed '{0}'. Reason - {PATIENT_labelShort} is not prisoner, bed is for prisoners</QE_PrisonerBedForNonPrisoner>
+  <QE_BedHasAnotherOwner>Invalid bed '{0}'. Reason - bed is owned by another pawn</QE_BedHasAnotherOwner>
+  <QE_BedSelected>{0} has been selected for brain templating operation</QE_BedSelected>
+  <!-- Mod settings -->
+  <QE_OrganGrowthDuration>Organ growth multiplier</QE_OrganGrowthDuration>
+  <QE_OrganGrowthDurationTooltip>Higher values = more time required to grow organs. Default = 1.0</QE_OrganGrowthDurationTooltip>
+  <QE_OrganIngredientMult>Organ total ingredient multiplier</QE_OrganIngredientMult>
+  <QE_OrganIngredientMultTooltip>Higher values = more ingredients required to grow organs. Default = 1.0</QE_OrganIngredientMultTooltip>
+  <QE_CloneGrowthDuration>Clone growth multiplier</QE_CloneGrowthDuration>
+  <QE_CloneGrowthDurationTooltip>Higher values = more time required to grow clones. Default = 1.0</QE_CloneGrowthDurationTooltip>
+  <QE_CloneIngredientMult>Clone total ingredient multiplier</QE_CloneIngredientMult>
+  <QE_CloneIngredientMultTooltip>Higher values = more ingredients required to grow clones. Default = 1.0</QE_CloneIngredientMultTooltip>
+  <QE_VatMaintTime>Time between vat maintenance</QE_VatMaintTime>
+  <QE_VatMaintTimeTooltip>Higher values = maintenance required less frequently. Default = 1.0</QE_VatMaintTimeTooltip>
+  <QE_DebugLogging>Debug logging</QE_DebugLogging>
+  <QE_DebugLoggingTooltip>Enable debug logging for the mod. Helpful if you're running into unepected behavior with the mod. Default: Disabled</QE_DebugLoggingTooltip>
+  <QE_MaintenanceWorkThreshold>Give vat maintenance job</QE_MaintenanceWorkThreshold>
+  <QE_MaintenanceWorkThresholdTooltip>Give a pawn the 'Maintain Vat' job at this percentage of maintenance remaining. Default: 40%</QE_MaintenanceWorkThresholdTooltip>
+  <QE_GiveCloneNegativeThought>Give new clones 'vatgrown clone' negative thought</QE_GiveCloneNegativeThought>
+  <QE_GiveCloneNegativeThoughtTooltip>When a humanlike clone is grown, give it a temporary negative thought to indicate confusion about the new environment. Default: Enabled</QE_GiveCloneNegativeThoughtTooltip>
+  <QE_NeuralDisrupt>Enables Neural Disruption on pawns who rebel while nerve stapled.</QE_NeuralDisrupt>
+  <QE_NeuralDisruptTooltip>Whether or not to allow nerve stapling to end violent mental breaks</QE_NeuralDisruptTooltip>
+  <QE_OldCloningRender>Use legacy rendering process</QE_OldCloningRender>
+  <QE_OldCloningRenderTooltip>This is a deprecated mode of rendering left only as possible compatiblity.</QE_OldCloningRenderTooltip>
+  <QE_DoIdeologyFeatures>Enable Ideology Features (RESTART NEEDED)</QE_DoIdeologyFeatures>
+  <QE_DoIdeologyFeaturesTooltip>Whether or not to use the ideology feature. Requires restart</QE_DoIdeologyFeaturesTooltip>
+  <QE_CurrentModVersion>Installed mod-version: {0}</QE_CurrentModVersion>
+  <!-- version 1.02 Patch -->
+  <QE_BlankGenomeTemplateName>Do Not Use This</QE_BlankGenomeTemplateName>
+  <QE_BlankGenomeTemplateDescription>This template was generated via a game event or debug commands. It is unusuable in the cloning vat.</QE_BlankGenomeTemplateDescription>
+  <!-- version 1.03 Patch -->
+  <QE_GenomeSequencerDescription_Hair>Hair</QE_GenomeSequencerDescription_Hair>
+  <QE_CloningPawnNullMessage>The clone pawn in the Cloning Vat is broken and attempts to fix it failed. Aborting clone process, refunding ingredients, and resetting vat.</QE_CloningPawnNullMessage>
+  <QE_CloningMaintFailMessage>Cloning process failed for clone of {SOURCEPAWNNAME}. Reason - Vat not maintained</QE_CloningMaintFailMessage>
+  <QE_CloningMaintFailFallbackMessage>Cloning process failed. Reason - Vat not maintained</QE_CloningMaintFailFallbackMessage>
+  <QE_OrgaVatMaintFailMessage>{ORGANNAME} creation failed. Reason - Vat not maintained</QE_OrgaVatMaintFailMessage>
+  <QE_OrgaVatMaintFailFallbackMessage>Organ creation failed. Reason - Vat not maintained</QE_OrgaVatMaintFailFallbackMessage>
+  <QE_MaxCloningTime>Max cloning time (days)</QE_MaxCloningTime>
+  <QE_MaxCloningTimeTooltip>A clone will not grow longer than this number of days in a Cloning Vat. Default = 60</QE_MaxCloningTimeTooltip>
+  <!-- version 1.1.0 Patch -->
+  <QE_OrganVatDebugFinishGrowingDescription>Instantly finishes growing the organ.</QE_OrganVatDebugFinishGrowingDescription>
+  <QE_JobFailReasonNoBillsQueued>No bills currently queued</QE_JobFailReasonNoBillsQueued>
+  <QE_JobFailReasonPawnRestriction>Bill is restricted to pawn {0}</QE_JobFailReasonPawnRestriction>
+  <QE_JobFailReasonGrowerBusy>Already growing a recipe</QE_JobFailReasonGrowerBusy>
+  <QE_JobFailReasonNoIngredients>No ingredients available. Only checked every few seconds</QE_JobFailReasonNoIngredients>
+  <QE_JobFailReasonRecentIngSearch>Ingredient search recently failed for this bill</QE_JobFailReasonRecentIngSearch>
+  <QE_JobFailReasonWorkTypeMismatch>Recipe WorkType doesn't match the type in the workgiver</QE_JobFailReasonWorkTypeMismatch>
+  <QE_JobFailReasonShouldDoFalse>Bill is suspended or TargetCount is zero</QE_JobFailReasonShouldDoFalse>
+  <QE_JobFailReasonGeneric>Pawn can't do this bill</QE_JobFailReasonGeneric>
+  <QE_IngredientCheckInterval>Ingredient map scanning interval (seconds)</QE_IngredientCheckInterval>
+  <QE_IngredientCheckIntervalDescription>[Performance] Organ Vats will scan the map for available ingredients on this interval. They only check for ingredients when Idle or Filling. Default = 3 seconds</QE_IngredientCheckIntervalDescription>
+  <!-- version 1.2.0 Patch -->
+  <QE_BrainScanningRejectWrongKind>{0} was rejected because this template can only be applied to race '{1}'</QE_BrainScanningRejectWrongKind>
+  <QE_BrainTemplatingRequiresClone>Brain Template surgery requires Clone</QE_BrainTemplatingRequiresClone>
+  <QE_BrainTemplatingRequiresCloneTooltip>When true, only allows Brain Templates to be applied to pawns with 'Clone' hediff. Default = true</QE_BrainTemplatingRequiresCloneTooltip>
+  <!-- version 1.3.0 Patch -->
+  <QE_GenomeSequencerDescription_Hediffs>Hediffs</QE_GenomeSequencerDescription_Hediffs>
+</LanguageData>

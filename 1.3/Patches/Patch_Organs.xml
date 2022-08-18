@@ -1,55 +1,53 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Eye"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Eye"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Eye</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Ear"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Ear"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Ear</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Nose"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Nose"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Nose</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Eye"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Eye"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Eye</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Ear"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Ear"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Ear</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Nose"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Nose"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Nose</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
   <Operation Class="PatchOperationSequence">
     <success>Always</success>
     <operations>
@@ -66,27 +64,23 @@
       </li>
     </operations>
   </Operation>
-
   <Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Jaw"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Jaw"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Jaw</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Jaw"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Jaw"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Jaw</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
   <!--Theoretically shouldve been friendly-->
-
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BodyPartDef[defName="Stomach"]/spawnThingOnRemoved</xpath>
     <nomatch Class="PatchOperationAdd">
@@ -103,7 +97,6 @@
       </value>
     </match>
   </Operation>
-
   <!--
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
@@ -122,105 +115,100 @@
 		</operations>
 	</Operation>
 -->
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Spine"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Spine"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Spine</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Pelvis"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Pelvis"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Pelvis</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Arm"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Arm"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Arm</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Hand"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Hand"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Hand</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Leg"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Leg"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Leg</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
-
-	<Operation Class="PatchOperationSequence">
-		<success>Always</success>
-		<operations>
-			<li Class="PatchOperationTest">
-				<xpath>/Defs/BodyPartDef[defName="Foot"]/spawnThingOnRemoved</xpath>
-				<success>Invert</success>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>/Defs/BodyPartDef[defName="Foot"]</xpath>
-				<order>Append</order>
-				<value>
-					<spawnThingOnRemoved>QE_Organ_Foot</spawnThingOnRemoved>
-				</value>
-			</li>
-		</operations>
-	</Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Spine"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Spine"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Spine</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Pelvis"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Pelvis"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Pelvis</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Arm"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Arm"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Arm</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Hand"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Hand"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Hand</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Leg"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Leg"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Leg</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/BodyPartDef[defName="Foot"]/spawnThingOnRemoved</xpath>
+        <success>Invert</success>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/BodyPartDef[defName="Foot"]</xpath>
+        <order>Append</order>
+        <value>
+          <spawnThingOnRemoved>QE_Organ_Foot</spawnThingOnRemoved>
+        </value>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

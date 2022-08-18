@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Questionable Ethics Enhanced</name>
+  <author>Mario55770</author>
+  <packageId>Mario.QEE</packageId>
+  <supportedVersions>
+    <li>1.3</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <description>
+TEST
+
+  If any of the past authors want me to take this down, I will do so. However, I made this so theres at least a 1.3 up today.
+  Contains organ growing, organ extraction, animal/humanoid cloning, brain reprogramming... and all manner of ethically questionable stuff!
+  Continuing KongMD's Questionable Ethics Enhanced, as it appears it was not updated to 1.3
+  https://steamcommunity.com/sharedfiles/filedetails/?id=1787359789
+
+ 
+  And now...introducing 1.5, the precepts update. Not fully implemented, but &lt;b&gt; you &lt;/b&gt;decide what is ethical now.(Or disable all ideology features in mod settings)
+  Featuring nerve stapling enslavement, suppressing them fully, as well as knocking out most dangerous thoughts at the source(along with the pawn themselves...), precepts, and more.
+  
+  If you think that making human leather hats is too mundane, then this mod will spice things up.
+
+* &lt;b&gt;Grow organs&lt;/b&gt; in vats!
+* &lt;b&gt;Clone&lt;/b&gt; animals and humanoids! Clones have the traits and passions of their "parent".
+* &lt;b&gt;Scan brains&lt;/b&gt; to preserve the skill levels of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
+* &lt;b&gt;Recruit&lt;/b&gt; hostile pawns instantly with nerve stapling!
+* &lt;b&gt;Balance&lt;/b&gt; the mod as you wish, with the Mod Settings menu
+
+Thanks to Mehni for getting me answers to the questions I needed to get this thing done. 
+Thanks StatistNo1(current mod dev at evolved organs redux) for dealing with my stupidity and assisting. 
+Supports Alien Races out of the box. See the mod description page on Steam for more details!
+</description>
+</ModMetaData>

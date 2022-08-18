@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Questionable Ethics Enhanced</name>
-  <author>Mario55770</author>
-  <packageId>Mario.QEE</packageId>
+  <name>Questionable Ethics Enhanced (Continued)</name>
+  <packageId>Mlie.QuestionableEthicsEnhanced</packageId>
+  <author>KongMD</author>
+  <url>https://github.com/emipa606/QuestionableEthicsEnhanced</url>
   <supportedVersions>
+    <li>1.0</li>
+    <li>1.1</li>
+    <li>1.2</li>
     <li>1.3</li>
   </supportedVersions>
   <modDependencies>
@@ -14,28 +18,123 @@
       <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
     </li>
   </modDependencies>
-<description>
-TEST
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <incompatibleWith>
+    <li>Ogliss.Ykara.HarvestEverything</li>
+  </incompatibleWith>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of KongMDs mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=1787359789
+Based on the 1.3 update by Mario55770
+https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 
-  If any of the past authors want me to take this down, I will do so. However, I made this so theres at least a 1.3 up today.
-  Contains organ growing, organ extraction, animal/humanoid cloning, brain reprogramming... and all manner of ethically questionable stuff!
-  Continuing KongMD's Questionable Ethics Enhanced, as it appears it was not updated to 1.3
-  https://steamcommunity.com/sharedfiles/filedetails/?id=1787359789
+- Added "filling" graphics for the vats, makes it easier to see how much is missing
 
- 
-  And now...introducing 1.5, the precepts update. Not fully implemented, but &lt;b&gt; you &lt;/b&gt;decide what is ethical now.(Or disable all ideology features in mod settings)
-  Featuring nerve stapling enslavement, suppressing them fully, as well as knocking out most dangerous thoughts at the source(along with the pawn themselves...), precepts, and more.
-  
-  If you think that making human leather hats is too mundane, then this mod will spice things up.
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
-* &lt;b&gt;Grow organs&lt;/b&gt; in vats!
-* &lt;b&gt;Clone&lt;/b&gt; animals and humanoids! Clones have the traits and passions of their "parent".
-* &lt;b&gt;Scan brains&lt;/b&gt; to preserve the skill levels of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
-* &lt;b&gt;Recruit&lt;/b&gt; hostile pawns instantly with nerve stapling!
-* &lt;b&gt;Balance&lt;/b&gt; the mod as you wish, with the Mod Settings menu
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/QuestionableEthicsEnhanced][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn manipulation features to Rimworld. See the Change Notes tab in Steam Workshop or the [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced]Github repository[/url] for info on the latest updates.
 
-Thanks to Mehni for getting me answers to the questions I needed to get this thing done. 
-Thanks StatistNo1(current mod dev at evolved organs redux) for dealing with my stupidity and assisting. 
-Supports Alien Races out of the box. See the mod description page on Steam for more details!
-</description>
+[h1]Features[/h1]
+
+[list]
+[*][b]Grow organs[/b] in vats!
+[*][b]Clone[/b] animals and humanoids! Clones have the traits and passions of their "parent".
+[*][b]Scan brains[/b] to preserve the skill levels of a pawn! Apply any brain template to your clones, to get them up-to-speed fast.
+[*][b]Recruit[/b] hostile pawns instantly with nerve stapling!
+[*][b]Balance[/b] the mod as you wish, with the Mod Settings menu (see preview image above)
+[*][b]Enhancements[/b] to the original Questionable Ethics mod
+[/list]
+
+
+[img]https://i.imgur.com/Sr8GRm1.jpg][/img]
+[img]https://i.imgur.com/7HhYJby.jpg][/img]
+
+[h1]Changes to Questionable Ethics mechanics[/h1]
+
+Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14  bugfixes 15 new enhancements, and a few new compatibility patches that were not in QE. [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&amp;amp;q=is%3Aissue+is%3Aclosed]Full list here[/url]. Here are the big changes:
+
+[list]
+[*] The [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082]Life Support System[/url] &amp;amp; [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951]Crude Bionics[/url] have been moved to standalone mods, to improve mod compatibility.
+[*]All descriptions have been re-written with an emphasis on [b]discoverability[/b] (how do I use this item and where do I obtain it) and [b]correct grammar[/b].
+[*][b]Failed cloning no longer causes Cloning Vat ingredient loading to break[/b]. This was a high-impact bug in QE and many people asked for a fix.
+[*]Nutrient Solution and Protein Mash recipes, output, and costs have been rebalanced across the board. See mod preview image for details.
+[*]Cloning vats now display how many days remain until clone is fully grown, instead of a percentage of completion.
+[*]The Apply Brain Templating toils have been re-written and many bugs have been fixed. Get [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Languages/English/Keyed/QuestionableEthics.xml]feedback messages during pawn selection[/url], if it's an invalid target.
+[*]Family relationships will no longer be generated for clones
+[/list]
+
+
+[h1]Can I use this on an existing save?[/h1]
+Yes. 
+
+If you have a save with Questionable Ethics enabled and want to switch to this mod instead, [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Docs/QE_Legacy_Save_Instructions.md]please follow these steps[/url] to keep your research/items intact.
+
+[h1]Compatibility[/h1]
+This mod patches in changes to vanilla organ defs, but does not remove anything from the vanilla game. All defNames in the mod are unique and should not conflict with other mods. Any mods determined to be incompatible will throw a custom error message upon loading the game, when QEE and that mod are both enabled. [b]Consider this mod compatible with your modlist, unless specified below:[/b]
+
+[b]Enhanced Functionality[/b]
+[list]
+[*]Bionic Icons - Textures from this mod will be used for the organs. Highly recommended upgrade over vanilla textures!
+[*]Evolved Organs - Has exciting changes to its mechanics when QEE is enabled. There are too many to list, but [url=https://github.com/Xahkarias/Evolved-Organs/blob/master/About/Patch%20Notes.txt]go here[/url] for more details.
+[*]Evolved Organs Redux - Has exciting changes to its mechanics when QEE is enabled. See [url=https://github.com/Xahkarias/EvolvedOrgansRedux/wiki/Compatibility#high-synergy]this link[/url] for more details.
+[*]Race mods built with Humanoid Alien Races 2.0 - Races will be able to to be cloned in the Cloning Vat.
+[*]Rah's Bionics and Surgery Expansion (RBSE)
+[list]
+[*]Organ installation requires RBSE research pre-req 'Organ Transplantation'
+[*]Organs need to be refrigerated
+[*]Organ Rejection hediff added when organs are implanted, if the RBSE ModSetting for this is enabled.
+[/list]
+[/list]
+
+[b]Fully Compatible[/b]
+[list]
+[*]Android Tiers - TX Series
+[*]Bioreactor
+[*]Combat Extended - no patch required
+[*]EPOE - Use the 'EPOE - Forked' version posted by Aurani, Victorique, and Tarojun, for best compatibility
+[*]Harvest Organs Post-Mortem (HOPM) - All natural organs from QEE have a chance to spawn after autopsy
+[*]LOTR races from Lord of the Rims by Jecrell (and the LOTR Continued mods by Mile)
+[*]Pawnmorpher
+[/list]
+
+[b]Partially Incompatible[/b]
+[list]
+[*][Beta] METRO 2033 - Mutants - Custom AI code that will cause cloned animals to attack colonists or colony buildings
+[*]Harvest Everything - A lot of duplicate functionality
+[*]Hospitality - A Postfix from Hospitality can cause performance drain while organ and pawn vats are active/loading. The impact of this drain will be more noticeable with large modlists. To minimize the perf. drain, remove Bills from organ vats when done. The fix for this is non-trivial, but it's on the to-do list.
+[*]Multiplayer - The multiplayer mode of the game will not work properly, but single player should work fine.
+[*]Vanilla Factions Expanded - Insectoids - Insects are technically cloneable, but the mod has custom AI code that will cause cloned insectoids to always go Manhunter after cloning.
+[*]Warforged - Warforged pawns can't be cloned (they are robots that have no meat). See the GitHub issue for more details.
+[/list]
+
+[b]Incompatible[/b]
+[list]
+[*]Questionable Ethics
+[/list]
+
+If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems. [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues]Post an issue on Github for maximum
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>
