@@ -3,6 +3,7 @@
   <Operation Class="PatchOperationFindMod">
     <mods>
       <li>Psychic Awakening</li>
+      <li>Psychic Awakening (Continued)</li>
     </mods>
     <match Class="PatchOperationSequence">
       <operations>

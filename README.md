@@ -7,14 +7,19 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1787359789
 Based on the 1.3 update by Mario55770
 https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 
+- Adopted the mod on request by Mario55770
 - Added "filling" graphics for the vats, makes it easier to see how much is missing
+
+## Additions by Mario55770
+
+Choose your ethics, ideology support integrated. Precepts are implemented at least on a first pass basis. Nerve stapling now also can automatically knock out pawns with more violent thoughts. Nerve staple's enslave and max suppression. Now also allows brain scanning to copy pawn ideology.
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
 
-Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn manipulation features to Rimworld. See the Change Notes tab in Steam Workshop or the https://github.com/KongMD-Steam/QuestionableEthicsEnhanced]Github repository for info on the latest updates.
+Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn manipulation features to Rimworld. See the Change Notes tab in Steam Workshop or the Github repository for info on the latest updates.
 
 # Features
 
@@ -43,7 +48,7 @@ Questionable Ethics Enhanced is a successor to the Questionable Ethics mod creat
 
 
 
--  The https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082]Life Support System &amp; https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951]Crude Bionics have been moved to standalone mods, to improve mod compatibility.
+-  The https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082]Life Support System and https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951]Crude Bionics have been moved to standalone mods, to improve mod compatibility.
 - All descriptions have been re-written with an emphasis on **discoverability** (how do I use this item and where do I obtain it) and **correct grammar**.
 - **Failed cloning no longer causes Cloning Vat ingredient loading to break**. This was a high-impact bug in QE and many people asked for a fix.
 - Nutrient Solution and Protein Mash recipes, output, and costs have been rebalanced across the board. See mod preview image for details.
@@ -114,7 +119,7 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 
 
 
-If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems. https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues]Post an issue on Github for maximum
+If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems.
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
