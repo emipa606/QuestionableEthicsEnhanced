@@ -1,5 +1,9 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.3.3 - Fixed the ideology specific patches not applying.
+Used DeepL to update translations for Japanese
+
+
 1.3.2 - Fixed some outdated patches
 
 

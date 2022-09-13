@@ -1,67 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-  <Operation Class="PatchOperationFindMod">
-    <mods>
-      <li>Ludeon.RimWorld.Ideology</li>
-    </mods>
-    <match Class="QEthics.Ideology.PatchOperationdoIdeoFeatures">
-      <operations>
-        <li Class="PatchOperationReplace">
-          <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/workerClass</xpath>
-          <value>
-            <workerClass>QEthics.Ideology.RecipeWorker_NerveStapling_Ideology</workerClass>
-          </value>
-        </li>
-        <li Class="PatchOperationReplace">
-          <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/description</xpath>
-          <value>
-            <description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them. Automatically shuts down any signs of mental breaks.</description>
-          </value>
-        </li>
-        <!--Tells flesh purity meme to require nerve stapling as unacceptable-->
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/MemeDef[defName="FleshPurity"]/requireOne</xpath>
-          <value>
-            <li>
-              <li>QE_NerveStaplingAbhorrent</li>
-            </li>
-          </value>
-        </li>
-        <!--patches slavery to exclude the possiblity of having nerve stapling approved but slavery disapproved by adding exclusion tag-->
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/PreceptDef[defName="Slavery_Abhorrent"]</xpath>
-          <value>
-            <exclusionTags>
-              <li>SlaveryDisapproved</li>
-            </exclusionTags>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/PreceptDef[defName="Slavery_Horrible"]</xpath>
-          <value>
-            <exclusionTags>
-              <li>SlaveryDisapproved</li>
-            </exclusionTags>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/PreceptDef[defName="Slavery_Disapproved"]</xpath>
-          <value>
-            <exclusionTags>
-              <li>SlaveryDisapproved</li>
-            </exclusionTags>
-          </value>
-        </li>
-        <!--add incompatiblity with organ in vats and organ use totally abhorrent-->
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/PreceptDef[defName="OrganUse_Abhorrent"]</xpath>
-          <value>
-            <exclusionTags>
-              <li>organusetotallyabhorrent</li>
-            </exclusionTags>
-          </value>
-        </li>
-      </operations>
-    </match>
+  <Operation Class="PatchOperationSequence" MayRequire="Ludeon.RimWorld.Ideology">
+    <operations>
+      <li Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/workerClass</xpath>
+        <value>
+          <workerClass>QEthics.Ideology.RecipeWorker_NerveStapling_Ideology</workerClass>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/RecipeDef[defName="QE_InstallNerveStaple"]/description</xpath>
+        <value>
+          <description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them. Automatically shuts down any signs of mental breaks.</description>
+        </value>
+      </li>
+      <!--Tells flesh purity meme to require nerve stapling as unacceptable-->
+      <li Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/MemeDef[defName="FleshPurity"]/requireOne</xpath>
+        <value>
+          <li>
+            <li>QE_NerveStaplingAbhorrent</li>
+          </li>
+        </value>
+      </li>
+      <!--patches slavery to exclude the possiblity of having nerve stapling approved but slavery disapproved by adding exclusion tag-->
+      <li Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Abhorrent"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Horrible"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/PreceptDef[defName="Slavery_Disapproved"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>SlaveryDisapproved</li>
+          </exclusionTags>
+        </value>
+      </li>
+      <!--add incompatiblity with organ in vats and organ use totally abhorrent-->
+      <li Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+        <xpath>/Defs/PreceptDef[defName="OrganUse_Abhorrent"]</xpath>
+        <value>
+          <exclusionTags>
+            <li>organusetotallyabhorrent</li>
+          </exclusionTags>
+        </value>
+      </li>
+    </operations>
   </Operation>
 </Patch>

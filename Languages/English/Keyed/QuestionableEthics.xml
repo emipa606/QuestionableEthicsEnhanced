@@ -132,4 +132,5 @@
   <QE_BrainTemplatingRequiresCloneTooltip>When true, only allows Brain Templates to be applied to pawns with 'Clone' hediff. Default = true</QE_BrainTemplatingRequiresCloneTooltip>
   <!-- version 1.3.0 Patch -->
   <QE_GenomeSequencerDescription_Hediffs>Hediffs</QE_GenomeSequencerDescription_Hediffs>
+  <QE_MessagestapledPawnEnslaved>{0} was enslaved by {1} using a nerve staple</QE_MessagestapledPawnEnslaved>
 </LanguageData>

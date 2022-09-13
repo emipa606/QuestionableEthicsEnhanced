@@ -54,7 +54,7 @@ public class RecipeWorker_NerveStapling_Ideology : Recipe_InstallImplant
 
         var unused = stapledPawn.guest.EverEnslaved;
         stapledPawn.guest.SetGuestStatus(surgeon.Faction, GuestStatus.Slave);
-        Messages.Message("MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon),
+        Messages.Message("QE_MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon),
             new LookTargets(stapledPawn, surgeon), MessageTypeDefOf.NeutralEvent);
     }
 }
