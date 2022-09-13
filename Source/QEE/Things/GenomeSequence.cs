@@ -13,11 +13,15 @@ namespace QEthics;
 public class GenomeSequence : ThingWithComps
 {
     public List<int> addonVariants = new List<int>();
+    public BeardDef beard;
+    public TattooDef bodyTattoo;
 
     //Only relevant for humanoids.
     public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
     public CrownType crownType = CrownType.Average;
     public string crownTypeAlien = "";
+    public TattooDef faceTattoo;
+    public Color? favoriteColor;
     public Gender gender = Gender.None;
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
@@ -85,6 +89,10 @@ public class GenomeSequence : ThingWithComps
             Scribe_Values.Look(ref skinMelanin, "skinMelanin");
             Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
             Scribe_Defs.Look(ref hair, "hair");
+            Scribe_Defs.Look(ref beard, "beard");
+            Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
+            Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
+            Scribe_Values.Look(ref favoriteColor, "favoriteColor");
             Scribe_Values.Look(ref headGraphicPath, "headGraphicPath");
 
             //Humanoid values that could be null in save file go here
@@ -92,8 +100,22 @@ public class GenomeSequence : ThingWithComps
             {
                 if (hair == null)
                 {
-                    //hair = DefDatabase<HairDef>.AllDefs.RandomElement();
-                    hair = DefDatabase<HairDef>.GetNamed("Shaved");
+                    hair = HairDefOf.Shaved;
+                }
+
+                if (beard == null)
+                {
+                    beard = BeardDefOf.NoBeard;
+                }
+
+                if (faceTattoo == null)
+                {
+                    faceTattoo = TattooDefOf.NoTattoo_Face;
+                }
+
+                if (bodyTattoo == null)
+                {
+                    bodyTattoo = TattooDefOf.NoTattoo_Body;
                 }
 
                 if (headGraphicPath == null)
@@ -139,6 +161,10 @@ public class GenomeSequence : ThingWithComps
             hairColor == otherGenome.hairColor &&
             skinMelanin == otherGenome.skinMelanin &&
             isAlien == otherGenome.isAlien &&
+            favoriteColor == otherGenome.favoriteColor &&
+            beard == otherGenome.beard &&
+            faceTattoo == otherGenome.faceTattoo &&
+            bodyTattoo == otherGenome.bodyTattoo &&
             skinColor == otherGenome.skinColor &&
             skinColorSecond == otherGenome.skinColorSecond &&
             hairColorSecond == otherGenome.hairColorSecond &&
@@ -189,6 +215,10 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.hairColor = hairColor;
         splitThingStack.skinMelanin = skinMelanin;
         splitThingStack.hair = hair;
+        splitThingStack.beard = beard;
+        splitThingStack.favoriteColor = favoriteColor;
+        splitThingStack.faceTattoo = faceTattoo;
+        splitThingStack.bodyTattoo = bodyTattoo;
         splitThingStack.headGraphicPath = headGraphicPath;
         foreach (var traitEntry in traits)
         {
@@ -240,14 +270,14 @@ public class GenomeSequence : ThingWithComps
             builder.AppendLine();
             builder.AppendLine();
 
-            builder.AppendLine("QE_GenomeSequencerDescription_Name".Translate() + ": " + sourceName);
-            builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + pawnKindDef.race.LabelCap);
-            builder.AppendLine("QE_GenomeSequencerDescription_Gender".Translate() + ": " +
-                               gender.GetLabel(pawnKindDef.race.race.Animal).CapitalizeFirst());
+            builder.AppendLine($"{"QE_GenomeSequencerDescription_Name".Translate()}: {sourceName}");
+            builder.AppendLine($"{"QE_GenomeSequencerDescription_Race".Translate()}: " + pawnKindDef.race.LabelCap);
+            builder.AppendLine(
+                $"{"QE_GenomeSequencerDescription_Gender".Translate()}: {gender.GetLabel(pawnKindDef.race.race.Animal).CapitalizeFirst()}");
 
             if (hair is { texPath: { } })
             {
-                builder.AppendLine("QE_GenomeSequencerDescription_Hair".Translate() + ": " + hair.ToString());
+                builder.AppendLine($"{"QE_GenomeSequencerDescription_Hair".Translate()}: {hair}");
             }
 
             //Traits
@@ -277,13 +307,13 @@ public class GenomeSequence : ThingWithComps
     {
         var builder = new StringBuilder(base.GetInspectString());
 
-        builder.AppendLine("QE_GenomeSequencerDescription_Race".Translate() + ": " + pawnKindDef.race.LabelCap);
-        builder.AppendLine("QE_GenomeSequencerDescription_Gender".Translate() + ": " +
-                           gender.GetLabel(pawnKindDef.race.race.Animal).CapitalizeFirst());
+        builder.AppendLine($"{"QE_GenomeSequencerDescription_Race".Translate()}: " + pawnKindDef.race.LabelCap);
+        builder.AppendLine(
+            $"{"QE_GenomeSequencerDescription_Gender".Translate()}: {gender.GetLabel(pawnKindDef.race.race.Animal).CapitalizeFirst()}");
 
         if (hediffInfos is { Count: > 0 })
         {
-            builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate() + ": " + hediffInfos.Count);
+            builder.AppendLine($"{"QE_GenomeSequencerDescription_Hediffs".Translate()}: {hediffInfos.Count}");
         }
 
         return builder.ToString().TrimEndNewlines();

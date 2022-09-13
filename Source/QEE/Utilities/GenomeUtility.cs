@@ -49,6 +49,7 @@ public static class GenomeUtility
 
                 //Humanoid only.
                 var story = pawn.story;
+                var style = pawn.style;
                 if (story != null)
                 {
                     genomeSequence.bodyType = story.bodyType;
@@ -56,6 +57,10 @@ public static class GenomeUtility
                     genomeSequence.hairColor = story.hairColor;
                     genomeSequence.skinMelanin = story.melanin;
                     genomeSequence.hair = story.hairDef;
+                    genomeSequence.beard = style.beardDef;
+                    genomeSequence.faceTattoo = style.FaceTattoo;
+                    genomeSequence.bodyTattoo = style.BodyTattoo;
+                    genomeSequence.favoriteColor = story.favoriteColor;
                     genomeSequence.headGraphicPath = story.HeadGraphicPath;
 
                     foreach (var trait in story.traits.allTraits)
@@ -130,6 +135,7 @@ public static class GenomeUtility
 
             storyTracker.hairColor = genomeSequence.hairColor;
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
+            storyTracker.favoriteColor = genomeSequence.favoriteColor;
             storyTracker.melanin = genomeSequence.skinMelanin;
 
             //headGraphicPath is private, so we need Harmony to set its value
@@ -171,6 +177,13 @@ public static class GenomeUtility
             //Give random vatgrown backstory.
             storyTracker.childhood = DefDatabase<BackstoryDef>.GetNamed("Backstory_ColonyVatgrown").GetFromDatabase();
             storyTracker.adulthood = null;
+        }
+
+        if (pawn?.style is { } styleTracker)
+        {
+            styleTracker.beardDef = genomeSequence.beard;
+            styleTracker.FaceTattoo = genomeSequence.faceTattoo;
+            styleTracker.BodyTattoo = genomeSequence.bodyTattoo;
         }
 
         if (pawn?.skills is { } skillsTracker)
