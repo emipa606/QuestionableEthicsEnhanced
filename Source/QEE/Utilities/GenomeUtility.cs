@@ -74,6 +74,12 @@ public static class GenomeUtility
                 {
                     AlienRaceCompat.GetFieldsFromAlienComp(pawn, genomeSequence);
                 }
+
+                //Facial animation compatibility.
+                if (CompatibilityTracker.FacialAnimationActive)
+                {
+                    FacialAnimationCompatibility.GetFieldsFromFacialAnimationComps(pawn, genomeSequence);
+                }
             }
         }
 
@@ -239,6 +245,12 @@ public static class GenomeUtility
         if (CompatibilityTracker.AlienRacesActive)
         {
             AlienRaceCompat.SetFieldsToAlienComp(pawn, genomeSequence);
+        }
+
+        //Alien Races compatibility.
+        if (CompatibilityTracker.FacialAnimationActive)
+        {
+            FacialAnimationCompatibility.SetFieldsToFacialAnimationComps(pawn, genomeSequence);
         }
 
         PortraitsCache.SetDirty(pawn);

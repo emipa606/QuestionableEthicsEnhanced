@@ -18,8 +18,11 @@ public class GenomeSequence : ThingWithComps
 
     //Only relevant for humanoids.
     public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
+    public string browType;
     public CrownType crownType = CrownType.Average;
     public string crownTypeAlien = "";
+    public Color eyeColor;
+    public string eyeType;
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
@@ -27,6 +30,9 @@ public class GenomeSequence : ThingWithComps
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
     public string headGraphicPath;
+
+    // Facial Animation compatibility
+    public string headType;
 
     /// <summary>
     ///     List containing all hediff def information that should be saved and applied to clones
@@ -39,12 +45,16 @@ public class GenomeSequence : ThingWithComps
     /// </summary>
     public bool isAlien;
 
+    public string lidType;
+    public string mouthType;
+
     //public string sourceName = (new TaggedString("QE_BlankGenomeTemplateName")).Translate() ?? "Do Not Use This";
     public PawnKindDef pawnKindDef = PawnKindDefOf.Colonist;
     public Color skinColor;
     public Color skinColorSecond;
 
     public float skinMelanin;
+    public string skinType;
 
     //Relevant for all genomes.
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
@@ -148,6 +158,15 @@ public class GenomeSequence : ThingWithComps
         Scribe_Values.Look(ref hairColorSecond, "hairColorSecond");
         Scribe_Values.Look(ref crownTypeAlien, "crownTypeAlien");
         Scribe_Collections.Look(ref addonVariants, "addonVariants");
+
+        //Facial Animation
+        Scribe_Values.Look(ref headType, "headType");
+        Scribe_Values.Look(ref eyeColor, "eyeColor");
+        Scribe_Values.Look(ref eyeType, "eyeType");
+        Scribe_Values.Look(ref lidType, "lidType");
+        Scribe_Values.Look(ref browType, "browType");
+        Scribe_Values.Look(ref mouthType, "mouthType");
+        Scribe_Values.Look(ref skinType, "skinType");
     }
 
     public override bool CanStackWith(Thing other)
@@ -168,6 +187,13 @@ public class GenomeSequence : ThingWithComps
             skinColor == otherGenome.skinColor &&
             skinColorSecond == otherGenome.skinColorSecond &&
             hairColorSecond == otherGenome.hairColorSecond &&
+            headType == otherGenome.headType &&
+            eyeColor == otherGenome.eyeColor &&
+            eyeType == otherGenome.eyeType &&
+            lidType == otherGenome.lidType &&
+            browType == otherGenome.browType &&
+            mouthType == otherGenome.mouthType &&
+            skinType == otherGenome.skinType &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -244,6 +270,15 @@ public class GenomeSequence : ThingWithComps
         {
             splitThingStack.addonVariants = addonVariants;
         }
+
+        // Facial Animation
+        splitThingStack.headType = headType;
+        splitThingStack.eyeColor = eyeColor;
+        splitThingStack.eyeType = eyeType;
+        splitThingStack.lidType = lidType;
+        splitThingStack.browType = browType;
+        splitThingStack.mouthType = mouthType;
+        splitThingStack.skinType = skinType;
 
         return splitThing;
     }

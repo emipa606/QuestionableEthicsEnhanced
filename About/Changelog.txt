@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.3.5 - Eye-color and facial style from [url=https://steamcommunity.com/workshop/filedetails/?id=1635901197]Facial Animation[/url] will now also be cloned.
+
+
 1.3.4 - Added beard, tattoo and favourite color to the genome sequencer
 
 
