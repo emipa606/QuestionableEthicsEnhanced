@@ -9,6 +9,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 
 - Adopted the mod on request by Mario55770
 - Added "filling" graphics for the vats, makes it easier to see how much is missing
+- Added support for cloning all features added by https://steamcommunity.com/workshop/filedetails/?id=1635901197]Facial Animation
 
 ## Additions by Mario55770
 

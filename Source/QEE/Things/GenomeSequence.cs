@@ -13,6 +13,7 @@ namespace QEthics;
 public class GenomeSequence : ThingWithComps
 {
     public List<int> addonVariants = new List<int>();
+    public object animalGeneticInformation;
     public BeardDef beard;
     public TattooDef bodyTattoo;
 

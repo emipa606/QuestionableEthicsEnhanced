@@ -45,6 +45,13 @@ public static class CompatibilityTracker
                 continue;
             }
 
+            if (modName.Contains("Animal Genetics"))
+            {
+                AnimalGeneticsActive = true;
+                QEEMod.TryLog("Animal Genetics detected");
+                continue;
+            }
+
             if (modName.Contains("Rah's Bionics and Surgery Expansion") ||
                 modName.Contains("RBSE Hardcore Edition"))
             {
@@ -75,6 +82,7 @@ public static class CompatibilityTracker
 
     public static bool RBSEActive { get; }
 
+    public static bool AnimalGeneticsActive { get; }
 
     public static FieldInfo HeadTypeField { get; }
     public static FieldInfo EyeColorField { get; }

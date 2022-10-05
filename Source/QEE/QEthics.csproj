@@ -6,7 +6,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.3.5</FileVersion>
+    <FileVersion>1.3.6</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
@@ -23,10 +23,15 @@
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
-    <Reference Include="FacialAnimation">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.3\Assemblies\FacialAnimation.dll</HintPath>
+    <Reference Include="AnimalGenetics">
+      <HintPath>..\..\..\AnimalGenetics\1.3\Assemblies\AnimalGenetics.dll</HintPath>
 	    <CopyLocal>False</CopyLocal>
 	    <Private>false</Private>
+    </Reference>
+    <Reference Include="FacialAnimation">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.3\Assemblies\FacialAnimation.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
     </Reference>
     <PackageReference Include="Mlie_Rimworld_VersionFromManifest" Version="*" />
   </ItemGroup>

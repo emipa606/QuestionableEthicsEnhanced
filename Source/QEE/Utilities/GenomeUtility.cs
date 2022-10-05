@@ -80,6 +80,12 @@ public static class GenomeUtility
                 {
                     FacialAnimationCompatibility.GetFieldsFromFacialAnimationComps(pawn, genomeSequence);
                 }
+
+                //Animal Genetics compatibility.
+                if (CompatibilityTracker.AnimalGeneticsActive)
+                {
+                    AnimalGeneticsCompatibility.GetFieldsFromAnimalGeneticsComps(pawn, genomeSequence);
+                }
             }
         }
 
@@ -247,10 +253,16 @@ public static class GenomeUtility
             AlienRaceCompat.SetFieldsToAlienComp(pawn, genomeSequence);
         }
 
-        //Alien Races compatibility.
+        //Facial animation compatibility.
         if (CompatibilityTracker.FacialAnimationActive)
         {
             FacialAnimationCompatibility.SetFieldsToFacialAnimationComps(pawn, genomeSequence);
+        }
+
+        //Facial animation compatibility.
+        if (CompatibilityTracker.AnimalGeneticsActive)
+        {
+            AnimalGeneticsCompatibility.SetFieldsToAnimalGeneticsComps(pawn, genomeSequence);
         }
 
         PortraitsCache.SetDirty(pawn);
