@@ -24,7 +24,7 @@ public class JobDriver_DepositIntoGrower : JobDriver
                pawn.Reserve(TargetThingB, job, errorOnFailed: errorOnFailed);
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         //Conditions and reserve
         this.FailOn(() => TargetThingA is Building_GrowerBase vat && vat.status != CrafterStatus.Filling);

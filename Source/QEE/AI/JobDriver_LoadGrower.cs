@@ -49,7 +49,7 @@ public class JobDriver_LoadGrower : JobDriver
         return shouldStart;
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOnBurningImmobile(BillGiverInd);
         this.FailOnDestroyedNullOrForbidden(BillGiverInd);
@@ -57,7 +57,7 @@ public class JobDriver_LoadGrower : JobDriver
         this.FailOn(delegate
         {
             var building = job.GetTarget(BillGiverInd).Thing;
-            if (building == null || building is not IBillGiver || job.bill == null)
+            if (building is not IBillGiver || job.bill == null)
             {
                 QEEMod.TryLog("something is null, failing job");
                 return true;
@@ -69,7 +69,7 @@ public class JobDriver_LoadGrower : JobDriver
                 QEEMod.TryLog("Bill deleted, failing job");
 
                 //refund ingredients if player cancels bill during Filling phase
-                if (grower == null || grower.status != CrafterStatus.Filling)
+                if (grower is not { status: CrafterStatus.Filling })
                 {
                     return true;
                 }

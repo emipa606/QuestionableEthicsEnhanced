@@ -238,7 +238,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     public virtual void Tick_Crafting()
     {
         //Increment crafting.
-        var doCrafting = !(PowerTrader is { PowerOn: false });
+        var doCrafting = PowerTrader is not { PowerOn: false };
 
         if (!doCrafting)
         {

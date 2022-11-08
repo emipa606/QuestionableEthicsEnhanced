@@ -11,15 +11,10 @@ public class JobDriver_ExtractGrowerProduct : JobDriver
 {
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
-        if (!pawn.CanReserve(TargetThingA))
-        {
-            return false;
-        }
-
-        return pawn.Reserve(TargetThingA, job, errorOnFailed: errorOnFailed);
+        return pawn.CanReserve(TargetThingA) && pawn.Reserve(TargetThingA, job, errorOnFailed: errorOnFailed);
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
         this.FailOnDestroyedOrNull(TargetIndex.A);

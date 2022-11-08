@@ -9,27 +9,10 @@ namespace QEthics;
 /// </summary>
 public class BillProcessor : IExposable
 {
-    #region Members
-
     /// <summary>
-    ///     Things we desire that can be anything.
+    ///     Current bill being worked on. If null, crafter is not working on a bill. It is not saved in ExposeData().
     /// </summary>
-    public Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
-
-    /// <summary>
-    ///     Cached value that is updated after a function checks for recipe ingredients on a interval. Designed to be checked
-    ///     in a WorkGiver HasJobOnThing() function, or when the ingredientContainer contents change.
-    /// </summary>
-    public bool anyBillIngredientsAvailable;
-
-    /// <summary>
-    ///     The holder object we are observing orders for.
-    /// </summary>
-    public IThingHolder observedThingHolder;
-
-    public bool requestsLost;
-
-    public Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
+    private Bill_Production _activeBill;
 
     //private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 598);
 
@@ -39,13 +22,25 @@ public class BillProcessor : IExposable
     private string _activeBillID;
 
     /// <summary>
-    ///     Current bill being worked on. If null, crafter is not working on a bill. It is not saved in ExposeData().
+    ///     Cached value that is updated after a function checks for recipe ingredients on a interval. Designed to be checked
+    ///     in a WorkGiver HasJobOnThing() function, or when the ingredientContainer contents change.
     /// </summary>
-    private Bill_Production _activeBill;
+    public bool anyBillIngredientsAvailable;
 
-    #endregion Members
+    /// <summary>
+    ///     Things we desire that can be anything.
+    /// </summary>
+    public Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
 
-    #region Constructors
+    public Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
+
+    /// <summary>
+    ///     The holder object we are observing orders for.
+    /// </summary>
+    public IThingHolder observedThingHolder;
+
+    public bool requestsLost;
+
 
     public BillProcessor(IThingHolder observedThingHolder)
     {
@@ -56,10 +51,6 @@ public class BillProcessor : IExposable
     public BillProcessor()
     {
     }
-
-    #endregion Constructors
-
-    #region Properties
 
     public ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
 
@@ -75,9 +66,24 @@ public class BillProcessor : IExposable
         }
     }
 
-    #endregion Properties
+    //Inherited
+    public void ExposeData()
+    {
+        Scribe_Values.Look(ref anyBillIngredientsAvailable, "anyBillIngredientsAvailable");
+        Scribe_Values.Look(ref _activeBillID, "_activeBillID");
 
-    #region Methods
+        if (Scribe.mode != LoadSaveMode.PostLoadInit)
+        {
+            return;
+        }
+
+        if (_activeBillID != null)
+        {
+            UpdateActiveBill();
+        }
+
+        //Notify_ContentsChanged();
+    }
 
     public void UpdateAvailIngredientsCache()
     {
@@ -116,13 +122,11 @@ public class BillProcessor : IExposable
                 continue;
             }
 
-            if (Find.TickManager.TicksGame < curBill.lastIngredientSearchFailTicks + checkIntervalTicks)
+            if (Find.TickManager.TicksGame < curBill.nextTickToSearchForIngredients)
             {
                 QEEMod.TryLog($"checked {curBill.GetUniqueLoadID()} for avail. ingredients recently, skipping");
                 continue;
             }
-
-            curBill.lastIngredientSearchFailTicks = 0;
 
             if (!curBill.ShouldDoNow())
             {
@@ -158,7 +162,7 @@ public class BillProcessor : IExposable
 
             if (!ingredientsAvailableNow.TryGetValue(curBill.GetUniqueLoadID(), out var dummy))
             {
-                curBill.lastIngredientSearchFailTicks = Find.TickManager.TicksGame;
+                curBill.nextTickToSearchForIngredients = Find.TickManager.TicksGame;
             }
         }
     }
@@ -189,9 +193,7 @@ public class BillProcessor : IExposable
                 elementsRemoved++;
                 desiredRequests.Remove(entry.Key);
             }
-            else if (!(orderRequest.thing.ParentHolder is Pawn_CarryTracker ||
-                       orderRequest.thing.ParentHolder is Map ||
-                       orderRequest.thing.ParentHolder is not null))
+            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or { }))
             {
                 //QEEMod.TryLog("QEE: ABORTING CLONE! " + orderRequest.Label + " did not spawn in valid container");
                 elementsRemoved++;
@@ -298,25 +300,4 @@ public class BillProcessor : IExposable
             }
         }
     }
-
-    //Inherited
-    public void ExposeData()
-    {
-        Scribe_Values.Look(ref anyBillIngredientsAvailable, "anyBillIngredientsAvailable");
-        Scribe_Values.Look(ref _activeBillID, "_activeBillID");
-
-        if (Scribe.mode != LoadSaveMode.PostLoadInit)
-        {
-            return;
-        }
-
-        if (_activeBillID != null)
-        {
-            UpdateActiveBill();
-        }
-
-        //Notify_ContentsChanged();
-    }
-
-    #endregion Methods
 }

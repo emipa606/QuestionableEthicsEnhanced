@@ -6,7 +6,7 @@ namespace QEthics;
 /// <summary>
 ///     Makes TraitEntry exposable.
 /// </summary>
-public class ExposedTraitEntry : TraitEntry, IExposable
+public class ExposedTraitEntry : Trait, IExposable
 {
     public ExposedTraitEntry()
     {

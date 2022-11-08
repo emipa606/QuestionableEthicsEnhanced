@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -53,7 +52,7 @@ public static class GenomeUtility
                 if (story != null)
                 {
                     genomeSequence.bodyType = story.bodyType;
-                    genomeSequence.crownType = story.crownType;
+                    genomeSequence.crownType = story.headType;
                     genomeSequence.hairColor = story.hairColor;
                     genomeSequence.skinMelanin = story.melanin;
                     genomeSequence.hair = story.hairDef;
@@ -61,7 +60,6 @@ public static class GenomeUtility
                     genomeSequence.faceTattoo = style.FaceTattoo;
                     genomeSequence.bodyTattoo = style.BodyTattoo;
                     genomeSequence.favoriteColor = story.favoriteColor;
-                    genomeSequence.headGraphicPath = story.HeadGraphicPath;
 
                     foreach (var trait in story.traits.allTraits)
                     {
@@ -109,7 +107,7 @@ public static class GenomeUtility
             forceGenerateNewPawn: true,
             canGeneratePawnRelations: false,
             fixedGender: genomeSequence.gender,
-            fixedBiologicalAge: 0,
+            fixedBiologicalAge: 3,
             fixedChronologicalAge: 0,
             allowFood: false);
         var pawn = PawnGenerator.GeneratePawn(request);
@@ -141,33 +139,21 @@ public static class GenomeUtility
             QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn...");
             storyTracker.bodyType = genomeSequence.bodyType;
             //sanity check to remove possibility of an Undefined crownType
-            storyTracker.crownType = genomeSequence.crownType == CrownType.Undefined
-                ? CrownType.Average
-                : genomeSequence.crownType;
+            if (genomeSequence.crownType == null)
+            {
+                storyTracker.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail(pawn.gender == Gender.Female
+                    ? "Female_AverageNormal"
+                    : "Male_AverageNormal");
+            }
+            else
+            {
+                storyTracker.headType = genomeSequence.crownType;
+            }
 
             storyTracker.hairColor = genomeSequence.hairColor;
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
             storyTracker.favoriteColor = genomeSequence.favoriteColor;
             storyTracker.melanin = genomeSequence.skinMelanin;
-
-            //headGraphicPath is private, so we need Harmony to set its value
-            if (genomeSequence.headGraphicPath != null)
-            {
-                QEEMod.TryLog("Setting headGraphicPath for generated pawn");
-                AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath")
-                    .SetValue(storyTracker, genomeSequence.headGraphicPath);
-            }
-            else
-            {
-                //could use this code to make a random head, instead of the static graphic paths.
-                //AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath").SetValue(storyTracker,
-                //GraphicDatabaseHeadRecords.GetHeadRandom(genomeSequence.gender, PawnSkinColors.GetSkinColor(genomeSequence.skinMelanin), genomeSequence.crownType).GraphicPath);
-                QEEMod.TryLog("No headGraphicPath in genome template, setting to default head");
-                var path = genomeSequence.gender == Gender.Male
-                    ? "Things/Pawn/Humanlike/Heads/Male/Male_Average_Normal"
-                    : "Things/Pawn/Humanlike/Heads/Female/Female_Narrow_Normal";
-                AccessTools.Field(typeof(Pawn_StoryTracker), "headGraphicPath").SetValue(storyTracker, path);
-            }
 
             storyTracker.traits.allTraits.Clear();
             QEEMod.TryLog("Setting traits for generated pawn");
@@ -187,7 +173,7 @@ public static class GenomeUtility
 
             QEEMod.TryLog("Setting backstory for generated pawn");
             //Give random vatgrown backstory.
-            storyTracker.childhood = DefDatabase<BackstoryDef>.GetNamed("Backstory_ColonyVatgrown").GetFromDatabase();
+            storyTracker.childhood = DefDatabase<BackstoryDef>.GetNamed("Backstory_ColonyVatgrown");
             storyTracker.adulthood = null;
         }
 

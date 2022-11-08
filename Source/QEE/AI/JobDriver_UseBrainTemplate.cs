@@ -30,12 +30,7 @@ public class JobDriver_UseBrainTemplate : JobDriver
             return false;
         }
 
-        if (!pawn.CanReserve(job.targetC.Thing) && Patient.CurrentBed() != Bed)
-        {
-            return false;
-        }
-
-        return true;
+        return pawn.CanReserve(job.targetC.Thing) || Patient.CurrentBed() == Bed;
     }
 
     public override void ExposeData()
@@ -46,7 +41,7 @@ public class JobDriver_UseBrainTemplate : JobDriver
         Scribe_Values.Look(ref workStarted, "workStarted");
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         //A - Sleeper   B - Brain template   C - Bed
 

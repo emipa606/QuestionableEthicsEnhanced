@@ -75,9 +75,7 @@ public class ThingOrderProcessor : IExposable
                 elementsRemoved++;
                 desiredIngredients.Remove(orderRequest);
             }
-            else if (!(orderRequest.thing.ParentHolder is Pawn_CarryTracker ||
-                       orderRequest.thing.ParentHolder is Map ||
-                       orderRequest.thing.ParentHolder is not null))
+            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or { }))
             {
                 QEEMod.TryLog($"QEE: ABORTING CLONE! {orderRequest.Label} did not spawn in valid container");
                 elementsRemoved++;

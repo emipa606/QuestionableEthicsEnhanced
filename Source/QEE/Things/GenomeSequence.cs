@@ -20,7 +20,7 @@ public class GenomeSequence : ThingWithComps
     //Only relevant for humanoids.
     public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
     public string browType;
-    public CrownType crownType = CrownType.Average;
+    public HeadTypeDef crownType;
     public string crownTypeAlien = "";
     public Color eyeColor;
     public string eyeType;
@@ -30,7 +30,6 @@ public class GenomeSequence : ThingWithComps
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
-    public string headGraphicPath;
 
     // Facial Animation compatibility
     public string headType;
@@ -88,12 +87,12 @@ public class GenomeSequence : ThingWithComps
         Scribe_Values.Look(ref gender, "gender");
 
         //Load first humanoid value
-        Scribe_Values.Look(ref crownType, "crownType");
+        Scribe_Defs.Look(ref crownType, "crownType");
 
         Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
 
         //Save/Load rest of the humanoid values. CrownType will be Undefined for animals.
-        if (crownType != CrownType.Undefined)
+        if (crownType != null)
         {
             Scribe_Defs.Look(ref bodyType, "bodyType");
             Scribe_Values.Look(ref hairColor, "hairColor");
@@ -104,14 +103,13 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
-            Scribe_Values.Look(ref headGraphicPath, "headGraphicPath");
 
             //Humanoid values that could be null in save file go here
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (hair == null)
                 {
-                    hair = HairDefOf.Shaved;
+                    hair = HairDefOf.Bald;
                 }
 
                 if (beard == null)
@@ -127,16 +125,6 @@ public class GenomeSequence : ThingWithComps
                 if (bodyTattoo == null)
                 {
                     bodyTattoo = TattooDefOf.NoTattoo_Body;
-                }
-
-                if (headGraphicPath == null)
-                {
-                    //*slaps roof of car* this bad code can crash your game!
-                    //headGraphicPath = GraphicDatabaseHeadRecords.GetHeadRandom(gender, PawnSkinColors.GetSkinColor(skinMelanin), crownType).GraphicPath;
-
-                    headGraphicPath = gender == Gender.Male
-                        ? "Things/Pawn/Humanlike/Heads/Male/Male_Average_Normal"
-                        : "Things/Pawn/Humanlike/Heads/Female/Female_Narrow_Normal";
                 }
             }
         }
@@ -246,7 +234,6 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.favoriteColor = favoriteColor;
         splitThingStack.faceTattoo = faceTattoo;
         splitThingStack.bodyTattoo = bodyTattoo;
-        splitThingStack.headGraphicPath = headGraphicPath;
         foreach (var traitEntry in traits)
         {
             splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));

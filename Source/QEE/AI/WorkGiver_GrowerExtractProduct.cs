@@ -37,12 +37,7 @@ public class WorkGiver_GrowerExtractProduct : WorkGiver_Scanner
             return false;
         }
 
-        if (grower.status != CrafterStatus.Finished)
-        {
-            return false;
-        }
-
-        return true;
+        return grower.status == CrafterStatus.Finished;
     }
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)

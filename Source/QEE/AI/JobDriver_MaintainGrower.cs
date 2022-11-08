@@ -18,7 +18,7 @@ public class JobDriver_MaintainGrower : JobDriver
         return pawn.CanReserve(TargetThingA) && pawn.Reserve(TargetThingA, job, errorOnFailed: errorOnFailed);
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOn(() => TargetThingA is Building_GrowerBase vat && vat.status != CrafterStatus.Crafting);
         this.FailOnDespawnedNullOrForbidden(TargetIndex.A);

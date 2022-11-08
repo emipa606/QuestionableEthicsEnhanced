@@ -56,18 +56,9 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
 
     //private static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 600);
 
-    public override ThingRequest PotentialWorkThingRequest
-    {
-        get
-        {
-            if (def.fixedBillGiverDefs is { Count: 1 })
-            {
-                return ThingRequest.ForDef(def.fixedBillGiverDefs[0]);
-            }
-
-            return ThingRequest.ForGroup(ThingRequestGroup.PotentialBillGiver);
-        }
-    }
+    public override ThingRequest PotentialWorkThingRequest => def.fixedBillGiverDefs is { Count: 1 }
+        ? ThingRequest.ForDef(def.fixedBillGiverDefs[0])
+        : ThingRequest.ForGroup(ThingRequestGroup.PotentialBillGiver);
 
     /* return true if all conditions are met:
         a) any bills outstanding
@@ -85,7 +76,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
             return false;
         }
 
-        if (grower.status == CrafterStatus.Crafting || grower.status == CrafterStatus.Finished)
+        if (grower.status is CrafterStatus.Crafting or CrafterStatus.Finished)
         {
             JobFailReason.Is(GrowerBusyTrans);
 
@@ -267,8 +258,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
     public bool PawnCanDoThisBill(Pawn p, Bill theBill, LocalTargetInfo target, out string reason)
     {
         reason = GenericFailReasonTrans;
-        if (Find.TickManager.TicksGame < theBill.lastIngredientSearchFailTicks +
-            (QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+        if (Find.TickManager.TicksGame < theBill.nextTickToSearchForIngredients)
         {
             reason = RecentIngSearchTrans;
             return false;
@@ -328,12 +318,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
 
     public bool ThingIsUsableBillGiver(Thing thing)
     {
-        if (def.fixedBillGiverDefs != null && def.fixedBillGiverDefs.Contains(thing.def))
-        {
-            return true;
-        }
-
-        return false;
+        return def.fixedBillGiverDefs != null && def.fixedBillGiverDefs.Contains(thing.def);
     }
 
     public override Danger MaxPathDanger(Pawn pawn)

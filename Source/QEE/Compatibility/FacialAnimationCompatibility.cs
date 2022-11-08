@@ -1,6 +1,7 @@
 ﻿using FacialAnimation;
 using UnityEngine;
 using Verse;
+using HeadTypeDef = FacialAnimation.HeadTypeDef;
 
 namespace QEthics;
 

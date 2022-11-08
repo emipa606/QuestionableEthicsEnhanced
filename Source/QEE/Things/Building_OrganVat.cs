@@ -71,7 +71,7 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
         drawAltitude += new Vector3(0f, 0.005f, 0f);
         var recipeProps = activeRecipe?.GetModExtension<RecipeGraphicProperties>();
 
-        if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) && activeRecipe != null &&
+        if (status is CrafterStatus.Crafting or CrafterStatus.Finished && activeRecipe != null &&
             recipeProps?.productGraphic?.Graphic?.MatSingle != null)
         {
             var material = recipeProps.productGraphic.Graphic.MatSingle;
@@ -241,7 +241,7 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
     {
         string recipeLabel = activeRecipe?.LabelCap ?? "QE_VatGrowerNoRecipe".Translate();
 
-        if (status == CrafterStatus.Filling || status == CrafterStatus.Finished)
+        if (status is CrafterStatus.Filling or CrafterStatus.Finished)
         {
             return $"{label} {recipeLabel.CapitalizeFirst()}";
         }

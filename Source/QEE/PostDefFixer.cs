@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
-using RimWorld;
 using Verse;
 
 namespace QEthics;
@@ -62,31 +60,6 @@ public static class PostDefFixer
             {
                 def.recipes.Add(QERecipeDefOf.QE_BrainScanning);
             }
-        }
-
-        //Inject our own backstories.
-        foreach (var def in DefDatabase<BackstoryDef>.AllDefs)
-        {
-            var backstory = new Backstory
-            {
-                slot = def.slot,
-                title = def.title,
-                titleShort = def.titleShort,
-                titleFemale = def.titleFemale,
-                titleShortFemale = def.titleShortFemale,
-                baseDesc = def.baseDesc
-            };
-            AccessTools.Field(typeof(Backstory), "bodyTypeFemale").SetValue(backstory, def.bodyTypeFemale);
-            AccessTools.Field(typeof(Backstory), "bodyTypeMale").SetValue(backstory, def.bodyTypeMale);
-            AccessTools.Field(typeof(Backstory), "bodyTypeGlobal").SetValue(backstory, def.bodyTypeGlobal);
-            backstory.spawnCategories.AddRange(def.spawnCategories);
-            backstory.PostLoad();
-            backstory.ResolveReferences();
-
-            BackstoryDatabase.AddBackstory(backstory);
-
-            def.identifier = backstory.identifier;
-            //QEEMod.TryLog("'" + def.defName + "' identifier is '" + backstory.identifier + "'");
         }
 
         foreach (var def in DefDatabase<HediffDef>.AllDefs)

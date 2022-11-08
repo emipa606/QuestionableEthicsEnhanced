@@ -73,12 +73,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         get
         {
             var room = this.GetRoom(RegionType.Set_Passable);
-            if (room != null)
-            {
-                return room.GetStat(RoomStatDefOf.Cleanliness);
-            }
-
-            return 0f;
+            return room?.GetStat(RoomStatDefOf.Cleanliness) ?? 0f;
         }
     }
 
@@ -105,7 +100,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
 
     public override string GetInspectString()
     {
-        if (!(ParentHolder is Map))
+        if (ParentHolder is not Verse.Map)
         {
             return null;
         }
@@ -135,7 +130,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
 
         //Draw product
         drawAltitude += new Vector3(0f, 0.005f, 0f);
-        if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) &&
+        if (status is CrafterStatus.Crafting or CrafterStatus.Finished &&
             activeRecipe is { productGraphic: { } })
         {
             var material = activeRecipe.productGraphic.Graphic.MatSingle;
@@ -295,7 +290,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
     {
         string recipeLabel = activeRecipe?.LabelCap ?? "QE_VatGrowerNoRecipe".Translate();
 
-        if (status == CrafterStatus.Filling || status == CrafterStatus.Finished)
+        if (status is CrafterStatus.Filling or CrafterStatus.Finished)
         {
             return $"{label} {recipeLabel.CapitalizeFirst()}";
         }
@@ -332,7 +327,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
                 defaultLabel = "QE_VatGrowerStartCraftingGizmoLabel".Translate(),
                 defaultDesc = "QE_VatGrowerStartCraftingGizmoDescription".Translate(),
                 icon = ContentFinder<Texture2D>.Get("Things/Item/Health/HealthItem"),
-                order = -100,
+                Order = -100,
                 action = delegate
                 {
                     var options = new List<FloatMenuOption>();
@@ -380,7 +375,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
                 defaultLabel = "QE_VatGrowerStopCraftingGizmoLabel".Translate(),
                 defaultDesc = "QE_VatGrowerStopCraftingGizmoDescription".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel"),
-                order = -100,
+                Order = -100,
                 action = StopCrafting
             };
             if (Prefs.DevMode)

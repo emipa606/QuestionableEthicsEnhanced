@@ -185,7 +185,7 @@ public static class IngredientUtility
         vat.billProc.desiredRequests.TryGetValue(cachedThing.def.defName, out var desiredRequest);
 
         //check that the vat still needs the cached ingredient before searching the map for the same ThingDef
-        if (desiredRequest == null || desiredRequest.amount <= 0)
+        if (desiredRequest is not { amount: > 0 })
         {
             QEEMod.TryLog(
                 $"Cached ingredient {cachedThing.LabelShort} is already fulfilled in vat. Looking for next ingredient in recipe");

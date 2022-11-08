@@ -13,10 +13,10 @@ namespace QEthics;
 /// </summary>
 public class BrainScanTemplate : ThingWithComps
 {
-    public Backstory backStoryAdult;
+    public BackstoryDef backStoryAdult;
 
     //Humanoid only
-    public Backstory backStoryChild;
+    public BackstoryDef backStoryChild;
 
     /// <summary>
     ///     List containing all hediff def information that should be saved and applied to clones
@@ -60,11 +60,13 @@ public class BrainScanTemplate : ThingWithComps
         Scribe_Values.Look(ref childhoodIdentifier, "backStoryChild");
         if (Scribe.mode == LoadSaveMode.LoadingVars && !childhoodIdentifier.NullOrEmpty())
         {
-            if (!BackstoryDatabase.TryGetWithIdentifier(childhoodIdentifier, out backStoryChild))
+            backStoryChild = DefDatabase<BackstoryDef>.GetNamedSilentFail(childhoodIdentifier);
+            if (backStoryChild == null)
             {
                 //removed the booleans as it appears to be obsolete
                 Log.Error($"Couldn't load child backstory with identifier {childhoodIdentifier}. Giving random.");
-                backStoryChild = BackstoryDatabase.RandomBackstory(BackstorySlot.Childhood);
+                backStoryChild = DefDatabase<BackstoryDef>.AllDefsListForReading
+                    .Where(backstoryDef => backstoryDef.slot == BackstorySlot.Childhood).RandomElement();
             }
         }
 
@@ -72,11 +74,13 @@ public class BrainScanTemplate : ThingWithComps
         Scribe_Values.Look(ref adulthoodIdentifier, "backStoryAdult");
         if (Scribe.mode == LoadSaveMode.LoadingVars && !adulthoodIdentifier.NullOrEmpty())
         {
-            if (!BackstoryDatabase.TryGetWithIdentifier(adulthoodIdentifier, out backStoryAdult))
+            backStoryAdult = DefDatabase<BackstoryDef>.GetNamedSilentFail(adulthoodIdentifier);
+            if (backStoryAdult == null)
             {
                 //removed boolean as it appeared to be obsolete
                 Log.Error($"Couldn't load adult backstory with identifier {adulthoodIdentifier}. Giving random.");
-                backStoryAdult = BackstoryDatabase.RandomBackstory(BackstorySlot.Adulthood);
+                backStoryAdult = DefDatabase<BackstoryDef>.AllDefsListForReading
+                    .Where(backstoryDef => backstoryDef.slot == BackstorySlot.Adulthood).RandomElement();
             }
         }
 

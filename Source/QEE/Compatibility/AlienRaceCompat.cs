@@ -24,7 +24,6 @@ public static class AlienRaceCompat
         genomeSequence.skinColor = alienComp.GetChannel("skin").first;
         genomeSequence.skinColorSecond = alienComp.GetChannel("skin").second;
         genomeSequence.hairColorSecond = alienComp.GetChannel("hair").second;
-        genomeSequence.crownTypeAlien = alienComp.crownType;
 
         if (alienComp.addonVariants is { Count: > 0 })
         {
@@ -43,7 +42,6 @@ public static class AlienRaceCompat
         alienComp.GetChannel("skin").first = genomeSequence.skinColor;
         alienComp.GetChannel("skin").second = genomeSequence.skinColorSecond;
         alienComp.GetChannel("hair").second = genomeSequence.hairColorSecond;
-        alienComp.crownType = genomeSequence.crownTypeAlien;
 
         if (genomeSequence.addonVariants.Count > 0)
         {

@@ -30,15 +30,10 @@ public class ComparableSkillRecord : IExposable, IEquatable<ComparableSkillRecor
         }
 
         //compare the defName instead of the SkillDef, because SkillDef doesn't implement IEquatable
-        if (def.defName != null &&
-            def.defName == other.def.defName &&
-            level == other.level &&
-            passion == other.passion)
-        {
-            return true;
-        }
-
-        return false;
+        return def.defName != null &&
+               def.defName == other.def.defName &&
+               level == other.level &&
+               passion == other.passion;
     }
 
     public void ExposeData()

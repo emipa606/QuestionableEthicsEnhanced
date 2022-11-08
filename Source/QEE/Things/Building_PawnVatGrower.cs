@@ -362,7 +362,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             GenPlace.TryPlaceThing(tempPawn, InteractionCell, Map, ThingPlaceMode.Near);
 
             //remove any ingredients used to create the Pawn
-            innerContainer.RemoveAll(thing => !(thing is GenomeSequence));
+            innerContainer.RemoveAll(thing => thing is not GenomeSequence);
             StopCrafting(false);
         }
 
@@ -374,7 +374,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     {
         string pawnLabel = pawnKindToGrow?.race.LabelCap ?? "QE_VatGrowerNoLivingBeing".Translate();
 
-        if (status == CrafterStatus.Filling || status == CrafterStatus.Finished)
+        if (status is CrafterStatus.Filling or CrafterStatus.Finished)
         {
             return $"{label} {pawnLabel.CapitalizeFirst()}";
         }
@@ -398,7 +398,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
     public override string GetInspectString()
     {
-        if (!(ParentHolder is Map))
+        if (ParentHolder is not Verse.Map)
         {
             return null;
         }
@@ -428,7 +428,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
         //Draw product
         drawAltitude += new Vector3(0f, 0.005f, 0f);
-        if ((status == CrafterStatus.Crafting || status == CrafterStatus.Finished) && pawnBeingGrown != null)
+        if (status is CrafterStatus.Crafting or CrafterStatus.Finished && pawnBeingGrown != null)
         {
             //code has been commented out as a seemingly nonworking pawn renderer? Legacy switch has been added
             if (QEESettings.instance.oldCloningRender)

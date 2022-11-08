@@ -202,7 +202,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
 
     public override string GetInspectString()
     {
-        if (!(ParentHolder is Map))
+        if (ParentHolder is not Verse.Map)
         {
             return null;
         }

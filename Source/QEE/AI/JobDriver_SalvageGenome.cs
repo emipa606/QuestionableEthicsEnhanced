@@ -23,7 +23,7 @@ public class JobDriver_SalvageGenome : JobDriver
                pawn.Reserve(TargetThingB, job, errorOnFailed: errorOnFailed);
     }
 
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
         this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
