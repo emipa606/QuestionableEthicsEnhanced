@@ -6,7 +6,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.4.1</FileVersion>
+    <FileVersion>1.4.2</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
@@ -20,26 +20,26 @@
     </PackageReference>
     <PackageReference Include="Mlie_Rimworld_VersionFromManifest" Version="*" />
     <Reference Include="AlienRace">
-	    <HintPath>..\..\..\..\..\..\workshop\content\294100\839005762\1.4\Assemblies\AlienRace.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
-	    <Private>false</Private>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\839005762\1.4\Assemblies\AlienRace.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
     </Reference>
     <Reference Include="AnimalGenetics">
       <HintPath>..\..\..\AnimalGenetics\1.4\Assemblies\AnimalGenetics.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
-	    <Private>false</Private>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
     </Reference>
     <Reference Include="FacialAnimation">
-	    <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.4\Assemblies\FacialAnimation.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
-	    <Private>false</Private>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.4\Assemblies\FacialAnimation.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
     </Reference>
     <PackageReference Include="Krafs.Publicizer" Version="*">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-	<ItemGroup>
-		<Publicize Include="Assembly-CSharp" />
-	</ItemGroup>
+  <ItemGroup>
+    <Publicize Include="Assembly-CSharp" />
+  </ItemGroup>
 </Project>

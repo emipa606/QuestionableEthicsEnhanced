@@ -24,6 +24,7 @@
           </categories>
           <disallowedThingDefs>
             <li>Hay</li>
+            <li>Dye</li>
           </disallowedThingDefs>
         </filter>
         <count>2.5</count>
@@ -36,6 +37,7 @@
       </categories>
       <disallowedThingDefs>
         <li>Hay</li>
+        <li>Dye</li>
       </disallowedThingDefs>
     </fixedIngredientFilter>
     <defaultIngredientFilter>
