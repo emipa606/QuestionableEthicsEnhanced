@@ -135,3 +135,6 @@ If you run into errors when adding this mod to your modlist, please let me know 
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2850854272]![Image](https://img.shields.io/github/v/release/emipa606/QuestionableEthicsEnhanced?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
+
