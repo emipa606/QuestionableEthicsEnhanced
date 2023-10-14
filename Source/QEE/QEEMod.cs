@@ -15,8 +15,7 @@ public class QEEMod : Mod
     public QEEMod(ModContentPack content) : base(content)
     {
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.QuestionableEthicsEnhanced"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
         QEESettings.instance = GetSettings<QEESettings>();
     }
 
@@ -55,6 +54,8 @@ public class QEEMod : Mod
             ref QEESettings.instance.maintWorkThresholdFloat,
             QEESettings.instance.maintWorkThresholdFloat.ToStringPercent(), 0.00f, 1.0f,
             "QE_MaintenanceWorkThresholdTooltip".Translate());
+        listingStandard.CheckboxLabeled("QE_UseFillingGraphic".Translate(),
+            ref QEESettings.instance.useFillingGraphic, "QE_UseFillingGraphicTooltip".Translate());
         listingStandard.CheckboxLabeled("QE_GiveCloneNegativeThought".Translate(),
             ref QEESettings.instance.giveCloneNegativeThought, "QE_GiveCloneNegativeThoughtTooltip".Translate());
         listingStandard.CheckboxLabeled("QE_BrainTemplatingRequiresClone".Translate(),

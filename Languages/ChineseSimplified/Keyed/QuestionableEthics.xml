@@ -117,4 +117,6 @@
   <QE_BrainTemplatingRequiresCloneTooltip>当为 "真 "时，只允许将大脑模板应用于具有 "克隆 "hediff的棋子。默认=真</QE_BrainTemplatingRequiresCloneTooltip>
   <QE_GenomeSequencerDescription_Hediffs>猎头公司</QE_GenomeSequencerDescription_Hediffs>
   <QE_MessagestapledPawnEnslaved>{0}被{1}用神经钉奴役了</QE_MessagestapledPawnEnslaved>
+  <QE_UseFillingGraphic>可视化成分填充</QE_UseFillingGraphic>
+  <QE_UseFillingGraphicTooltip>仍然显示大桶在装满资源，而不是在装满之前显示为空的</QE_UseFillingGraphicTooltip>
 </LanguageData>

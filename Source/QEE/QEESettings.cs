@@ -19,6 +19,7 @@ public class QEESettings : ModSettings
     public bool oldCloningRender;
     public float organGrowthRateFloat = 1.0f;
     public float organTotalResourcesFloat = 1.0f;
+    public bool useFillingGraphic = true;
 
     public QEESettings()
     {
@@ -30,6 +31,7 @@ public class QEESettings : ModSettings
     /// </summary>
     public override void ExposeData()
     {
+        Scribe_Values.Look(ref useFillingGraphic, "useFillingGraphic", true);
         Scribe_Values.Look(ref maintRateFloat, "maintRateFloat", 1.0f);
         Scribe_Values.Look(ref organGrowthRateFloat, "organGrowthRateFloat", 1.0f);
         Scribe_Values.Look(ref cloneGrowthRateFloat, "cloneGrowthRateFloat", 1.0f);

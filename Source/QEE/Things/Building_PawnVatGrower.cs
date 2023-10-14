@@ -221,7 +221,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
             if (innerContainer.FirstOrDefault(thing => thing is GenomeSequence) is GenomeSequence
                 {
-                    sourceName: { }
+                    sourceName: not null
                 } genome)
             {
                 Messages.Message("QE_CloningMaintFailMessage".Translate(genome.sourceName.Named("SOURCEPAWNNAME")),
@@ -500,7 +500,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
         switch (status)
         {
-            case CrafterStatus.Filling:
+            case CrafterStatus.Filling when QEESettings.instance.useFillingGraphic:
                 var totalAmount = orderProcessor.desiredIngredients.Sum(request => request.amount);
                 var currentAmount = totalAmount - orderProcessor.PendingRequests.Sum(request => request.amount);
                 QEEMod.TryLog($"Totalamount: {totalAmount}, currentAmount {currentAmount}");

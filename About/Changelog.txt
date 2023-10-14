@@ -1,5 +1,9 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.4.4 - Added option to disable the filling graphics.
+Used DeepL to update translations for ChineseSimplified, French, German, Japanese, Russian
+
+
 1.4.3 - Added loadBefore tag for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2802770242]Make Anything Craftable[/url]
 
 
