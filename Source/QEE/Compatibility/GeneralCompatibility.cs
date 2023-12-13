@@ -8,8 +8,8 @@ namespace QEthics;
 /// </summary>
 public static class GeneralCompatibility
 {
-    public static List<ThingDef> excludedRaces = new List<ThingDef>();
-    public static List<HediffDef> excludedHediffs = new List<HediffDef>();
-    public static List<HediffDef> includedGenomeTemplateHediffs = new List<HediffDef>();
-    public static List<HediffDef> includedBrainTemplateHediffs = new List<HediffDef>();
+    public static List<ThingDef> excludedRaces = [];
+    public static List<HediffDef> excludedHediffs = [];
+    public static List<HediffDef> includedGenomeTemplateHediffs = [];
+    public static List<HediffDef> includedBrainTemplateHediffs = [];
 }

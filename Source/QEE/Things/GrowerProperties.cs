@@ -16,5 +16,5 @@ public class GrowerProperties : DefModExtension
     /// <summary>
     ///     Recipes that the Grower have.
     /// </summary>
-    public List<GrowerRecipeDef> recipes = new List<GrowerRecipeDef>();
+    public List<GrowerRecipeDef> recipes = [];
 }

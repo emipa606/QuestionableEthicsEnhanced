@@ -82,7 +82,7 @@
   <QE_OrganGrowthDuration>Organ growth multiplier</QE_OrganGrowthDuration>
   <QE_OrganGrowthDurationTooltip>Higher values = more time required to grow organs. Default = 1.0</QE_OrganGrowthDurationTooltip>
   <QE_UseFillingGraphic>Visualize ingredient filling</QE_UseFillingGraphic>
-  <QE_UseFillingGraphicTooltip>Sill show the vat filling up with resources instead of being shown as empty until filled</QE_UseFillingGraphicTooltip>
+  <QE_UseFillingGraphicTooltip>Will show the vat filling up with resources instead of being shown as empty until filled</QE_UseFillingGraphicTooltip>
   <QE_OrganIngredientMult>Organ total ingredient multiplier</QE_OrganIngredientMult>
   <QE_OrganIngredientMultTooltip>Higher values = more ingredients required to grow organs. Default = 1.0</QE_OrganIngredientMultTooltip>
   <QE_CloneGrowthDuration>Clone growth multiplier</QE_CloneGrowthDuration>

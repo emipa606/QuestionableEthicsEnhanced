@@ -135,7 +135,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
         {
             if (powersValue is IEnumerable value)
             {
-                psychicAwakeningPowersKnownDefNames = new List<string>();
+                psychicAwakeningPowersKnownDefNames = [];
 
                 //loop through each object in the 'powersKnown' List
                 foreach (var o in value)

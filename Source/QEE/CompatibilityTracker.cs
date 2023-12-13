@@ -59,18 +59,20 @@ public static class CompatibilityTracker
                 QEEMod.TryLog("RBSE detected. Make sure it loads first");
             }
 
-            if (modName.Contains("Facial Animation"))
+            if (!modName.Contains("Facial Animation"))
             {
-                FacialAnimationActive = true;
-                HeadTypeField = AccessTools.Field(AccessTools.TypeByName("HeadControllerComp"), "faceType");
-                EyeColorField = AccessTools.Field(AccessTools.TypeByName("EyeballControllerComp"), "color");
-                EyeTypeField = AccessTools.Field(AccessTools.TypeByName("EyeballControllerComp"), "faceType");
-                LidTypeField = AccessTools.Field(AccessTools.TypeByName("LidControllerComp"), "faceType");
-                BrowTypeField = AccessTools.Field(AccessTools.TypeByName("BrowControllerComp"), "faceType");
-                MouthTypeField = AccessTools.Field(AccessTools.TypeByName("MouthControllerComp"), "faceType");
-                SkinTypeField = AccessTools.Field(AccessTools.TypeByName("SkinControllerComp"), "faceType");
-                QEEMod.TryLog("Facial Animation detected.");
+                continue;
             }
+
+            FacialAnimationActive = true;
+            HeadTypeField = AccessTools.Field(AccessTools.TypeByName("HeadControllerComp"), "faceType");
+            EyeColorField = AccessTools.Field(AccessTools.TypeByName("EyeballControllerComp"), "color");
+            EyeTypeField = AccessTools.Field(AccessTools.TypeByName("EyeballControllerComp"), "faceType");
+            LidTypeField = AccessTools.Field(AccessTools.TypeByName("LidControllerComp"), "faceType");
+            BrowTypeField = AccessTools.Field(AccessTools.TypeByName("BrowControllerComp"), "faceType");
+            MouthTypeField = AccessTools.Field(AccessTools.TypeByName("MouthControllerComp"), "faceType");
+            SkinTypeField = AccessTools.Field(AccessTools.TypeByName("SkinControllerComp"), "faceType");
+            QEEMod.TryLog("Facial Animation detected.");
         }
     }
 

@@ -52,7 +52,7 @@ public class VatGrowerProperties : GrowerProperties
         topGraphic?.ResolveReferencesSpecial();
         var transparentShader = DefDatabase<ShaderTypeDef>.GetNamedSilentFail("Transparent");
         bottomGraphic?.ResolveReferencesSpecial();
-        glowGraphicUnpowered = new List<GraphicData>();
+        glowGraphicUnpowered = [];
         foreach (var graphicData in glowGraphic)
         {
             if (graphicData == null)

@@ -15,7 +15,7 @@ namespace QEthics;
 /// </summary>
 public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static SimpleCurve cleanlinessCurve = new SimpleCurve();
+    public static SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     Current active recipe being crafted.
@@ -131,7 +131,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         //Draw product
         drawAltitude += new Vector3(0f, 0.005f, 0f);
         if (status is CrafterStatus.Crafting or CrafterStatus.Finished &&
-            activeRecipe is { productGraphic: { } })
+            activeRecipe is { productGraphic: not null })
         {
             var material = activeRecipe.productGraphic.Graphic.MatSingle;
 

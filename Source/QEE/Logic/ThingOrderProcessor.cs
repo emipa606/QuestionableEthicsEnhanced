@@ -11,12 +11,12 @@ public class ThingOrderProcessor : IExposable
     /// <summary>
     ///     Contains the list of cached requests.
     /// </summary>
-    private readonly List<ThingOrderRequest> cachedRequests = new List<ThingOrderRequest>();
+    private readonly List<ThingOrderRequest> cachedRequests = [];
 
     /// <summary>
     ///     Things we desire that can be anything.
     /// </summary>
-    public List<ThingOrderRequest> desiredIngredients = new List<ThingOrderRequest>();
+    public List<ThingOrderRequest> desiredIngredients = [];
 
     /// <summary>
     ///     The holder object we are observing orders for.
@@ -57,8 +57,9 @@ public class ThingOrderProcessor : IExposable
         var elementsRemoved = 0;
 
         //expand the lamda from the original QE mod, to allow better debug logging
-        foreach (var orderRequest in desiredIngredients)
+        for (var index = 0; index < desiredIngredients.Count; index++)
         {
+            var orderRequest = desiredIngredients[index];
             if (orderRequest == null)
             {
                 continue;
@@ -75,7 +76,7 @@ public class ThingOrderProcessor : IExposable
                 elementsRemoved++;
                 desiredIngredients.Remove(orderRequest);
             }
-            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or { }))
+            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or not null))
             {
                 QEEMod.TryLog($"QEE: ABORTING CLONE! {orderRequest.Label} did not spawn in valid container");
                 elementsRemoved++;
@@ -84,10 +85,10 @@ public class ThingOrderProcessor : IExposable
             //QEEMod.TryLog("QEE: orderRequest is null");
         }
         /*
-        int elementsRemoved = desiredIngredients.RemoveAll(orderRequest => orderRequest == null || 
-           (orderRequest.HasThing && 
+        int elementsRemoved = desiredIngredients.RemoveAll(orderRequest => orderRequest == null ||
+           (orderRequest.HasThing &&
               //                               Check if not spawned in a valid container.
-              (orderRequest.thing.Destroyed || !(orderRequest.thing.ParentHolder is Pawn_CarryTracker || 
+              (orderRequest.thing.Destroyed || !(orderRequest.thing.ParentHolder is Pawn_CarryTracker ||
               orderRequest.thing.ParentHolder is Map || orderRequest.thing.ParentHolder is IThingHolder))
            )
         );*/

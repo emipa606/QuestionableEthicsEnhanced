@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Verse;
 
 namespace QEthics;
@@ -29,7 +28,7 @@ public static class PostDefFixer
             {
                 if (def.recipes == null)
                 {
-                    def.recipes = new List<RecipeDef>();
+                    def.recipes = [];
                 }
 
                 if (def.recipes.Count > 0)
@@ -49,7 +48,7 @@ public static class PostDefFixer
 
             if (def.recipes == null)
             {
-                def.recipes = new List<RecipeDef>();
+                def.recipes = [];
             }
 
             if (def.recipes.Count > 0)

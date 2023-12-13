@@ -18,7 +18,7 @@ public class GrowerRecipeDef : Def
     /// <summary>
     ///     What ingredients the recipe need in order to start being produced.
     /// </summary>
-    public List<IngredientCount> ingredients = new List<IngredientCount>();
+    public List<IngredientCount> ingredients = [];
 
     /// <summary>
     ///     How much maintenance is drained per tick during crafting.
@@ -48,7 +48,7 @@ public class GrowerRecipeDef : Def
     /// <summary>
     ///     Users that can use this recipe.
     /// </summary>
-    public List<ThingDef> recipeUsers = new List<ThingDef>();
+    public List<ThingDef> recipeUsers = [];
 
     /// <summary>
     ///     What research is needed to be completed in order to make this.

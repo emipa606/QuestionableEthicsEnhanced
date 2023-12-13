@@ -117,7 +117,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// </summary>
     public float doctorMaintenance = 0.25f;
 
-    public static SimpleCurve cleanlinessCurve = new SimpleCurve();
+    public static SimpleCurve cleanlinessCurve = [];
 
     static Building_GrowerBase_WorkTable()
     {

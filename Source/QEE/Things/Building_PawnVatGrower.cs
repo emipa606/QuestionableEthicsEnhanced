@@ -13,7 +13,7 @@ namespace QEthics;
 /// </summary>
 public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static SimpleCurve cleanlinessCurve = new SimpleCurve();
+    public static SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.

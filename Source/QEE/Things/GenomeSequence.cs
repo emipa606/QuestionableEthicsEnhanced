@@ -12,7 +12,7 @@ namespace QEthics;
 /// </summary>
 public class GenomeSequence : ThingWithComps
 {
-    public List<int> addonVariants = new List<int>();
+    public List<int> addonVariants = [];
     public object animalGeneticInformation;
     public BeardDef beard;
     public TattooDef bodyTattoo;
@@ -27,6 +27,7 @@ public class GenomeSequence : ThingWithComps
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
+    public List<string> genes;
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
@@ -37,7 +38,7 @@ public class GenomeSequence : ThingWithComps
     /// <summary>
     ///     List containing all hediff def information that should be saved and applied to clones
     /// </summary>
-    public List<HediffInfo> hediffInfos = new List<HediffInfo>();
+    public List<HediffInfo> hediffInfos = [];
 
     //AlienRace compatibility.
     /// <summary>
@@ -58,7 +59,8 @@ public class GenomeSequence : ThingWithComps
 
     //Relevant for all genomes.
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
-    public List<ExposedTraitEntry> traits = new List<ExposedTraitEntry>();
+    public List<ExposedTraitEntry> traits = [];
+    public XenotypeDef xenotype;
 
     public override string LabelNoCount
     {
@@ -102,6 +104,8 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref beard, "beard");
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
+            Scribe_Defs.Look(ref xenotype, "xenotype");
+            Scribe_Collections.Look(ref genes, "genes", LookMode.Value);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
 
             //Humanoid values that could be null in save file go here
@@ -183,6 +187,9 @@ public class GenomeSequence : ThingWithComps
             browType == otherGenome.browType &&
             mouthType == otherGenome.mouthType &&
             skinType == otherGenome.skinType &&
+            xenotype == otherGenome.xenotype &&
+            (genes == null && otherGenome.genes == null || genes != null && otherGenome.genes != null &&
+                genes.OrderBy(h => h).SequenceEqual(otherGenome.genes.OrderBy(h => h))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -234,6 +241,8 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.favoriteColor = favoriteColor;
         splitThingStack.faceTattoo = faceTattoo;
         splitThingStack.bodyTattoo = bodyTattoo;
+        splitThingStack.xenotype = xenotype;
+        splitThingStack.genes = genes;
         foreach (var traitEntry in traits)
         {
             splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));
@@ -298,7 +307,7 @@ public class GenomeSequence : ThingWithComps
             builder.AppendLine(
                 $"{"QE_GenomeSequencerDescription_Gender".Translate()}: {gender.GetLabel(pawnKindDef.race.race.Animal).CapitalizeFirst()}");
 
-            if (hair is { texPath: { } })
+            if (hair is { texPath: not null })
             {
                 builder.AppendLine($"{"QE_GenomeSequencerDescription_Hair".Translate()}: {hair}");
             }

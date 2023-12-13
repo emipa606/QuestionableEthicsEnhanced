@@ -109,7 +109,6 @@ public class BillProcessor : IExposable
         }
 
         var ingsFoundOnMap = new Dictionary<string, Thing>();
-        var checkIntervalTicks = QEESettings.instance.ingredientCheckIntervalSeconds * 60;
         if (bills == null)
         {
             return;
@@ -193,7 +192,7 @@ public class BillProcessor : IExposable
                 elementsRemoved++;
                 desiredRequests.Remove(entry.Key);
             }
-            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or { }))
+            else if (orderRequest.thing.ParentHolder is not (Pawn_CarryTracker or Map or not null))
             {
                 //QEEMod.TryLog("QEE: ABORTING CLONE! " + orderRequest.Label + " did not spawn in valid container");
                 elementsRemoved++;

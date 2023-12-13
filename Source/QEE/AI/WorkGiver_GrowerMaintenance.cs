@@ -12,12 +12,7 @@ public class WorkGiver_GrowerMaintenance : WorkGiver_Scanner
 
     public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
-        if (t is not Building_GrowerBase_WorkTable grower)
-        {
-            return false;
-        }
-
-        if (grower is not IMaintainableGrower maintainable)
+        if (t is not (Building_GrowerBase_WorkTable grower and IMaintainableGrower maintainable))
         {
             return false;
         }

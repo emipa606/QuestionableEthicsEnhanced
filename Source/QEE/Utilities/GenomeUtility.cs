@@ -67,6 +67,18 @@ public static class GenomeUtility
                     }
                 }
 
+                // Biotech
+                if (pawn.genes != null)
+                {
+                    if (pawn.genes.GenesListForReading.Any())
+                    {
+                        genomeSequence.genes = [];
+                        pawn.genes.GenesListForReading.ForEach(gene => genomeSequence.genes.Add(gene.def.defName));
+                    }
+
+                    pawn.genes.SetXenotypeDirect(genomeSequence.xenotype);
+                }
+
                 //Alien Races compatibility.
                 if (CompatibilityTracker.AlienRacesActive)
                 {
@@ -182,6 +194,28 @@ public static class GenomeUtility
             styleTracker.beardDef = genomeSequence.beard;
             styleTracker.FaceTattoo = genomeSequence.faceTattoo;
             styleTracker.BodyTattoo = genomeSequence.bodyTattoo;
+        }
+
+        if (pawn?.genes is { } geneTracker)
+        {
+            if (genomeSequence.xenotype != null)
+            {
+                geneTracker.xenotype = genomeSequence.xenotype;
+            }
+
+            if (genomeSequence.genes?.Any() == true)
+            {
+                foreach (var gene in genomeSequence.genes)
+                {
+                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene);
+                    if (geneDef == null)
+                    {
+                        continue;
+                    }
+
+                    geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
+                }
+            }
         }
 
         if (pawn?.skills is { } skillsTracker)

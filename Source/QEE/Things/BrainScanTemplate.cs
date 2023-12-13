@@ -21,13 +21,13 @@ public class BrainScanTemplate : ThingWithComps
     /// <summary>
     ///     List containing all hediff def information that should be saved and applied to clones
     /// </summary>
-    public List<HediffInfo> hediffInfos = new List<HediffInfo>();
+    public List<HediffInfo> hediffInfos = [];
 
     //Animals only
     public bool isAnimal;
     public PawnKindDef kindDef;
     public Ideo scannedIdeology = null;
-    public List<ComparableSkillRecord> skills = new List<ComparableSkillRecord>();
+    public List<ComparableSkillRecord> skills = [];
     public string sourceName;
     public DefMap<TrainableDef, bool> trainingLearned = new DefMap<TrainableDef, bool>();
     public DefMap<TrainableDef, int> trainingSteps = new DefMap<TrainableDef, int>();
