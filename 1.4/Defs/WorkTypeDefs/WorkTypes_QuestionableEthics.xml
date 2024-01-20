@@ -7,6 +7,7 @@
     <gerundLabel>maintaining</gerundLabel>
     <description>Maintains organism vats using both medical and analytical knowledge.</description>
     <verb>Maintaining</verb>
+    <requireCapableColonist>true</requireCapableColonist>
     <naturalPriority>1250</naturalPriority>
     <relevantSkills>
       <li>Medicine</li>

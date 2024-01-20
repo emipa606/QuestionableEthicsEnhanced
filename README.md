@@ -10,6 +10,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 - Adopted the mod on request by Mario55770
 - Added "filling" graphics for the vats, makes it easier to see how much is missing, can be disabled
 - Added support for cloning all features added by https://steamcommunity.com/workshop/filedetails/?id=1635901197]Facial Animation
+- Added support for Biotech genes and xenotypes
 - Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=2830943477]Animal Genetics
 
 ## Additions by Mario55770
@@ -59,13 +60,6 @@ Questionable Ethics Enhanced is a successor to the Questionable Ethics mod creat
 - Family relationships will no longer be generated for clones
 
 
-
-
-# Can I use this on an existing save?
-
-Yes. 
-
-If you have a save with Questionable Ethics enabled and want to switch to this mod instead, https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Docs/QE_Legacy_Save_Instructions.md]please follow these steps to keep your research/items intact.
 
 # Compatibility
 

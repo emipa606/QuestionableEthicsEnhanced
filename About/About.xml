@@ -37,6 +37,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 - Adopted the mod on request by Mario55770
 - Added "filling" graphics for the vats, makes it easier to see how much is missing, can be disabled
 - Added support for cloning all features added by [url=https://steamcommunity.com/workshop/filedetails/?id=1635901197]Facial Animation[/url]
+- Added support for Biotech genes and xenotypes
 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2830943477]Animal Genetics[/url]
 
 [h2]Additions by Mario55770[/h2]
@@ -86,12 +87,6 @@ Questionable Ethics Enhanced is a successor to the Questionable Ethics mod creat
 [*]The Apply Brain Templating toils have been re-written and many bugs have been fixed. Get [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Languages/English/Keyed/QuestionableEthics.xml]feedback messages during pawn selection[/url], if it's an invalid target.
 [*]Family relationships will no longer be generated for clones
 [/list]
-
-
-[h1]Can I use this on an existing save?[/h1]
-Yes. 
-
-If you have a save with Questionable Ethics enabled and want to switch to this mod instead, [url=https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Docs/QE_Legacy_Save_Instructions.md]please follow these steps[/url] to keep your research/items intact.
 
 [h1]Compatibility[/h1]
 This mod patches in changes to vanilla organ defs, but does not remove anything from the vanilla game. All defNames in the mod are unique and should not conflict with other mods. Any mods determined to be incompatible will throw a custom error message upon loading the game, when QEE and that mod are both enabled. [b]Consider this mod compatible with your modlist, unless specified below:[/b]
