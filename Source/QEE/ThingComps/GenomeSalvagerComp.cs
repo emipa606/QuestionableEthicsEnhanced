@@ -29,7 +29,7 @@ public class GenomeSalvagerComp : ThingComp
                         canTargetItems = true,
                         mapObjectTargetsMustBeAutoAttackable = false,
                         validator = target =>
-                            target.HasThing && target.Thing is Corpse corpse &&
+                            target is { HasThing: true, Thing: Corpse corpse } &&
                             corpse.InnerPawn.IsValidGenomeSequencingTarget()
                     };
 

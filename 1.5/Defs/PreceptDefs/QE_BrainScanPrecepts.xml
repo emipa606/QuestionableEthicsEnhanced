@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IssueDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_BrainScanning</defName>
+    <label>BrainScanning</label>
+    <iconPath>UI/Issues/BodyModifications</iconPath>
+  </IssueDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_BrainScanningAbhorrent</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Unethical</label>
+    <description>Brain scanning is immoral. Never mind actually uploading it and using it, and ereasing a clones mind.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Unethical</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Unethical</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainUploaded</eventDef>
+        <thought>QE_BrainUpload_Unethical</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_BrainScanningNeutral</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Neutral</label>
+    <description>So long as the brain scan is as perfect as it is...what does it matter? The knowledge may make a difference in our very survival.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>cloningbadbrainscangood</li>
+    </exclusionTags>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_BrainScanningApproved</defName>
+    <issue>QE_BrainScanning</issue>
+    <label>Approved</label>
+    <description>Brainscanning preserves the mind of our own, transferring skills and knowledge forward to a new being, even if the original dies.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>cloningbadbrainscangood</li>
+    </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Approved</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainScan</eventDef>
+        <thought>QE_BrainScanned_Approved</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BrainUploaded</eventDef>
+        <thought>QE_BrainUploaded_Approved</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+</Defs>

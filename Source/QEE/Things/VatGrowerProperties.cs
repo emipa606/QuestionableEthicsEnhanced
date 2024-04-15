@@ -10,6 +10,11 @@ namespace QEthics;
 public class VatGrowerProperties : GrowerProperties
 {
     /// <summary>
+    ///     Scale for the product.
+    /// </summary>
+    public readonly float productScaleModifier = 1f;
+
+    /// <summary>
     ///     Graphic for the base.
     /// </summary>
     public GraphicData bottomGraphic;
@@ -25,11 +30,6 @@ public class VatGrowerProperties : GrowerProperties
     ///     Offset for where the product is rendered.
     /// </summary>
     public Vector3 productOffset = new Vector3();
-
-    /// <summary>
-    ///     Scale for the product.
-    /// </summary>
-    public float productScaleModifier = 1f;
 
     /// <summary>
     ///     Graphic for the top detail.

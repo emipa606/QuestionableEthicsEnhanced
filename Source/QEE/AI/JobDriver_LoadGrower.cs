@@ -90,7 +90,7 @@ public class JobDriver_LoadGrower : JobDriver
         });
 
 
-        var unused = new Toil
+        _ = new Toil
         {
             initAction = delegate
             {
@@ -144,12 +144,9 @@ public class JobDriver_LoadGrower : JobDriver
                 var actor = GetActor();
 
                 //if all ingredients have been loaded, start crafting
-                if (grower?.billProc != null)
+                if (grower?.billProc is { AnyPendingRequests: false })
                 {
-                    if (grower.billProc.AnyPendingRequests == false)
-                    {
-                        grower.Notify_CraftingStarted();
-                    }
+                    grower.Notify_CraftingStarted();
                 }
 
                 actor.jobs.EndCurrentJob(JobCondition.Succeeded);

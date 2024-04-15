@@ -15,7 +15,7 @@ namespace QEthics;
 /// </summary>
 public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static SimpleCurve cleanlinessCurve = [];
+    public static readonly SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     Current active recipe being crafted.

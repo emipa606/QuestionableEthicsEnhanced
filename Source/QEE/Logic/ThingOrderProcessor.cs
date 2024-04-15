@@ -6,7 +6,7 @@ namespace QEthics;
 /// <summary>
 ///     Helps process orders for Things in recipes.
 /// </summary>
-public class ThingOrderProcessor : IExposable
+public class ThingOrderProcessor(IThingHolder observedThingHolder) : IExposable
 {
     /// <summary>
     ///     Contains the list of cached requests.
@@ -14,26 +14,20 @@ public class ThingOrderProcessor : IExposable
     private readonly List<ThingOrderRequest> cachedRequests = [];
 
     /// <summary>
+    ///     The holder object we are observing orders for.
+    /// </summary>
+    public readonly IThingHolder observedThingHolder = observedThingHolder;
+
+    /// <summary>
     ///     Things we desire that can be anything.
     /// </summary>
     public List<ThingOrderRequest> desiredIngredients = [];
 
-    /// <summary>
-    ///     The holder object we are observing orders for.
-    /// </summary>
-    public IThingHolder observedThingHolder;
-
     public bool requestsLost;
 
     //Constructors.
-    public ThingOrderProcessor()
+    public ThingOrderProcessor() : this(null)
     {
-        observedThingHolder = null;
-    }
-
-    public ThingOrderProcessor(IThingHolder observedThingHolder)
-    {
-        this.observedThingHolder = observedThingHolder;
     }
 
     public ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
@@ -101,7 +95,7 @@ public class ThingOrderProcessor : IExposable
 
     public void Reset()
     {
-        //QEEMod.TryLog("QEE: Resetting cached and desired ingredients...");
+        //QEEMod.TryLog("QEE: Resetting cached and desired ingredients.");
         cachedRequests.Clear();
         desiredIngredients.Clear();
     }

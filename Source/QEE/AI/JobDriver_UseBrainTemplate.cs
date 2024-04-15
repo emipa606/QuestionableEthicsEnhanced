@@ -7,7 +7,7 @@ namespace QEthics;
 
 public class JobDriver_UseBrainTemplate : JobDriver
 {
-    public static float workRequired = 2000;
+    public static readonly float workRequired = 2000;
 
     public float ticksWork;
     public bool workStarted;

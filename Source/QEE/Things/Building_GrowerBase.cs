@@ -211,7 +211,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
             return;
         }
 
-        //QEEMod.TryLog("PendingRequests is 0. Starting crafting...");
+        //QEEMod.TryLog("PendingRequests is 0. Starting crafting.");
         status = CrafterStatus.Crafting;
         Notify_CraftingStarted();
     }

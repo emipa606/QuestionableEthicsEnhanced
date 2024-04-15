@@ -112,7 +112,7 @@ public static class GenomeUtility
     {
         //int adultAge = (int)genome.pawnKindDef.RaceProps.lifeStageAges.Last().minAge;
 
-        QEEMod.TryLog("Generating pawn...");
+        QEEMod.TryLog("Generating pawn.");
         var request = new PawnGenerationRequest(
             genomeSequence.pawnKindDef,
             creator.Faction,
@@ -148,7 +148,7 @@ public static class GenomeUtility
         //Set everything else.
         if (pawn?.story is { } storyTracker)
         {
-            QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn...");
+            QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn.");
             storyTracker.bodyType = genomeSequence.bodyType;
             //sanity check to remove possibility of an Undefined crownType
             if (genomeSequence.crownType == null)

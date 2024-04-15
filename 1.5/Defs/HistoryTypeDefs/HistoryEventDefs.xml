@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--Nerve stapling hisotry events.-->
+  <HistoryEventDef>
+    <defName>NerveStapledColonist</defName>
+    <label>A colonist has been nerve stapled.</label>
+  </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>NerveStapledPawn</defName>
+    <label>A colonist has been nerve stapled.</label>
+  </HistoryEventDef>
+  <!--cloning history events-->
+  <HistoryEventDef>
+    <defName>PawnCloned</defName>
+    <label>A new clone has been created, fresh from the vat.</label>
+  </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>GenomeSequenced</defName>
+    <label>A genome has been sequenced in preperation of cloning efforts</label>
+  </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>GenomeSalvagedFromCorpse</defName>
+    <label>A genome has been sequenced from a corpse.</label>
+  </HistoryEventDef>
+  <!--organ growing events-->
+  <HistoryEventDef>
+    <defName>OrganGrown</defName>
+    <label>An organ has been finished in a vat.</label>
+  </HistoryEventDef>
+  <!--brain scan related events-->
+  <HistoryEventDef>
+    <defName>BrainScan</defName>
+    <label>A brain has been scanned for future upload</label>
+  </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>BrainUploaded</defName>
+    <label>A brain has been uploaded into a clone.</label>
+  </HistoryEventDef>
+</Defs>

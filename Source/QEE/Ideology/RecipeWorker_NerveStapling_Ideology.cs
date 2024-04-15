@@ -52,7 +52,7 @@ public class RecipeWorker_NerveStapling_Ideology : Recipe_InstallImplant
             return;
         }
 
-        var unused = stapledPawn.guest.EverEnslaved;
+        _ = stapledPawn.guest.EverEnslaved;
         stapledPawn.guest.SetGuestStatus(surgeon.Faction, GuestStatus.Slave);
         Messages.Message("QE_MessagestapledPawnEnslaved".Translate(stapledPawn, surgeon),
             new LookTargets(stapledPawn, surgeon), MessageTypeDefOf.NeutralEvent);

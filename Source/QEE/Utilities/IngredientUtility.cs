@@ -171,11 +171,10 @@ public static class IngredientUtility
     public static Thing ThingPawnShouldRetrieveForBill(Bill theBill, Pawn finder, ref int countForVat)
     {
         var vat = theBill.billStack.billGiver as Building_GrowerBase_WorkTable;
-        var unused = vat?.GetDirectlyHeldThings();
+        _ = vat?.GetDirectlyHeldThings();
 
         Thing cachedThing = null;
-        var unused1 =
-            vat != null && vat.billProc.ingredientsAvailableNow.TryGetValue(theBill.GetUniqueLoadID(), out cachedThing);
+        _ = vat != null && vat.billProc.ingredientsAvailableNow.TryGetValue(theBill.GetUniqueLoadID(), out cachedThing);
         if (cachedThing == null)
         {
             QEEMod.TryLog("ThingPawnShouldRetrieveForBill() returning null. Reason - cachedThing is null");

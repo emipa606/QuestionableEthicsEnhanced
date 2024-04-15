@@ -10,6 +10,18 @@ namespace QEthics;
 public class BillProcessor : IExposable
 {
     /// <summary>
+    ///     Things we desire that can be anything.
+    /// </summary>
+    public readonly Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
+
+    public readonly Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
+
+    /// <summary>
+    ///     The holder object we are observing orders for.
+    /// </summary>
+    public readonly IThingHolder observedThingHolder;
+
+    /// <summary>
     ///     Current bill being worked on. If null, crafter is not working on a bill. It is not saved in ExposeData().
     /// </summary>
     private Bill_Production _activeBill;
@@ -22,22 +34,10 @@ public class BillProcessor : IExposable
     private string _activeBillID;
 
     /// <summary>
-    ///     Cached value that is updated after a function checks for recipe ingredients on a interval. Designed to be checked
+    ///     Cached value that is updated after a function checks for recipe ingredients on an interval. Designed to be checked
     ///     in a WorkGiver HasJobOnThing() function, or when the ingredientContainer contents change.
     /// </summary>
     public bool anyBillIngredientsAvailable;
-
-    /// <summary>
-    ///     Things we desire that can be anything.
-    /// </summary>
-    public Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
-
-    public Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
-
-    /// <summary>
-    ///     The holder object we are observing orders for.
-    /// </summary>
-    public IThingHolder observedThingHolder;
 
     public bool requestsLost;
 
@@ -151,7 +151,6 @@ public class BillProcessor : IExposable
                     continue;
                 }
 
-                QEEMod.TryLog($"Found {ing.Label} on map, adding to ingredient cache");
                 ingsFoundOnMap[curIng.FixedIngredient.defName] = ing;
                 ingredientsAvailableNow[curBill.GetUniqueLoadID()] = ing;
                 anyBillIngredientsAvailable = true;

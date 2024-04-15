@@ -11,10 +11,10 @@ public class GrowerProperties : DefModExtension
     /// <summary>
     ///     If true it requires a pawn to interact with the grower to extract the product.
     /// </summary>
-    public bool productRequireManualExtraction = true;
+    public readonly bool productRequireManualExtraction = true;
 
     /// <summary>
     ///     Recipes that the Grower have.
     /// </summary>
-    public List<GrowerRecipeDef> recipes = [];
+    public readonly List<GrowerRecipeDef> recipes = [];
 }

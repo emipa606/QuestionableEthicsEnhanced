@@ -325,7 +325,7 @@ public class BrainScanTemplate : ThingWithComps
 
                         //initial target is valid as long as it's a pawn, it's not the one selected
                         //other checks are less obvious to the player, so inform them with a message in IsValidBrainTemplatingTarget()
-                        validator = target => target.HasThing && target.Thing is Pawn pawn && pawn != selPawn
+                        validator = target => target is { HasThing: true, Thing: Pawn pawn } && pawn != selPawn
                     };
 
                 //do all validation here instead of the validator predicate above, because here we 

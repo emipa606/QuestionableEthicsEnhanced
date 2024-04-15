@@ -40,7 +40,7 @@ public class WorkGiver_ExtractProductFromGrower : WorkGiver_Scanner
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
-        var unused = t as Building_GrowerBase_WorkTable;
+        _ = t as Building_GrowerBase_WorkTable;
 
         var job = new Job(QEJobDefOf.QE_ExtractProductFromGrowerJob, t);
         return job;

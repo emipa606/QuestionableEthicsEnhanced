@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.0 - Updated for 1.5
+
+
 1.4.6 - Maintaining vats now require age 10 or above if Biotech is active
 
 

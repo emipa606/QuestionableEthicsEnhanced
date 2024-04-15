@@ -8,7 +8,7 @@ public static class RBSECompat
 {
     public static bool GetOrganRejectionSetting()
     {
-        //only set rejectionEnabled to true if the mod loads successfully and we can retrieve the value from settings
+        //only set rejectionEnabled to true if the mod loads successfully, and we can retrieve the value from settings
         var rejectionEnabled = false;
 
         var rbseModType = GenTypes.GetTypeInAnyAssembly("RBSE.Mod", "RBSE");
@@ -23,7 +23,7 @@ public static class RBSECompat
                 if (rbseSettingsType != null)
                 {
                     var settings = typeof(Mod).GetMethod(nameof(Mod.GetSettings), Type.EmptyTypes)
-                        ?.MakeGenericMethod(rbseSettingsType).Invoke(rbseMod, Array.Empty<object>());
+                        ?.MakeGenericMethod(rbseSettingsType).Invoke(rbseMod, []);
                     if (settings != null)
                     {
                         var toggleActiveRejection = settings.GetType()

@@ -117,7 +117,7 @@ public static class QEEToils
             {
                 StoreUtility.TryFindBestBetterStoreCellForIn(product, actor, actor.Map, StoragePriority.Unstored,
                     actor.Faction,
-                    activeBill.GetStoreZone().slotGroup, out foundCell);
+                    activeBill.GetSlotGroup(), out foundCell);
             }
             else
             {

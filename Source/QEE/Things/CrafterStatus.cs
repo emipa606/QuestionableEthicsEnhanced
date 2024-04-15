@@ -22,7 +22,7 @@ public enum CrafterStatus
     Crafting,
 
     /// <summary>
-    ///     The crafter is now finished. Awaiting for the product to be ejected.
+    ///     The crafter is now finished. Awaiting the product to be ejected.
     /// </summary>
     Finished
 }

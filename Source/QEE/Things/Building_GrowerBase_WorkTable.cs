@@ -117,7 +117,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// </summary>
     public float doctorMaintenance = 0.25f;
 
-    public static SimpleCurve cleanlinessCurve = [];
+    public static readonly SimpleCurve cleanlinessCurve = [];
 
     static Building_GrowerBase_WorkTable()
     {
@@ -431,7 +431,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
 
             if (keepIngredients)
             {
-                var unused = ingredientContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
+                _ = ingredientContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
                 //QEEMod.TryLog("TryDropAll() success: " + wasSuccess);
             }
         }

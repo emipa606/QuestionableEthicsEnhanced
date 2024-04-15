@@ -8,6 +8,6 @@ namespace QEthics;
 /// </summary>
 public class RaceExclusionProperties : DefModExtension
 {
-    public List<HediffDef> excludeTheseHediffs = [];
-    public bool excludeThisRace = true;
+    public readonly List<HediffDef> excludeTheseHediffs = [];
+    public readonly bool excludeThisRace = true;
 }

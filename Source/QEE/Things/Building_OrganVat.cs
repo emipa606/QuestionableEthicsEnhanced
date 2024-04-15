@@ -117,7 +117,6 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
                 var currentAmount = totalAmount - activeRecipe.ingredients.Sum(count =>
                     IngredientUtility.RemainingCountForIngredient(ingredientContainer, activeRecipe, count));
 
-                QEEMod.TryLog($"Totalamount: {totalAmount}, currentAmount {currentAmount}");
                 var fraction = currentAmount / (float)totalAmount;
                 var imageIndex = 0;
                 if (fraction < 1f)
@@ -190,7 +189,7 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
         status = CrafterStatus.Crafting;
     }
 
-    //now also does a history event. Should work...I think.
+    //now also does a history event. Should work.I think.
     public override void Notify_CraftingFinished()
     {
         Messages.Message("QE_MessageGrowingDone".Translate(activeRecipe.products[0].thingDef.LabelCap),

@@ -7,6 +7,6 @@ namespace QEthics;
 /// </summary>
 public class HediffTemplateProperties : DefModExtension
 {
-    public bool includeInBrainTemplate = false;
-    public bool includeInGenomeTemplate = false;
+    public readonly bool includeInBrainTemplate = false;
+    public readonly bool includeInGenomeTemplate = false;
 }

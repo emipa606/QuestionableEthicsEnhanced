@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IssueDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_Cloning</defName>
+    <label>Cloning</label>
+    <iconPath>UI/Issues/BodyModifications</iconPath>
+  </IssueDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_CloningAbhorrent</defName>
+    <issue>QE_Cloning</issue>
+    <label>Unethical</label>
+    <description>Bringing new life into this world in a test tube is horrid, downright unethical.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>cloningbadbrainscangood</li>
+    </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>PawnCloned</eventDef>
+        <thought>QE_ClonedSomeoneUnethical</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>GenomeSequenced</eventDef>
+        <thought>QE_GenomeSequenceUnethical</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>GenomeSalvagedFromCorpse</eventDef>
+        <thought>QE_ClonedSomeoneUnethical</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_CloningNeutral</defName>
+    <issue>QE_Cloning</issue>
+    <label>Neutral</label>
+    <description>Cloning is what it is. It is neither good, nor evil.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_CloningApproved</defName>
+    <issue>QE_Cloning</issue>
+    <label>Approved</label>
+    <description>Cloning is a velnerable task, bringing forth a new generation with great ease.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>PawnCloned</eventDef>
+        <thought>QE_ClonedApproved</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>GenomeSequenced</eventDef>
+        <thought>QE_GenomeSequenceApproved</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>GenomeSalvagedFromCorpse</eventDef>
+        <thought>QE_CorpseGenome_Approved</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+</Defs>

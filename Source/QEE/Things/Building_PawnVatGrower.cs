@@ -13,7 +13,7 @@ namespace QEthics;
 /// </summary>
 public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static SimpleCurve cleanlinessCurve = [];
+    public static readonly SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
@@ -255,7 +255,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             {
                 //HairDef hairDef = PawnHairChooser.RandomHairDefFor(pawnBeingGrown, Faction.def);
                 //pawnBeingGrown.story.hairDef = hairDef;
-                pawnBeingGrown.Drawer.renderer.graphics.ResolveAllGraphics();
+                pawnBeingGrown.Drawer.renderer.SetAllGraphicsDirty();
                 PortraitsCache.SetDirty(pawnBeingGrown);
                 PortraitsCache.PortraitsCacheUpdate();
             }
@@ -304,7 +304,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
             if (keepIngredients)
             {
-                var unused = innerContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
+                _ = innerContainer.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
                 //QEEMod.TryLog("TryDropAll() success: " + wasSuccess);
             }
 
@@ -354,7 +354,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                     tempPawn.needs?.mood?.thoughts?.memories?.TryGainMemory(QEThoughtDefOf.QE_VatGrownCloneConfusion);
                 }
 
-                //Adds history event used by precepts, done hear since its easier than patching it just for ideology
+                //Adds history event used by precepts, done hear since it's easier than patching it just for ideology
                 Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.PawnCloned));
             }
 
@@ -471,12 +471,12 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 }
                 else
                 {
-                    pawnBeingGrown.DrawAt(drawAltitude + VatGrowerProps.productOffset);
+                    pawnBeingGrown.DrawNowAt(drawAltitude + VatGrowerProps.productOffset);
                 }
             }
             else
             {
-                pawnBeingGrown.DrawAt(drawAltitude + VatGrowerProps.productOffset);
+                pawnBeingGrown.DrawNowAt(drawAltitude + VatGrowerProps.productOffset);
             }
         }
 
@@ -503,7 +503,6 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             case CrafterStatus.Filling when QEESettings.instance.useFillingGraphic:
                 var totalAmount = orderProcessor.desiredIngredients.Sum(request => request.amount);
                 var currentAmount = totalAmount - orderProcessor.PendingRequests.Sum(request => request.amount);
-                QEEMod.TryLog($"Totalamount: {totalAmount}, currentAmount {currentAmount}");
                 var fraction = currentAmount / (float)totalAmount;
                 var imageIndex = 0;
                 if (fraction < 1f)

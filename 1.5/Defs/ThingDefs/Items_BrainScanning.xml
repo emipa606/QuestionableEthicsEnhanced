@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase" Name="QEBrainScanningBase" Abstract="True">
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>100</MarketValue>
+      <Mass>0.25</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1.0</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="QEBrainScanningBase">
+    <defName>QE_BrainScanner</defName>
+    <label>brain scanner</label>
+    <description>A set of tools used for mapping the brainwaves of living beings. A surgeon will utilize this to methodically map the patient's brain onto a brain scan template. When used on humans, it will capture their skill proficiencies and passions. When used on animals, it will capture their training.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_BrainScanning</RecipeDef>
+      <RecipeDef>QE_Make_BrainScanner</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Manufactured/BrainScanner</texPath>
+    </graphicData>
+    <modExtensions>
+      <li Class="QEthics.RecipeOutcomeProperties">
+        <outputThingDef>QE_BrainScannerFilled</outputThingDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="QEBrainScanningBase">
+    <defName>QE_BrainScannerFilled</defName>
+    <label>brain scan template</label>
+    <description>A slab of data filled with the complete neural network of a living beings brain. With a pawn selected, right-click this and select another pawn to apply the template to. This scan is reusable</description>
+    <graphicData>
+      <texPath>Things/Item/Manufactured/BrainDataSlab</texPath>
+    </graphicData>
+    <comps>
+      <li Class="QEthics.CompProperties_CustomName" />
+    </comps>
+    <thingCategories Inherit="False">
+      <li>Items</li>
+    </thingCategories>
+    <thingClass>QEthics.BrainScanTemplate</thingClass>
+    <tradeability>Sellable</tradeability>
+  </ThingDef>
+</Defs>

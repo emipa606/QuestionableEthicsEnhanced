@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Natural -->
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Eye</defName>
+    <label>eye</label>
+    <description>A biological human eye. Collects light and transmits it to the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Eye</RecipeDef>
+      <RecipeDef>QE_InstallNaturalEye</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>300</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Ear</defName>
+    <label>ear</label>
+    <description>A biological human ear. Catches soundwaves from the air and transforms them into electrical signals for the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Ear</RecipeDef>
+      <RecipeDef>QE_InstallNaturalEar</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Nose</defName>
+    <label>nose</label>
+    <description>A biological human nose. Looks pretty and allows you to smell and taste.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Nose</RecipeDef>
+      <RecipeDef>QE_InstallNaturalNose</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Tongue</defName>
+    <label>tongue</label>
+    <description>A biological human tongue. Allows convinces such as speaking and tasting.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Tongue</RecipeDef>
+      <RecipeDef>QE_InstallNaturalTongue</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Jaw</defName>
+    <label>jaw</label>
+    <description>A biological human jaw. Complete with a tongue and teeth, it allows for adequate chewing and tasting.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Jaw</RecipeDef>
+      <RecipeDef>QE_InstallNaturalJaw</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Stomach</defName>
+    <label>stomach</label>
+    <description>A biological human stomach. Breaks down food into nutrients, with the help of acids and enzymes.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Stomach</RecipeDef>
+      <RecipeDef>QE_InstallNaturalStomach</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>400</MarketValue>
+      <Mass>2</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Spine</defName>
+    <label>spine</label>
+    <description>A biological human spine. Supports the back.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Spine</RecipeDef>
+      <RecipeDef>QE_InstallNaturalSpine</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>300</MarketValue>
+      <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Pelvis</defName>
+    <label>pelvis</label>
+    <description>A biological human pelvis. Legs and the spine are attached to this.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Pelvis</RecipeDef>
+      <RecipeDef>QE_InstallNaturalPelvis</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>200</MarketValue>
+      <Mass>5</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Arm</defName>
+    <label>arm</label>
+    <description>A biological human arm. Attached to the shoulder, this let you carry and manipulate things.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Arm</RecipeDef>
+      <RecipeDef>QE_InstallNaturalArm</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>200</MarketValue>
+      <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Hand</defName>
+    <label>hand</label>
+    <description>A biological human hand. Great at holding weapons and performing surgeries.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Hand</RecipeDef>
+      <RecipeDef>QE_InstallNaturalHand</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Leg</defName>
+    <label>leg</label>
+    <description>A biological human leg. Attached to the pelvis, it gives you locomotion.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Leg</RecipeDef>
+      <RecipeDef>QE_InstallNaturalLeg</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>200</MarketValue>
+      <Mass>5</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartNaturalBase">
+    <defName>QE_Organ_Foot</defName>
+    <label>foot</label>
+    <description>A biological human foot. Dampens downward going motions and is great for foot baths.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>QE_Natural_Foot</RecipeDef>
+      <RecipeDef>QE_InstallNaturalFoot</RecipeDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+</Defs>

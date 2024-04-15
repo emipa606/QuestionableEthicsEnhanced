@@ -11,29 +11,34 @@ public class GrowerRecipeDef : Def
     /// <summary>
     ///     How long it take to craft the recipe.
     /// </summary>
-    public int craftingTime = 1;
+    public readonly int craftingTime = 1;
 
     //public ThingFilter fixedIngredientFilter = new ThingFilter();
 
     /// <summary>
     ///     What ingredients the recipe need in order to start being produced.
     /// </summary>
-    public List<IngredientCount> ingredients = [];
+    public readonly List<IngredientCount> ingredients = [];
+
+    /// <summary>
+    ///     Useful when sorting by order.
+    /// </summary>
+    public readonly int orderID = 0;
+
+    /// <summary>
+    ///     Grower amount.
+    /// </summary>
+    public readonly int productAmount = 1;
+
+    /// <summary>
+    ///     Users that can use this recipe.
+    /// </summary>
+    public readonly List<ThingDef> recipeUsers = [];
 
     /// <summary>
     ///     How much maintenance is drained per tick during crafting.
     /// </summary>
     public float maintenanceDrain = 0.001f;
-
-    /// <summary>
-    ///     Useful when sorting by order.
-    /// </summary>
-    public int orderID = 0;
-
-    /// <summary>
-    ///     Grower amount.
-    /// </summary>
-    public int productAmount = 1;
 
     /// <summary>
     ///     Grower product.
@@ -44,11 +49,6 @@ public class GrowerRecipeDef : Def
     ///     Graphic to draw while its being crafted.
     /// </summary>
     public GraphicData productGraphic;
-
-    /// <summary>
-    ///     Users that can use this recipe.
-    /// </summary>
-    public List<ThingDef> recipeUsers = [];
 
     /// <summary>
     ///     What research is needed to be completed in order to make this.

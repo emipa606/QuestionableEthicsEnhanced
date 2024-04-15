@@ -6,7 +6,7 @@ namespace QEthics;
 
 /// <summary>
 ///     Checks objects of type Building_GrowerBase_WorkTable for available bills and assigns jobs accordingly.
-///     Heavily-modified version of the WorkGiver_DoBill class in vanilla Rimworld (too many private members to sub-class).
+///     Heavily-modified version of the WorkGiver_DoBill class in vanilla Rimworld (too many private members to subclass).
 /// </summary>
 public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
 {
@@ -61,14 +61,14 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         : ThingRequest.ForGroup(ThingRequestGroup.PotentialBillGiver);
 
     /* return true if all conditions are met:
-        a) any bills outstanding
-        b) status is 'Idle'
-        c) the usual reservation and forbidden checks pass 
+        a. any bills outstanding
+        b. status is 'Idle'
+        c. the usual reservation and forbidden checks pass
     */
     public override bool HasJobOnThing(Pawn pawn, Thing aThing, bool forced = false)
     {
         var grower = aThing as Building_GrowerBase_WorkTable;
-        var unused = aThing as IBillGiver;
+        _ = aThing as IBillGiver;
         var processor = grower?.billProc;
         LocalTargetInfo target = aThing;
         if (grower == null)
@@ -137,7 +137,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
 
     public override Job JobOnThing(Pawn p, Thing t, bool forced = false)
     {
-        var unused = t as IBillGiver;
+        _ = t as IBillGiver;
         var grower = t as Building_GrowerBase_WorkTable;
         var processor = grower?.billProc;
 

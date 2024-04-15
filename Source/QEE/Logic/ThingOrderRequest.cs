@@ -13,7 +13,7 @@ public class ThingOrderRequest : IExposable
     public int amount = 1;
 
     /// <summary>
-    ///     Label to use if its not null.
+    ///     Label to use if it's not null.
     /// </summary>
     public string customLabel;
 
@@ -159,7 +159,7 @@ public class ThingOrderRequest : IExposable
     }
 
     /// <summary>
-    ///     Initializes the the order request.
+    ///     Initializes the order request.
     /// </summary>
     public void Initialize()
     {
