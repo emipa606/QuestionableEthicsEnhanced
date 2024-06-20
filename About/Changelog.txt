@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.1 - Added support for creepjoiners
+
+
 1.5.0 - Updated for 1.5
 
 

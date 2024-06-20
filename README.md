@@ -1,4 +1,4 @@
-# QuestionableEthicsEnhanced
+# [Questionable Ethics Enhanced (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2850854272)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -9,16 +9,15 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 
 - Adopted the mod on request by Mario55770
 - Added "filling" graphics for the vats, makes it easier to see how much is missing, can be disabled
-- Added support for cloning all features added by https://steamcommunity.com/workshop/filedetails/?id=1635901197]Facial Animation
+- Added support for cloning all features added by [Facial Animation](https://steamcommunity.com/workshop/filedetails/?id=1635901197)
 - Added support for Biotech genes and xenotypes
-- Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=2830943477]Animal Genetics
+- Added support for [Animal Genetics](https://steamcommunity.com/sharedfiles/filedetails/?id=2830943477)
 
 ## Additions by Mario55770
 
 Choose your ethics, ideology support integrated. Precepts are implemented at least on a first pass basis. Nerve stapling now also can automatically knock out pawns with more violent thoughts. Nerve staple's enslave and max suppression. Now also allows brain scanning to copy pawn ideology.
 
 ![Image](https://i.imgur.com/pufA0kM.png)
-
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
 
@@ -39,24 +38,22 @@ Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn m
 
 
 
-![Image](https://i.imgur.com/Sr8GRm1.jpg])
-
-![Image](https://i.imgur.com/7HhYJby.jpg])
-
+[img]https://i.imgur.com/Sr8GRm1.jpg][/img]
+[img]https://i.imgur.com/7HhYJby.jpg][/img]
 
 # Changes to Questionable Ethics mechanics
 
 
-Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14  bugfixes 15 new enhancements, and a few new compatibility patches that were not in QE. https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&amp;q=is%3Aissue+is%3Aclosed]Full list here. Here are the big changes:
+Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14  bugfixes 15 new enhancements, and a few new compatibility patches that were not in QE. [Full list here](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&amp;q=is%3Aissue+is%3Aclosed). Here are the big changes:
 
 
 
--  The https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082]Life Support System and https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951]Crude Bionics have been moved to standalone mods, to improve mod compatibility.
+-  The [Life Support System](https://steamcommunity.com/sharedfiles/filedetails/?id=2213696082) and [Crude Bionics](https://steamcommunity.com/sharedfiles/filedetails/?id=1785162951) have been moved to standalone mods, to improve mod compatibility.
 - All descriptions have been re-written with an emphasis on **discoverability** (how do I use this item and where do I obtain it) and **correct grammar**.
 - **Failed cloning no longer causes Cloning Vat ingredient loading to break**. This was a high-impact bug in QE and many people asked for a fix.
 - Nutrient Solution and Protein Mash recipes, output, and costs have been rebalanced across the board. See mod preview image for details.
 - Cloning vats now display how many days remain until clone is fully grown, instead of a percentage of completion.
-- The Apply Brain Templating toils have been re-written and many bugs have been fixed. Get https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Languages/English/Keyed/QuestionableEthics.xml]feedback messages during pawn selection, if it's an invalid target.
+- The Apply Brain Templating toils have been re-written and many bugs have been fixed. Get [feedback messages during pawn selection](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/blob/master/Languages/English/Keyed/QuestionableEthics.xml), if it's an invalid target.
 - Family relationships will no longer be generated for clones
 
 
@@ -69,8 +66,8 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 
 
 - Bionic Icons - Textures from this mod will be used for the organs. Highly recommended upgrade over vanilla textures!
-- Evolved Organs - Has exciting changes to its mechanics when QEE is enabled. There are too many to list, but https://github.com/Xahkarias/Evolved-Organs/blob/master/About/Patch%20Notes.txt]go here for more details.
-- Evolved Organs Redux - Has exciting changes to its mechanics when QEE is enabled. See https://github.com/Xahkarias/EvolvedOrgansRedux/wiki/Compatibility#high-synergy]this link for more details.
+- Evolved Organs - Has exciting changes to its mechanics when QEE is enabled. There are too many to list, but [go here](https://github.com/Xahkarias/Evolved-Organs/blob/master/About/Patch%20Notes.txt) for more details.
+- Evolved Organs Redux - Has exciting changes to its mechanics when QEE is enabled. See [this link](https://github.com/Xahkarias/EvolvedOrgansRedux/wiki/Compatibility#high-synergy) for more details.
 - Race mods built with Humanoid Alien Races 2.0 - Races will be able to to be cloned in the Cloning Vat.
 - Rah's Bionics and Surgery Expansion (RBSE)
 
@@ -123,13 +120,12 @@ If you run into errors when adding this mod to your modlist, please let me know 
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
+-  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2850854272]![Image](https://img.shields.io/github/v/release/emipa606/QuestionableEthicsEnhanced?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
-
+[![Image](https://img.shields.io/github/v/release/emipa606/QuestionableEthicsEnhanced?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2850854272)
