@@ -106,8 +106,8 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Defs.Look(ref xenotype, "xenotype");
-            Scribe_Collections.Look(ref endogenes, "genes", LookMode.Value);
-            Scribe_Collections.Look(ref xenogenes, "genes", LookMode.Value);
+            Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Value);
+            Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Value);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
 
             //Humanoid values that could be null in save file go here
@@ -191,9 +191,9 @@ public class GenomeSequence : ThingWithComps
             skinType == otherGenome.skinType &&
             xenotype == otherGenome.xenotype &&
             (endogenes == null && otherGenome.endogenes == null || endogenes != null && otherGenome.endogenes != null &&
-                endogenes.OrderBy(h => h).SequenceEqual(otherGenome.endogenes.OrderBy(h => h))) &&
+                endogenes.OrderBy(h => h.def.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.def.defName))) &&
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
-                xenogenes.OrderBy(h => h).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h))) &&
+                xenogenes.OrderBy(h => h.def.defName).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h.def.defName))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
