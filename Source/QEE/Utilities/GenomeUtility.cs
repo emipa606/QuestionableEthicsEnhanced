@@ -86,6 +86,8 @@ public static class GenomeUtility
                                                                    //change the pawn's xenotype into that of the empty
                                                                    //genomeSequence's, reverting non-baseliner pawns
                                                                    //into baseliners.
+                    genomeSequence.xenotypeName = pawn.genes.xenotypeName;
+                    genomeSequence.xenotypeIcon = pawn.genes.iconDef;
                 }
 
                 //Alien Races compatibility.
@@ -162,7 +164,7 @@ public static class GenomeUtility
             //sanity check to remove possibility of an Undefined crownType
             if (genomeSequence.crownType == null)
             {
-                storyTracker.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail(pawn.gender == Gender.Female 
+                storyTracker.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail(pawn.gender == Gender.Female
                     ? "Female_AverageNormal"
                     : "Male_AverageNormal");
             }
@@ -214,6 +216,8 @@ public static class GenomeUtility
             if (genomeSequence.xenotype != null)
             {
                 geneTracker.xenotype = genomeSequence.xenotype;
+                geneTracker.xenotypeName = genomeSequence.xenotypeName;
+                geneTracker.iconDef = genomeSequence.xenotypeIcon;
             }
             //the logic previously used in this block was both flawed and wrong.
             //  geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
