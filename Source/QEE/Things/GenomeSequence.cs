@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
@@ -27,7 +27,8 @@ public class GenomeSequence : ThingWithComps
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
-    public List<string> genes;
+    public List<Gene> endogenes;
+    public List<Gene> xenogenes;
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
@@ -108,6 +109,8 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Defs.Look(ref xenotype, "xenotype");
             Scribe_Collections.Look(ref genes, "genes", LookMode.Value);
+            Scribe_Collections.Look(ref endogenes, "genes", LookMode.Value);
+            Scribe_Collections.Look(ref xenogenes, "genes", LookMode.Value);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
 
             //Humanoid values that could be null in save file go here
@@ -191,8 +194,10 @@ public class GenomeSequence : ThingWithComps
             mouthType == otherGenome.mouthType &&
             skinType == otherGenome.skinType &&
             xenotype == otherGenome.xenotype &&
-            (genes == null && otherGenome.genes == null || genes != null && otherGenome.genes != null &&
-                genes.OrderBy(h => h).SequenceEqual(otherGenome.genes.OrderBy(h => h))) &&
+            (endogenes == null && otherGenome.endogenes == null || endogenes != null && otherGenome.endogenes != null &&
+                endogenes.OrderBy(h => h).SequenceEqual(otherGenome.endogenes.OrderBy(h => h))) &&
+            (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
+                xenogenes.OrderBy(h => h).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -245,7 +250,8 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.faceTattoo = faceTattoo;
         splitThingStack.bodyTattoo = bodyTattoo;
         splitThingStack.xenotype = xenotype;
-        splitThingStack.genes = genes;
+        splitThingStack.xenogenes = xenogenes;
+        splitThingStack.endogenes = endogenes;
         splitThingStack.spawnShambler = spawnShambler;
         foreach (var traitEntry in traits)
         {
