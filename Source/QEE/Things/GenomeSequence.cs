@@ -32,6 +32,8 @@ public class GenomeSequence : ThingWithComps
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
+    public string xenotypeName;
+    public XenotypeIconDef xenotypeIcon; //adding these allow for player-made xenotypes to be properly cloned
 
     // Facial Animation compatibility
     public string headType;
@@ -190,6 +192,8 @@ public class GenomeSequence : ThingWithComps
             mouthType == otherGenome.mouthType &&
             skinType == otherGenome.skinType &&
             xenotype == otherGenome.xenotype &&
+            xenotypeName == otherGenome.xenotypeName &&
+            xenotypeIcon == otherGenome.xenotypeIcon &&
             (endogenes == null && otherGenome.endogenes == null || endogenes != null && otherGenome.endogenes != null &&
                 endogenes.OrderBy(h => h.def.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.def.defName))) &&
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
