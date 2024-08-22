@@ -106,8 +106,8 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Defs.Look(ref xenotype, "xenotype");
-            Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Value);
-            Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Value);
+            Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Reference);
+            Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Reference);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
 
             //Humanoid values that could be null in save file go here
