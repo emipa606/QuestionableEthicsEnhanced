@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -72,13 +72,22 @@ public static class GenomeUtility
                 // Biotech
                 if (pawn.genes != null)
                 {
-                    if (pawn.genes.GenesListForReading.Any())
+                    if (pawn.genes.Endogenes.Any()) //record directly from the pawn's Endogenes and Xenogenes list,
+                                                    //so we don't have to figure it out later (and potentially mess it up)
                     {
-                        genomeSequence.genes = [];
-                        pawn.genes.GenesListForReading.ForEach(gene => genomeSequence.genes.Add(gene.def.defName));
+                        genomeSequence.endogenes = [];
+                        pawn.genes.Endogenes.ForEach(gene => genomeSequence.endogenes.Add(gene));
+                    }
+                    if (pawn.genes.Xenogenes.Any())
+                    {
+                        genomeSequence.xenogenes = [];
+                        pawn.genes.Xenogenes.ForEach(gene => genomeSequence.xenogenes.Add(gene));
                     }
 
-                    pawn.genes.SetXenotypeDirect(genomeSequence.xenotype);
+                    genomeSequence.xenotype = pawn.genes.xenotype; //this was previously set to (very, very wrongly)
+                                                                   //change the pawn's xenotype into that of the empty
+                                                                   //genomeSequence's, reverting non-baseliner pawns
+                                                                   //into baseliners.
                 }
 
                 //Alien Races compatibility.
@@ -172,7 +181,7 @@ public static class GenomeUtility
             //sanity check to remove possibility of an Undefined crownType
             if (genomeSequence.crownType == null)
             {
-                storyTracker.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail(pawn.gender == Gender.Female
+                storyTracker.headType = DefDatabase<HeadTypeDef>.GetNamedSilentFail(pawn.gender == Gender.Female 
                     ? "Female_AverageNormal"
                     : "Male_AverageNormal");
             }
@@ -181,10 +190,14 @@ public static class GenomeUtility
                 storyTracker.headType = genomeSequence.crownType;
             }
 
-            storyTracker.hairColor = genomeSequence.hairColor;
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
             storyTracker.favoriteColor = genomeSequence.favoriteColor;
-            storyTracker.melanin = genomeSequence.skinMelanin;
+
+            if (genomeSequence.endogenes?.Any() == false) //if they have endogenes, let those decide their colours instead.
+            {
+                storyTracker.hairColor = genomeSequence.hairColor;
+                storyTracker.melanin = genomeSequence.skinMelanin;
+            }
 
             storyTracker.traits.allTraits.Clear();
             QEEMod.TryLog("Setting traits for generated pawn");
@@ -221,18 +234,42 @@ public static class GenomeUtility
             {
                 geneTracker.xenotype = genomeSequence.xenotype;
             }
-
-            if (genomeSequence.genes?.Any() == true)
+            //the logic previously used in this block was both flawed and wrong.
+            //  geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
+            //this checks what the gene's EndogeneCategory is, then if it ISN'T 0 (i.e. no category),
+            //then it flags it as a xenogene. this results in hair colours being flagged as xenogenes,
+            //while things like Deathless are added as endogenes.
+            //however, even if we fix this error by changing the != to a ==, the logic is still fundamentally flawed.
+            //whether a gene is an endogene or a xenogene isn't determined like that in the actual game.
+            //"Strong Melee Damage" has an EndogeneCategory of 0, so it's treated as a xenogene.
+            //however, Yttakin have that as an endogene. if you clone a Yttakin using this logic, it will result
+            //in many of the Yttakin's natural features being added as non-hereditary xenogenes.
+            if (genomeSequence.endogenes?.Any() == true)
             {
-                foreach (var gene in genomeSequence.genes)
+                pawn.genes.Endogenes.Clear(); //clear generated pawn's endogenes, to avoid incorrect hair/skin colours
+                foreach (var gene in genomeSequence.endogenes)
                 {
-                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene);
+                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.def.defName);
                     if (geneDef == null)
                     {
                         continue;
                     }
 
-                    geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
+                    geneTracker.AddGene(geneDef,false);
+                }
+            }
+            if (genomeSequence.xenogenes?.Any() == true)
+            {
+                pawn.genes.Xenogenes.Clear(); //clear generated pawn's default xenogenes (from their xenotype), to be replaced with the list from the genome sequence
+                foreach (var gene in genomeSequence.xenogenes)
+                {
+                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.def.defName);
+                    if (geneDef == null)
+                    {
+                        continue;
+                    }
+
+                    geneTracker.AddGene(geneDef, true);
                 }
             }
         }
