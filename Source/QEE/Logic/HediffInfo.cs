@@ -69,7 +69,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
         builder.AppendLine("QE_GenomeSequencerDescription_Hediffs".Translate());
 
         //sort hediffs in alphabetical order
-        var ordered = hediffsNonNull.OrderBy(h => h.def.LabelCap);
+        var ordered = hediffsNonNull.OrderBy(h => h.def.LabelCap.RawText);
 
         //loop through hediffs and add line to StringBuilder for each
         foreach (var h in ordered)
