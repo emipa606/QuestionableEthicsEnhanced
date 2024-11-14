@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.2 - Info-card fix for modded hediffs, thanks to ArcaneZedric
+
+
 1.5.1 - Added support for creepjoiners
 
 

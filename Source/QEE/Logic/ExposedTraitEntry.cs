@@ -24,7 +24,7 @@ public class ExposedTraitEntry : Trait, IExposable
         degree = traitEntry.degree;
     }
 
-    public void ExposeData()
+    public new void ExposeData()
     {
         Scribe_Defs.Look(ref def, "def");
         Scribe_Values.Look(ref degree, "degree");

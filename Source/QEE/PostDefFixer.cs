@@ -16,11 +16,14 @@ public static class PostDefFixer
                 if (props.excludeThisRace)
                 {
                     GeneralCompatibility.excludedRaces.Add(def);
+                    QEEMod.TryLog($"Adding {def.defName} race to be excluded from Genome Sequencing");
                 }
 
                 if (props.excludeTheseHediffs.Count > 0)
                 {
                     GeneralCompatibility.excludedHediffs.AddRange(props.excludeTheseHediffs);
+                    QEEMod.TryLog(
+                        $"Adding {string.Join(",", props.excludeTheseHediffs.Select(hediffDef => hediffDef.defName))} hediffs to be excluded from Genome Sequencing");
                 }
             }
 

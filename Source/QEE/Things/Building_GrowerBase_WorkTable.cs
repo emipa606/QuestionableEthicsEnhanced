@@ -161,9 +161,10 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         billProc.UpdateAvailIngredientsCache();
     }
 
-    public void Notify_BillDeleted(Bill theBill)
+    public override void Notify_BillDeleted(Bill theBill)
     {
         //QEEMod.TryLog("Bill Removed!");
+        base.Notify_BillDeleted(theBill);
         billProc.UpdateDesiredRequests();
         billProc.UpdateAvailIngredientsCache();
     }
