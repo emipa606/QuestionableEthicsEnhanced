@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using BioReactor;
 using RimWorld;
 using Verse;
 
@@ -38,7 +39,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Internal container representation of stored items.
     /// </summary>
-    protected ThingOwner ingredientContainer;
+    public ThingOwner ingredientContainer;
 
     /// <summary>
     ///     Current progress being made during crafting.
@@ -269,24 +270,16 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         switch (status)
         {
             case CrafterStatus.Idle:
-            {
                 Tick_Idle();
-            }
                 break;
             case CrafterStatus.Filling:
-            {
                 Tick_Filling();
-            }
                 break;
             case CrafterStatus.Crafting:
-            {
                 Tick_Crafting();
-            }
                 break;
             case CrafterStatus.Finished:
-            {
                 Tick_Finished();
-            }
                 break;
         }
     }
@@ -303,10 +296,18 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
 
         billProc.UpdateDesiredRequests();
 
-        if (this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+
+        if (!this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
         {
-            billProc.UpdateAvailIngredientsCache();
+            return;
         }
+
+        if (HarmonyPatches.VNPELoaded)
+        {
+            Building_GrowerBase_WorkTable_VNPE.VNPE_Check(this);
+        }
+
+        billProc.UpdateAvailIngredientsCache();
     }
 
     /// <summary>
@@ -329,11 +330,20 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
             Notify_ThingLostInBillProcessor();
             billProc.requestsLost = false;
             Tick_Idle();
+            return;
         }
-        else if (this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
+
+        if (!this.IsHashIntervalTick(QEESettings.instance.ingredientCheckIntervalSeconds * 60))
         {
-            billProc.UpdateAvailIngredientsCache();
+            return;
         }
+
+        if (HarmonyPatches.VNPELoaded)
+        {
+            Building_GrowerBase_WorkTable_VNPE.VNPE_Check(this);
+        }
+
+        billProc.UpdateAvailIngredientsCache();
     }
 
     /// <summary>

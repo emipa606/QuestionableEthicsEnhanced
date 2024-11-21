@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.3 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2920385763]Vanilla Nutrient Paste Expanded[/url]
+
+
 1.5.2 - Info-card fix for modded hediffs, thanks to ArcaneZedric
 
 

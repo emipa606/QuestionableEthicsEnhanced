@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BioReactor;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -161,6 +162,16 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         return true;
     }
 
+    public override void Tick_Filling()
+    {
+        if (HarmonyPatches.VNPELoaded)
+        {
+            Building_PawnVatGrower_VNPE.VNPE_Check(this);
+        }
+
+        base.Tick_Filling();
+    }
+
     public override void Tick_Crafting()
     {
         base.Tick_Crafting();
@@ -313,7 +324,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 //QEEMod.TryLog("Dropping genome template only");
                 //drop only the genome template
                 innerContainer.TryDrop(innerContainer.FirstOrDefault(thing => thing is GenomeSequence), InteractionCell,
-                    Map, ThingPlaceMode.Near, out var _);
+                    Map, ThingPlaceMode.Near, out _);
             }
         }
 

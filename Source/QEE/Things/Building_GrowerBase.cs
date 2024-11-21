@@ -21,7 +21,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// <summary>
     ///     Internal container representation of stored items.
     /// </summary>
-    protected ThingOwner innerContainer;
+    public ThingOwner innerContainer;
 
     /// <summary>
     ///     The crafter order processor. Is set by the player during Idle status.
