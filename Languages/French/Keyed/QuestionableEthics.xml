@@ -119,4 +119,5 @@
   <QE_MessagestapledPawnEnslaved>{0} a été asservi par {1} en utilisant une agrafe nerveuse.</QE_MessagestapledPawnEnslaved>
   <QE_UseFillingGraphic>Visualiser le remplissage des ingrédients</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Montrer que la cuve se remplit de ressources au lieu d'être vide jusqu'à ce qu'elle soit remplie.</QE_UseFillingGraphicTooltip>
+  <QE_MessageCloningFailedAnomaly>Le clonage a échoué à cause d'une séquence génomique anormale, {0} a donné naissance à un pion brisé.</QE_MessageCloningFailedAnomaly>
 </LanguageData>

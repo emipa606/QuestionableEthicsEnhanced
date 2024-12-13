@@ -119,4 +119,5 @@
   <QE_MessagestapledPawnEnslaved>{0}被{1}用神经钉奴役了</QE_MessagestapledPawnEnslaved>
   <QE_UseFillingGraphic>可视化成分填充</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>仍然显示大桶在装满资源，而不是在装满之前显示为空的</QE_UseFillingGraphicTooltip>
+  <QE_MessageCloningFailedAnomaly>由于基因组序列异常，克隆工作惨遭失败，{0}生成了一个残缺不全的废卒</QE_MessageCloningFailedAnomaly>
 </LanguageData>

@@ -12,6 +12,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 - Added support for cloning all features added by [Facial Animation](https://steamcommunity.com/workshop/filedetails/?id=1635901197)
 - Added support for Biotech genes and xenotypes
 - Added support for [Animal Genetics](https://steamcommunity.com/sharedfiles/filedetails/?id=2830943477)
+- Added support for [Vanilla Nutrient Paste Expanded](https://steamcommunity.com/sharedfiles/filedetails/?id=2920385763)
 
 ## Additions by Mario55770
 
@@ -43,8 +44,6 @@ Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn m
 
 # Changes to Questionable Ethics mechanics
 
-
-Questionable Ethics Enhanced is a successor to the Questionable Ethics mod created by ChJees. At release, there are 14  bugfixes 15 new enhancements, and a few new compatibility patches that were not in QE. [Full list here](https://github.com/KongMD-Steam/QuestionableEthicsEnhanced/issues?page=1&amp;q=is%3Aissue+is%3Aclosed). Here are the big changes:
 
 
 

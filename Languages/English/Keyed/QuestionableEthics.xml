@@ -135,4 +135,5 @@
   <!-- version 1.3.0 Patch -->
   <QE_GenomeSequencerDescription_Hediffs>Hediffs</QE_GenomeSequencerDescription_Hediffs>
   <QE_MessagestapledPawnEnslaved>{0} was enslaved by {1} using a nerve staple</QE_MessagestapledPawnEnslaved>
+  <QE_MessageCloningFailedAnomaly>Cloning failed horribly due to an abnormal genome-sequence, {0} spawned as a broken hulk of a pawn</QE_MessageCloningFailedAnomaly>
 </LanguageData>

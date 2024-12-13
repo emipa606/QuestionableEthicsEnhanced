@@ -119,4 +119,5 @@
   <QE_MessagestapledPawnEnslaved>{0} wurde von {1} mit einer Nervenklammer versklavt</QE_MessagestapledPawnEnslaved>
   <QE_UseFillingGraphic>Visualisierung der Zutatenfüllung</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Zeigen Sie weiterhin an, dass sich die Wanne mit Ressourcen füllt, anstatt leer angezeigt zu werden, bis sie gefüllt ist.</QE_UseFillingGraphicTooltip>
+  <QE_MessageCloningFailedAnomaly>Das Klonen ist aufgrund einer abnormalen Genomsequenz furchtbar gescheitert, {0} wurde als gebrochener Hulk einer Spielfigur hervorgebracht</QE_MessageCloningFailedAnomaly>
 </LanguageData>

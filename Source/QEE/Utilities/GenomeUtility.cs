@@ -25,6 +25,8 @@ public static class GenomeUtility
             if (pawn != null)
             {
                 genomeSequence.gender = pawn.gender;
+                genomeSequence.spawnShambler = pawn.IsCreepJoiner;
+
 
                 if (pawn.health?.hediffSet?.hediffs != null)
                 {
@@ -111,6 +113,7 @@ public static class GenomeUtility
     public static Pawn MakePawnFromGenomeSequence(GenomeSequence genomeSequence, Thing creator)
     {
         //int adultAge = (int)genome.pawnKindDef.RaceProps.lifeStageAges.Last().minAge;
+
 
         QEEMod.TryLog("Generating pawn.");
         var request = new PawnGenerationRequest(

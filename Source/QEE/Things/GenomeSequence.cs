@@ -59,6 +59,7 @@ public class GenomeSequence : ThingWithComps
 
     //Relevant for all genomes.
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
+    public bool spawnShambler;
     public List<ExposedTraitEntry> traits = [];
     public XenotypeDef xenotype;
 
@@ -87,6 +88,7 @@ public class GenomeSequence : ThingWithComps
         Scribe_Values.Look(ref sourceName, "sourceName");
         Scribe_Defs.Look(ref pawnKindDef, "pawnKindDef");
         Scribe_Values.Look(ref gender, "gender");
+        Scribe_Values.Look(ref spawnShambler, "spawnShambler");
 
         //Load first humanoid value
         Scribe_Defs.Look(ref crownType, "crownType");
@@ -182,6 +184,7 @@ public class GenomeSequence : ThingWithComps
             hairColorSecond == otherGenome.hairColorSecond &&
             headType == otherGenome.headType &&
             eyeColor == otherGenome.eyeColor &&
+            spawnShambler == otherGenome.spawnShambler &&
             eyeType == otherGenome.eyeType &&
             lidType == otherGenome.lidType &&
             browType == otherGenome.browType &&
@@ -243,6 +246,7 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.bodyTattoo = bodyTattoo;
         splitThingStack.xenotype = xenotype;
         splitThingStack.genes = genes;
+        splitThingStack.spawnShambler = spawnShambler;
         foreach (var traitEntry in traits)
         {
             splitThingStack.traits.Add(new ExposedTraitEntry(traitEntry));

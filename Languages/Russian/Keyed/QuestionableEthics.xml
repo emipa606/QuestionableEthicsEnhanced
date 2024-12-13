@@ -119,4 +119,5 @@
   <QE_MessagestapledPawnEnslaved>{0} был порабощен {1} с помощью нервной скобы</QE_MessagestapledPawnEnslaved>
   <QE_UseFillingGraphic>Визуализация наполнения ингредиентами</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Показывать заполнение резервуара ресурсами, а не показывать его пустым до заполнения</QE_UseFillingGraphicTooltip>
+  <QE_MessageCloningFailedAnomaly>Клонирование прошло неудачно из-за аномальной последовательности генома, {0} появился на свет в виде сломанной пешки.</QE_MessageCloningFailedAnomaly>
 </LanguageData>

@@ -6,6 +6,7 @@ using BioReactor;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace QEthics;
 
@@ -153,6 +154,11 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         }
 
         pawnBeingGrown = GenomeUtility.MakePawnFromGenomeSequence(genome, this);
+
+        if (pawnBeingGrown == null)
+        {
+            return false;
+        }
 
         if (pawnBeingGrown.Rotation != Rotation.Opposite)
         {
@@ -372,12 +378,54 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             //Place new clone on the vat's Interaction Cell
             GenPlace.TryPlaceThing(tempPawn, InteractionCell, Map, ThingPlaceMode.Near);
 
+            if (tempPawn != null &&
+                innerContainer.FirstOrDefault(thing => thing is GenomeSequence) is GenomeSequence
+                {
+                    spawnShambler: true
+                })
+            {
+                tempPawn.Kill(null);
+                foreach (var item in tempPawn.MapHeld.mapPawns.AllPawnsSpawned)
+                {
+                    if (item.Position.InHorDistOf(tempPawn.Position, 14.9f))
+                    {
+                        ApplyOrRefreshHediff(item);
+                    }
+                }
+
+                SoundDefOf.PsychicBanshee.PlayOneShot(tempPawn);
+                MoteMaker.MakeAttachedOverlay(tempPawn, ThingDefOf.Mote_PsychicBanshee, Vector3.zero);
+
+                MutantUtility.ResurrectAsShambler(tempPawn, 15000, tempPawn.DeadlifeDustFaction);
+                Messages.Message("QE_MessageCloningFailedAnomaly".Translate(tempPawn.NameFullColored),
+                    new LookTargets(tempPawn),
+                    MessageTypeDefOf.NegativeEvent);
+            }
+
             //remove any ingredients used to create the Pawn
             innerContainer.RemoveAll(thing => thing is not GenomeSequence);
             StopCrafting(false);
         }
 
         return wasSuccess;
+    }
+
+    private void ApplyOrRefreshHediff(Pawn pawn)
+    {
+        if (pawn.health.hediffSet.TryGetHediff(HediffDefOf.AgonyPulse, out var hediff))
+        {
+            hediff.Severity = 0f;
+        }
+        else
+        {
+            hediff = pawn.health.AddHediff(HediffDefOf.AgonyPulse);
+        }
+
+        var hediffComp_Disappears = (hediff as HediffWithComps)?.GetComp<HediffComp_Disappears>();
+        if (hediffComp_Disappears != null)
+        {
+            hediffComp_Disappears.ticksToDisappear = new IntRange(2000, 4000).RandomInRange * 60;
+        }
     }
 
 
