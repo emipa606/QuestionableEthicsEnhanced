@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.5 - Should work better with races that have a higher age-limit for child stage
+
+
 1.5.4 - When cloning a creepjoiner, it wont end well
 Used DeepL to update translations for ChineseSimplified, French, German, Japanese, Russian
 
