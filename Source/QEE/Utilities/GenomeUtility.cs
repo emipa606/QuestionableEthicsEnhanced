@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace QEthics;
@@ -117,11 +116,20 @@ public static class GenomeUtility
 
 
         QEEMod.TryLog("Generating pawn.");
-        var minimumAge = 3;
-        if (genomeSequence.pawnKindDef.RaceProps.lifeStageAges.Count > 1 &&
-            genomeSequence.pawnKindDef.RaceProps.lifeStageAges[1].minAge > minimumAge)
+        var minimumAge = genomeSequence.pawnKindDef.RaceProps.lifeStageAges[0].minAge;
+        if (genomeSequence.pawnKindDef.RaceProps.lifeStageAges.Count > 1)
         {
-            minimumAge = Mathf.CeilToInt(genomeSequence.pawnKindDef.RaceProps.lifeStageAges[1].minAge);
+            foreach (var racePropsLifeStageAge in
+                     genomeSequence.pawnKindDef.RaceProps.lifeStageAges)
+            {
+                if (racePropsLifeStageAge.def.alwaysDowned)
+                {
+                    continue;
+                }
+
+                minimumAge = racePropsLifeStageAge.minAge;
+                break;
+            }
         }
 
         var request = new PawnGenerationRequest(
