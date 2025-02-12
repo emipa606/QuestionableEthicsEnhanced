@@ -192,14 +192,10 @@ public static class GenomeUtility
                 storyTracker.headType = genomeSequence.crownType;
             }
 
+            storyTracker.hairColor = genomeSequence.hairColor;
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
             storyTracker.favoriteColor = genomeSequence.favoriteColor;
-
-            if (genomeSequence.endogenes?.Any() == false) //if they have endogenes, let those decide their colours instead.
-            {
-                storyTracker.hairColor = genomeSequence.hairColor;
-                storyTracker.melanin = genomeSequence.skinMelanin;
-            }
+            storyTracker.melanin = genomeSequence.skinMelanin;
 
             storyTracker.traits.allTraits.Clear();
             QEEMod.TryLog("Setting traits for generated pawn");
