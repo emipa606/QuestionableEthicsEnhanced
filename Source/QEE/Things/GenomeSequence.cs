@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,10 @@ public class GenomeSequence : ThingWithComps
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
-    public List<Gene> endogenes;
-    public List<Gene> xenogenes;
+    [Obsolete("For mitigation only. Use endogenes and xenogenes instead.")]
+    public List<string> genes;
+    public List<GeneDef> endogenes;
+    public List<GeneDef> xenogenes;
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
@@ -65,6 +68,7 @@ public class GenomeSequence : ThingWithComps
     public bool spawnShambler;
     public List<ExposedTraitEntry> traits = [];
     public XenotypeDef xenotype;
+    public bool hybrid;
 
     public override string LabelNoCount
     {
@@ -110,9 +114,18 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Defs.Look(ref xenotype, "xenotype");
-            Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Reference);
-            Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Reference);
+            Scribe_Values.Look(ref hybrid, "hybrid");
+            Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Def);
+            Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Def);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
+
+            // ensure we only load the old 'genes' field, but not dumping it again
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+            {
+#pragma warning disable CS0618
+                Scribe_Collections.Look(ref genes, "genes", LookMode.Value);
+#pragma warning restore CS0618
+            }
 
             //Humanoid values that could be null in save file go here
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -168,6 +181,18 @@ public class GenomeSequence : ThingWithComps
         Scribe_Values.Look(ref skinType, "skinType");
     }
 
+    public override void PostMapInit()
+    {
+        base.PostMapInit();
+        // fixes from old 'genes'
+#pragma warning disable CS0618
+        if (genes != null)
+        {
+            GenomeUtility.TryFixSequenceGenes(this);
+        }
+#pragma warning restore CS0618
+    }
+
     public override bool CanStackWith(Thing other)
     {
         if (other is GenomeSequence otherGenome &&
@@ -195,12 +220,13 @@ public class GenomeSequence : ThingWithComps
             mouthType == otherGenome.mouthType &&
             skinType == otherGenome.skinType &&
             xenotype == otherGenome.xenotype &&
+            hybrid == otherGenome.hybrid &&
             xenotypeName == otherGenome.xenotypeName &&
             xenotypeIcon == otherGenome.xenotypeIcon &&
             (endogenes == null && otherGenome.endogenes == null || endogenes != null && otherGenome.endogenes != null &&
-                endogenes.OrderBy(h => h.def.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.def.defName))) &&
+                endogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.defName))) &&
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
-                xenogenes.OrderBy(h => h.def.defName).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h.def.defName))) &&
+                xenogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h.defName))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -252,7 +278,10 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.favoriteColor = favoriteColor;
         splitThingStack.faceTattoo = faceTattoo;
         splitThingStack.bodyTattoo = bodyTattoo;
+        splitThingStack.hybrid = hybrid;
         splitThingStack.xenotype = xenotype;
+        splitThingStack.xenotypeName = xenotypeName;
+        splitThingStack.xenotypeIcon = xenotypeIcon;
         splitThingStack.xenogenes = xenogenes;
         splitThingStack.endogenes = endogenes;
         splitThingStack.spawnShambler = spawnShambler;
