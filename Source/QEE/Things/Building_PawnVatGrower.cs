@@ -370,6 +370,8 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 {
                     tempPawn.needs?.mood?.thoughts?.memories?.TryGainMemory(QEThoughtDefOf.QE_VatGrownCloneConfusion);
                 }
+                // request recalculating disabled work type
+                tempPawn.Notify_DisabledWorkTypesChanged();
 
                 //Adds history event used by precepts, done hear since it's easier than patching it just for ideology
                 Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.PawnCloned));
