@@ -12,15 +12,8 @@ public static class HarmonyPatches
     static HarmonyPatches()
     {
         VNPELoaded = ModsConfig.IsActive("VanillaExpanded.VNutrientE");
-        var harmony = new Harmony("KongMD.QEE");
         //HarmonyInstance.DEBUG = true;
 
-        harmony.PatchAll(Assembly.GetExecutingAssembly());
-        if (Compatibility.SpawnThoseGenes_Patch.ShouldPatch())
-        {
-            Compatibility.SpawnThoseGenes_Patch.Patch(harmony);
-        }
+        new Harmony("KongMD.QEE").PatchAll(Assembly.GetExecutingAssembly());
     }
 }
-
-//end patch class

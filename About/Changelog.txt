@@ -1,5 +1,11 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.5.7 - Xenotype and other gene-support
+Skills will no loger be all disabled after cloning
+Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2898044088][BT] SpawnThoseGenes![/url]
+All thanks to cvrunmin!
+
+
 1.5.6 - Should work better with races that for some reason have multiple baby stages
 
 
