@@ -6,6 +6,7 @@ namespace QEthics;
 
 public static class GenomeUtility
 {
+    public static bool CloningInProgress { get; private set; }
     public static Thing MakeGenomeSequence(Pawn pawn, ThingDef genomeDef)
     {
         var genomeThing = ThingMaker.MakeThing(genomeDef);
@@ -56,6 +57,7 @@ public static class GenomeUtility
                     genomeSequence.bodyType = story.bodyType;
                     genomeSequence.crownType = story.headType;
                     genomeSequence.hairColor = story.hairColor;
+                    genomeSequence.skinColorOverride = story.skinColorOverride;
                     genomeSequence.skinMelanin = story.melanin;
                     genomeSequence.hair = story.hairDef;
                     genomeSequence.beard = style.beardDef;
@@ -89,8 +91,7 @@ public static class GenomeUtility
                                                                    //genomeSequence's, reverting non-baseliner pawns
                                                                    //into baseliners.
                     genomeSequence.hybrid = pawn.genes.hybrid;
-                    genomeSequence.xenotypeName = pawn.genes.xenotypeName;
-                    genomeSequence.xenotypeIcon = pawn.genes.iconDef;
+                    genomeSequence.customXenotype = pawn.genes.CustomXenotype;
                 }
 
                 //Alien Races compatibility.
@@ -143,6 +144,28 @@ public static class GenomeUtility
                 break;
             }
         }
+        var oldXenotypeDoubleChance = genomeSequence.xenotype?.doubleXenotypeChances;
+        var oldXenotypeGenes = genomeSequence.xenotype?.genes;
+        var oldGenerateWithXenogermHediffChance = genomeSequence.xenotype?.generateWithXenogermReplicatingHediffChance ?? 0; 
+        if (genomeSequence.xenotype != null)
+        {
+            // clear anything that could create extra things
+            genomeSequence.xenotype.doubleXenotypeChances = null;
+            genomeSequence.xenotype.genes = [];
+            genomeSequence.xenotype.generateWithXenogermReplicatingHediffChance = 0;
+        }
+        var customXenotypeGenesTrimmed = genomeSequence.customXenotype != null ? new CustomXenotype() : null;
+        if (genomeSequence.customXenotype != null)
+        {
+            // copy a custom xenotype without actual genes
+            customXenotypeGenesTrimmed.iconDef = genomeSequence.customXenotype.iconDef;
+            customXenotypeGenesTrimmed.name = genomeSequence.customXenotype.name;
+            customXenotypeGenesTrimmed.inheritable = genomeSequence.customXenotype.inheritable;
+        }
+        var xenogeneToGo = genomeSequence.xenogenes?.ListFullCopy();
+        xenogeneToGo?.RemoveWhere(x => DefDatabase<GeneDef>.GetNamedSilentFail(x.defName) == null);
+        var endogeneToGo = genomeSequence.endogenes?.ListFullCopy();
+        endogeneToGo?.RemoveWhere(x => DefDatabase<GeneDef>.GetNamedSilentFail(x.defName) == null);
 
         var request = new PawnGenerationRequest(
             genomeSequence.pawnKindDef,
@@ -152,8 +175,31 @@ public static class GenomeUtility
             fixedGender: genomeSequence.gender,
             fixedBiologicalAge: minimumAge,
             fixedChronologicalAge: 0,
-            allowFood: false);
-        var pawn = PawnGenerator.GeneratePawn(request);
+            allowFood: false,
+            forcedXenotype: genomeSequence.xenotype,
+            forcedCustomXenotype: customXenotypeGenesTrimmed,
+            forcedXenogenes: xenogeneToGo,
+            forcedEndogenes: endogeneToGo,
+            forceNoGear: true
+            );
+        request.ForceBodyType = genomeSequence.bodyType;
+        Pawn pawn = null;
+        try
+        {
+            CloningInProgress = true;
+            pawn = PawnGenerator.GeneratePawn(request);
+        }
+        finally
+        {
+            CloningInProgress = false;
+        }
+
+        if(genomeSequence.xenotype != null)
+        {
+            genomeSequence.xenotype.genes = oldXenotypeGenes;
+            genomeSequence.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
+            genomeSequence.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
+        }
 
         //No pregenerated equipment.
         pawn?.equipment?.DestroyAllEquipment();
@@ -161,7 +207,10 @@ public static class GenomeUtility
         pawn?.inventory?.DestroyAll();
 
         //No pregenerated hediffs.
-        pawn?.health.hediffSet.Clear();
+        foreach (var hediff in pawn?.health.hediffSet.hediffs.ListFullCopy() ?? [])
+        {
+            pawn?.health.RemoveHediff(hediff);
+        }
 
         //Add Hediff marking them as a clone.
         QEEMod.TryLog("Adding hediffs to generated pawn");
@@ -175,17 +224,24 @@ public static class GenomeUtility
                 pawn?.health.AddHediff(h.def, h.part);
             }
         }
+        pawn?.health.hediffSet.DirtyCache();
+        pawn?.health.CheckForStateChange(null, null);
 
         if (pawn?.genes is { } geneTracker)
         {
+            // restore those being trimmed for pawn generation
+            geneTracker.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
+            geneTracker.xenotype.genes = oldXenotypeGenes;
+            geneTracker.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
             // Handle gene first to ensure that the actual pawn style surpass gene-given style 
-            if (genomeSequence.xenotype != null)
-            {
-                geneTracker.xenotype = genomeSequence.xenotype;
-                geneTracker.hybrid = genomeSequence.hybrid;
-                geneTracker.xenotypeName = genomeSequence.xenotypeName;
-                geneTracker.iconDef = genomeSequence.xenotypeIcon;
-            }
+            //if (genomeSequence.xenotype != null)
+            //{
+            //    geneTracker.xenotype = genomeSequence.xenotype;
+            //    geneTracker.hybrid = genomeSequence.hybrid;
+            //    //geneTracker.CustomXenotype = genomeSequence.customXenotype;
+            //    //geneTracker.xenotypeName = genomeSequence.xenotypeName;
+            //    //geneTracker.iconDef = genomeSequence.xenotypeIcon;
+            //}
             //the logic previously used in this block was both flawed and wrong.
             //  geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
             //this checks what the gene's EndogeneCategory is, then if it ISN'T 0 (i.e. no category),
@@ -196,34 +252,34 @@ public static class GenomeUtility
             //"Strong Melee Damage" has an EndogeneCategory of 0, so it's treated as a xenogene.
             //however, Yttakin have that as an endogene. if you clone a Yttakin using this logic, it will result
             //in many of the Yttakin's natural features being added as non-hereditary xenogenes.
-            if (genomeSequence.endogenes?.Any() == true)
-            {
-                pawn.genes.Endogenes.Clear(); //clear generated pawn's endogenes, to avoid incorrect hair/skin colours
-                foreach (var gene in genomeSequence.endogenes)
-                {
-                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
-                    if (geneDef == null)
-                    {
-                        continue;
-                    }
+            //if (genomeSequence.endogenes?.Any() == true)
+            //{
+            //    pawn.genes.Endogenes.Clear(); //clear generated pawn's endogenes, to avoid incorrect hair/skin colours
+            //    foreach (var gene in genomeSequence.endogenes)
+            //    {
+            //        var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
+            //        if (geneDef == null)
+            //        {
+            //            continue;
+            //        }
 
-                    geneTracker.AddGene(geneDef, false);
-                }
-            }
-            if (genomeSequence.xenogenes?.Any() == true)
-            {
-                pawn.genes.Xenogenes.Clear(); //clear generated pawn's default xenogenes (from their xenotype), to be replaced with the list from the genome sequence
-                foreach (var gene in genomeSequence.xenogenes)
-                {
-                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
-                    if (geneDef == null)
-                    {
-                        continue;
-                    }
+            //        geneTracker.AddGene(geneDef, false);
+            //    }
+            //}
+            //if (genomeSequence.xenogenes?.Any() == true)
+            //{
+            //    pawn.genes.Xenogenes.Clear(); //clear generated pawn's default xenogenes (from their xenotype), to be replaced with the list from the genome sequence
+            //    foreach (var gene in genomeSequence.xenogenes)
+            //    {
+            //        var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
+            //        if (geneDef == null)
+            //        {
+            //            continue;
+            //        }
 
-                    geneTracker.AddGene(geneDef, true);
-                }
-            }
+            //        geneTracker.AddGene(geneDef, true);
+            //    }
+            //}
         }
 
         //Set everything else.
@@ -247,22 +303,25 @@ public static class GenomeUtility
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
             storyTracker.favoriteColor = genomeSequence.favoriteColor;
             storyTracker.melanin = genomeSequence.skinMelanin;
+            storyTracker.skinColorOverride = genomeSequence.skinColorOverride;
 
-            storyTracker.traits.allTraits.Clear();
+            // properly remove all pregenerated traits
+            storyTracker.traits.allTraits.ListFullCopy().ForEach(x => storyTracker.traits.RemoveTrait(x));
             QEEMod.TryLog("Setting traits for generated pawn");
             foreach (var trait in genomeSequence.traits)
             {
-                //storyTracker.traits.GainTrait(new Trait(trait.def, trait.degree));
-                storyTracker.traits.allTraits.Add(new Trait(trait.def, trait.degree));
-                pawn.workSettings?.Notify_DisabledWorkTypesChanged();
+                storyTracker.traits.GainTrait(new Trait(trait.def, trait.degree));
+                //storyTracker.traits.allTraits.Add(new Trait(trait.def, trait.degree));
+                //pawn.workSettings?.Notify_DisabledWorkTypesChanged();
 
-                pawn.skills?.Notify_SkillDisablesChanged();
+                //pawn.skills?.Notify_SkillDisablesChanged();
 
-                if (!pawn.Dead && pawn.RaceProps.Humanlike)
-                {
-                    pawn.needs.mood.thoughts.situational.Notify_SituationalThoughtsDirty();
-                }
+                //if (!pawn.Dead && pawn.RaceProps.Humanlike)
+                //{
+                //    pawn.needs.mood.thoughts.situational.Notify_SituationalThoughtsDirty();
+                //}
             }
+            storyTracker.traits.RecalculateSuppression();
 
             QEEMod.TryLog("Setting backstory for generated pawn");
             //Give random vatgrown backstory.
@@ -323,8 +382,9 @@ public static class GenomeUtility
 
                 iterations++;
             }
+            skillsTracker.Notify_SkillDisablesChanged();
         }
-
+        pawn?.Notify_DisabledWorkTypesChanged();
         if (pawn?.workSettings is { } workSettings)
         {
             workSettings.EnableAndInitialize();
@@ -348,9 +408,7 @@ public static class GenomeUtility
             AnimalGeneticsCompatibility.SetFieldsToAnimalGeneticsComps(pawn, genomeSequence);
         }
 
-        PortraitsCache.SetDirty(pawn);
-        PortraitsCache.PortraitsCacheUpdate();
-
+        pawn?.Drawer.renderer.SetAllGraphicsDirty();
         return pawn;
     }
 
@@ -394,14 +452,20 @@ public static class GenomeUtility
         {
             if (refPawn.genes != null)
             {
+                List<GeneDef> melaninGenes = [];
                 foreach (var geneDefName in genomeSequence.genes)
                 {
                     var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(geneDefName);
                     if (geneDef is not null)
                     {
+                        if (geneDef.defName.StartsWith("Skin_Melanin")){
+                            melaninGenes.Add(geneDef);
+                            continue;
+                        }
                         var maybeGene = refPawn.genes.GetGene(geneDef);
                         if (maybeGene is null)
                         {
+
                             // maybe it was xenogene but overwritten after sequencing genome.
                             // assume it as an xenogene
                             genomeSequence.xenogenes.Add(geneDef);
@@ -416,13 +480,20 @@ public static class GenomeUtility
                         }
                     }
                 }
+                if (!genomeSequence.endogenes.Any(gene => gene.skinColorOverride != null || gene.skinColorBase != null) &&
+                    !genomeSequence.xenogenes.Any(gene => gene.skinColorOverride != null || gene.skinColorBase != null)){
+                    if (melaninGenes.Count > 0)
+                    {
+                        genomeSequence.endogenes.Add(melaninGenes[0]);
+                    }
+                }
+
 
                 if (refPawn.genes.xenotype != XenotypeDefOf.Baseliner || refPawn.genes.CustomXenotype != null)
                 {
                     // somehow player has fixed the xenotype on their own. Use the actual value
                     genomeSequence.xenotype = refPawn.genes.xenotype;
-                    genomeSequence.xenotypeName = refPawn.genes.xenotypeName;
-                    genomeSequence.xenotypeIcon = refPawn.genes.iconDef;
+                    genomeSequence.customXenotype = refPawn.genes.CustomXenotype;
                 }
                 else
                 {

@@ -16,6 +16,10 @@ public static class HarmonyPatches
         //HarmonyInstance.DEBUG = true;
 
         harmony.PatchAll(Assembly.GetExecutingAssembly());
+        if (Compatibility.SpawnThoseGenes_Patch.ShouldPatch())
+        {
+            Compatibility.SpawnThoseGenes_Patch.Patch(harmony);
+        }
     }
 }
 

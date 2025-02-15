@@ -35,8 +35,9 @@ public class GenomeSequence : ThingWithComps
     public HairDef hair;
     public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
-    public string xenotypeName;
-    public XenotypeIconDef xenotypeIcon; //adding these allow for player-made xenotypes to be properly cloned
+    public XenotypeDef xenotype;
+    public bool hybrid;
+    public CustomXenotype customXenotype; //adding these allow for player-made xenotypes to be properly cloned
 
     // Facial Animation compatibility
     public string headType;
@@ -61,14 +62,13 @@ public class GenomeSequence : ThingWithComps
     public Color skinColorSecond;
 
     public float skinMelanin;
+    public Color? skinColorOverride;
     public string skinType;
 
     //Relevant for all genomes.
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
     public bool spawnShambler;
     public List<ExposedTraitEntry> traits = [];
-    public XenotypeDef xenotype;
-    public bool hybrid;
 
     public override string LabelNoCount
     {
@@ -107,6 +107,7 @@ public class GenomeSequence : ThingWithComps
         {
             Scribe_Defs.Look(ref bodyType, "bodyType");
             Scribe_Values.Look(ref hairColor, "hairColor");
+            Scribe_Values.Look(ref skinColorOverride, "skinColorOverride");
             Scribe_Values.Look(ref skinMelanin, "skinMelanin");
             Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
             Scribe_Defs.Look(ref hair, "hair");
@@ -114,6 +115,7 @@ public class GenomeSequence : ThingWithComps
             Scribe_Defs.Look(ref faceTattoo, "faceTattoo");
             Scribe_Defs.Look(ref bodyTattoo, "bodyTattoo");
             Scribe_Defs.Look(ref xenotype, "xenotype");
+            Scribe_Deep.Look(ref customXenotype, "customXenotype");
             Scribe_Values.Look(ref hybrid, "hybrid");
             Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Def);
             Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Def);
@@ -208,6 +210,7 @@ public class GenomeSequence : ThingWithComps
             beard == otherGenome.beard &&
             faceTattoo == otherGenome.faceTattoo &&
             bodyTattoo == otherGenome.bodyTattoo &&
+            skinColorOverride == otherGenome.skinColorOverride &&
             skinColor == otherGenome.skinColor &&
             skinColorSecond == otherGenome.skinColorSecond &&
             hairColorSecond == otherGenome.hairColorSecond &&
@@ -221,8 +224,7 @@ public class GenomeSequence : ThingWithComps
             skinType == otherGenome.skinType &&
             xenotype == otherGenome.xenotype &&
             hybrid == otherGenome.hybrid &&
-            xenotypeName == otherGenome.xenotypeName &&
-            xenotypeIcon == otherGenome.xenotypeIcon &&
+            customXenotype == otherGenome.customXenotype &&
             (endogenes == null && otherGenome.endogenes == null || endogenes != null && otherGenome.endogenes != null &&
                 endogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.defName))) &&
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
@@ -272,6 +274,7 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.bodyType = bodyType;
         splitThingStack.crownType = crownType;
         splitThingStack.hairColor = hairColor;
+        splitThingStack.skinColorOverride = skinColorOverride;
         splitThingStack.skinMelanin = skinMelanin;
         splitThingStack.hair = hair;
         splitThingStack.beard = beard;
@@ -280,8 +283,7 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.bodyTattoo = bodyTattoo;
         splitThingStack.hybrid = hybrid;
         splitThingStack.xenotype = xenotype;
-        splitThingStack.xenotypeName = xenotypeName;
-        splitThingStack.xenotypeIcon = xenotypeIcon;
+        splitThingStack.customXenotype = customXenotype;
         splitThingStack.xenogenes = xenogenes;
         splitThingStack.endogenes = endogenes;
         splitThingStack.spawnShambler = spawnShambler;
