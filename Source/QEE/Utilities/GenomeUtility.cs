@@ -57,6 +57,7 @@ public static class GenomeUtility
                     genomeSequence.bodyType = story.bodyType;
                     genomeSequence.crownType = story.headType;
                     genomeSequence.hairColor = story.hairColor;
+                    genomeSequence.skinColorBase = story.skinColorBase;
                     genomeSequence.skinColorOverride = story.skinColorOverride;
                     genomeSequence.skinMelanin = story.melanin;
                     genomeSequence.hair = story.hairDef;
@@ -78,12 +79,28 @@ public static class GenomeUtility
                                                     //so we don't have to figure it out later (and potentially mess it up)
                     {
                         genomeSequence.endogenes = [];
-                        pawn.genes.Endogenes.ForEach(gene => genomeSequence.endogenes.Add(gene.def));
+                        genomeSequence.activeRandomlyChosenEndogenes = [];
+                        pawn.genes.Endogenes.ForEach(gene =>
+                        {
+                            genomeSequence.endogenes.Add(gene.def);
+                            if(gene.def.RandomChosen && !gene.Overridden)
+                            {
+                                genomeSequence.activeRandomlyChosenEndogenes.Add(gene.def);
+                            }
+                        });
                     }
                     if (pawn.genes.Xenogenes.Any())
                     {
                         genomeSequence.xenogenes = [];
-                        pawn.genes.Xenogenes.ForEach(gene => genomeSequence.xenogenes.Add(gene.def));
+                        genomeSequence.activeRandomlyChosenXenogenes = [];
+                        pawn.genes.Xenogenes.ForEach(gene =>
+                        {
+                            genomeSequence.xenogenes.Add(gene.def);
+                            if (gene.def.RandomChosen && !gene.Overridden)
+                            {
+                                genomeSequence.activeRandomlyChosenXenogenes.Add(gene.def);
+                            }
+                        });
                     }
 
                     genomeSequence.xenotype = pawn.genes.xenotype; //this was previously set to (very, very wrongly)
@@ -209,6 +226,7 @@ public static class GenomeUtility
         //No pregenerated hediffs.
         foreach (var hediff in pawn?.health.hediffSet.hediffs.ListFullCopy() ?? [])
         {
+            QEEMod.TryLog($"removing pregenerated hediff {hediff?.Label} at {hediff?.Part?.Label}");
             pawn?.health.RemoveHediff(hediff);
         }
 
@@ -233,15 +251,34 @@ public static class GenomeUtility
             geneTracker.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
             geneTracker.xenotype.genes = oldXenotypeGenes;
             geneTracker.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
-            // Handle gene first to ensure that the actual pawn style surpass gene-given style 
-            //if (genomeSequence.xenotype != null)
-            //{
-            //    geneTracker.xenotype = genomeSequence.xenotype;
-            //    geneTracker.hybrid = genomeSequence.hybrid;
-            //    //geneTracker.CustomXenotype = genomeSequence.customXenotype;
-            //    //geneTracker.xenotypeName = genomeSequence.xenotypeName;
-            //    //geneTracker.iconDef = genomeSequence.xenotypeIcon;
-            //}
+            if (genomeSequence.activeRandomlyChosenEndogenes?.Any() ?? false)
+            {
+                foreach (var activeGeneDef in genomeSequence.activeRandomlyChosenEndogenes)
+                {
+                    foreach (var gene in geneTracker.Endogenes)
+                    {
+                        if (gene.def.defName == activeGeneDef.defName)
+                        {
+                            geneTracker.OverrideAllConflicting(gene);
+                            break;
+                        }
+                    }
+                }
+            }
+            if (genomeSequence.activeRandomlyChosenXenogenes?.Any() ?? false)
+            {
+                foreach (var activeGeneDef in genomeSequence.activeRandomlyChosenXenogenes)
+                {
+                    foreach (var gene in geneTracker.Xenogenes)
+                    {
+                        if (gene.def.defName == activeGeneDef.defName)
+                        {
+                            geneTracker.OverrideAllConflicting(gene);
+                            break;
+                        }
+                    }
+                }
+            }
             //the logic previously used in this block was both flawed and wrong.
             //  geneTracker.AddGene(geneDef, geneDef.endogeneCategory != EndogeneCategory.None);
             //this checks what the gene's EndogeneCategory is, then if it ISN'T 0 (i.e. no category),
@@ -252,34 +289,6 @@ public static class GenomeUtility
             //"Strong Melee Damage" has an EndogeneCategory of 0, so it's treated as a xenogene.
             //however, Yttakin have that as an endogene. if you clone a Yttakin using this logic, it will result
             //in many of the Yttakin's natural features being added as non-hereditary xenogenes.
-            //if (genomeSequence.endogenes?.Any() == true)
-            //{
-            //    pawn.genes.Endogenes.Clear(); //clear generated pawn's endogenes, to avoid incorrect hair/skin colours
-            //    foreach (var gene in genomeSequence.endogenes)
-            //    {
-            //        var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
-            //        if (geneDef == null)
-            //        {
-            //            continue;
-            //        }
-
-            //        geneTracker.AddGene(geneDef, false);
-            //    }
-            //}
-            //if (genomeSequence.xenogenes?.Any() == true)
-            //{
-            //    pawn.genes.Xenogenes.Clear(); //clear generated pawn's default xenogenes (from their xenotype), to be replaced with the list from the genome sequence
-            //    foreach (var gene in genomeSequence.xenogenes)
-            //    {
-            //        var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(gene.defName);
-            //        if (geneDef == null)
-            //        {
-            //            continue;
-            //        }
-
-            //        geneTracker.AddGene(geneDef, true);
-            //    }
-            //}
         }
 
         //Set everything else.
@@ -303,6 +312,7 @@ public static class GenomeUtility
             storyTracker.hairDef = genomeSequence.hair ?? storyTracker.hairDef;
             storyTracker.favoriteColor = genomeSequence.favoriteColor;
             storyTracker.melanin = genomeSequence.skinMelanin;
+            storyTracker.skinColorBase = genomeSequence.skinColorBase;
             storyTracker.skinColorOverride = genomeSequence.skinColorOverride;
 
             // properly remove all pregenerated traits
@@ -433,6 +443,8 @@ public static class GenomeUtility
         if (genomeSequence.genes == null) return;
         genomeSequence.xenogenes = [];
         genomeSequence.endogenes = [];
+        genomeSequence.activeRandomlyChosenXenogenes = [];
+        genomeSequence.activeRandomlyChosenEndogenes = [];
         // first stage: if we can find the source pawn in the world, use it as a reference
         // note that the xenotype cannot be fully recovered as the unfixed version had already wiped it out
         Pawn refPawn = null;
@@ -473,10 +485,18 @@ public static class GenomeUtility
                         else if (refPawn.genes.IsXenogene(maybeGene))
                         {
                             genomeSequence.xenogenes.Add(maybeGene.def);
+                            if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
+                            {
+                                genomeSequence.activeRandomlyChosenXenogenes.Add(maybeGene.def);
+                            }
                         }
                         else
                         {
                             genomeSequence.endogenes.Add(maybeGene.def);
+                            if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
+                            {
+                                genomeSequence.activeRandomlyChosenEndogenes.Add(maybeGene.def);
+                            }
                         }
                     }
                 }

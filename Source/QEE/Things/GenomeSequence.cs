@@ -28,13 +28,17 @@ public class GenomeSequence : ThingWithComps
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
+    public HairDef hair;
+    public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
+    public Color hairColorSecond;
+
+    //Relevant for all genomes.
     [Obsolete("For mitigation only. Use endogenes and xenogenes instead.")]
     public List<string> genes;
     public List<GeneDef> endogenes;
     public List<GeneDef> xenogenes;
-    public HairDef hair;
-    public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
-    public Color hairColorSecond;
+    public List<GeneDef> activeRandomlyChosenEndogenes;
+    public List<GeneDef> activeRandomlyChosenXenogenes;
     public XenotypeDef xenotype;
     public bool hybrid;
     public CustomXenotype customXenotype; //adding these allow for player-made xenotypes to be properly cloned
@@ -62,10 +66,10 @@ public class GenomeSequence : ThingWithComps
     public Color skinColorSecond;
 
     public float skinMelanin;
+    public Color? skinColorBase;
     public Color? skinColorOverride;
     public string skinType;
 
-    //Relevant for all genomes.
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
     public bool spawnShambler;
     public List<ExposedTraitEntry> traits = [];
@@ -107,6 +111,7 @@ public class GenomeSequence : ThingWithComps
         {
             Scribe_Defs.Look(ref bodyType, "bodyType");
             Scribe_Values.Look(ref hairColor, "hairColor");
+            Scribe_Values.Look(ref skinColorBase, "skinColorBase");
             Scribe_Values.Look(ref skinColorOverride, "skinColorOverride");
             Scribe_Values.Look(ref skinMelanin, "skinMelanin");
             Scribe_Collections.Look(ref traits, "traits", LookMode.Deep);
@@ -119,6 +124,8 @@ public class GenomeSequence : ThingWithComps
             Scribe_Values.Look(ref hybrid, "hybrid");
             Scribe_Collections.Look(ref endogenes, "endogenes", LookMode.Def);
             Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Def);
+            Scribe_Collections.Look(ref activeRandomlyChosenEndogenes, "activeRandomlyChosenEndogenes", LookMode.Def);
+            Scribe_Collections.Look(ref activeRandomlyChosenXenogenes, "activeRandomlyChosenXenogenes", LookMode.Def);
             Scribe_Values.Look(ref favoriteColor, "favoriteColor");
 
             // ensure we only load the old 'genes' field, but not dumping it again
@@ -205,12 +212,13 @@ public class GenomeSequence : ThingWithComps
             crownType == otherGenome.crownType &&
             hairColor == otherGenome.hairColor &&
             skinMelanin == otherGenome.skinMelanin &&
+            skinColorBase == otherGenome.skinColorBase &&
+            skinColorOverride == otherGenome.skinColorOverride &&
             isAlien == otherGenome.isAlien &&
             favoriteColor == otherGenome.favoriteColor &&
             beard == otherGenome.beard &&
             faceTattoo == otherGenome.faceTattoo &&
             bodyTattoo == otherGenome.bodyTattoo &&
-            skinColorOverride == otherGenome.skinColorOverride &&
             skinColor == otherGenome.skinColor &&
             skinColorSecond == otherGenome.skinColorSecond &&
             hairColorSecond == otherGenome.hairColorSecond &&
@@ -229,6 +237,12 @@ public class GenomeSequence : ThingWithComps
                 endogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.endogenes.OrderBy(h => h.defName))) &&
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
                 xenogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h.defName))) &&
+            (activeRandomlyChosenEndogenes == null && otherGenome.activeRandomlyChosenEndogenes == null
+            || activeRandomlyChosenEndogenes != null && otherGenome.activeRandomlyChosenEndogenes != null &&
+                activeRandomlyChosenEndogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.activeRandomlyChosenEndogenes.OrderBy(h => h.defName))) &&
+            (activeRandomlyChosenXenogenes == null && otherGenome.activeRandomlyChosenXenogenes == null
+            || activeRandomlyChosenXenogenes != null && otherGenome.activeRandomlyChosenXenogenes != null &&
+                activeRandomlyChosenXenogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.activeRandomlyChosenXenogenes.OrderBy(h => h.defName))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -274,6 +288,7 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.bodyType = bodyType;
         splitThingStack.crownType = crownType;
         splitThingStack.hairColor = hairColor;
+        splitThingStack.skinColorBase = skinColorBase;
         splitThingStack.skinColorOverride = skinColorOverride;
         splitThingStack.skinMelanin = skinMelanin;
         splitThingStack.hair = hair;
@@ -286,6 +301,8 @@ public class GenomeSequence : ThingWithComps
         splitThingStack.customXenotype = customXenotype;
         splitThingStack.xenogenes = xenogenes;
         splitThingStack.endogenes = endogenes;
+        splitThingStack.activeRandomlyChosenEndogenes = activeRandomlyChosenEndogenes;
+        splitThingStack.activeRandomlyChosenXenogenes = activeRandomlyChosenXenogenes;
         splitThingStack.spawnShambler = spawnShambler;
         foreach (var traitEntry in traits)
         {
