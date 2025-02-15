@@ -211,7 +211,7 @@ public static class BrainManipUtility
         if (storyTracker != null)
         {
             //story.childhood = brainScan.backStoryChild;
-            storyTracker.adulthood = brainScan.backStoryAdult;
+            storyTracker.Adulthood = brainScan.backStoryAdult;
         }
 
         //Skills
@@ -223,8 +223,8 @@ public static class BrainManipUtility
                 var pawnSkill = skillTracker.GetSkill(skill.def);
                 pawnSkill.Level = (int)Math.Floor(skill.level * efficency);
                 pawnSkill.passion = skill.passion;
-                pawnSkill.Notify_SkillDisablesChanged();
             }
+            skillTracker.Notify_SkillDisablesChanged();
         }
 
         //Training
