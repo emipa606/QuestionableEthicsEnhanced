@@ -270,7 +270,7 @@ public class BrainScanTemplate : ThingWithComps
              kindDef.defName == brainScan.kindDef.defName
              || kindDef == null && brainScan.kindDef == null) &&
             (hediffInfos != null && brainScan.hediffInfos != null &&
-             hediffInfos.OrderBy(h => h.def.LabelCap).SequenceEqual(brainScan.hediffInfos.OrderBy(h => h.def.LabelCap))
+             hediffInfos.OrderBy(h => h.def.LabelCap.ToString()).SequenceEqual(brainScan.hediffInfos.OrderBy(h => h.def.LabelCap.ToString()))
              || hediffInfos == null && brainScan.hediffInfos == null))
         {
             return base.CanStackWith(other);
