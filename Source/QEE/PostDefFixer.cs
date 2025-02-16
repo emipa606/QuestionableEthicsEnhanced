@@ -64,26 +64,27 @@ public static class PostDefFixer
             }
         }
 
-        foreach (var def in DefDatabase<HediffDef>.AllDefs)
-        {
-            if (def.GetModExtension<HediffTemplateProperties>() is not { } props)
-            {
-                continue;
-            }
+        // Now will check the HediffTemplateProperties directly.
+        //foreach (var def in DefDatabase<HediffDef>.AllDefs)
+        //{
+        //    if (def.GetModExtension<HediffTemplateProperties>() is not { } props)
+        //    {
+        //        continue;
+        //    }
 
-            if (props.includeInBrainTemplate)
-            {
-                QEEMod.TryLog($"{def.defName} added to list of Hediffs applied to brain templates");
-                GeneralCompatibility.includedBrainTemplateHediffs.Add(def);
-            }
+        //    if (props.includeInBrainTemplate)
+        //    {
+        //        QEEMod.TryLog($"{def.defName} added to list of Hediffs applied to brain templates");
+        //        GeneralCompatibility.includedBrainTemplateHediffs.Add(def);
+        //    }
 
-            if (!props.includeInGenomeTemplate)
-            {
-                continue;
-            }
+        //    if (!props.includeInGenomeTemplate)
+        //    {
+        //        continue;
+        //    }
 
-            QEEMod.TryLog($"{def.defName} added to list of Hediffs applied to genome templates");
-            GeneralCompatibility.includedGenomeTemplateHediffs.Add(def);
-        }
+        //    QEEMod.TryLog($"{def.defName} added to list of Hediffs applied to genome templates");
+        //    GeneralCompatibility.includedGenomeTemplateHediffs.Add(def);
+        //}
     }
 }

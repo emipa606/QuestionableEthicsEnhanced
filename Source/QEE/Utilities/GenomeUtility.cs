@@ -36,15 +36,14 @@ public static class GenomeUtility
                     {
                         foreach (var h in pawnHediffs)
                         {
-                            if (!GeneralCompatibility.includedGenomeTemplateHediffs.Any(hediffDef =>
-                                    h.def.defName == hediffDef.defName))
+                            if (!GeneralCompatibility.ShouldIncludeInGenomeTemplate(h.def))
                             {
                                 continue;
                             }
 
                             QEEMod.TryLog($"Hediff {h.def.defName} will be added to genome template");
 
-                            genomeSequence.hediffInfos.Add(new HediffInfo(h));
+                            genomeSequence.hediffInfos.Add(new HediffInfo(h, GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
                         }
                     }
                 }
@@ -226,6 +225,7 @@ public static class GenomeUtility
         //No pregenerated hediffs.
         foreach (var hediff in pawn?.health.hediffSet.hediffs.ListFullCopy() ?? [])
         {
+            if (GeneralCompatibility.ShouldKeepHediffWhenCloning(hediff.def)) continue;
             QEEMod.TryLog($"removing pregenerated hediff {hediff?.Label} at {hediff?.Part?.Label}");
             pawn?.health.RemoveHediff(hediff);
         }
@@ -239,7 +239,11 @@ public static class GenomeUtility
             //add hediffs to pawn from defs in HediffInfo class
             foreach (var h in genomeSequence.hediffInfos)
             {
-                pawn?.health.AddHediff(h.def, h.part);
+                var addedHediff = pawn?.health.AddHediff(h.def, h.part);
+                if(addedHediff != null && h.severity.HasValue)
+                {
+                    addedHediff.Severity = h.severity.Value;
+                }
             }
         }
         pawn?.health.hediffSet.DirtyCache();
@@ -427,13 +431,13 @@ public static class GenomeUtility
         return !def.race.IsMechanoid &&
                def.GetStatValueAbstract(StatDefOf.MeatAmount) > 0f &&
                //def.GetStatValueAbstract(StatDefOf.LeatherAmount) > 0f &&
-               !GeneralCompatibility.excludedRaces.Contains(def);
+               !GeneralCompatibility.IsRaceBlockingTemplateCreation(def);
     }
 
     public static bool IsValidGenomeSequencingTarget(this Pawn pawn)
     {
         return IsValidGenomeSequencingTargetDef(pawn.def) && !pawn.health.hediffSet.hediffs.Any(hediff =>
-            GeneralCompatibility.excludedHediffs.Any(hediffDef => hediff.def == hediffDef));
+            GeneralCompatibility.IsBlockingGenomeTemplateCreation(hediff.def));
     }
 
     public static void TryFixSequenceGenes(GenomeSequence genomeSequence)

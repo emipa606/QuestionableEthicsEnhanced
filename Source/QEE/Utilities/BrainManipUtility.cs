@@ -11,14 +11,14 @@ public static class BrainManipUtility
 {
     public static bool IsValidBrainScanningDef(this ThingDef def)
     {
-        return !def.race.IsMechanoid && !GeneralCompatibility.excludedRaces.Contains(def);
+        return !def.race.IsMechanoid && !GeneralCompatibility.IsRaceBlockingTemplateCreation(def);
     }
 
     public static bool IsValidBrainScanningTarget(this Pawn pawn)
     {
         var def = pawn.def;
         return IsValidBrainScanningDef(def) && !pawn.Dead && !pawn.health.hediffSet.hediffs.Any(hediff =>
-            GeneralCompatibility.excludedHediffs.Any(hediffDef => hediff.def == hediffDef));
+            GeneralCompatibility.IsBlockingBrainTemplateCreation(hediff.def));
     }
 
     public static bool IsValidBrainScanningTarget(Pawn targetPawn, ref string failReason)
@@ -39,7 +39,7 @@ public static class BrainManipUtility
         //fail if pawn has an excluded hediff
 
         if (!targetPawn.health.hediffSet.hediffs.Any(hediff =>
-                GeneralCompatibility.excludedHediffs.Any(hediffDef => hediff.def == hediffDef)))
+                GeneralCompatibility.IsBlockingBrainTemplateCreation(hediff.def)))
         {
             return true;
         }
@@ -178,15 +178,14 @@ public static class BrainManipUtility
 
         foreach (var h in pawnHediffs)
         {
-            if (!GeneralCompatibility.includedBrainTemplateHediffs.Any(hediffDef =>
-                    h.def.defName == hediffDef.defName))
+            if (!GeneralCompatibility.ShouldIncludeInBrainTemplate(h.def))
             {
                 continue;
             }
 
             QEEMod.TryLog($"Hediff {h.def.defName} will be added to brain template");
 
-            brainScan.hediffInfos.Add(new HediffInfo(h));
+            brainScan.hediffInfos.Add(new HediffInfo(h, GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
         }
 
         return brainScanThing;
@@ -256,6 +255,10 @@ public static class BrainManipUtility
             foreach (var h in brainScan.hediffInfos)
             {
                 var addedHediff = thePawn.health.AddHediff(h.def, h.part);
+                if(addedHediff != null && h.severity.HasValue)
+                {
+                    addedHediff.Severity = h.severity.Value;
+                }
 
                 //Psychic Awakened compatibility
                 if (h.psychicAwakeningPowersKnownDefNames is not { Count: > 0 })
