@@ -7,12 +7,22 @@ namespace QEthics;
 
 public class RecipeWorker_GenomeSequencing : RecipeWorker
 {
-    public override IEnumerable<BodyPartRecord> GetPartsToApplyOn(Pawn pawn, RecipeDef recipe)
+    //public override IEnumerable<BodyPartRecord> GetPartsToApplyOn(Pawn pawn, RecipeDef recipe)
+    //{
+    //    if (pawn.IsValidGenomeSequencingTarget())
+    //    {
+    //        yield return null;
+    //    }
+    //}
+
+    public override AcceptanceReport AvailableReport(Thing thing, BodyPartRecord part = null)
     {
-        if (pawn.IsValidGenomeSequencingTarget())
+        string reason = "";
+        if(thing is Pawn pawn && GenomeUtility.IsValidGenomeSequencingTarget(pawn, ref reason))
         {
-            yield return null;
+            return true;
         }
+        return reason;
     }
 
     public override void ApplyOnPawn(Pawn pawn, BodyPartRecord part, Pawn billDoer, List<Thing> ingredients, Bill bill)

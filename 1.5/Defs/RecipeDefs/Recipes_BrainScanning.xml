@@ -15,8 +15,8 @@
     <soundWorking>Interact_Research</soundWorking>
     <anesthetize>false</anesthetize>
     <isViolation>true</isViolation>
-    <!--targetsBodyPart>false</targetsBodyPart-->
-    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <!-- <hideBodyPartNames>true</hideBodyPartNames> -->
     <skillRequirements>
       <Medicine>10</Medicine>
     </skillRequirements>

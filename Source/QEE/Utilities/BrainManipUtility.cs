@@ -21,18 +21,24 @@ public static class BrainManipUtility
             GeneralCompatibility.IsBlockingBrainTemplateCreation(hediff.def));
     }
 
-    public static bool IsValidBrainScanningTarget(Pawn targetPawn, ref string failReason)
+    public static bool IsValidBrainScanningTarget(Pawn targetPawn, ref string failReason, bool inOperationTab = false)
     {
         var def = targetPawn.def;
 
         if (!IsValidBrainScanningDef(def))
         {
+            if (inOperationTab)
+            {
+                failReason = "QE_TemplatingRejectExcludedRaceShort".Translate();
+                return false;
+            }
             failReason = "QE_BrainScanningRejectExcludedRace".Translate(targetPawn.kindDef.race);
             return false;
         }
 
         if (targetPawn.Dead)
         {
+            // Corpse is not allowed to take operation. no need to check inOperationTab
             failReason = "QE_BrainScanningRejectDead".Translate(targetPawn.Named("PAWN"));
             return false;
         }
@@ -44,7 +50,14 @@ public static class BrainManipUtility
             return true;
         }
 
-        failReason = "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
+        if (inOperationTab)
+        {
+            failReason = "QE_BrainScanningRejectExcludedHediffShort".Translate();
+        }
+        else
+        {
+            failReason = "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
+        }
         return false;
     }
 

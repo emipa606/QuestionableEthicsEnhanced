@@ -440,6 +440,23 @@ public static class GenomeUtility
             GeneralCompatibility.IsBlockingGenomeTemplateCreation(hediff.def));
     }
 
+    public static bool IsValidGenomeSequencingTarget(Pawn pawn, ref string failReason)
+    {
+        // Currently only used in Operation tab. Short reason is sufficient.
+        if (!IsValidGenomeSequencingTargetDef(pawn.def))
+        {
+            failReason = "QE_TemplatingRejectExcludedRaceShort".Translate();
+            return false;
+        }
+        if(!pawn.health.hediffSet.hediffs.Any(hediff =>
+            GeneralCompatibility.IsBlockingGenomeTemplateCreation(hediff.def)))
+        {
+            return true;
+        }
+        failReason = "QE_GenomeSequencerRejectExcludedHediffShort".Translate();
+        return false;
+    }
+
     public static void TryFixSequenceGenes(GenomeSequence genomeSequence)
     {
         if (genomeSequence == null) return;
