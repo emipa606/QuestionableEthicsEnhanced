@@ -120,4 +120,8 @@
   <QE_UseFillingGraphic>Визуализация наполнения ингредиентами</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Показывать заполнение резервуара ресурсами, а не показывать его пустым до заполнения</QE_UseFillingGraphicTooltip>
   <QE_MessageCloningFailedAnomaly>Клонирование прошло неудачно из-за аномальной последовательности генома, {0} появился на свет в виде сломанной пешки.</QE_MessageCloningFailedAnomaly>
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediffs исключающие секвенирование генома</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediffs исключающие сканирование мозга</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_TemplatingRejectExcludedRaceShort>недействительная раса</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>Накопленные знания</QE_BrainScanDescription_Expertises>
 </LanguageData>

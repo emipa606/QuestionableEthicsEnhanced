@@ -120,4 +120,8 @@
   <QE_UseFillingGraphic>Visualiser le remplissage des ingrédients</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Montrer que la cuve se remplit de ressources au lieu d'être vide jusqu'à ce qu'elle soit remplie.</QE_UseFillingGraphicTooltip>
   <QE_MessageCloningFailedAnomaly>Le clonage a échoué à cause d'une séquence génomique anormale, {0} a donné naissance à un pion brisé.</QE_MessageCloningFailedAnomaly>
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediff à l'exclusion du séquençage du génome</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediffs à l'exclusion du scanner cérébral</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_TemplatingRejectExcludedRaceShort>race non valide</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>Expertises stockées</QE_BrainScanDescription_Expertises>
 </LanguageData>

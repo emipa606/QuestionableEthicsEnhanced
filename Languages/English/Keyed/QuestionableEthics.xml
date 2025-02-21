@@ -137,8 +137,8 @@
   <QE_MessagestapledPawnEnslaved>{0} was enslaved by {1} using a nerve staple</QE_MessagestapledPawnEnslaved>
   <QE_MessageCloningFailedAnomaly>Cloning failed horribly due to an abnormal genome-sequence, {0} spawned as a broken hulk of a pawn</QE_MessageCloningFailedAnomaly>
   <!-- version 1.5.8 Patch -->
-  <QE_GenomeSequencerRejectExcludedHediffShort>hediff excluding genome sequencing</QE_GenomeSequencerRejectExcludedHediffShort>
-  <QE_BrainScanningRejectExcludedHediffShort>hediff excluding brain scan</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediffs excluding genome sequencing</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediffs excluding brain scanning</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>not valid race</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Stored expertises</QE_BrainScanDescription_Expertises>
 </LanguageData>
