@@ -201,6 +201,11 @@ public static class BrainManipUtility
             brainScan.hediffInfos.Add(new HediffInfo(h, GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
         }
 
+        if (CompatibilityTracker.SkillsExpandedActive)
+        {
+            VanillaSkillsExpandedCompatibility.GetFieldsFromVanillaSkillsExpanded(pawn, brainScan);
+        }
+
         return brainScanThing;
     }
 
@@ -236,8 +241,8 @@ public static class BrainManipUtility
                 pawnSkill.Level = (int)Math.Floor(skill.level * efficency);
                 pawnSkill.passion = skill.passion;
             }
-            skillTracker.Notify_SkillDisablesChanged();
         }
+        thePawn.Notify_DisabledWorkTypesChanged();
 
         //Training
         var trainingTracker = thePawn.training;
@@ -313,6 +318,11 @@ public static class BrainManipUtility
 
                 PsychicAwakeningCompat.powersKnownField.SetValue(addedHediff, powers);
             }
+        }
+
+        if (CompatibilityTracker.SkillsExpandedActive)
+        {
+            VanillaSkillsExpandedCompatibility.SetFieldsToVanillaSkillsExpanded(thePawn, brainScan);
         }
 
         Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.BrainUploaded));

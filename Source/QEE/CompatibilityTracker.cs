@@ -52,6 +52,13 @@ public static class CompatibilityTracker
                 continue;
             }
 
+            if (modName.Contains("Vanilla Skills Expanded"))
+            {
+                SkillsExpandedActive = true;
+                QEEMod.TryLog("Vanilla Skills Expanded detected");
+                continue;
+            }
+
             if (modName.Contains("Rah's Bionics and Surgery Expansion") ||
                 modName.Contains("RBSE Hardcore Edition"))
             {
@@ -85,6 +92,8 @@ public static class CompatibilityTracker
     public static bool RBSEActive { get; }
 
     public static bool AnimalGeneticsActive { get; }
+
+    public static bool SkillsExpandedActive { get; }
 
     public static FieldInfo HeadTypeField { get; }
     public static FieldInfo EyeColorField { get; }

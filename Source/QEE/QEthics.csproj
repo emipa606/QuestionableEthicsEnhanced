@@ -44,5 +44,10 @@
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
+    <Reference Include="SkillExpanded">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\3400246558\1.5\Assemblies\VSE.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 </Project>

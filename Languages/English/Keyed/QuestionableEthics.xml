@@ -140,4 +140,5 @@
   <QE_GenomeSequencerRejectExcludedHediffShort>hediff excluding genome sequencing</QE_GenomeSequencerRejectExcludedHediffShort>
   <QE_BrainScanningRejectExcludedHediffShort>hediff excluding brain scan</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>not valid race</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>Stored expertises</QE_BrainScanDescription_Expertises>
 </LanguageData>
