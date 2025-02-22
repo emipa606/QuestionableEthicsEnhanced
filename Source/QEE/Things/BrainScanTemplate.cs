@@ -33,7 +33,7 @@ public class BrainScanTemplate : ThingWithComps
     public DefMap<TrainableDef, int> trainingSteps = new DefMap<TrainableDef, int>();
 
     //VanillaSkillsExpanded compat
-    public List<ComparableExpertiseRecord> expertises = new List<ComparableExpertiseRecord>();
+    public List<ComparableExpertiseRecord> expertises = [];
 
     public override string LabelNoCount
     {
@@ -93,6 +93,8 @@ public class BrainScanTemplate : ThingWithComps
         Scribe_Deep.Look(ref trainingSteps, "trainingSteps");
         Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
         Scribe_Collections.Look(ref expertises, "expertises", LookMode.Deep);
+        // Scribe_Collections will nullify if node not found, but we expects non null
+        if (Scribe.mode == LoadSaveMode.LoadingVars && expertises == null) expertises = []; 
 
         if (Scribe.mode != LoadSaveMode.LoadingVars || hediffInfos == null)
         {
