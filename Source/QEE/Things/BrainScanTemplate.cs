@@ -18,6 +18,9 @@ public class BrainScanTemplate : ThingWithComps
     //Humanoid only
     public BackstoryDef backStoryChild;
 
+    //VanillaSkillsExpanded compat
+    public List<ComparableExpertiseRecord> expertises = [];
+
     /// <summary>
     ///     List containing all hediff def information that should be saved and applied to clones
     /// </summary>
@@ -31,9 +34,6 @@ public class BrainScanTemplate : ThingWithComps
     public string sourceName;
     public DefMap<TrainableDef, bool> trainingLearned = new DefMap<TrainableDef, bool>();
     public DefMap<TrainableDef, int> trainingSteps = new DefMap<TrainableDef, int>();
-
-    //VanillaSkillsExpanded compat
-    public List<ComparableExpertiseRecord> expertises = [];
 
     public override string LabelNoCount
     {
@@ -93,8 +93,11 @@ public class BrainScanTemplate : ThingWithComps
         Scribe_Deep.Look(ref trainingSteps, "trainingSteps");
         Scribe_Collections.Look(ref hediffInfos, "hediffInfos", LookMode.Deep);
         Scribe_Collections.Look(ref expertises, "expertises", LookMode.Deep);
-        // Scribe_Collections will nullify if node not found, but we expects non null
-        if (Scribe.mode == LoadSaveMode.LoadingVars && expertises == null) expertises = []; 
+        // Scribe_Collections will nullify if node not found, but we expect non-null
+        if (Scribe.mode == LoadSaveMode.LoadingVars && expertises == null)
+        {
+            expertises = [];
+        }
 
         if (Scribe.mode != LoadSaveMode.LoadingVars || hediffInfos == null)
         {
@@ -300,7 +303,8 @@ public class BrainScanTemplate : ThingWithComps
              kindDef.defName == brainScan.kindDef.defName
              || kindDef == null && brainScan.kindDef == null) &&
             (hediffInfos != null && brainScan.hediffInfos != null &&
-             hediffInfos.OrderBy(h => h.def.LabelCap.ToString()).SequenceEqual(brainScan.hediffInfos.OrderBy(h => h.def.LabelCap.ToString()))
+             hediffInfos.OrderBy(h => h.def.LabelCap.ToString())
+                 .SequenceEqual(brainScan.hediffInfos.OrderBy(h => h.def.LabelCap.ToString()))
              || hediffInfos == null && brainScan.hediffInfos == null))
         {
             return base.CanStackWith(other);

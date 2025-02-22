@@ -13,6 +13,8 @@ namespace QEthics;
 /// </summary>
 public class GenomeSequence : ThingWithComps
 {
+    public List<GeneDef> activeRandomlyChosenEndogenes;
+    public List<GeneDef> activeRandomlyChosenXenogenes;
     public List<int> addonVariants = [];
     public object animalGeneticInformation;
     public BeardDef beard;
@@ -23,25 +25,21 @@ public class GenomeSequence : ThingWithComps
     public string browType;
     public HeadTypeDef crownType;
     public string crownTypeAlien = "";
+    public CustomXenotype customXenotype; //adding these allow for player-made xenotypes to be properly cloned
+    public List<GeneDef> endogenes;
     public Color eyeColor;
     public string eyeType;
     public TattooDef faceTattoo;
     public Color? favoriteColor;
     public Gender gender = Gender.None;
-    public HairDef hair;
-    public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
-    public Color hairColorSecond;
 
     //Relevant for all genomes.
     [Obsolete("For mitigation only. Use endogenes and xenogenes instead.")]
     public List<string> genes;
-    public List<GeneDef> endogenes;
-    public List<GeneDef> xenogenes;
-    public List<GeneDef> activeRandomlyChosenEndogenes;
-    public List<GeneDef> activeRandomlyChosenXenogenes;
-    public XenotypeDef xenotype;
-    public bool hybrid;
-    public CustomXenotype customXenotype; //adding these allow for player-made xenotypes to be properly cloned
+
+    public HairDef hair;
+    public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
+    public Color hairColorSecond;
 
     // Facial Animation compatibility
     public string headType;
@@ -50,6 +48,8 @@ public class GenomeSequence : ThingWithComps
     ///     List containing all hediff def information that should be saved and applied to clones
     /// </summary>
     public List<HediffInfo> hediffInfos = [];
+
+    public bool hybrid;
 
     //AlienRace compatibility.
     /// <summary>
@@ -63,16 +63,18 @@ public class GenomeSequence : ThingWithComps
     //public string sourceName = (new TaggedString("QE_BlankGenomeTemplateName")).Translate() ?? "Do Not Use This";
     public PawnKindDef pawnKindDef = PawnKindDefOf.Colonist;
     public Color skinColor;
+    public Color? skinColorBase;
+    public Color? skinColorOverride;
     public Color skinColorSecond;
 
     public float skinMelanin;
-    public Color? skinColorBase;
-    public Color? skinColorOverride;
     public string skinType;
 
     public string sourceName = "QE_BlankGenomeTemplateName".Translate().RawText ?? "Do Not Use This";
     public bool spawnShambler;
     public List<ExposedTraitEntry> traits = [];
+    public List<GeneDef> xenogenes;
+    public XenotypeDef xenotype;
 
     public override string LabelNoCount
     {
@@ -238,11 +240,13 @@ public class GenomeSequence : ThingWithComps
             (xenogenes == null && otherGenome.xenogenes == null || xenogenes != null && otherGenome.xenogenes != null &&
                 xenogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.xenogenes.OrderBy(h => h.defName))) &&
             (activeRandomlyChosenEndogenes == null && otherGenome.activeRandomlyChosenEndogenes == null
-            || activeRandomlyChosenEndogenes != null && otherGenome.activeRandomlyChosenEndogenes != null &&
-                activeRandomlyChosenEndogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.activeRandomlyChosenEndogenes.OrderBy(h => h.defName))) &&
+             || activeRandomlyChosenEndogenes != null && otherGenome.activeRandomlyChosenEndogenes != null &&
+             activeRandomlyChosenEndogenes.OrderBy(h => h.defName)
+                 .SequenceEqual(otherGenome.activeRandomlyChosenEndogenes.OrderBy(h => h.defName))) &&
             (activeRandomlyChosenXenogenes == null && otherGenome.activeRandomlyChosenXenogenes == null
-            || activeRandomlyChosenXenogenes != null && otherGenome.activeRandomlyChosenXenogenes != null &&
-                activeRandomlyChosenXenogenes.OrderBy(h => h.defName).SequenceEqual(otherGenome.activeRandomlyChosenXenogenes.OrderBy(h => h.defName))) &&
+             || activeRandomlyChosenXenogenes != null && otherGenome.activeRandomlyChosenXenogenes != null &&
+             activeRandomlyChosenXenogenes.OrderBy(h => h.defName)
+                 .SequenceEqual(otherGenome.activeRandomlyChosenXenogenes.OrderBy(h => h.defName))) &&
             crownTypeAlien == otherGenome.crownTypeAlien &&
             (hair != null && otherGenome.hair != null && hair.ToString() == otherGenome.hair.ToString()
              || hair == null && otherGenome.hair == null) &&
@@ -260,16 +264,6 @@ public class GenomeSequence : ThingWithComps
 
         return false;
     }
-
-    /*public bool TraitsAreEqual(IEnumerable<ExposedTraitEntry> otherTraits)
-    {
-        foreach(var entry in otherTraits)
-        {
-
-        }
-
-        return true;
-    }*/
 
     public override Thing SplitOff(int count)
     {

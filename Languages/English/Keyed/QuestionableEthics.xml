@@ -141,4 +141,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>hediffs excluding brain scanning</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>not valid race</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Stored expertises</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG: Fill fluid</QE_VatGrowerDebugFill>
 </LanguageData>

@@ -124,4 +124,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>hediff阻止大脑扫描</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>无效种族</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>储存的专业知识</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>故障：加注流体</QE_VatGrowerDebugFill>
 </LanguageData>

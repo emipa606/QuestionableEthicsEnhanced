@@ -124,4 +124,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>hediffs à l'exclusion du scanner cérébral</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>race non valide</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Expertises stockées</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG : Remplir le fluide</QE_VatGrowerDebugFill>
 </LanguageData>

@@ -124,4 +124,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>hediffs ohne Gehirnscanning</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>nicht gültige Ethnie</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Gespeicherte Expertisen</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG: Flüssigkeit einfüllen</QE_VatGrowerDebugFill>
 </LanguageData>

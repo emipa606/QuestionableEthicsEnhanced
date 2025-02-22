@@ -1,60 +1,68 @@
-﻿using HarmonyLib;
-using System;
+﻿using System;
 using System.Linq;
+using HarmonyLib;
 using Verse;
 using VSE;
 using VSE.Expertise;
 
-namespace QEthics
+namespace QEthics;
+
+public static class VanillaSkillsExpandedCompatibility
 {
-    public static class VanillaSkillsExpandedCompatibility
+    private static Type cachedExpertiseDefType;
+    private static bool? cachedExpertiseDefTypeFound;
+
+    public static void GetFieldsFromVanillaSkillsExpanded(Pawn pawn, BrainScanTemplate brainScan)
     {
-        public static void GetFieldsFromVanillaSkillsExpanded(Pawn pawn, BrainScanTemplate brainScan)
+        var expertiseTracker = pawn.Expertise();
+        foreach (var expertiseRecord in expertiseTracker.AllExpertise)
         {
-            var expertiseTracker = pawn.Expertise();
-            foreach (var expertiseRecord in expertiseTracker.AllExpertise)
+            var defName = expertiseRecord.def.defName;
+            var totalXp = expertiseRecord.XpTotalEarned;
+            brainScan.expertises.Add(new ComparableExpertiseRecord
             {
-                var defName = expertiseRecord.def.defName;
-                var totalXp = expertiseRecord.XpTotalEarned;
-                brainScan.expertises.Add(new ComparableExpertiseRecord
-                {
-                    defName = defName,
-                    totalXp = totalXp,
-                });
+                defName = defName,
+                totalXp = totalXp
+            });
+        }
+    }
+
+    public static void SetFieldsToVanillaSkillsExpanded(Pawn pawn, BrainScanTemplate brainScan)
+    {
+        var expertiseTracker = pawn.Expertise();
+        expertiseTracker.ClearExpertise();
+        foreach (var expertise in brainScan.expertises)
+        {
+            var def = DefDatabase<ExpertiseDef>.GetNamedSilentFail(expertise.defName);
+            if (def == null)
+            {
+                QEEMod.TryLog($"Cannot find ExpertiseDef {expertise.defName}.");
+                continue;
             }
+
+            expertiseTracker.AddExpertise(def);
+            expertiseTracker.AllExpertise.Last().Learn(expertise.totalXp);
+        }
+    }
+
+    public static TaggedString ExpertiseDefLabelCap(string defName)
+    {
+        if (!CompatibilityTracker.SkillsExpandedActive)
+        {
+            return defName;
         }
 
-        public static void SetFieldsToVanillaSkillsExpanded(Pawn pawn, BrainScanTemplate brainScan)
+        if (cachedExpertiseDefTypeFound == null)
         {
-            var expertiseTracker = pawn.Expertise();
-            expertiseTracker.ClearExpertise();
-            foreach (var expertise in brainScan.expertises)
-            {
-                var def = DefDatabase<ExpertiseDef>.GetNamedSilentFail(expertise.defName);
-                if(def == null)
-                {
-                    QEEMod.TryLog($"Cannot find ExpertiseDef {expertise.defName}.");
-                    continue;
-                }
-                expertiseTracker.AddExpertise(def);
-                expertiseTracker.AllExpertise.Last().Learn(expertise.totalXp);
-            }
+            cachedExpertiseDefType = AccessTools.TypeByName("VSE.Expertise.ExpertiseDef");
+            cachedExpertiseDefTypeFound = cachedExpertiseDefType != null;
         }
 
-        private static Type cachedExpertiseDefType = null;
-        private static bool? cachedExpertiseDefTypeFound = null;
-
-        public static TaggedString ExpertiseDefLabelCap(string defName)
+        if (cachedExpertiseDefType == null)
         {
-            if (!CompatibilityTracker.SkillsExpandedActive) return defName;
-            if (cachedExpertiseDefTypeFound == null)
-            {
-                cachedExpertiseDefType = AccessTools.TypeByName("VSE.Expertise.ExpertiseDef");
-                cachedExpertiseDefTypeFound = cachedExpertiseDefType != null;
-            }
-            if(cachedExpertiseDefType == null)
-                return defName;
-            return GenDefDatabase.GetDefSilentFail(cachedExpertiseDefType, defName)?.LabelCap ?? defName;
+            return defName;
         }
+
+        return GenDefDatabase.GetDefSilentFail(cachedExpertiseDefType, defName)?.LabelCap ?? defName;
     }
 }

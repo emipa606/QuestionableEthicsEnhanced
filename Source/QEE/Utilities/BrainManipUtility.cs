@@ -32,6 +32,7 @@ public static class BrainManipUtility
                 failReason = "QE_TemplatingRejectExcludedRaceShort".Translate();
                 return false;
             }
+
             failReason = "QE_BrainScanningRejectExcludedRace".Translate(targetPawn.kindDef.race);
             return false;
         }
@@ -50,14 +51,10 @@ public static class BrainManipUtility
             return true;
         }
 
-        if (inOperationTab)
-        {
-            failReason = "QE_BrainScanningRejectExcludedHediffShort".Translate();
-        }
-        else
-        {
-            failReason = "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
-        }
+        failReason = inOperationTab
+            ? "QE_BrainScanningRejectExcludedHediffShort".Translate()
+            : "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
+
         return false;
     }
 
@@ -242,6 +239,7 @@ public static class BrainManipUtility
                 pawnSkill.passion = skill.passion;
             }
         }
+
         thePawn.Notify_DisabledWorkTypesChanged();
 
         //Training
@@ -273,7 +271,7 @@ public static class BrainManipUtility
             foreach (var h in brainScan.hediffInfos)
             {
                 var addedHediff = thePawn.health.AddHediff(h.def, h.part);
-                if(addedHediff != null && h.severity.HasValue)
+                if (addedHediff != null && h.severity.HasValue)
                 {
                     addedHediff.Severity = h.severity.Value;
                 }

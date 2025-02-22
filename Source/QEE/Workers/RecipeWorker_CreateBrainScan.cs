@@ -7,26 +7,14 @@ namespace QEthics;
 
 public class RecipeWorker_CreateBrainScan : RecipeWorker
 {
-    //public override IEnumerable<BodyPartRecord> GetPartsToApplyOn(Pawn pawn, RecipeDef recipe)
-    //{
-    //    if (pawn.IsValidBrainScanningTarget())
-    //    {
-    //        QEEMod.TryLog($"Pawn {pawn.Name?.ToStringSafe() ?? pawn.LabelCap} is valid brain scanning target");
-    //        yield return null;
-    //    }
-    //    else
-    //    {
-    //        QEEMod.TryLog($"Pawn {pawn.Name?.ToStringSafe() ?? pawn.LabelCap} is not valid brain scanning target");
-    //    }
-    //}
-
     public override AcceptanceReport AvailableReport(Thing thing, BodyPartRecord part = null)
     {
-        string reason = "";
-        if(thing is Pawn pawn && BrainManipUtility.IsValidBrainScanningTarget(pawn, ref reason, true))
+        var reason = "";
+        if (thing is Pawn pawn && BrainManipUtility.IsValidBrainScanningTarget(pawn, ref reason, true))
         {
             return true;
         }
+
         return reason;
     }
 

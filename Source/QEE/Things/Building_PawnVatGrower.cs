@@ -370,6 +370,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 {
                     tempPawn.needs?.mood?.thoughts?.memories?.TryGainMemory(QEThoughtDefOf.QE_VatGrownCloneConfusion);
                 }
+
                 // request recalculating disabled work type
                 tempPawn.Notify_DisabledWorkTypesChanged();
 
@@ -721,16 +722,58 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 action = delegate { StopCrafting(shouldRefundIngredients); }
             };
 
-            if (Prefs.DevMode)
+            if (!DebugSettings.ShowDevGizmos)
+            {
+                yield break;
+            }
+
+            if (shouldRefundIngredients)
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "QE_VatGrowerDebugFinishGrowing".Translate(),
-                    defaultDesc = "QE_VatGrowerDebugFinishGrowingDescription".Translate(),
-                    //icon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel", true),
-                    action = delegate { craftingProgress = TicksNeededToCraft; }
+                    defaultLabel = "QE_VatGrowerDebugFill".Translate(),
+                    action = delegate
+                    {
+                        foreach (var request in orderProcessor.GetDesiredRequests())
+                        {
+                            ThingDef thingDef = null;
+                            if (request.HasThing)
+                            {
+                                thingDef = request.thing.def;
+                            }
+
+                            if (request.HasThingFilter)
+                            {
+                                thingDef = request.thingFilter.BestThingRequest.singleDef;
+                            }
+
+                            if (thingDef == null)
+                            {
+                                continue;
+                            }
+
+                            if (thingDef != QEThingDefOf.QE_NutrientSolution &&
+                                thingDef != QEThingDefOf.QE_ProteinMash)
+                            {
+                                continue;
+                            }
+
+                            var thing = ThingMaker.MakeThing(thingDef);
+                            thing.stackCount = request.amount;
+                            innerContainer.TryAddOrTransfer(thing);
+                        }
+
+                        orderProcessor.Notify_ContentsChanged();
+                    }
                 };
             }
+
+            yield return new Command_Action
+            {
+                defaultLabel = "QE_VatGrowerDebugFinishGrowing".Translate(),
+                defaultDesc = "QE_VatGrowerDebugFinishGrowingDescription".Translate(),
+                action = delegate { craftingProgress = TicksNeededToCraft; }
+            };
         }
     }
 }

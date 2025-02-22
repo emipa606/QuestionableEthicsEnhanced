@@ -17,71 +17,44 @@ public static class GeneralCompatibility
     {
         return excludedRaces.Contains(thingDef);
     }
+
     public static bool IsBlockingBrainTemplateCreation(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.blockCreatingBrainTemplate;
-        }
-        if (excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName)))
-        {
-            return true;
-        }
-        return false;
+        return !hediffDef.HasModExtension<HediffTemplateProperties>()
+            ? excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            : hediffDef.GetModExtension<HediffTemplateProperties>().blockCreatingBrainTemplate;
     }
 
     public static bool IsBlockingGenomeTemplateCreation(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.blockCreatingGenomeTemplate;
-        }
-        if (excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName)))
-        {
-            return true;
-        }
-        return false;
+        return !hediffDef.HasModExtension<HediffTemplateProperties>()
+            ? excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            : hediffDef.GetModExtension<HediffTemplateProperties>().blockCreatingGenomeTemplate;
     }
 
     public static bool ShouldIncludeInBrainTemplate(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.includeInBrainTemplate;
-        }
-        return includedBrainTemplateHediffs.Any(def => string.Equals(def.defName, hediffDef.defName));
+        return !hediffDef.HasModExtension<HediffTemplateProperties>()
+            ? includedBrainTemplateHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            : hediffDef.GetModExtension<HediffTemplateProperties>().includeInBrainTemplate;
     }
 
     public static bool ShouldIncludeInGenomeTemplate(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.includeInGenomeTemplate;
-        }
-        return includedGenomeTemplateHediffs.Any(def => string.Equals(def.defName, hediffDef.defName));
+        return !hediffDef.HasModExtension<HediffTemplateProperties>()
+            ? includedGenomeTemplateHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            : hediffDef.GetModExtension<HediffTemplateProperties>().includeInGenomeTemplate;
     }
 
     public static bool ShouldIncludeSeverityInTemplate(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.includeSeverityInTemplate;
-        }
-        return false;
+        return hediffDef.HasModExtension<HediffTemplateProperties>() &&
+               hediffDef.GetModExtension<HediffTemplateProperties>().includeSeverityInTemplate;
     }
 
     public static bool ShouldKeepHediffWhenCloning(HediffDef hediffDef)
     {
-        if (hediffDef.HasModExtension<HediffTemplateProperties>())
-        {
-            var hediffProp = hediffDef.GetModExtension<HediffTemplateProperties>();
-            return hediffProp.pregeneratedInCloning;
-        }
-        return false;
+        return hediffDef.HasModExtension<HediffTemplateProperties>() &&
+               hediffDef.GetModExtension<HediffTemplateProperties>().pregeneratedInCloning;
     }
 }

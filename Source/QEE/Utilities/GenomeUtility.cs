@@ -7,6 +7,7 @@ namespace QEthics;
 public static class GenomeUtility
 {
     public static bool CloningInProgress { get; private set; }
+
     public static Thing MakeGenomeSequence(Pawn pawn, ThingDef genomeDef)
     {
         var genomeThing = ThingMaker.MakeThing(genomeDef);
@@ -43,7 +44,8 @@ public static class GenomeUtility
 
                             QEEMod.TryLog($"Hediff {h.def.defName} will be added to genome template");
 
-                            genomeSequence.hediffInfos.Add(new HediffInfo(h, GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
+                            genomeSequence.hediffInfos.Add(new HediffInfo(h,
+                                GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
                         }
                     }
                 }
@@ -75,19 +77,20 @@ public static class GenomeUtility
                 if (pawn.genes != null)
                 {
                     if (pawn.genes.Endogenes.Any()) //record directly from the pawn's Endogenes and Xenogenes list,
-                                                    //so we don't have to figure it out later (and potentially mess it up)
+                        //so we don't have to figure it out later (and potentially mess it up)
                     {
                         genomeSequence.endogenes = [];
                         genomeSequence.activeRandomlyChosenEndogenes = [];
                         pawn.genes.Endogenes.ForEach(gene =>
                         {
                             genomeSequence.endogenes.Add(gene.def);
-                            if(gene.def.RandomChosen && !gene.Overridden)
+                            if (gene.def.RandomChosen && !gene.Overridden)
                             {
                                 genomeSequence.activeRandomlyChosenEndogenes.Add(gene.def);
                             }
                         });
                     }
+
                     if (pawn.genes.Xenogenes.Any())
                     {
                         genomeSequence.xenogenes = [];
@@ -103,9 +106,9 @@ public static class GenomeUtility
                     }
 
                     genomeSequence.xenotype = pawn.genes.xenotype; //this was previously set to (very, very wrongly)
-                                                                   //change the pawn's xenotype into that of the empty
-                                                                   //genomeSequence's, reverting non-baseliner pawns
-                                                                   //into baseliners.
+                    //change the pawn's xenotype into that of the empty
+                    //genomeSequence's, reverting non-baseliner pawns
+                    //into baseliners.
                     genomeSequence.hybrid = pawn.genes.hybrid;
                     genomeSequence.customXenotype = pawn.genes.CustomXenotype;
                 }
@@ -160,9 +163,11 @@ public static class GenomeUtility
                 break;
             }
         }
+
         var oldXenotypeDoubleChance = genomeSequence.xenotype?.doubleXenotypeChances;
         var oldXenotypeGenes = genomeSequence.xenotype?.genes;
-        var oldGenerateWithXenogermHediffChance = genomeSequence.xenotype?.generateWithXenogermReplicatingHediffChance ?? 0; 
+        var oldGenerateWithXenogermHediffChance =
+            genomeSequence.xenotype?.generateWithXenogermReplicatingHediffChance ?? 0;
         if (genomeSequence.xenotype != null)
         {
             // clear anything that could create extra things
@@ -170,14 +175,16 @@ public static class GenomeUtility
             genomeSequence.xenotype.genes = [];
             genomeSequence.xenotype.generateWithXenogermReplicatingHediffChance = 0;
         }
+
         var customXenotypeGenesTrimmed = genomeSequence.customXenotype != null ? new CustomXenotype() : null;
-        if (genomeSequence.customXenotype != null)
+        if (genomeSequence.customXenotype != null && customXenotypeGenesTrimmed != null)
         {
             // copy a custom xenotype without actual genes
             customXenotypeGenesTrimmed.iconDef = genomeSequence.customXenotype.iconDef;
             customXenotypeGenesTrimmed.name = genomeSequence.customXenotype.name;
             customXenotypeGenesTrimmed.inheritable = genomeSequence.customXenotype.inheritable;
         }
+
         var xenogeneToGo = genomeSequence.xenogenes?.ListFullCopy();
         xenogeneToGo?.RemoveWhere(x => DefDatabase<GeneDef>.GetNamedSilentFail(x.defName) == null);
         var endogeneToGo = genomeSequence.endogenes?.ListFullCopy();
@@ -197,9 +204,11 @@ public static class GenomeUtility
             forcedXenogenes: xenogeneToGo,
             forcedEndogenes: endogeneToGo,
             forceNoGear: true
-            );
-        request.ForceBodyType = genomeSequence.bodyType;
-        Pawn pawn = null;
+        )
+        {
+            ForceBodyType = genomeSequence.bodyType
+        };
+        Pawn pawn;
         try
         {
             CloningInProgress = true;
@@ -210,7 +219,7 @@ public static class GenomeUtility
             CloningInProgress = false;
         }
 
-        if(genomeSequence.xenotype != null)
+        if (genomeSequence.xenotype != null)
         {
             genomeSequence.xenotype.genes = oldXenotypeGenes;
             genomeSequence.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
@@ -225,7 +234,11 @@ public static class GenomeUtility
         //No pregenerated hediffs.
         foreach (var hediff in pawn?.health.hediffSet.hediffs.ListFullCopy() ?? [])
         {
-            if (GeneralCompatibility.ShouldKeepHediffWhenCloning(hediff.def)) continue;
+            if (GeneralCompatibility.ShouldKeepHediffWhenCloning(hediff.def))
+            {
+                continue;
+            }
+
             QEEMod.TryLog($"removing pregenerated hediff {hediff?.Label} at {hediff?.Part?.Label}");
             pawn?.health.RemoveHediff(hediff);
         }
@@ -240,12 +253,13 @@ public static class GenomeUtility
             foreach (var h in genomeSequence.hediffInfos)
             {
                 var addedHediff = pawn?.health.AddHediff(h.def, h.part);
-                if(addedHediff != null && h.severity.HasValue)
+                if (addedHediff != null && h.severity.HasValue)
                 {
                     addedHediff.Severity = h.severity.Value;
                 }
             }
         }
+
         pawn?.health.hediffSet.DirtyCache();
         pawn?.health.CheckForStateChange(null, null);
 
@@ -261,25 +275,30 @@ public static class GenomeUtility
                 {
                     foreach (var gene in geneTracker.Endogenes)
                     {
-                        if (gene.def.defName == activeGeneDef.defName)
+                        if (gene.def.defName != activeGeneDef.defName)
                         {
-                            geneTracker.OverrideAllConflicting(gene);
-                            break;
+                            continue;
                         }
+
+                        geneTracker.OverrideAllConflicting(gene);
+                        break;
                     }
                 }
             }
+
             if (genomeSequence.activeRandomlyChosenXenogenes?.Any() ?? false)
             {
                 foreach (var activeGeneDef in genomeSequence.activeRandomlyChosenXenogenes)
                 {
                     foreach (var gene in geneTracker.Xenogenes)
                     {
-                        if (gene.def.defName == activeGeneDef.defName)
+                        if (gene.def.defName != activeGeneDef.defName)
                         {
-                            geneTracker.OverrideAllConflicting(gene);
-                            break;
+                            continue;
                         }
+
+                        geneTracker.OverrideAllConflicting(gene);
+                        break;
                     }
                 }
             }
@@ -335,6 +354,7 @@ public static class GenomeUtility
                 //    pawn.needs.mood.thoughts.situational.Notify_SituationalThoughtsDirty();
                 //}
             }
+
             storyTracker.traits.RecalculateSuppression();
 
             QEEMod.TryLog("Setting backstory for generated pawn");
@@ -396,8 +416,10 @@ public static class GenomeUtility
 
                 iterations++;
             }
+
             skillsTracker.Notify_SkillDisablesChanged();
         }
+
         pawn?.Notify_DisabledWorkTypesChanged();
         if (pawn?.workSettings is { } workSettings)
         {
@@ -448,20 +470,25 @@ public static class GenomeUtility
             failReason = "QE_TemplatingRejectExcludedRaceShort".Translate();
             return false;
         }
-        if(!pawn.health.hediffSet.hediffs.Any(hediff =>
-            GeneralCompatibility.IsBlockingGenomeTemplateCreation(hediff.def)))
+
+        if (!pawn.health.hediffSet.hediffs.Any(hediff =>
+                GeneralCompatibility.IsBlockingGenomeTemplateCreation(hediff.def)))
         {
             return true;
         }
+
         failReason = "QE_GenomeSequencerRejectExcludedHediffShort".Translate();
         return false;
     }
 
     public static void TryFixSequenceGenes(GenomeSequence genomeSequence)
     {
-        if (genomeSequence == null) return;
-#pragma warning disable CS0618 // disableobsolete field warning
-        if (genomeSequence.genes == null) return;
+#pragma warning disable CS0618 // Type or member is obsolete
+        if (genomeSequence?.genes == null)
+        {
+            return;
+        }
+
         genomeSequence.xenogenes = [];
         genomeSequence.endogenes = [];
         genomeSequence.activeRandomlyChosenXenogenes = [];
@@ -471,94 +498,108 @@ public static class GenomeUtility
         Pawn refPawn = null;
         foreach (var pawn in PawnsFinder.All_AliveOrDead)
         {
-            if(pawn.Name == null) continue;
+            if (pawn.Name == null)
+            {
+                continue;
+            }
+
             //if (pawn.story == null) continue;
             QEEMod.TryLog($"Check if {pawn.Name?.ToStringFull ?? "(Unnamed)"} is {genomeSequence.sourceName}");
-            if (string.Equals(genomeSequence.sourceName, pawn.Name?.ToStringFull))
+            if (!string.Equals(genomeSequence.sourceName, pawn.Name?.ToStringFull))
             {
-                refPawn = pawn;
-                break;
+                continue;
             }
+
+            refPawn = pawn;
+            break;
         }
 
-        if (refPawn is not null)
+        if (refPawn?.genes != null)
         {
-            if (refPawn.genes != null)
+            List<GeneDef> melaninGenes = [];
+            foreach (var geneDefName in genomeSequence.genes)
             {
-                List<GeneDef> melaninGenes = [];
-                foreach (var geneDefName in genomeSequence.genes)
+                var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(geneDefName);
+                if (geneDef is null)
                 {
-                    var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(geneDefName);
-                    if (geneDef is not null)
-                    {
-                        if (geneDef.defName.StartsWith("Skin_Melanin")){
-                            melaninGenes.Add(geneDef);
-                            continue;
-                        }
-                        var maybeGene = refPawn.genes.GetGene(geneDef);
-                        if (maybeGene is null)
-                        {
-
-                            // maybe it was xenogene but overwritten after sequencing genome.
-                            // assume it as an xenogene
-                            genomeSequence.xenogenes.Add(geneDef);
-                        }
-                        else if (refPawn.genes.IsXenogene(maybeGene))
-                        {
-                            genomeSequence.xenogenes.Add(maybeGene.def);
-                            if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
-                            {
-                                genomeSequence.activeRandomlyChosenXenogenes.Add(maybeGene.def);
-                            }
-                        }
-                        else
-                        {
-                            genomeSequence.endogenes.Add(maybeGene.def);
-                            if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
-                            {
-                                genomeSequence.activeRandomlyChosenEndogenes.Add(maybeGene.def);
-                            }
-                        }
-                    }
-                }
-                if (!genomeSequence.endogenes.Any(gene => gene.skinColorOverride != null || gene.skinColorBase != null) &&
-                    !genomeSequence.xenogenes.Any(gene => gene.skinColorOverride != null || gene.skinColorBase != null)){
-                    if (melaninGenes.Count > 0)
-                    {
-                        genomeSequence.endogenes.Add(melaninGenes[0]);
-                    }
+                    continue;
                 }
 
-
-                if (refPawn.genes.xenotype != XenotypeDefOf.Baseliner || refPawn.genes.CustomXenotype != null)
+                if (geneDef.defName.StartsWith("Skin_Melanin"))
                 {
-                    // somehow player has fixed the xenotype on their own. Use the actual value
-                    genomeSequence.xenotype = refPawn.genes.xenotype;
-                    genomeSequence.customXenotype = refPawn.genes.CustomXenotype;
+                    melaninGenes.Add(geneDef);
+                    continue;
+                }
+
+                var maybeGene = refPawn.genes.GetGene(geneDef);
+                if (maybeGene is null)
+                {
+                    // maybe it was xenogene but overwritten after sequencing genome.
+                    // assume it as a xenogene
+                    genomeSequence.xenogenes.Add(geneDef);
+                }
+                else if (refPawn.genes.IsXenogene(maybeGene))
+                {
+                    genomeSequence.xenogenes.Add(maybeGene.def);
+                    if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
+                    {
+                        genomeSequence.activeRandomlyChosenXenogenes.Add(maybeGene.def);
+                    }
                 }
                 else
                 {
-                    // guess which xenotype the pawn should be
-                    XenotypeDef maybeXenotype = null;
-                    int minDistance = int.MaxValue;
-                    foreach (var xenotypeDef in DefDatabase<XenotypeDef>.AllDefs)
+                    genomeSequence.endogenes.Add(maybeGene.def);
+                    if (maybeGene.def.RandomChosen && !maybeGene.Overridden)
                     {
-                        var sequenceGenesToCheck = new HashSet<GeneDef>((xenotypeDef.inheritable ? genomeSequence.endogenes : genomeSequence.xenogenes));
-                        var xenotypeGenes = new HashSet<GeneDef>(xenotypeDef.AllGenes);
-                        sequenceGenesToCheck.SymmetricExceptWith(xenotypeGenes);
-                        var distance = sequenceGenesToCheck.Count;
-                        if (distance < minDistance)
-                        {
-                            maybeXenotype = xenotypeDef;
-                            minDistance = distance;
-                        }
+                        genomeSequence.activeRandomlyChosenEndogenes.Add(maybeGene.def);
                     }
-                    // we accept the most similar xenotype with missing or extra genes less than a set value.
-                    // such value is arbitrary.
-                    if (maybeXenotype != null && minDistance < 5) 
+                }
+            }
+
+            if (!genomeSequence.endogenes.Any(gene =>
+                    gene.skinColorOverride != null || gene.skinColorBase != null) &&
+                !genomeSequence.xenogenes.Any(gene => gene.skinColorOverride != null || gene.skinColorBase != null))
+            {
+                if (melaninGenes.Count > 0)
+                {
+                    genomeSequence.endogenes.Add(melaninGenes[0]);
+                }
+            }
+
+
+            if (refPawn.genes.xenotype != XenotypeDefOf.Baseliner || refPawn.genes.CustomXenotype != null)
+            {
+                // somehow player has fixed the xenotype on their own. Use the actual value
+                genomeSequence.xenotype = refPawn.genes.xenotype;
+                genomeSequence.customXenotype = refPawn.genes.CustomXenotype;
+            }
+            else
+            {
+                // guess which xenotype the pawn should be
+                XenotypeDef maybeXenotype = null;
+                var minDistance = int.MaxValue;
+                foreach (var xenotypeDef in DefDatabase<XenotypeDef>.AllDefs)
+                {
+                    var sequenceGenesToCheck = new HashSet<GeneDef>(xenotypeDef.inheritable
+                        ? genomeSequence.endogenes
+                        : genomeSequence.xenogenes);
+                    var xenotypeGenes = new HashSet<GeneDef>(xenotypeDef.AllGenes);
+                    sequenceGenesToCheck.SymmetricExceptWith(xenotypeGenes);
+                    var distance = sequenceGenesToCheck.Count;
+                    if (distance >= minDistance)
                     {
-                        genomeSequence.xenotype = maybeXenotype;
+                        continue;
                     }
+
+                    maybeXenotype = xenotypeDef;
+                    minDistance = distance;
+                }
+
+                // we accept the most similar xenotype with missing or extra genes less than a set value.
+                // such value is arbitrary.
+                if (maybeXenotype != null && minDistance < 5)
+                {
+                    genomeSequence.xenotype = maybeXenotype;
                 }
             }
         }
@@ -567,7 +608,8 @@ public static class GenomeUtility
         foreach (var geneDefName in genomeSequence.genes)
         {
             var geneDef = DefDatabase<GeneDef>.GetNamedSilentFail(geneDefName);
-            if (geneDef != null) {
+            if (geneDef != null)
+            {
                 genomeSequence.endogenes.Add(geneDef);
             }
         }

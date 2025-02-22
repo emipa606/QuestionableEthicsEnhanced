@@ -16,8 +16,8 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
 {
     public HediffDef def;
     public BodyPartRecord part;
-    public float? severity;
     public List<string> psychicAwakeningPowersKnownDefNames;
+    public float? severity;
 
     public bool Equals(HediffInfo other)
     {
@@ -30,7 +30,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
                 def?.defName == other.def?.defName) &&
                (part == null && other.part == null ||
                 part?.LabelCap == other.part.LabelCap) &&
-                (severity == null && other.severity == null || severity == other.severity) &&
+               (severity == null && other.severity == null || severity == other.severity) &&
                (psychicAwakeningPowersKnownDefNames == null && other.psychicAwakeningPowersKnownDefNames == null ||
                 psychicAwakeningPowersKnownDefNames != null && other.psychicAwakeningPowersKnownDefNames != null &&
                 psychicAwakeningPowersKnownDefNames.OrderBy(a => a)

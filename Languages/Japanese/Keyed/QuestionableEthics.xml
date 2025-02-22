@@ -141,4 +141,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>脳スキャンを除くのヘディフ</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>無効レース</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>蓄積された専門知識</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG：液体を満たす</QE_VatGrowerDebugFill>
 </LanguageData>

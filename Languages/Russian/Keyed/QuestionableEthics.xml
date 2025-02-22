@@ -124,4 +124,5 @@
   <QE_BrainScanningRejectExcludedHediffShort>hediffs исключающие сканирование мозга</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>недействительная раса</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Накопленные знания</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG: Залить жидкость</QE_VatGrowerDebugFill>
 </LanguageData>
