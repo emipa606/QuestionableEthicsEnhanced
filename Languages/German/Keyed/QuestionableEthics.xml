@@ -120,4 +120,8 @@
   <QE_UseFillingGraphic>Visualisierung der Zutatenfüllung</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>Zeigen Sie weiterhin an, dass sich die Wanne mit Ressourcen füllt, anstatt leer angezeigt zu werden, bis sie gefüllt ist.</QE_UseFillingGraphicTooltip>
   <QE_MessageCloningFailedAnomaly>Das Klonen ist aufgrund einer abnormalen Genomsequenz furchtbar gescheitert, {0} wurde als gebrochener Hulk einer Spielfigur hervorgebracht</QE_MessageCloningFailedAnomaly>
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediffs ohne Genomsequenzierung</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediffs ohne Gehirnscanning</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_TemplatingRejectExcludedRaceShort>nicht gültige Ethnie</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>Gespeicherte Expertisen</QE_BrainScanDescription_Expertises>
 </LanguageData>

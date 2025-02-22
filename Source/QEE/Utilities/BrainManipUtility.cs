@@ -11,40 +11,53 @@ public static class BrainManipUtility
 {
     public static bool IsValidBrainScanningDef(this ThingDef def)
     {
-        return !def.race.IsMechanoid && !GeneralCompatibility.excludedRaces.Contains(def);
+        return !def.race.IsMechanoid && !GeneralCompatibility.IsRaceBlockingTemplateCreation(def);
     }
 
     public static bool IsValidBrainScanningTarget(this Pawn pawn)
     {
         var def = pawn.def;
         return IsValidBrainScanningDef(def) && !pawn.Dead && !pawn.health.hediffSet.hediffs.Any(hediff =>
-            GeneralCompatibility.excludedHediffs.Any(hediffDef => hediff.def == hediffDef));
+            GeneralCompatibility.IsBlockingBrainTemplateCreation(hediff.def));
     }
 
-    public static bool IsValidBrainScanningTarget(Pawn targetPawn, ref string failReason)
+    public static bool IsValidBrainScanningTarget(Pawn targetPawn, ref string failReason, bool inOperationTab = false)
     {
         var def = targetPawn.def;
 
         if (!IsValidBrainScanningDef(def))
         {
+            if (inOperationTab)
+            {
+                failReason = "QE_TemplatingRejectExcludedRaceShort".Translate();
+                return false;
+            }
             failReason = "QE_BrainScanningRejectExcludedRace".Translate(targetPawn.kindDef.race);
             return false;
         }
 
         if (targetPawn.Dead)
         {
+            // Corpse is not allowed to take operation. no need to check inOperationTab
             failReason = "QE_BrainScanningRejectDead".Translate(targetPawn.Named("PAWN"));
             return false;
         }
         //fail if pawn has an excluded hediff
 
         if (!targetPawn.health.hediffSet.hediffs.Any(hediff =>
-                GeneralCompatibility.excludedHediffs.Any(hediffDef => hediff.def == hediffDef)))
+                GeneralCompatibility.IsBlockingBrainTemplateCreation(hediff.def)))
         {
             return true;
         }
 
-        failReason = "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
+        if (inOperationTab)
+        {
+            failReason = "QE_BrainScanningRejectExcludedHediffShort".Translate();
+        }
+        else
+        {
+            failReason = "QE_BrainScanningRejectExcludedHediff".Translate(targetPawn.Named("PAWN"));
+        }
         return false;
     }
 
@@ -178,15 +191,19 @@ public static class BrainManipUtility
 
         foreach (var h in pawnHediffs)
         {
-            if (!GeneralCompatibility.includedBrainTemplateHediffs.Any(hediffDef =>
-                    h.def.defName == hediffDef.defName))
+            if (!GeneralCompatibility.ShouldIncludeInBrainTemplate(h.def))
             {
                 continue;
             }
 
             QEEMod.TryLog($"Hediff {h.def.defName} will be added to brain template");
 
-            brainScan.hediffInfos.Add(new HediffInfo(h));
+            brainScan.hediffInfos.Add(new HediffInfo(h, GeneralCompatibility.ShouldIncludeSeverityInTemplate(h.def)));
+        }
+
+        if (CompatibilityTracker.SkillsExpandedActive)
+        {
+            VanillaSkillsExpandedCompatibility.GetFieldsFromVanillaSkillsExpanded(pawn, brainScan);
         }
 
         return brainScanThing;
@@ -224,8 +241,8 @@ public static class BrainManipUtility
                 pawnSkill.Level = (int)Math.Floor(skill.level * efficency);
                 pawnSkill.passion = skill.passion;
             }
-            skillTracker.Notify_SkillDisablesChanged();
         }
+        thePawn.Notify_DisabledWorkTypesChanged();
 
         //Training
         var trainingTracker = thePawn.training;
@@ -256,6 +273,10 @@ public static class BrainManipUtility
             foreach (var h in brainScan.hediffInfos)
             {
                 var addedHediff = thePawn.health.AddHediff(h.def, h.part);
+                if(addedHediff != null && h.severity.HasValue)
+                {
+                    addedHediff.Severity = h.severity.Value;
+                }
 
                 //Psychic Awakened compatibility
                 if (h.psychicAwakeningPowersKnownDefNames is not { Count: > 0 })
@@ -297,6 +318,11 @@ public static class BrainManipUtility
 
                 PsychicAwakeningCompat.powersKnownField.SetValue(addedHediff, powers);
             }
+        }
+
+        if (CompatibilityTracker.SkillsExpandedActive)
+        {
+            VanillaSkillsExpandedCompatibility.SetFieldsToVanillaSkillsExpanded(thePawn, brainScan);
         }
 
         Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.BrainUploaded));

@@ -248,8 +248,8 @@ public class GenomeSequence : ThingWithComps
              || hair == null && otherGenome.hair == null) &&
             traits.SequenceEqual(otherGenome.traits) &&
             (hediffInfos != null && otherGenome.hediffInfos != null &&
-             hediffInfos.OrderBy(h => h.def.LabelCap)
-                 .SequenceEqual(otherGenome.hediffInfos.OrderBy(h => h.def.LabelCap))
+             hediffInfos.OrderBy(h => h.def.LabelCap.ToString())
+                 .SequenceEqual(otherGenome.hediffInfos.OrderBy(h => h.def.LabelCap.ToString()))
              || hediffInfos == null && otherGenome.hediffInfos == null) &&
             (addonVariants != null && otherGenome.addonVariants != null &&
              addonVariants.SequenceEqual(otherGenome.addonVariants)

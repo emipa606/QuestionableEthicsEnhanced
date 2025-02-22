@@ -16,6 +16,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
 {
     public HediffDef def;
     public BodyPartRecord part;
+    public float? severity;
     public List<string> psychicAwakeningPowersKnownDefNames;
 
     public bool Equals(HediffInfo other)
@@ -29,6 +30,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
                 def?.defName == other.def?.defName) &&
                (part == null && other.part == null ||
                 part?.LabelCap == other.part.LabelCap) &&
+                (severity == null && other.severity == null || severity == other.severity) &&
                (psychicAwakeningPowersKnownDefNames == null && other.psychicAwakeningPowersKnownDefNames == null ||
                 psychicAwakeningPowersKnownDefNames != null && other.psychicAwakeningPowersKnownDefNames != null &&
                 psychicAwakeningPowersKnownDefNames.OrderBy(a => a)
@@ -39,6 +41,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
     {
         Scribe_Defs.Look(ref def, "hediffDef");
         Scribe_BodyParts.Look(ref part, "bodyPart");
+        Scribe_Values.Look(ref severity, "severity");
         Scribe_Collections.Look(ref psychicAwakeningPowersKnownDefNames, "psychicAwakeningPowersKnownDefNames");
     }
 
@@ -48,6 +51,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
         hash = (hash * 23) + (def?.GetHashCode() ?? 0);
         //the LabelCap field should be unique enough for the hash
         hash = (hash * 23) + (part?.LabelCap.GetHashCode() ?? 0);
+        hash = (hash * 23) + severity.GetHashCode();
         hash = (hash * 23) + (psychicAwakeningPowersKnownDefNames?.GetHashCode() ?? 0);
         return hash;
     }
@@ -112,10 +116,14 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
     {
     }
 
-    public HediffInfo(Hediff h)
+    public HediffInfo(Hediff h, bool shouldRecordSeverity = false)
     {
         def = h.def;
         part = h.Part;
+        if (shouldRecordSeverity)
+        {
+            severity = h.Severity;
+        }
 
         if (!CompatibilityTracker.PsychicAwakeningActive)
         {

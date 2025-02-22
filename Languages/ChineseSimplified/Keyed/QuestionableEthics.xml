@@ -120,4 +120,8 @@
   <QE_UseFillingGraphic>可视化成分填充</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>仍然显示大桶在装满资源，而不是在装满之前显示为空的</QE_UseFillingGraphicTooltip>
   <QE_MessageCloningFailedAnomaly>由于基因组序列异常，克隆工作惨遭失败，{0}生成了一个残缺不全的废卒</QE_MessageCloningFailedAnomaly>
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediff阻止基因组测序</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediff阻止大脑扫描</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_TemplatingRejectExcludedRaceShort>无效种族</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>储存的专业知识</QE_BrainScanDescription_Expertises>
 </LanguageData>
