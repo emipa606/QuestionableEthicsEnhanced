@@ -267,12 +267,13 @@ public static class GenomeUtility
         if (ModLister.BiotechInstalled && pawn?.genes is { } geneTracker)
         {
             // restore those being trimmed for pawn generation
-            if(geneTracker.xenotype != null)
+            if (geneTracker.xenotype != null)
             {
                 geneTracker.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
                 geneTracker.xenotype.genes = oldXenotypeGenes;
                 geneTracker.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
             }
+
             if (genomeSequence.activeRandomlyChosenEndogenes?.Any() ?? false)
             {
                 foreach (var activeGeneDef in genomeSequence.activeRandomlyChosenEndogenes)
