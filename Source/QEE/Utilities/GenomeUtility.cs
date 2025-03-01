@@ -263,12 +263,16 @@ public static class GenomeUtility
         pawn?.health.hediffSet.DirtyCache();
         pawn?.health.CheckForStateChange(null, null);
 
-        if (pawn?.genes is { } geneTracker)
+        // If biotech is not installed, nothing inside this will be made actions.
+        if (ModLister.BiotechInstalled && pawn?.genes is { } geneTracker)
         {
             // restore those being trimmed for pawn generation
-            geneTracker.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
-            geneTracker.xenotype.genes = oldXenotypeGenes;
-            geneTracker.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
+            if(geneTracker.xenotype != null)
+            {
+                geneTracker.xenotype.doubleXenotypeChances = oldXenotypeDoubleChance;
+                geneTracker.xenotype.genes = oldXenotypeGenes;
+                geneTracker.xenotype.generateWithXenogermReplicatingHediffChance = oldGenerateWithXenogermHediffChance;
+            }
             if (genomeSequence.activeRandomlyChosenEndogenes?.Any() ?? false)
             {
                 foreach (var activeGeneDef in genomeSequence.activeRandomlyChosenEndogenes)
