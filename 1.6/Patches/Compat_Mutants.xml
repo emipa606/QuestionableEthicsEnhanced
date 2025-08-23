@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/HediffDef[defName="MFangs"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationAddModExtension">
+      <xpath>Defs/HediffDef[defName="MFangs" or defName="MHearing" or defName="MEye" or defName="MScales" or defName="MMSkin" or defName="MSSkin" or defName="MArm" or defName="MLeg" or defName="MClaw" or defName="MFur" or defName="MSweat" or defName="MPheromones" or defName="MIntelligence" or defName="MNoNerves" or defName="MHyperNerves" or defName="MImmunity" or defName="MNoImmunity" or defName="MReflexes" or defName="MNoReflexes" or defName="MSaitama" or defName="MAwareness" or defName="MBleed" or defName="MPhotosynthesis" or defName="MAwake" or defName="HealingFactor"]</xpath>
+      <value>
+        <li Class="QEthics.HediffTemplateProperties">
+          <includeInGenomeTemplate>true</includeInGenomeTemplate>
+          <includeInBrainTemplate>false</includeInBrainTemplate>
+        </li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

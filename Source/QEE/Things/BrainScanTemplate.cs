@@ -32,8 +32,8 @@ public class BrainScanTemplate : ThingWithComps
     public Ideo scannedIdeology = null;
     public List<ComparableSkillRecord> skills = [];
     public string sourceName;
-    public DefMap<TrainableDef, bool> trainingLearned = new DefMap<TrainableDef, bool>();
-    public DefMap<TrainableDef, int> trainingSteps = new DefMap<TrainableDef, int>();
+    public DefMap<TrainableDef, bool> trainingLearned = new();
+    public DefMap<TrainableDef, int> trainingSteps = new();
 
     public override string LabelNoCount
     {
@@ -48,9 +48,9 @@ public class BrainScanTemplate : ThingWithComps
         }
     }
 
-    public override string DescriptionDetailed => CustomDescriptionString(base.DescriptionDetailed);
+    public override string DescriptionDetailed => customDescriptionString(base.DescriptionDetailed);
 
-    public override string DescriptionFlavor => CustomDescriptionString(base.DescriptionFlavor);
+    public override string DescriptionFlavor => customDescriptionString(base.DescriptionFlavor);
 
     public override void ExposeData()
     {
@@ -113,7 +113,7 @@ public class BrainScanTemplate : ThingWithComps
         }
     }
 
-    public string CustomDescriptionString(string baseDescription)
+    private string customDescriptionString(string baseDescription)
     {
         var builder = new StringBuilder(baseDescription);
 
@@ -273,7 +273,7 @@ public class BrainScanTemplate : ThingWithComps
     /// </summary>
     /// <param name="other"></param>
     /// <returns></returns>
-    public bool SkillsEqual(List<ComparableSkillRecord> other)
+    private bool skillsEqual(List<ComparableSkillRecord> other)
     {
         return skills.Count == other.Count &&
                //UNCOMMENT BELOW FOR ACTIVE DEBUGGING - too spammy even when debugLogging is true
@@ -284,7 +284,7 @@ public class BrainScanTemplate : ThingWithComps
                skills.SequenceEqual(other);
     }
 
-    public bool ExpertiseEqual(List<ComparableExpertiseRecord> other)
+    private bool expertiseEqual(List<ComparableExpertiseRecord> other)
     {
         return expertises.Count == other.Count && expertises.SequenceEqual(other);
     }
@@ -294,10 +294,10 @@ public class BrainScanTemplate : ThingWithComps
         if (other is BrainScanTemplate brainScan &&
             backStoryChild == brainScan.backStoryChild &&
             backStoryAdult == brainScan.backStoryAdult &&
-            DefMapsEqual(trainingLearned, brainScan.trainingLearned) &&
-            DefMapsEqual(trainingSteps, brainScan.trainingSteps)
-            && SkillsEqual(brainScan.skills)
-            && ExpertiseEqual(brainScan.expertises)
+            defMapsEqual(trainingLearned, brainScan.trainingLearned) &&
+            defMapsEqual(trainingSteps, brainScan.trainingSteps)
+            && skillsEqual(brainScan.skills)
+            && expertiseEqual(brainScan.expertises)
             && sourceName == brainScan.sourceName &&
             (kindDef?.defName != null && brainScan.kindDef?.defName != null &&
              kindDef.defName == brainScan.kindDef.defName
@@ -313,7 +313,7 @@ public class BrainScanTemplate : ThingWithComps
         return false;
     }
 
-    public bool DefMapsEqual<T>(DefMap<TrainableDef, T> mapA, DefMap<TrainableDef, T> mapB) where T : new()
+    private bool defMapsEqual<T>(DefMap<TrainableDef, T> mapA, DefMap<TrainableDef, T> mapB) where T : new()
     {
         if (mapA.Count != mapB.Count)
         {

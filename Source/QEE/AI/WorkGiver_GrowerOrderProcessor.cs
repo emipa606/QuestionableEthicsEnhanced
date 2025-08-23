@@ -43,7 +43,7 @@ public class WorkGiver_GrowerOrderProcessor : WorkGiver_Scanner
         }
 
         return IngredientUtility.FindClosestRequestForThingOrderProcessor(grower.orderProcessor, pawn) is
-            { } cloestThing && pawn.CanReserve(cloestThing);
+            { } closestThing && pawn.CanReserve(closestThing);
     }
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)

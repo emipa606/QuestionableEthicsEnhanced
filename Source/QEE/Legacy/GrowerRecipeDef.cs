@@ -33,7 +33,7 @@ public class GrowerRecipeDef : Def
     /// <summary>
     ///     Users that can use this recipe.
     /// </summary>
-    public readonly List<ThingDef> recipeUsers = [];
+    private readonly List<ThingDef> recipeUsers = [];
 
     /// <summary>
     ///     How much maintenance is drained per tick during crafting.

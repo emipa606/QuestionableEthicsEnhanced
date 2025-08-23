@@ -24,16 +24,16 @@ public sealed class Dialog_RenameCustomNameComp : Window
 
     private bool AcceptsInput => startAcceptingInputAtFrame <= Time.frameCount;
 
-    private int MaxNameLength => 28;
+    private static int MaxNameLength => 28;
 
-    public override Vector2 InitialSize => new Vector2(280f, 175f);
+    public override Vector2 InitialSize => new(280f, 175f);
 
     public void WasOpenedByHotkey()
     {
         startAcceptingInputAtFrame = Time.frameCount + 1;
     }
 
-    private AcceptanceReport NameIsValid(string name)
+    private static AcceptanceReport NameIsValid(string name)
     {
         return name.Length != 0;
     }
@@ -91,7 +91,7 @@ public sealed class Dialog_RenameCustomNameComp : Window
         }
     }
 
-    public void SetName(string name)
+    private void SetName(string name)
     {
         nameComp.customName = name;
     }

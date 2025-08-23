@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Neural Disruption -->
+  <QE_NeuralDisruption.label>Neural Disruption</QE_NeuralDisruption.label>
+  <!-- EN: A Nerve staple decided to temporarily suppress the pawns consciousness. -->
+  <QE_NeuralDisruption.description>A Nerve staple decided to temporarily suppress the pawns consciousness.</QE_NeuralDisruption.description>
+  <!-- EN: Recovering -->
+  <QE_NeuralDisruption.stages.Recovering.label>Recovering</QE_NeuralDisruption.stages.Recovering.label>
+  <!-- EN: Reconnecting -->
+  <QE_NeuralDisruption.stages.Reconnecting.label>Reconnecting</QE_NeuralDisruption.stages.Reconnecting.label>
+  <!-- EN: Disrupting -->
+  <QE_NeuralDisruption.stages.Disrupting.label>Disrupting</QE_NeuralDisruption.stages.Disrupting.label>
+</LanguageData>

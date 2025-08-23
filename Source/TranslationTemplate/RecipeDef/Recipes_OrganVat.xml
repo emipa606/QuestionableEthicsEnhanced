@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: natural arm -->
+  <QE_Natural_Arm.label>natural arm</QE_Natural_Arm.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Arm.jobString>Doing an unknown recipe.</QE_Natural_Arm.jobString>
+  <!-- EN: natural ear -->
+  <QE_Natural_Ear.label>natural ear</QE_Natural_Ear.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Ear.jobString>Doing an unknown recipe.</QE_Natural_Ear.jobString>
+  <!-- EN: natural eye -->
+  <QE_Natural_Eye.label>natural eye</QE_Natural_Eye.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Eye.jobString>Doing an unknown recipe.</QE_Natural_Eye.jobString>
+  <!-- EN: natural foot -->
+  <QE_Natural_Foot.label>natural foot</QE_Natural_Foot.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Foot.jobString>Doing an unknown recipe.</QE_Natural_Foot.jobString>
+  <!-- EN: natural hand -->
+  <QE_Natural_Hand.label>natural hand</QE_Natural_Hand.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Hand.jobString>Doing an unknown recipe.</QE_Natural_Hand.jobString>
+  <!-- EN: natural heart -->
+  <QE_Natural_Heart.label>natural heart</QE_Natural_Heart.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Heart.jobString>Doing an unknown recipe.</QE_Natural_Heart.jobString>
+  <!-- EN: natural jaw -->
+  <QE_Natural_Jaw.label>natural jaw</QE_Natural_Jaw.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Jaw.jobString>Doing an unknown recipe.</QE_Natural_Jaw.jobString>
+  <!-- EN: natural kidney -->
+  <QE_Natural_Kidney.label>natural kidney</QE_Natural_Kidney.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Kidney.jobString>Doing an unknown recipe.</QE_Natural_Kidney.jobString>
+  <!-- EN: natural leg -->
+  <QE_Natural_Leg.label>natural leg</QE_Natural_Leg.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Leg.jobString>Doing an unknown recipe.</QE_Natural_Leg.jobString>
+  <!-- EN: natural liver -->
+  <QE_Natural_Liver.label>natural liver</QE_Natural_Liver.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Liver.jobString>Doing an unknown recipe.</QE_Natural_Liver.jobString>
+  <!-- EN: natural lung -->
+  <QE_Natural_Lung.label>natural lung</QE_Natural_Lung.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Lung.jobString>Doing an unknown recipe.</QE_Natural_Lung.jobString>
+  <!-- EN: natural nose -->
+  <QE_Natural_Nose.label>natural nose</QE_Natural_Nose.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Nose.jobString>Doing an unknown recipe.</QE_Natural_Nose.jobString>
+  <!-- EN: natural pelvis -->
+  <QE_Natural_Pelvis.label>natural pelvis</QE_Natural_Pelvis.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Pelvis.jobString>Doing an unknown recipe.</QE_Natural_Pelvis.jobString>
+  <!-- EN: natural spine -->
+  <QE_Natural_Spine.label>natural spine</QE_Natural_Spine.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Spine.jobString>Doing an unknown recipe.</QE_Natural_Spine.jobString>
+  <!-- EN: natural stomach -->
+  <QE_Natural_Stomach.label>natural stomach</QE_Natural_Stomach.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Stomach.jobString>Doing an unknown recipe.</QE_Natural_Stomach.jobString>
+  <!-- EN: natural tongue -->
+  <QE_Natural_Tongue.label>natural tongue</QE_Natural_Tongue.label>
+  <!-- EN: Doing an unknown recipe. -->
+  <QE_Natural_Tongue.jobString>Doing an unknown recipe.</QE_Natural_Tongue.jobString>
+</LanguageData>

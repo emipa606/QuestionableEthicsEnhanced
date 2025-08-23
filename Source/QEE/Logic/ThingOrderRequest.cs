@@ -15,7 +15,7 @@ public class ThingOrderRequest : IExposable
     /// <summary>
     ///     Label to use if it's not null.
     /// </summary>
-    public string customLabel;
+    private string customLabel;
 
     /// <summary>
     ///     Thing being requested.
@@ -43,7 +43,7 @@ public class ThingOrderRequest : IExposable
             thingFilter = filter;
         }
 
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(ThingOrderRequest other, int amount)
@@ -58,20 +58,20 @@ public class ThingOrderRequest : IExposable
             thingFilter = filter;
         }
 
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(int amount = 1)
     {
         this.amount = amount;
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(Thing thing, int amount = 1)
     {
         this.thing = thing;
         this.amount = amount;
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(Thing thing, ThingDef thingDef, int amount = 1)
@@ -81,7 +81,7 @@ public class ThingOrderRequest : IExposable
         filter.SetAllow(thingDef, true);
         thingFilter = filter;
         this.amount = amount;
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(ThingDef thingDef, int amount = 1)
@@ -90,14 +90,14 @@ public class ThingOrderRequest : IExposable
         filter.SetAllow(thingDef, true);
         thingFilter = filter;
         this.amount = amount;
-        Initialize();
+        initialize();
     }
 
     public ThingOrderRequest(ThingFilter thingFilter, int amount = 1)
     {
         this.thingFilter = thingFilter;
         this.amount = amount;
-        Initialize();
+        initialize();
     }
 
     public bool HasThing => thing != null;
@@ -161,7 +161,7 @@ public class ThingOrderRequest : IExposable
     /// <summary>
     ///     Initializes the order request.
     /// </summary>
-    public void Initialize()
+    private void initialize()
     {
         thingFilter?.ResolveReferences();
     }

@@ -10,8 +10,6 @@ namespace QEthics;
 /// </summary>
 public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
 {
-    #region TranslatedStrings
-
     private static string NoBillsQueuedTrans,
         GrowerBusyTrans,
         NoIngredientsTrans,
@@ -26,9 +24,6 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         ReservedByTrans,
         ReservedTrans;
 
-    #endregion
-
-    #region Constructors
 
     public WorkGiver_DoBill_Grower()
     {
@@ -48,7 +43,6 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         ReservedTrans = "Reserved".Translate();
     }
 
-    #endregion Constructors
 
     // -------------------------------------------------------------------
     // Unchanged members and functions from Workgiver_DoBill class
@@ -90,7 +84,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         }
 
         //check if the grower's cached ingredients search found ingredients for any bill
-        if (grower.billProc.anyBillIngredientsAvailable == false)
+        if (!grower.billProc.anyBillIngredientsAvailable)
         {
             JobFailReason.Is(NoIngredientsTrans);
             return false;
@@ -117,7 +111,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         //if the grower isn't growing anything, loop through the billstack and check for any bill the pawn can do
         if (grower.billProc.ActiveBill == null)
         {
-            if (GetBillPawnCanDo(pawn, grower, out reason) != null)
+            if (getBillPawnCanDo(pawn, grower, out reason) != null)
             {
                 return true;
             }
@@ -126,7 +120,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
             return false;
         }
 
-        if (PawnCanDoThisBill(pawn, grower.billProc.ActiveBill, target, out reason))
+        if (pawnCanDoThisBill(pawn, grower.billProc.ActiveBill, target, out reason))
         {
             return true;
         }
@@ -206,7 +200,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
     /// <param name="grower"></param>
     /// <param name="reason"></param>
     /// <returns></returns>
-    public Bill GetBillPawnCanDo(Pawn p, Building_GrowerBase_WorkTable grower, out string reason)
+    private Bill getBillPawnCanDo(Pawn p, Building_GrowerBase_WorkTable grower, out string reason)
     {
         reason = GenericFailReasonTrans;
 
@@ -218,7 +212,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
         {
             var theBill = bill as Bill_Production;
 
-            if (!PawnCanDoThisBill(p, theBill, target, out reason))
+            if (!pawnCanDoThisBill(p, theBill, target, out reason))
             {
                 continue;
             }
@@ -255,7 +249,7 @@ public class WorkGiver_DoBill_Grower : WorkGiver_Scanner
     /// <param name="target"></param>
     /// <param name="reason"></param>
     /// <returns></returns>
-    public bool PawnCanDoThisBill(Pawn p, Bill theBill, LocalTargetInfo target, out string reason)
+    private bool pawnCanDoThisBill(Pawn p, Bill theBill, LocalTargetInfo target, out string reason)
     {
         reason = GenericFailReasonTrans;
         if (Find.TickManager.TicksGame < theBill.nextTickToSearchForIngredients)

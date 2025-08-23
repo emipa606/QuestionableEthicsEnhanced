@@ -14,7 +14,7 @@ public static class BrainManipUtility
         return !def.race.IsMechanoid && !GeneralCompatibility.IsRaceBlockingTemplateCreation(def);
     }
 
-    public static bool IsValidBrainScanningTarget(this Pawn pawn)
+    private static bool IsValidBrainScanningTarget(this Pawn pawn)
     {
         var def = pawn.def;
         return IsValidBrainScanningDef(def) && !pawn.Dead && !pawn.health.hediffSet.hediffs.Any(hediff =>
@@ -314,7 +314,7 @@ public static class BrainManipUtility
                 QEEMod.TryLog(
                     $"assigning {powersInterface.Count} psychic powers to {thePawn.LabelCap} from brain template");
 
-                PsychicAwakeningCompat.powersKnownField.SetValue(addedHediff, powers);
+                PsychicAwakeningCompat.PowersKnownField.SetValue(addedHediff, powers);
             }
         }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: scan brain -->
+  <QE_BrainScanning.label>scan brain</QE_BrainScanning.label>
+  <!-- EN: Exhaustively scans the brain of the patient. They will become quite dizzy after surgery. Doing this on beings in neutral or allied factions will be considered a violation. -->
+  <QE_BrainScanning.description>Exhaustively scans the brain of the patient. They will become quite dizzy after surgery. Doing this on beings in neutral or allied factions will be considered a violation.</QE_BrainScanning.description>
+  <!-- EN: Scanning brain. -->
+  <QE_BrainScanning.jobString>Scanning brain.</QE_BrainScanning.jobString>
+  <!-- EN: make brain scanner -->
+  <QE_Make_BrainScanner.label>make brain scanner</QE_Make_BrainScanner.label>
+  <!-- EN: Make a brain scanner. -->
+  <QE_Make_BrainScanner.description>Make a brain scanner.</QE_Make_BrainScanner.description>
+  <!-- EN: Making brain scanner. -->
+  <QE_Make_BrainScanner.jobString>Making brain scanner.</QE_Make_BrainScanner.jobString>
+</LanguageData>

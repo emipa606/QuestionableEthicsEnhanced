@@ -15,17 +15,17 @@ namespace QEthics;
 /// </summary>
 public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static readonly SimpleCurve cleanlinessCurve = [];
+    private static readonly SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
     /// </summary>
-    public float doctorMaintenance;
+    private float doctorMaintenance;
 
     private LifeStageAge lastLifestageAge;
 
-    public Pawn pawnBeingGrown;
-    public PawnKindDef pawnKindToGrow;
+    private Pawn pawnBeingGrown;
+    private PawnKindDef pawnKindToGrow;
     private Material renderMaterial;
 
     private RenderTexture renderTexture;
@@ -33,7 +33,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
     /// </summary>
-    public float scientistMaintenance;
+    private float scientistMaintenance;
 
     private VatGrowerProperties vatGrowerPropsInt;
 
@@ -50,13 +50,14 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     ///     Formula: (2 days + 2 ^ baseBodySize) * TicksPerDay * ModSetting multiplier
     ///     OR Max Cloning Time in days, whichever is less.
     /// </summary>
-    public override int TicksNeededToCraft => (int)Math.Min((2 + Math.Pow(2.0f, pawnKindToGrow.RaceProps.baseBodySize) +
-                                                             pawnKindToGrow.RaceProps.lifeStageAges.Last().minAge) *
-                                                            (float)GenDate.TicksPerDay *
-                                                            QEESettings.instance.cloneGrowthRateFloat,
+    protected override int TicksNeededToCraft => (int)Math.Min(
+        (2 + Math.Pow(2.0f, pawnKindToGrow.RaceProps.baseBodySize) +
+         pawnKindToGrow.RaceProps.lifeStageAges.Last().minAge) *
+        (float)GenDate.TicksPerDay *
+        QEESettings.instance.cloneGrowthRateFloat,
         QEESettings.instance.maxCloningTimeDays * (float)GenDate.TicksPerDay);
 
-    public VatGrowerProperties VatGrowerProps
+    private VatGrowerProperties VatGrowerProps
     {
         get
         {
@@ -112,7 +113,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     ///     Begin the crafting process. Called when the player selects a genome template in the 'Start Growing' gizmo .
     /// </summary>
     /// <param name="genome"></param>
-    public void StartCrafting(GenomeSequence genome)
+    private void StartCrafting(GenomeSequence genome)
     {
         //Setup recipe order
         orderProcessor.Reset();
@@ -128,7 +129,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         status = CrafterStatus.Filling;
     }
 
-    public override void Notify_CraftingStarted()
+    protected override void Notify_CraftingStarted()
     {
         //Remove all except for the GenomeSequence.
         orderProcessor.Reset();
@@ -141,7 +142,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         TryMakeClone();
     }
 
-    public bool TryMakeClone()
+    private bool TryMakeClone()
     {
         if (!innerContainer.Any(thing => thing is GenomeSequence))
         {
@@ -168,7 +169,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         return true;
     }
 
-    public override void Tick_Filling()
+    protected override void Tick_Filling()
     {
         if (HarmonyPatches.VNPELoaded)
         {
@@ -178,12 +179,12 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         base.Tick_Filling();
     }
 
-    public override void Tick_Crafting()
+    protected override void Tick_Crafting()
     {
         base.Tick_Crafting();
 
         //attempt to re-make the clone, if it somehow became null
-        if (pawnBeingGrown == null && TryMakeClone() == false)
+        if (pawnBeingGrown == null && !TryMakeClone())
         {
             Messages.Message("QE_CloningPawnNullMessage".Translate(), new LookTargets(this),
                 MessageTypeDefOf.NegativeEvent);
@@ -254,10 +255,10 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         }
     }
 
-    public override void Notify_CraftingFinished()
+    protected override void Notify_CraftingFinished()
     {
         //attempt to re-make the clone, if it somehow became null
-        if (pawnBeingGrown == null && TryMakeClone() == false)
+        if (pawnBeingGrown == null && !TryMakeClone())
         {
             Messages.Message("QE_CloningPawnNullMessage".Translate(), new LookTargets(this),
                 MessageTypeDefOf.NegativeEvent);
@@ -295,7 +296,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     ///     This function is called if cloning fails, succeeds, or is manually stopped via the Stop gizmo.
     /// </summary>
     /// <param name="keepIngredients"></param>
-    public void StopCrafting(bool keepIngredients = true)
+    private void StopCrafting(bool keepIngredients = true)
     {
         QEEMod.TryLog($"Stopping cloning process. Keep Ingredients: {keepIngredients}");
 
@@ -347,7 +348,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     {
         var wasSuccess = true;
 
-        if (pawnBeingGrown == null && TryMakeClone() == false)
+        if (pawnBeingGrown == null && !TryMakeClone())
         {
             Messages.Message("QE_CloningPawnNullMessage".Translate(), new LookTargets(this),
                 MessageTypeDefOf.NegativeEvent);
@@ -392,7 +393,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                 {
                     if (item.Position.InHorDistOf(tempPawn.Position, 14.9f))
                     {
-                        ApplyOrRefreshHediff(item);
+                        applyOrRefreshHediff(item);
                     }
                 }
 
@@ -413,7 +414,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         return wasSuccess;
     }
 
-    private void ApplyOrRefreshHediff(Pawn pawn)
+    private static void applyOrRefreshHediff(Pawn pawn)
     {
         if (pawn.health.hediffSet.TryGetHediff(HediffDefOf.AgonyPulse, out var hediff))
         {
@@ -432,7 +433,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     }
 
 
-    public override string TransformStatusLabel(string label)
+    protected override string TransformStatusLabel(string label)
     {
         string pawnLabel = pawnKindToGrow?.race.LabelCap ?? "QE_VatGrowerNoLivingBeing".Translate();
 
@@ -625,7 +626,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         }
     }
 
-    public override void Notify_ThingLostInOrderProcessor()
+    protected override void Notify_ThingLostInOrderProcessor()
     {
         StopCrafting();
     }
@@ -686,11 +687,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                         }
                     }
 
-                    if (options.Count > 0)
-                    {
-                        Find.WindowStack.Add(new FloatMenu(options));
-                    }
-                    else
+                    if (options.Count <= 0)
                     {
                         //Give a hint.
                         var option = new FloatMenuOption("QE_VatGrowerGenomesHint".Translate(), null)
@@ -698,9 +695,9 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                             Disabled = true
                         };
                         options.Add(option);
-
-                        Find.WindowStack.Add(new FloatMenu(options));
                     }
+
+                    Find.WindowStack.Add(new FloatMenu(options));
                 }
             };
         }

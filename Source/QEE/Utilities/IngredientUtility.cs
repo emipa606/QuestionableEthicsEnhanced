@@ -149,7 +149,7 @@ public static class IngredientUtility
         }
     }
 
-    public static T Clamp<T>(this T val, T min, T max) where T : IComparable<T>
+    private static T Clamp<T>(this T val, T min, T max) where T : IComparable<T>
     {
         if (val.CompareTo(min) < 0)
         {

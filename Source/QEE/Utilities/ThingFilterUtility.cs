@@ -82,7 +82,7 @@ public static class ThingFilterUtility
         return result;
     }
 
-    public static int TotalStackCountOfDefInList(this IList<Thing> thingList, ThingDef def)
+    private static int TotalStackCountOfDefInList(this IList<Thing> thingList, ThingDef def)
     {
         if (thingList.Count <= 0)
         {

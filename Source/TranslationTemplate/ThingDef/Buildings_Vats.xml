@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: organ vat -->
+  <QE_Building_OrganVat.label>organ vat</QE_Building_OrganVat.label>
+  <!-- EN: A vat for growing various natural organs from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance. -->
+  <QE_Building_OrganVat.description>A vat for growing various natural organs from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance.</QE_Building_OrganVat.description>
+  <!-- EN: organ vat (legacy) -->
+  <QE_OrganVat.label>organ vat (legacy)</QE_OrganVat.label>
+  <!-- EN: This building has been updated in the latest version of Questionable Ethics Enhanced. It will continue to function, but will be unsupported in future updates. Build a new Organ Vat (or replace this one with debug tools) to see the changes! -->
+  <QE_OrganVat.description>This building has been updated in the latest version of Questionable Ethics Enhanced. It will continue to function, but will be unsupported in future updates. Build a new Organ Vat (or replace this one with debug tools) to see the changes!</QE_OrganVat.description>
+  <!-- EN: clone vat -->
+  <QE_PawnVat.label>clone vat</QE_PawnVat.label>
+  <!-- EN: An enormous vat for growing clones of organisms from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance. -->
+  <QE_PawnVat.description>An enormous vat for growing clones of organisms from nutrient paste and protein mash. Requires regular maintenance by a skilled scientist and doctor. A sterile room will significantly decrease the maintenance required. If the vat loses power, it will rapidly lose maintenance.</QE_PawnVat.description>
+</LanguageData>

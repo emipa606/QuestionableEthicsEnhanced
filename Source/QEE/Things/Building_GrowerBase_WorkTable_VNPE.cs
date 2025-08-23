@@ -80,15 +80,9 @@ public static class Building_GrowerBase_WorkTable_VNPE
         }
 
 
-        if (grower.billProc.ActiveBill == null)
-        {
-            grower.billProc.ActiveBill = bill as Bill_Production;
-        }
+        grower.billProc.ActiveBill ??= bill as Bill_Production;
 
-        if (grower.activeRecipe == null)
-        {
-            grower.activeRecipe = recipe;
-        }
+        grower.activeRecipe ??= recipe;
 
         grower.billProc.UpdateAvailIngredientsCache();
         grower.billProc.UpdateDesiredRequests();

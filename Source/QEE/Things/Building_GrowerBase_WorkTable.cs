@@ -12,19 +12,7 @@ namespace QEthics;
 public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThingHolder, IMaintainableGrower,
     IBillGiverExtension
 {
-    #region Constructors
-
-    public Building_GrowerBase_WorkTable()
-    {
-        ingredientContainer = new ThingOwner<Thing>(this, false);
-        billProc = new BillProcessor(this);
-    }
-
-    #endregion
-
-    #region Members
-
-    private GrowerProperties growerPropsInt;
+    protected static readonly SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     Current active recipe being crafted.
@@ -32,29 +20,54 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     public RecipeDef activeRecipe;
 
     /// <summary>
-    ///     Status of this crafter.
+    ///     Helps process bills for this building.
     /// </summary>
-    public CrafterStatus status = CrafterStatus.Idle;
+    public BillProcessor billProc;
+
+    /// <summary>
+    ///     Current progress being made during crafting.
+    /// </summary>
+    protected int craftingProgress;
+
+    /// <summary>
+    ///     From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
+    /// </summary>
+    protected float doctorMaintenance = 0.25f;
+
+
+    private GrowerProperties growerPropsInt;
 
     /// <summary>
     ///     Internal container representation of stored items.
     /// </summary>
     public ThingOwner ingredientContainer;
 
-    /// <summary>
-    ///     Current progress being made during crafting.
-    /// </summary>
-    public int craftingProgress;
 
     /// <summary>
-    ///     Helps process bills for this building.
+    ///     From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
     /// </summary>
-    public BillProcessor billProc;
+    protected float scientistMaintenance = 0.25f;
 
-    #endregion Members
+    /// <summary>
+    ///     Status of this crafter.
+    /// </summary>
+    public CrafterStatus status = CrafterStatus.Idle;
 
+    static Building_GrowerBase_WorkTable()
+    {
+        cleanlinessCurve.Add(-5.0f, 5.00f);
+        cleanlinessCurve.Add(-2.0f, 1.75f);
+        cleanlinessCurve.Add(0.0f, 1.0f);
+        cleanlinessCurve.Add(0.4f, 0.35f);
+        cleanlinessCurve.Add(2.0f, 0.1f);
+    }
 
-    #region Properties
+    protected Building_GrowerBase_WorkTable()
+    {
+        ingredientContainer = new ThingOwner<Thing>(this, false);
+        billProc = new BillProcessor(this);
+    }
+
 
     /// <summary>
     ///     Grower building properties.
@@ -80,16 +93,16 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         }
     }
 
-    public CompPowerTrader PowerTrader => GetComp<CompPowerTrader>();
+    protected CompPowerTrader PowerTrader => GetComp<CompPowerTrader>();
 
     /// <summary>
     ///     Ticks needed until the crafting is finished.
     /// </summary>
-    public abstract int TicksNeededToCraft { get; }
+    protected abstract int TicksNeededToCraft { get; }
 
-    public int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
+    protected int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
 
-    public float CraftingProgressPercent
+    protected float CraftingProgressPercent
     {
         get
         {
@@ -103,30 +116,20 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         }
     }
 
-    #endregion
 
-
-    #region IMaintainableGrower Implementation
-
-    /// <summary>
-    ///     From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
-    /// </summary>
-    public float scientistMaintenance = 0.25f;
-
-    /// <summary>
-    ///     From 0.0 to 1.0. If the maintenance hits 0, the recipe should fail. Default: 25%
-    /// </summary>
-    public float doctorMaintenance = 0.25f;
-
-    public static readonly SimpleCurve cleanlinessCurve = [];
-
-    static Building_GrowerBase_WorkTable()
+    public void Notify_BillAdded(Bill theBill)
     {
-        cleanlinessCurve.Add(-5.0f, 5.00f);
-        cleanlinessCurve.Add(-2.0f, 1.75f);
-        cleanlinessCurve.Add(0.0f, 1.0f);
-        cleanlinessCurve.Add(0.4f, 0.35f);
-        cleanlinessCurve.Add(2.0f, 0.1f);
+        //QEEMod.TryLog("Bill Added!");
+        billProc.UpdateDesiredRequests();
+        billProc.UpdateAvailIngredientsCache();
+    }
+
+    public override void Notify_BillDeleted(Bill theBill)
+    {
+        //QEEMod.TryLog("Bill Removed!");
+        base.Notify_BillDeleted(theBill);
+        billProc.UpdateDesiredRequests();
+        billProc.UpdateAvailIngredientsCache();
     }
 
     public float RoomCleanliness
@@ -150,29 +153,16 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         set => doctorMaintenance = value;
     }
 
-    #endregion
-
-
-    #region IBillGiverExtension Implementation
-
-    public void Notify_BillAdded(Bill theBill)
+    public void GetChildHolders(List<IThingHolder> outChildren)
     {
-        //QEEMod.TryLog("Bill Added!");
-        billProc.UpdateDesiredRequests();
-        billProc.UpdateAvailIngredientsCache();
+        ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
     }
 
-    public override void Notify_BillDeleted(Bill theBill)
+    public ThingOwner GetDirectlyHeldThings()
     {
-        //QEEMod.TryLog("Bill Removed!");
-        base.Notify_BillDeleted(theBill);
-        billProc.UpdateDesiredRequests();
-        billProc.UpdateAvailIngredientsCache();
+        return ingredientContainer;
     }
 
-    #endregion
-
-    #region Methods
 
     public override void ExposeData()
     {
@@ -190,16 +180,6 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         //{
         //    billProc.anyBillIngredientsAvailable = true;
         //}
-    }
-
-    public void GetChildHolders(List<IThingHolder> outChildren)
-    {
-        ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
-    }
-
-    public ThingOwner GetDirectlyHeldThings()
-    {
-        return ingredientContainer;
     }
 
     public override string GetInspectString()
@@ -226,7 +206,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     }
 
 
-    public string FormatCachedIngredients(string format = "{0} x {1}", char delimiter = ',')
+    private string FormatCachedIngredients(string format = "{0} x {1}", char delimiter = ',')
     {
         var builder = new StringBuilder();
 
@@ -253,7 +233,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         return builder.ToString().TrimEndNewlines();
     }
 
-    public virtual string TransformStatusLabel(string label)
+    protected virtual string TransformStatusLabel(string label)
     {
         return label;
     }
@@ -287,7 +267,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Idle tick.
     /// </summary>
-    public virtual void Tick_Idle()
+    protected virtual void Tick_Idle()
     {
         if (!this.IsHashIntervalTick(60))
         {
@@ -313,7 +293,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Filling tick.
     /// </summary>
-    public virtual void Tick_Filling()
+    protected virtual void Tick_Filling()
     {
         if (!this.IsHashIntervalTick(60))
         {
@@ -349,7 +329,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Crafting tick.
     /// </summary>
-    public virtual void Tick_Crafting()
+    protected virtual void Tick_Crafting()
     {
         //Increment crafting.
         float powerModifier;
@@ -382,7 +362,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Finished tick.
     /// </summary>
-    public virtual void Tick_Finished()
+    protected virtual void Tick_Finished()
     {
     }
 
@@ -398,11 +378,11 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     {
     }
 
-    public virtual void Notify_CraftingFinished()
+    protected virtual void Notify_CraftingFinished()
     {
     }
 
-    public virtual void Notify_ThingLostInBillProcessor()
+    protected virtual void Notify_ThingLostInBillProcessor()
     {
     }
 
@@ -449,6 +429,4 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
 
         ingredientContainer.ClearAndDestroyContents();
     }
-
-    #endregion
 }

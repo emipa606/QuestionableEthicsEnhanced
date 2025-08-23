@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: A brain has been scanned for future upload -->
+  <BrainScan.label>A brain has been scanned for future upload</BrainScan.label>
+  <!-- EN: A brain has been uploaded into a clone. -->
+  <BrainUploaded.label>A brain has been uploaded into a clone.</BrainUploaded.label>
+  <!-- EN: A genome has been sequenced from a corpse. -->
+  <GenomeSalvagedFromCorpse.label>A genome has been sequenced from a corpse.</GenomeSalvagedFromCorpse.label>
+  <!-- EN: A genome has been sequenced in preperation of cloning efforts -->
+  <GenomeSequenced.label>A genome has been sequenced in preperation of cloning efforts</GenomeSequenced.label>
+  <!-- EN: A colonist has been nerve stapled. -->
+  <NerveStapledColonist.label>A colonist has been nerve stapled.</NerveStapledColonist.label>
+  <!-- EN: A colonist has been nerve stapled. -->
+  <NerveStapledPawn.label>A colonist has been nerve stapled.</NerveStapledPawn.label>
+  <!-- EN: An organ has been finished in a vat. -->
+  <OrganGrown.label>An organ has been finished in a vat.</OrganGrown.label>
+  <!-- EN: A new clone has been created, fresh from the vat. -->
+  <PawnCloned.label>A new clone has been created, fresh from the vat.</PawnCloned.label>
+</LanguageData>

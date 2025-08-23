@@ -20,7 +20,7 @@ public class WorkGiver_MaintainGrower : WorkGiver_Scanner
             return false;
         }
 
-        if (grower is not IMaintainableGrower maintanable)
+        if (grower is not IMaintainableGrower maintainable)
         {
             return false;
         }
@@ -42,16 +42,16 @@ public class WorkGiver_MaintainGrower : WorkGiver_Scanner
 
         var maintainScience = true;
 
-        if (maintanable.ScientistMaintenance > QEESettings.instance.maintWorkThresholdFloat)
+        if (maintainable.ScientistMaintenance > QEESettings.instance.maintWorkThresholdFloat)
         {
-            maintainScience = !(maintanable.ScientistMaintenance > 0.90f) && forced;
+            maintainScience = !(maintainable.ScientistMaintenance > 0.90f) && forced;
         }
 
         var maintainDoctor = true;
 
-        if (maintanable.DoctorMaintenance > QEESettings.instance.maintWorkThresholdFloat)
+        if (maintainable.DoctorMaintenance > QEESettings.instance.maintWorkThresholdFloat)
         {
-            maintainDoctor = !(maintanable.DoctorMaintenance > 0.90f) && forced;
+            maintainDoctor = !(maintainable.DoctorMaintenance > 0.90f) && forced;
         }
 
         var maintainAtAll = maintainScience || maintainDoctor;
@@ -64,14 +64,14 @@ public class WorkGiver_MaintainGrower : WorkGiver_Scanner
         //Building_GrowerBase grower = t as Building_GrowerBase;
         Job job = null;
 
-        var maintanable = t as IMaintainableGrower;
+        var maintainable = t as IMaintainableGrower;
 
-        if (maintanable != null && maintanable.ScientistMaintenance < QEESettings.instance.maintWorkThresholdFloat)
+        if (maintainable != null && maintainable.ScientistMaintenance < QEESettings.instance.maintWorkThresholdFloat)
         {
             job = new Job(QEJobDefOf.QE_MaintainGrowerJob_Intellectual, t);
         }
 
-        if (maintanable != null && maintanable.DoctorMaintenance < QEESettings.instance.maintWorkThresholdFloat)
+        if (maintainable != null && maintainable.DoctorMaintenance < QEESettings.instance.maintWorkThresholdFloat)
         {
             job = new Job(QEJobDefOf.QE_MaintainGrowerJob_Medicine, t);
         }

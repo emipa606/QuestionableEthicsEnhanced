@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputPath>..\..\1.5\Assemblies</OutputPath>
-    <TargetFramework>net481</TargetFramework>
+    <OutputPath>..\..\1.6\Assemblies</OutputPath>
+    <TargetFramework>net48</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.5.9</FileVersion>
+    <FileVersion>1.6.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>*</Version>
+      <Version>1.6.4558-beta</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -25,27 +26,27 @@
     </PackageReference>
     <Publicize Include="Assembly-CSharp" />
     <Reference Include="AlienRace">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\839005762\1.5\Assemblies\AlienRace.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\839005762\1.6\Assemblies\AlienRace.dll</HintPath>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
     <Reference Include="AnimalGenetics">
-      <HintPath>..\..\..\AnimalGenetics\1.5\Assemblies\AnimalGenetics.dll</HintPath>
+      <HintPath>..\..\..\AnimalGenetics\1.6\Assemblies\AnimalGenetics.dll</HintPath>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
     <Reference Include="FacialAnimation">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.5\Assemblies\FacialAnimation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\1635901197\1.6\Assemblies\FacialAnimation.dll</HintPath>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
     <Reference Include="PipeNetwork">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\2023507013\1.5\Assemblies\PipeSystem.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2023507013\1.6\Assemblies\PipeSystem.dll</HintPath>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>
     <Reference Include="SkillExpanded">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\3400246558\1.5\Assemblies\VSE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\3400246558\1.6\Assemblies\VSE.dll</HintPath>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
     </Reference>

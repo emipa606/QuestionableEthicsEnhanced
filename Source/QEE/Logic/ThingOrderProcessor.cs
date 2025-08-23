@@ -16,7 +16,7 @@ public class ThingOrderProcessor(IThingHolder observedThingHolder) : IExposable
     /// <summary>
     ///     The holder object we are observing orders for.
     /// </summary>
-    public readonly IThingHolder observedThingHolder = observedThingHolder;
+    private readonly IThingHolder observedThingHolder = observedThingHolder;
 
     /// <summary>
     ///     Things we desire that can be anything.
@@ -30,7 +30,7 @@ public class ThingOrderProcessor(IThingHolder observedThingHolder) : IExposable
     {
     }
 
-    public ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
+    private ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
 
     public IEnumerable<ThingOrderRequest> PendingRequests => cachedRequests.AsReadOnly();
 

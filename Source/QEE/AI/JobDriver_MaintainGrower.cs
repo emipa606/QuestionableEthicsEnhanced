@@ -9,9 +9,9 @@ namespace QEthics;
 /// </summary>
 public class JobDriver_MaintainGrower : JobDriver
 {
-    public MaintainVatProperties VatJobProperties => job.def.GetModExtension<MaintainVatProperties>();
+    private MaintainVatProperties VatJobProperties => job.def.GetModExtension<MaintainVatProperties>();
 
-    public IMaintainableGrower Maintainable => TargetThingA as IMaintainableGrower;
+    private IMaintainableGrower Maintainable => TargetThingA as IMaintainableGrower;
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {

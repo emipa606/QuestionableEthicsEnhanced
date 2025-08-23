@@ -15,13 +15,13 @@ public static class PostDefFixer
             {
                 if (props.excludeThisRace)
                 {
-                    GeneralCompatibility.excludedRaces.Add(def);
+                    GeneralCompatibility.ExcludedRaces.Add(def);
                     QEEMod.TryLog($"Adding {def.defName} race to be excluded from Genome Sequencing");
                 }
 
                 if (props.excludeTheseHediffs.Count > 0)
                 {
-                    GeneralCompatibility.excludedHediffs.AddRange(props.excludeTheseHediffs);
+                    GeneralCompatibility.ExcludedHediffs.AddRange(props.excludeTheseHediffs);
                     QEEMod.TryLog(
                         $"Adding {string.Join(",", props.excludeTheseHediffs.Select(hediffDef => hediffDef.defName))} hediffs to be excluded from Genome Sequencing");
                 }
@@ -29,10 +29,7 @@ public static class PostDefFixer
 
             if (def.IsValidGenomeSequencingTargetDef())
             {
-                if (def.recipes == null)
-                {
-                    def.recipes = [];
-                }
+                def.recipes ??= [];
 
                 if (def.recipes.Count > 0)
                 {
@@ -49,10 +46,7 @@ public static class PostDefFixer
                 continue;
             }
 
-            if (def.recipes == null)
-            {
-                def.recipes = [];
-            }
+            def.recipes ??= [];
 
             if (def.recipes.Count > 0)
             {

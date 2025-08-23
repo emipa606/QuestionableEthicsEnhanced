@@ -48,6 +48,12 @@ public class ExposedTraitEntry : Trait, IExposable
 
     public override int GetHashCode()
     {
-        return base.GetHashCode() + (degree.GetHashCode() & 0xFFF0000) + ((def?.GetHashCode() ?? 0) & 0x000FFFF);
+        unchecked
+        {
+            var hash = 17;
+            hash = (hash * 31) + degree;
+            hash = (hash * 31) + (def != null ? def.GetHashCode() : 0);
+            return hash;
+        }
     }
 }

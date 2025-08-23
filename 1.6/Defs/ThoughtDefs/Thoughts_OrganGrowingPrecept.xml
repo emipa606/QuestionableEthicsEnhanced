@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>QE_OrganGrowing_Unethical</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>grew organ in vat</label>
+        <description>We created an artifical organ, grown from a vat and called it natural.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_OrganGrowing_Approved</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>grew organ in vat</label>
+        <description>We have grown an organ without harvesting it from a living being. This can save so many lives.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

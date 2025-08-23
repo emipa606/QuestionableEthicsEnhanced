@@ -14,7 +14,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// <summary>
     ///     Current progress being made during crafting.
     /// </summary>
-    public int craftingProgress;
+    protected int craftingProgress;
 
     private GrowerProperties growerPropsInt;
 
@@ -33,7 +33,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// </summary>
     public CrafterStatus status = CrafterStatus.Idle;
 
-    public Building_GrowerBase()
+    protected Building_GrowerBase()
     {
         innerContainer = new ThingOwner<Thing>(this, false);
         orderProcessor = new ThingOrderProcessor(this);
@@ -63,16 +63,16 @@ public abstract class Building_GrowerBase : Building, IThingHolder
         }
     }
 
-    public CompPowerTrader PowerTrader => GetComp<CompPowerTrader>();
+    protected CompPowerTrader PowerTrader => GetComp<CompPowerTrader>();
 
     /// <summary>
     ///     Ticks needed until the crafting is finished.
     /// </summary>
-    public abstract int TicksNeededToCraft { get; }
+    protected abstract int TicksNeededToCraft { get; }
 
-    public int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
+    protected int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
 
-    public float CraftingProgressPercent
+    protected float CraftingProgressPercent
     {
         get
         {
@@ -141,7 +141,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
         return builder.ToString().TrimEndNewlines();
     }
 
-    public virtual string TransformStatusLabel(string label)
+    protected virtual string TransformStatusLabel(string label)
     {
         return label;
     }
@@ -197,14 +197,14 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// <summary>
     ///     Idle tick.
     /// </summary>
-    public virtual void Tick_Idle()
+    protected virtual void Tick_Idle()
     {
     }
 
     /// <summary>
     ///     Filling tick.
     /// </summary>
-    public virtual void Tick_Filling()
+    protected virtual void Tick_Filling()
     {
         if (orderProcessor.PendingRequests.Any())
         {
@@ -216,7 +216,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
         Notify_CraftingStarted();
     }
 
-    public virtual void Notify_ThingLostInOrderProcessor()
+    protected virtual void Notify_ThingLostInOrderProcessor()
     {
     }
 
@@ -224,18 +224,18 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     {
     }
 
-    public virtual void Notify_CraftingStarted()
+    protected virtual void Notify_CraftingStarted()
     {
     }
 
-    public virtual void Notify_CraftingFinished()
+    protected virtual void Notify_CraftingFinished()
     {
     }
 
     /// <summary>
     ///     Crafting tick.
     /// </summary>
-    public virtual void Tick_Crafting()
+    protected virtual void Tick_Crafting()
     {
         //Increment crafting.
         var doCrafting = PowerTrader is not { PowerOn: false };
@@ -261,19 +261,19 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// <summary>
     ///     Finished tick.
     /// </summary>
-    public virtual void Tick_Finished()
+    protected virtual void Tick_Finished()
     {
     }
 
     /// <summary>
     ///     The crafting has finished.
     /// </summary>
-    public virtual void CraftingFinished()
+    protected virtual void CraftingFinished()
     {
         Reset();
     }
 
-    public virtual void Reset()
+    protected virtual void Reset()
     {
         craftingProgress = 0;
         status = CrafterStatus.Idle;

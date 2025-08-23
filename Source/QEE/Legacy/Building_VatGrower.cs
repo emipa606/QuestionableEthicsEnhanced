@@ -15,22 +15,22 @@ namespace QEthics;
 /// </summary>
 public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
 {
-    public static readonly SimpleCurve cleanlinessCurve = [];
+    private static readonly SimpleCurve cleanlinessCurve = [];
 
     /// <summary>
     ///     Current active recipe being crafted.
     /// </summary>
-    public GrowerRecipeDef activeRecipe;
+    private GrowerRecipeDef activeRecipe;
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
     /// </summary>
-    public float doctorMaintenance;
+    private float doctorMaintenance;
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
     /// </summary>
-    public float scientistMaintenance;
+    private float scientistMaintenance;
 
     private VatGrowerProperties vatGrowerPropsInt;
 
@@ -44,10 +44,10 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
     }
 
     //public override int TicksNeededToCraft => activeRecipe?.craftingTime ?? 0;
-    public override int TicksNeededToCraft =>
+    protected override int TicksNeededToCraft =>
         (int)(activeRecipe?.craftingTime * QEESettings.instance.organGrowthRateFloat ?? 0);
 
-    public VatGrowerProperties VatGrowerProps
+    private VatGrowerProperties VatGrowerProps
     {
         get
         {
@@ -169,18 +169,18 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         VatGrowerProps.glowGraphic[0].Graphic.Draw(drawAltitude, Rotation, this);
     }
 
-    public override void Notify_CraftingStarted()
+    protected override void Notify_CraftingStarted()
     {
         innerContainer.ClearAndDestroyContents();
     }
 
-    public override void Notify_CraftingFinished()
+    protected override void Notify_CraftingFinished()
     {
         Messages.Message("QE_MessageGrowingDone".Translate(activeRecipe.productDef.LabelCap), new LookTargets(this),
             MessageTypeDefOf.PositiveEvent, false);
     }
 
-    public override void Tick_Crafting()
+    protected override void Tick_Crafting()
     {
         base.Tick_Crafting();
 
@@ -244,7 +244,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
             return true;
         }
 
-        var haulProductJob = HaulAIUtility.HaulToStorageJob(actor, product);
+        var haulProductJob = HaulAIUtility.HaulToStorageJob(actor, product, false);
         if (haulProductJob != null)
         {
             actor.jobs.StartJob(haulProductJob, JobCondition.Succeeded);
@@ -253,7 +253,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         return true;
     }
 
-    public void StartCraftingRecipe(GrowerRecipeDef recipeDef)
+    private void startCraftingRecipe(GrowerRecipeDef recipeDef)
     {
         //Setup recipe order
         orderProcessor.Reset();
@@ -268,12 +268,12 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         status = CrafterStatus.Filling;
     }
 
-    public override void Notify_ThingLostInOrderProcessor()
+    protected override void Notify_ThingLostInOrderProcessor()
     {
-        StopCrafting();
+        stopCrafting();
     }
 
-    public void StopCrafting()
+    private void stopCrafting()
     {
         craftingProgress = 0;
         orderProcessor.Reset();
@@ -286,7 +286,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
         }
     }
 
-    public override string TransformStatusLabel(string label)
+    protected override string TransformStatusLabel(string label)
     {
         string recipeLabel = activeRecipe?.LabelCap ?? "QE_VatGrowerNoRecipe".Translate();
 
@@ -348,7 +348,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
                             label = recipeDef.LabelCap;
                         }
 
-                        var option = new FloatMenuOption(label, delegate { StartCraftingRecipe(recipeDef); })
+                        var option = new FloatMenuOption(label, delegate { startCraftingRecipe(recipeDef); })
                         {
                             Disabled = disabled
                         };
@@ -376,7 +376,7 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
                 defaultDesc = "QE_VatGrowerStopCraftingGizmoDescription".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel"),
                 Order = -100,
-                action = StopCrafting
+                action = stopCrafting
             };
             if (Prefs.DevMode)
             {

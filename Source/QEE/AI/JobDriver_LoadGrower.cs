@@ -13,22 +13,12 @@ namespace QEthics;
 public class JobDriver_LoadGrower : JobDriver
 {
     public const PathEndMode GotoIngredientPathEndMode = PathEndMode.ClosestTouch;
-    public const TargetIndex BillGiverInd = TargetIndex.A;
-    public const TargetIndex IngredientInd = TargetIndex.B;
+    private const TargetIndex BillGiverInd = TargetIndex.A;
+    private const TargetIndex IngredientInd = TargetIndex.B;
     private int logCounter = 1;
 
-    public IBillGiver BillGiver
-    {
-        get
-        {
-            if (job.GetTarget(BillGiverInd).Thing is not IBillGiver billGiver)
-            {
-                throw new InvalidOperationException("JobDriver_LoadGrower on non-Billgiver.");
-            }
-
-            return billGiver;
-        }
-    }
+    public IBillGiver BillGiver => job.GetTarget(BillGiverInd).Thing as IBillGiver ??
+                                   throw new InvalidOperationException("JobDriver_LoadGrower on non-Billgiver.");
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {

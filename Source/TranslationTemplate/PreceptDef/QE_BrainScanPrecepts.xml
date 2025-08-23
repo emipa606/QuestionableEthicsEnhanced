@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Unethical -->
+  <QE_BrainScanningAbhorrent.label>Unethical</QE_BrainScanningAbhorrent.label>
+  <!-- EN: Brain scanning is immoral. Never mind actually uploading it and using it, and ereasing a clones mind. -->
+  <QE_BrainScanningAbhorrent.description>Brain scanning is immoral. Never mind actually uploading it and using it, and ereasing a clones mind.</QE_BrainScanningAbhorrent.description>
+  <!-- EN: Approved -->
+  <QE_BrainScanningApproved.label>Approved</QE_BrainScanningApproved.label>
+  <!-- EN: Brainscanning preserves the mind of our own, transferring skills and knowledge forward to a new being, even if the original dies. -->
+  <QE_BrainScanningApproved.description>Brainscanning preserves the mind of our own, transferring skills and knowledge forward to a new being, even if the original dies.</QE_BrainScanningApproved.description>
+  <!-- EN: Neutral -->
+  <QE_BrainScanningNeutral.label>Neutral</QE_BrainScanningNeutral.label>
+  <!-- EN: So long as the brain scan is as perfect as it is...what does it matter? The knowledge may make a difference in our very survival. -->
+  <QE_BrainScanningNeutral.description>So long as the brain scan is as perfect as it is...what does it matter? The knowledge may make a difference in our very survival.</QE_BrainScanningNeutral.description>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: vatgrown clone (acceptance) -->
+  <QE_VatGrownCloneAcceptance.stages.vatgrown_clone_acceptance.label>vatgrown clone (acceptance)</QE_VatGrownCloneAcceptance.stages.vatgrown_clone_acceptance.label>
+  <!-- EN: I don't have any choice but to live on, I guess. Nothing makes sense. -->
+  <QE_VatGrownCloneAcceptance.stages.vatgrown_clone_acceptance.description>I don't have any choice but to live on, I guess. Nothing makes sense.</QE_VatGrownCloneAcceptance.stages.vatgrown_clone_acceptance.description>
+  <!-- EN: vatgrown clone -->
+  <QE_VatGrownCloneConfusion.stages.vatgrown_clone.label>vatgrown clone</QE_VatGrownCloneConfusion.stages.vatgrown_clone.label>
+  <!-- EN: What is this? Who am I? Who are these people? Why am I here? Why do I look like someone else? -->
+  <QE_VatGrownCloneConfusion.stages.vatgrown_clone.description>What is this? Who am I? Who are these people? Why am I here? Why do I look like someone else?</QE_VatGrownCloneConfusion.stages.vatgrown_clone.description>
+</LanguageData>

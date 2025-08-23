@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: make nutrient solution from organics -->
+  <Make_NutrientSolutionFromOrganics.label>make nutrient solution from organics</Make_NutrientSolutionFromOrganics.label>
+  <!-- EN: Make a batch of nutrient solution by extracting nutrients from organic feedstocks. -->
+  <Make_NutrientSolutionFromOrganics.description>Make a batch of nutrient solution by extracting nutrients from organic feedstocks.</Make_NutrientSolutionFromOrganics.description>
+  <!-- EN: Refining nutrient solution from organics. -->
+  <Make_NutrientSolutionFromOrganics.jobString>Refining nutrient solution from organics.</Make_NutrientSolutionFromOrganics.jobString>
+  <!-- EN: make protein mash from nutrient solution -->
+  <Make_ProteinMashFromNutrientSolution.label>make protein mash from nutrient solution</Make_ProteinMashFromNutrientSolution.label>
+  <!-- EN: Make a batch of protein mash by further refining the nutrient solution. This process is slow and nutrient-intensive because of the enzymes needed to synthesize protein. -->
+  <Make_ProteinMashFromNutrientSolution.description>Make a batch of protein mash by further refining the nutrient solution. This process is slow and nutrient-intensive because of the enzymes needed to synthesize protein.</Make_ProteinMashFromNutrientSolution.description>
+  <!-- EN: Synthesizing protein mash from nutrient solution. -->
+  <Make_ProteinMashFromNutrientSolution.jobString>Synthesizing protein mash from nutrient solution.</Make_ProteinMashFromNutrientSolution.jobString>
+  <!-- EN: make protein mash from organics -->
+  <Make_ProteinMashFromOrganics.label>make protein mash from organics</Make_ProteinMashFromOrganics.label>
+  <!-- EN: Make a batch of protein mash by extracting protein from protein-rich feedstocks. -->
+  <Make_ProteinMashFromOrganics.description>Make a batch of protein mash by extracting protein from protein-rich feedstocks.</Make_ProteinMashFromOrganics.description>
+  <!-- EN: Refining protein mash from organics. -->
+  <Make_ProteinMashFromOrganics.jobString>Refining protein mash from organics.</Make_ProteinMashFromOrganics.jobString>
+  <!-- EN: make neutroamine from nutrient solution and protein mash -->
+  <Make_QENeutroamine.label>make neutroamine from nutrient solution and protein mash</Make_QENeutroamine.label>
+  <!-- EN: Makes neutroamine. -->
+  <Make_QENeutroamine.description>Makes neutroamine.</Make_QENeutroamine.description>
+  <!-- EN: Synthesizing neutroamine from nutrient solution and protein mash. -->
+  <Make_QENeutroamine.jobString>Synthesizing neutroamine from nutrient solution and protein mash.</Make_QENeutroamine.jobString>
+  <!-- EN: make nutrient paste meal from nutrient solution -->
+  <Make_QENutrientPaste.label>make nutrient paste meal from nutrient solution</Make_QENutrientPaste.label>
+  <!-- EN: Makes a nutrient paste meal. -->
+  <Make_QENutrientPaste.description>Makes a nutrient paste meal.</Make_QENutrientPaste.description>
+  <!-- EN: Synthesizing nutrient paste meal from nutrient solution. -->
+  <Make_QENutrientPaste.jobString>Synthesizing nutrient paste meal from nutrient solution.</Make_QENutrientPaste.jobString>
+  <!-- EN: make synthetic meat from protein mash -->
+  <Make_QESynthMeat.label>make synthetic meat from protein mash</Make_QESynthMeat.label>
+  <!-- EN: Make a batch of raw synthetic meat. -->
+  <Make_QESynthMeat.description>Make a batch of raw synthetic meat.</Make_QESynthMeat.description>
+  <!-- EN: Synthesizing synthetic meat from protein mash. -->
+  <Make_QESynthMeat.jobString>Synthesizing synthetic meat from protein mash.</Make_QESynthMeat.jobString>
+</LanguageData>

@@ -142,4 +142,5 @@
   <QE_TemplatingRejectExcludedRaceShort>無効レース</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>蓄積された専門知識</QE_BrainScanDescription_Expertises>
   <QE_VatGrowerDebugFill>DEBUG：液体を満たす</QE_VatGrowerDebugFill>
+  <!-- version 1.5.8 Patch -->
 </LanguageData>

@@ -12,14 +12,14 @@ public class BillProcessor : IExposable
     /// <summary>
     ///     Things we desire that can be anything.
     /// </summary>
-    public readonly Dictionary<string, ThingOrderRequest> desiredRequests = new Dictionary<string, ThingOrderRequest>();
+    public readonly Dictionary<string, ThingOrderRequest> desiredRequests = new();
 
-    public readonly Dictionary<string, Thing> ingredientsAvailableNow = new Dictionary<string, Thing>();
+    public readonly Dictionary<string, Thing> ingredientsAvailableNow = new();
 
     /// <summary>
     ///     The holder object we are observing orders for.
     /// </summary>
-    public readonly IThingHolder observedThingHolder;
+    private readonly IThingHolder observedThingHolder;
 
     /// <summary>
     ///     Current bill being worked on. If null, crafter is not working on a bill. It is not saved in ExposeData().
@@ -52,7 +52,7 @@ public class BillProcessor : IExposable
     {
     }
 
-    public ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
+    private ThingOwner ObservedThingOwner => observedThingHolder.GetDirectlyHeldThings();
 
     public bool AnyPendingRequests => desiredRequests.Count > 0;
 
@@ -79,7 +79,7 @@ public class BillProcessor : IExposable
 
         if (_activeBillID != null)
         {
-            UpdateActiveBill();
+            updateActiveBill();
         }
 
         //Notify_ContentsChanged();
@@ -90,7 +90,7 @@ public class BillProcessor : IExposable
         anyBillIngredientsAvailable = false;
         ingredientsAvailableNow.Clear();
 
-        if (AnyPendingRequests == false)
+        if (!AnyPendingRequests)
         {
             return;
         }
@@ -281,7 +281,7 @@ public class BillProcessor : IExposable
     /// <summary>
     ///     Updates the _activeBill variable from the billID. Should only need to be called when loading a save.
     /// </summary>
-    public void UpdateActiveBill()
+    private void updateActiveBill()
     {
         var bills = (observedThingHolder as IBillGiver)?.BillStack;
         if (bills == null)

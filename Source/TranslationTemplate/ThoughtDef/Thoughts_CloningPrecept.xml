@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cloned someone -->
+  <QE_ClonedApproved.stages.cloned_someone.label>cloned someone</QE_ClonedApproved.stages.cloned_someone.label>
+  <!-- EN: Today is a joyous day, we created a new being. This is to be celebrated. -->
+  <QE_ClonedApproved.stages.cloned_someone.description>Today is a joyous day, we created a new being. This is to be celebrated.</QE_ClonedApproved.stages.cloned_someone.description>
+  <!-- EN: cloned someone -->
+  <QE_ClonedSomeoneUnethical.stages.cloned_someone.label>cloned someone</QE_ClonedSomeoneUnethical.stages.cloned_someone.label>
+  <!-- EN: We brought new life to this world in a test tube. We are playing god with forces we don't understand. -->
+  <QE_ClonedSomeoneUnethical.stages.cloned_someone.description>We brought new life to this world in a test tube. We are playing god with forces we don't understand.</QE_ClonedSomeoneUnethical.stages.cloned_someone.description>
+  <!-- EN: sequenced genome from corpse -->
+  <QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.label>sequenced genome from corpse</QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.label>
+  <!-- EN: We have preserved the genes of the fallen. These lets us remember them. -->
+  <QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.description>We have preserved the genes of the fallen. These lets us remember them.</QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.description>
+  <!-- EN: sequenced genome -->
+  <QE_GenomeSequenceApproved.stages.sequenced_genome.label>sequenced genome</QE_GenomeSequenceApproved.stages.sequenced_genome.label>
+  <!-- EN: We have preserved someones genome for future use. -->
+  <QE_GenomeSequenceApproved.stages.sequenced_genome.description>We have preserved someones genome for future use.</QE_GenomeSequenceApproved.stages.sequenced_genome.description>
+  <!-- EN: sequenced genome from corpse -->
+  <QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.label>sequenced genome from corpse</QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.label>
+  <!-- EN: We should let the dead rest, not try to copy them in a vague fasimile. -->
+  <QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.description>We should let the dead rest, not try to copy them in a vague fasimile.</QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.description>
+  <!-- EN: sequenced genome -->
+  <QE_GenomeSequenceUnethical.stages.sequenced_genome.label>sequenced genome</QE_GenomeSequenceUnethical.stages.sequenced_genome.label>
+  <!-- EN: We have recorded one of the few unique features of a person. And to what end? -->
+  <QE_GenomeSequenceUnethical.stages.sequenced_genome.description>We have recorded one of the few unique features of a person. And to what end?</QE_GenomeSequenceUnethical.stages.sequenced_genome.description>
+</LanguageData>

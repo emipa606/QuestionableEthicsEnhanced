@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: brain template applied -->
+  <QE_BrainTemplated.label>brain template applied</QE_BrainTemplated.label>
+  <!-- EN: Brain template has been applied at some point in this pawns past. (If you want to reapply one, and are using debug mode to see this, removing this hediff should let you) -->
+  <QE_BrainTemplated.description>Brain template has been applied at some point in this pawns past. (If you want to reapply one, and are using debug mode to see this, removing this hediff should let you)</QE_BrainTemplated.description>
+  <!-- EN: clone -->
+  <QE_CloneStatus.label>clone</QE_CloneStatus.label>
+  <!-- EN: Clone -->
+  <QE_CloneStatus.description>Clone</QE_CloneStatus.description>
+  <!-- EN: headache -->
+  <QE_Headache.label>headache</QE_Headache.label>
+  <!-- EN: Headache -->
+  <QE_Headache.description>Headache</QE_Headache.description>
+</LanguageData>

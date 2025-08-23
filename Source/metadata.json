@@ -2,11 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "SearchTags": [
     "cloning",
     " organ manipulation"
   ],
-  "LastXmlCleaning": "2025-03-01T19:15:36.2655799+01:00"
+  "LastXmlCleaning": "2025-08-23T19:56:07.1347505+02:00",
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 343558,
+  "LinesOfXML": 150289,
+  "CodeBaseSize": 90
 }

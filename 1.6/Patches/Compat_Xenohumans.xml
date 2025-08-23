@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/HediffDef[defName="SoldiermorphHeDiffXH"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/HediffDef[defName="SoldiermorphHeDiffXH" or defName="DesignermateHeDiffXH" or defName="WolfmanHeDiffXH" or defName="ScalemanHeDiffXH"]</xpath>
+          <value>
+            <li Class="QEthics.HediffTemplateProperties">
+              <includeInGenomeTemplate>true</includeInGenomeTemplate>
+              <includeInBrainTemplate>false</includeInBrainTemplate>
+            </li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

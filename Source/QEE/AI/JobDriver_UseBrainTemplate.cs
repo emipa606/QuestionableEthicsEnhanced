@@ -7,16 +7,16 @@ namespace QEthics;
 
 public class JobDriver_UseBrainTemplate : JobDriver
 {
-    public static readonly float workRequired = 2000;
+    private const float WorkRequired = 2000;
 
-    public float ticksWork;
-    public bool workStarted;
+    private float ticksWork;
+    private bool workStarted;
 
-    public Pawn Patient => TargetThingA as Pawn;
+    private Pawn Patient => TargetThingA as Pawn;
 
-    public BrainScanTemplate BrainTemplate => TargetThingB as BrainScanTemplate;
+    private BrainScanTemplate BrainTemplate => TargetThingB as BrainScanTemplate;
 
-    public Building_Bed Bed => job.targetC.Thing as Building_Bed;
+    private Building_Bed Bed => job.targetC.Thing as Building_Bed;
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
@@ -112,23 +112,20 @@ public class JobDriver_UseBrainTemplate : JobDriver
                     //Give headache
                     Patient.health.AddHediff(QEHediffDefOf.QE_Headache, Patient.health.hediffSet.GetBrain());
                 }
-            }.WithProgressBar(TargetIndex.A, () => (workRequired - ticksWork) / workRequired)
+            }.WithProgressBar(TargetIndex.A, () => (WorkRequired - ticksWork) / WorkRequired)
             .WithEffect(EffecterDefOf.Research, TargetIndex.A);
         applyBrainTemplateToil.AddPreInitAction(delegate
         {
-            ticksWork = workRequired;
+            ticksWork = WorkRequired;
             workStarted = true;
-            //QEEMod.TryLog("preInitAction: ticksWork = " + ticksWork);
         });
         applyBrainTemplateToil.AddEndCondition(delegate
         {
             if (workStarted && ticksWork <= 0)
             {
-                //QEEMod.TryLog("Succeeded: ticksWork = " + ticksWork);
                 return JobCondition.Succeeded;
             }
 
-            //QEEMod.TryLog("Ongoing: ticksWork = " + ticksWork);
             return JobCondition.Ongoing;
         });
         applyBrainTemplateToil.AddFailCondition(() => workStarted && Patient.CurJobDef != JobDefOf.LayDown);

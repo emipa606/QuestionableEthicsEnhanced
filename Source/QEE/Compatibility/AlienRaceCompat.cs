@@ -1,17 +1,10 @@
-﻿using AlienRace;
-using Verse;
+﻿using Verse;
 using static AlienRace.AlienPartGenerator;
 
 namespace QEthics;
 
 public static class AlienRaceCompat
 {
-    public static void Test()
-    {
-        var type = typeof(ThingDef_AlienRace);
-        QEEMod.TryLog($"type is: {type.FullName}");
-    }
-
     public static void GetFieldsFromAlienComp(Pawn pawn, GenomeSequence genomeSequence)
     {
         var alienComp = pawn.TryGetComp<AlienComp>();

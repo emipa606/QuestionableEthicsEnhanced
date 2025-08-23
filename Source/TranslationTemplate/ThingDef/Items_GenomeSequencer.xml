@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: genome sequencer -->
+  <QE_GenomeSequencer.label>genome sequencer</QE_GenomeSequencer.label>
+  <!-- EN: A set of tools used for sequencing genomes of living or dead pawns.\n\nTo sequence a living pawn, queue up the 'Sequence Genome' surgery. To sequence a dead pawn, select a living pawn, then right-click this, choose 'Salvage genome', and select the corpse.\n\nThe chance of success scales with the surgeon's Medicine skill. -->
+  <QE_GenomeSequencer.description>A set of tools used for sequencing genomes of living or dead pawns.
+
+To sequence a living pawn, queue up the 'Sequence Genome' surgery. To sequence a dead pawn, select a living pawn, then right-click this, choose 'Salvage genome', and select the corpse.
+
+The chance of success scales with the surgeon's Medicine skill.</QE_GenomeSequencer.description>
+  <!-- EN: genome sequence template -->
+  <QE_GenomeSequencerFilled.label>genome sequence template</QE_GenomeSequencerFilled.label>
+  <!-- EN: A slab of data filled with the full genome of a living being. It is used during cloning to apply the characteristics you see below to a newly-grown clone. Select a Cloning Vat, then click the 'Start growing' gizmo to use this template. This is not consumed -->
+  <QE_GenomeSequencerFilled.description>A slab of data filled with the full genome of a living being. It is used during cloning to apply the characteristics you see below to a newly-grown clone. Select a Cloning Vat, then click the 'Start growing' gizmo to use this template. This is not consumed</QE_GenomeSequencerFilled.description>
+</LanguageData>

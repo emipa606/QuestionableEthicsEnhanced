@@ -8,27 +8,27 @@ namespace QEthics;
 /// </summary>
 public static class GeneralCompatibility
 {
-    public static readonly List<ThingDef> excludedRaces = [];
-    public static readonly List<HediffDef> excludedHediffs = [];
-    public static readonly List<HediffDef> includedGenomeTemplateHediffs = [];
-    public static readonly List<HediffDef> includedBrainTemplateHediffs = [];
+    public static readonly List<ThingDef> ExcludedRaces = [];
+    public static readonly List<HediffDef> ExcludedHediffs = [];
+    private static readonly List<HediffDef> includedGenomeTemplateHediffs = [];
+    private static readonly List<HediffDef> includedBrainTemplateHediffs = [];
 
     public static bool IsRaceBlockingTemplateCreation(ThingDef thingDef)
     {
-        return excludedRaces.Contains(thingDef);
+        return ExcludedRaces.Contains(thingDef);
     }
 
     public static bool IsBlockingBrainTemplateCreation(HediffDef hediffDef)
     {
         return !hediffDef.HasModExtension<HediffTemplateProperties>()
-            ? excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            ? ExcludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
             : hediffDef.GetModExtension<HediffTemplateProperties>().blockCreatingBrainTemplate;
     }
 
     public static bool IsBlockingGenomeTemplateCreation(HediffDef hediffDef)
     {
         return !hediffDef.HasModExtension<HediffTemplateProperties>()
-            ? excludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
+            ? ExcludedHediffs.Any(def => string.Equals(def.defName, hediffDef.defName))
             : hediffDef.GetModExtension<HediffTemplateProperties>().blockCreatingGenomeTemplate;
     }
 

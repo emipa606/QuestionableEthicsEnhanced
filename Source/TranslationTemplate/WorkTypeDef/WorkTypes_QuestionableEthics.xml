@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Maintains organism vats using both medical and analytical knowledge. -->
+  <QE_MaintainVat.description>Maintains organism vats using both medical and analytical knowledge.</QE_MaintainVat.description>
+  <!-- EN: maintaining -->
+  <QE_MaintainVat.gerundLabel>maintaining</QE_MaintainVat.gerundLabel>
+  <!-- EN: Maintain Vat -->
+  <QE_MaintainVat.labelShort>Maintain Vat</QE_MaintainVat.labelShort>
+  <!-- EN: Biologist -->
+  <QE_MaintainVat.pawnLabel>Biologist</QE_MaintainVat.pawnLabel>
+  <!-- EN: Maintaining -->
+  <QE_MaintainVat.verb>Maintaining</QE_MaintainVat.verb>
+</LanguageData>

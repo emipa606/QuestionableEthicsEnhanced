@@ -17,19 +17,19 @@ public class Alert_GrowerMaintenance : Alert_Critical
         defaultExplanation = "QE_AlertMaintenanceRequiredExplanation".Translate();
     }
 
-    public IEnumerable<Building> GrowersNeedingMaintenance()
+    private static IEnumerable<Building> growersNeedingMaintenance()
     {
-        var maintAlertPercent = 0.20f;
-        return Find.CurrentMap.listerBuildings.allBuildingsColonist.Where(
-            building => building is Building_GrowerBase { status: CrafterStatus.Crafting }
-                            and IMaintainableGrower maintainable &&
-                        (maintainable.DoctorMaintenance < maintAlertPercent ||
-                         maintainable.ScientistMaintenance < maintAlertPercent));
+        const float maintenanceAlertPercent = 0.20f;
+        return Find.CurrentMap.listerBuildings.allBuildingsColonist.Where(building =>
+            building is Building_GrowerBase { status: CrafterStatus.Crafting }
+                and IMaintainableGrower maintainable &&
+            (maintainable.DoctorMaintenance < maintenanceAlertPercent ||
+             maintainable.ScientistMaintenance < maintenanceAlertPercent));
     }
 
     public override AlertReport GetReport()
     {
-        var growersNeedingMaintenance = GrowersNeedingMaintenance();
+        var growersNeedingMaintenance = Alert_GrowerMaintenance.growersNeedingMaintenance();
         if (growersNeedingMaintenance == null)
         {
             return false;

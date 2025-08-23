@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: synthetic meat -->
+  <Meat_QESynthMeat.label>synthetic meat</Meat_QESynthMeat.label>
+  <!-- EN: It looks like meat, including several tendons and slabs of fat. The taste leaves a lot to be desired, however. -->
+  <Meat_QESynthMeat.description>It looks like meat, including several tendons and slabs of fat. The taste leaves a lot to be desired, however.</Meat_QESynthMeat.description>
+  <!-- EN: nutrient solution -->
+  <QE_NutrientSolution.label>nutrient solution</QE_NutrientSolution.label>
+  <!-- EN: A mixture of water, amino acids, fats & vitamins used to grow clones or organs. -->
+  <QE_NutrientSolution.description>A mixture of water, amino acids, fats &amp; vitamins used to grow clones or organs.</QE_NutrientSolution.description>
+  <!-- EN: protein mash -->
+  <QE_ProteinMash.label>protein mash</QE_ProteinMash.label>
+  <!-- EN: Protein from different sources mixed together into a disgusting mash. Perfect for growing organs and living beings. -->
+  <QE_ProteinMash.description>Protein from different sources mixed together into a disgusting mash. Perfect for growing organs and living beings.</QE_ProteinMash.description>
+</LanguageData>

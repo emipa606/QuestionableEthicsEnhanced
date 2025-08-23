@@ -28,7 +28,7 @@ public class RecipeWorker_NerveStapling : Recipe_InstallImplant
         pawn.needs.mood.thoughts.memories.TryGainMemory(QEThoughtDefOf.QE_NerveStapledMe, billDoer);
 
         foreach (var thoughtReciever in PawnsFinder
-                     .AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonistsAndPrisoners)
+                     .AllMapsCaravansAndTravellingTransporters_Alive_FreeColonistsAndPrisoners)
         {
             if (thoughtReciever == pawn)
             {

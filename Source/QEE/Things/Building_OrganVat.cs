@@ -18,10 +18,10 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
     /// <summary>
     ///     Ticks required to craft organ. Takes organGrowthRate ModSetting into account.
     /// </summary>
-    public override int TicksNeededToCraft =>
+    protected override int TicksNeededToCraft =>
         (int)(activeRecipe?.workAmount * QEESettings.instance.organGrowthRateFloat ?? 0);
 
-    public VatGrowerProperties VatGrowerProps
+    private VatGrowerProperties VatGrowerProps
     {
         get
         {
@@ -190,14 +190,14 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
     }
 
     //now also does a history event. Should work.I think.
-    public override void Notify_CraftingFinished()
+    protected override void Notify_CraftingFinished()
     {
         Messages.Message("QE_MessageGrowingDone".Translate(activeRecipe.products[0].thingDef.LabelCap),
             new LookTargets(this), MessageTypeDefOf.PositiveEvent, false);
         Find.HistoryEventsManager.RecordEvent(new HistoryEvent(QEHistoryDefOf.OrganGrown));
     }
 
-    public override void Tick_Crafting()
+    protected override void Tick_Crafting()
     {
         base.Tick_Crafting();
 
@@ -236,7 +236,7 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
         }
     }
 
-    public override string TransformStatusLabel(string label)
+    protected override string TransformStatusLabel(string label)
     {
         string recipeLabel = activeRecipe?.LabelCap ?? "QE_VatGrowerNoRecipe".Translate();
 

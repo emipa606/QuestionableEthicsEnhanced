@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkTypeDef>
+    <defName>QE_MaintainVat</defName>
+    <labelShort>Maintain Vat</labelShort>
+    <pawnLabel>Biologist</pawnLabel>
+    <gerundLabel>maintaining</gerundLabel>
+    <description>Maintains organism vats using both medical and analytical knowledge.</description>
+    <verb>Maintaining</verb>
+    <requireCapableColonist>true</requireCapableColonist>
+    <naturalPriority>1250</naturalPriority>
+    <relevantSkills>
+      <li>Medicine</li>
+      <li>Intellectual</li>
+    </relevantSkills>
+    <workTags>
+      <li>Caring</li>
+      <li>Intellectual</li>
+      <li>AllWork</li>
+    </workTags>
+  </WorkTypeDef>
+</Defs>

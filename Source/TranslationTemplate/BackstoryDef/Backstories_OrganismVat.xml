@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: [PAWN_nameDef] was grown in a cloning vat. [PAWN_pronoun] emerged from the vat with no skills, but has great learning potential. -->
+  <Backstory_ColonyVatgrown.description>[PAWN_nameDef] was grown in a cloning vat. [PAWN_pronoun] emerged from the vat with no skills, but has great learning potential.</Backstory_ColonyVatgrown.description>
+  <!-- EN: colony vatgrown -->
+  <Backstory_ColonyVatgrown.title>colony vatgrown</Backstory_ColonyVatgrown.title>
+  <!-- EN: colony vatgrown -->
+  <Backstory_ColonyVatgrown.titleFemale>colony vatgrown</Backstory_ColonyVatgrown.titleFemale>
+  <!-- EN: vatgrown -->
+  <Backstory_ColonyVatgrown.titleShort>vatgrown</Backstory_ColonyVatgrown.titleShort>
+  <!-- EN: vatgrown -->
+  <Backstory_ColonyVatgrown.titleShortFemale>vatgrown</Backstory_ColonyVatgrown.titleShortFemale>
+</LanguageData>

@@ -29,7 +29,7 @@ public class VatGrowerProperties : GrowerProperties
     /// <summary>
     ///     Offset for where the product is rendered.
     /// </summary>
-    public Vector3 productOffset = new Vector3();
+    public Vector3 productOffset = new();
 
     /// <summary>
     ///     Graphic for the top detail.
@@ -43,11 +43,11 @@ public class VatGrowerProperties : GrowerProperties
 
     public override IEnumerable<string> ConfigErrors()
     {
-        ResolveAll();
+        resolveAll();
         return base.ConfigErrors();
     }
 
-    public void ResolveAll()
+    private void resolveAll()
     {
         topGraphic?.ResolveReferencesSpecial();
         var transparentShader = DefDatabase<ShaderTypeDef>.GetNamedSilentFail("Transparent");

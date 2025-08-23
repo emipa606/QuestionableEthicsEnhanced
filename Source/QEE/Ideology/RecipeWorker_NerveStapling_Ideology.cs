@@ -42,10 +42,10 @@ public class RecipeWorker_NerveStapling_Ideology : Recipe_InstallImplant
 
         //}
         //}
-        CyberEnslave(billDoer, pawn);
+        cyberEnslave(billDoer, pawn);
     }
 
-    public static void CyberEnslave(Pawn surgeon, Pawn stapledPawn)
+    private static void cyberEnslave(Pawn surgeon, Pawn stapledPawn)
     {
         if (stapledPawn.IsSlave)
         {

@@ -7,7 +7,7 @@ namespace QEthics;
 
 public class GenomeSalvagerComp : ThingComp
 {
-    public CompProperties_GenomeSalvager SalvagerProps => props as CompProperties_GenomeSalvager;
+    private CompProperties_GenomeSalvager SalvagerProps => props as CompProperties_GenomeSalvager;
 
     public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
     {

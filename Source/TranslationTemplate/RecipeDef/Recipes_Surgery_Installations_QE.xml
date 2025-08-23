@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: install arm -->
+  <QE_InstallNaturalArm.label>install arm</QE_InstallNaturalArm.label>
+  <!-- EN: Install a biological arm. -->
+  <QE_InstallNaturalArm.description>Install a biological arm.</QE_InstallNaturalArm.description>
+  <!-- EN: Installing arm. -->
+  <QE_InstallNaturalArm.jobString>Installing arm.</QE_InstallNaturalArm.jobString>
+  <!-- EN: install ear -->
+  <QE_InstallNaturalEar.label>install ear</QE_InstallNaturalEar.label>
+  <!-- EN: Install a biological ear. -->
+  <QE_InstallNaturalEar.description>Install a biological ear.</QE_InstallNaturalEar.description>
+  <!-- EN: Installing ear. -->
+  <QE_InstallNaturalEar.jobString>Installing ear.</QE_InstallNaturalEar.jobString>
+  <!-- EN: install eye -->
+  <QE_InstallNaturalEye.label>install eye</QE_InstallNaturalEye.label>
+  <!-- EN: Install a biological eye. -->
+  <QE_InstallNaturalEye.description>Install a biological eye.</QE_InstallNaturalEye.description>
+  <!-- EN: Installing eye. -->
+  <QE_InstallNaturalEye.jobString>Installing eye.</QE_InstallNaturalEye.jobString>
+  <!-- EN: install foot -->
+  <QE_InstallNaturalFoot.label>install foot</QE_InstallNaturalFoot.label>
+  <!-- EN: Install a biological foot. -->
+  <QE_InstallNaturalFoot.description>Install a biological foot.</QE_InstallNaturalFoot.description>
+  <!-- EN: Installing foot. -->
+  <QE_InstallNaturalFoot.jobString>Installing foot.</QE_InstallNaturalFoot.jobString>
+  <!-- EN: install hand -->
+  <QE_InstallNaturalHand.label>install hand</QE_InstallNaturalHand.label>
+  <!-- EN: Install a biological hand. -->
+  <QE_InstallNaturalHand.description>Install a biological hand.</QE_InstallNaturalHand.description>
+  <!-- EN: Installing hand. -->
+  <QE_InstallNaturalHand.jobString>Installing hand.</QE_InstallNaturalHand.jobString>
+  <!-- EN: install jaw -->
+  <QE_InstallNaturalJaw.label>install jaw</QE_InstallNaturalJaw.label>
+  <!-- EN: Install a biological jaw. -->
+  <QE_InstallNaturalJaw.description>Install a biological jaw.</QE_InstallNaturalJaw.description>
+  <!-- EN: Installing jaw. -->
+  <QE_InstallNaturalJaw.jobString>Installing jaw.</QE_InstallNaturalJaw.jobString>
+  <!-- EN: install leg -->
+  <QE_InstallNaturalLeg.label>install leg</QE_InstallNaturalLeg.label>
+  <!-- EN: Install a biological leg. -->
+  <QE_InstallNaturalLeg.description>Install a biological leg.</QE_InstallNaturalLeg.description>
+  <!-- EN: Installing leg. -->
+  <QE_InstallNaturalLeg.jobString>Installing leg.</QE_InstallNaturalLeg.jobString>
+  <!-- EN: install nose -->
+  <QE_InstallNaturalNose.label>install nose</QE_InstallNaturalNose.label>
+  <!-- EN: Install a biological nose. -->
+  <QE_InstallNaturalNose.description>Install a biological nose.</QE_InstallNaturalNose.description>
+  <!-- EN: Installing nose. -->
+  <QE_InstallNaturalNose.jobString>Installing nose.</QE_InstallNaturalNose.jobString>
+  <!-- EN: install pelvis -->
+  <QE_InstallNaturalPelvis.label>install pelvis</QE_InstallNaturalPelvis.label>
+  <!-- EN: Install a biological pelvis. -->
+  <QE_InstallNaturalPelvis.description>Install a biological pelvis.</QE_InstallNaturalPelvis.description>
+  <!-- EN: Installing pelvis. -->
+  <QE_InstallNaturalPelvis.jobString>Installing pelvis.</QE_InstallNaturalPelvis.jobString>
+  <!-- EN: install spine -->
+  <QE_InstallNaturalSpine.label>install spine</QE_InstallNaturalSpine.label>
+  <!-- EN: Install a biological spine. -->
+  <QE_InstallNaturalSpine.description>Install a biological spine.</QE_InstallNaturalSpine.description>
+  <!-- EN: Installing spine. -->
+  <QE_InstallNaturalSpine.jobString>Installing spine.</QE_InstallNaturalSpine.jobString>
+  <!-- EN: install stomach -->
+  <QE_InstallNaturalStomach.label>install stomach</QE_InstallNaturalStomach.label>
+  <!-- EN: Install a biological stomach. -->
+  <QE_InstallNaturalStomach.description>Install a biological stomach.</QE_InstallNaturalStomach.description>
+  <!-- EN: Installing stomach. -->
+  <QE_InstallNaturalStomach.jobString>Installing stomach.</QE_InstallNaturalStomach.jobString>
+  <!-- EN: install tongue -->
+  <QE_InstallNaturalTongue.label>install tongue</QE_InstallNaturalTongue.label>
+  <!-- EN: Install a biological tongue. -->
+  <QE_InstallNaturalTongue.description>Install a biological tongue.</QE_InstallNaturalTongue.description>
+  <!-- EN: Installing Tongue. -->
+  <QE_InstallNaturalTongue.jobString>Installing Tongue.</QE_InstallNaturalTongue.jobString>
+</LanguageData>

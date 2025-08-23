@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: filling TargetA with TargetB. -->
+  <QE_DepositIntoGrowerJob.reportString>filling TargetA with TargetB.</QE_DepositIntoGrowerJob.reportString>
+  <!-- EN: extracting from TargetA. -->
+  <QE_ExtractFromGrowerJob.reportString>extracting from TargetA.</QE_ExtractFromGrowerJob.reportString>
+  <!-- EN: extracting from TargetA. -->
+  <QE_ExtractProductFromGrowerJob.reportString>extracting from TargetA.</QE_ExtractProductFromGrowerJob.reportString>
+  <!-- EN: monitoring and adjusting TargetA. -->
+  <QE_GrowerMaintenanceJob_Intellectual.reportString>monitoring and adjusting TargetA.</QE_GrowerMaintenanceJob_Intellectual.reportString>
+  <!-- EN: regulating values for TargetA. -->
+  <QE_GrowerMaintenanceJob_Medicine.reportString>regulating values for TargetA.</QE_GrowerMaintenanceJob_Medicine.reportString>
+  <!-- EN: filling TargetA with TargetB. -->
+  <QE_LoadGrowerJob.reportString>filling TargetA with TargetB.</QE_LoadGrowerJob.reportString>
+  <!-- EN: monitoring and adjusting TargetA. -->
+  <QE_MaintainGrowerJob_Intellectual.reportString>monitoring and adjusting TargetA.</QE_MaintainGrowerJob_Intellectual.reportString>
+  <!-- EN: regulating values for TargetA. -->
+  <QE_MaintainGrowerJob_Medicine.reportString>regulating values for TargetA.</QE_MaintainGrowerJob_Medicine.reportString>
+</LanguageData>

@@ -24,13 +24,13 @@ public class GenomeSequence : ThingWithComps
     public BodyTypeDef bodyType = BodyTypeDefOf.Thin;
     public string browType;
     public HeadTypeDef crownType;
-    public string crownTypeAlien = "";
+    private string crownTypeAlien = "";
     public CustomXenotype customXenotype; //adding these allow for player-made xenotypes to be properly cloned
     public List<GeneDef> endogenes;
     public Color eyeColor;
     public string eyeType;
     public TattooDef faceTattoo;
-    public Color? favoriteColor;
+    public ColorDef favoriteColor;
     public Gender gender = Gender.None;
 
     //Relevant for all genomes.
@@ -38,7 +38,7 @@ public class GenomeSequence : ThingWithComps
     public List<string> genes;
 
     public HairDef hair;
-    public Color hairColor = new Color(0.0f, 0.0f, 0.0f);
+    public Color hairColor = new(0.0f, 0.0f, 0.0f);
     public Color hairColorSecond;
 
     // Facial Animation compatibility
@@ -128,7 +128,7 @@ public class GenomeSequence : ThingWithComps
             Scribe_Collections.Look(ref xenogenes, "xenogenes", LookMode.Def);
             Scribe_Collections.Look(ref activeRandomlyChosenEndogenes, "activeRandomlyChosenEndogenes", LookMode.Def);
             Scribe_Collections.Look(ref activeRandomlyChosenXenogenes, "activeRandomlyChosenXenogenes", LookMode.Def);
-            Scribe_Values.Look(ref favoriteColor, "favoriteColor");
+            Scribe_Defs.Look(ref favoriteColor, "favoriteColor");
 
             // ensure we only load the old 'genes' field, but not dumping it again
             if (Scribe.mode == LoadSaveMode.LoadingVars)
@@ -141,25 +141,13 @@ public class GenomeSequence : ThingWithComps
             //Humanoid values that could be null in save file go here
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                if (hair == null)
-                {
-                    hair = HairDefOf.Bald;
-                }
+                hair ??= HairDefOf.Bald;
 
-                if (beard == null)
-                {
-                    beard = BeardDefOf.NoBeard;
-                }
+                beard ??= BeardDefOf.NoBeard;
 
-                if (faceTattoo == null)
-                {
-                    faceTattoo = TattooDefOf.NoTattoo_Face;
-                }
+                faceTattoo ??= TattooDefOf.NoTattoo_Face;
 
-                if (bodyTattoo == null)
-                {
-                    bodyTattoo = TattooDefOf.NoTattoo_Body;
-                }
+                bodyTattoo ??= TattooDefOf.NoTattoo_Body;
             }
         }
 
@@ -347,7 +335,7 @@ public class GenomeSequence : ThingWithComps
     /// <summary>
     ///     This helper function appends the data stored in the genome sequence to the item description in-game.
     /// </summary>
-    public string CustomDescriptionString(string baseDescription)
+    private string CustomDescriptionString(string baseDescription)
     {
         var builder = new StringBuilder();
 

@@ -125,4 +125,22 @@
   <QE_TemplatingRejectExcludedRaceShort>nicht gültige Ethnie</QE_TemplatingRejectExcludedRaceShort>
   <QE_BrainScanDescription_Expertises>Gespeicherte Expertisen</QE_BrainScanDescription_Expertises>
   <QE_VatGrowerDebugFill>DEBUG: Flüssigkeit einfüllen</QE_VatGrowerDebugFill>
+  <!-- Status -->
+  <!-- Ingredients -->
+  <!-- Vat grower -->
+  <!-- Gizmos -->
+  <!-- UI -->
+  <!-- Genome Sequencer -->
+  <!-- Alerts -->
+  <!-- Messages -->
+  <!-- Letters -->
+  <!-- Brain scanning -->
+  <!-- Bed validation checks for applying brain templates. Enable debug logging in the Mod Settings to see these in the log. -->
+  <!-- Mod settings -->
+  <!-- version 1.02 Patch -->
+  <!-- version 1.03 Patch -->
+  <!-- version 1.1.0 Patch -->
+  <!-- version 1.2.0 Patch -->
+  <!-- version 1.3.0 Patch -->
+  <!-- version 1.5.8 Patch -->
 </LanguageData>

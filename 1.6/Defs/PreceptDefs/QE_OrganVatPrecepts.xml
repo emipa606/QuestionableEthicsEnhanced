@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IssueDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_OrganGrowing</defName>
+    <label>Vat Grown Organs</label>
+    <iconPath>UI/Issues/OrganUse</iconPath>
+  </IssueDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_OrganGrowingAbhorrent</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Unethical</label>
+    <description>We should not grow organs in vats for transplant.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>OrganGrown</eventDef>
+        <thought>QE_OrganGrowing_Unethical</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_OrganGrowingNeutral</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Neutral</label>
+    <description>Vat grown organs are a useful tool for survival. Should we really complain beyond that?</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>organusetotallyabhorrent</li>
+    </exclusionTags>
+  </PreceptDef>
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>QE_OrganGrowingApproved</defName>
+    <issue>QE_OrganGrowing</issue>
+    <label>Approved</label>
+    <description>Think of the lifes we could save like this. Instead of ripping hearts from people to save others, or clunky prosthetics...we can just...grow them</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>1000</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <exclusionTags>
+      <li>organusetotallyabhorrent</li>
+    </exclusionTags>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>OrganGrown</eventDef>
+        <thought>QE_OrganGrowing_Approved</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+</Defs>

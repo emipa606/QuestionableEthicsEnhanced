@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: install nerve staple -->
+  <QE_InstallNerveStaple.label>install nerve staple</QE_InstallNerveStaple.label>
+  <!-- EN: Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them. Automatically shuts down any signs of mental breaks. -->
+  <QE_InstallNerveStaple.description>Install a nerve staple, forcibly enslaving the victim, and permantly suprressing them. Automatically shuts down any signs of mental breaks.</QE_InstallNerveStaple.description>
+  <!-- EN: Nerve stapling. -->
+  <QE_InstallNerveStaple.jobString>Nerve stapling.</QE_InstallNerveStaple.jobString>
+  <!-- EN: make nerve staples -->
+  <QE_Make_NerveStaples.label>make nerve staples</QE_Make_NerveStaples.label>
+  <!-- EN: Make a nerve staple. -->
+  <QE_Make_NerveStaples.description>Make a nerve staple.</QE_Make_NerveStaples.description>
+  <!-- EN: Making nerve staples. -->
+  <QE_Make_NerveStaples.jobString>Making nerve staples.</QE_Make_NerveStaples.jobString>
+</LanguageData>

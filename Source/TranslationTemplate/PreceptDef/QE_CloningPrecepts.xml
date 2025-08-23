@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Unethical -->
+  <QE_CloningAbhorrent.label>Unethical</QE_CloningAbhorrent.label>
+  <!-- EN: Bringing new life into this world in a test tube is horrid, downright unethical. -->
+  <QE_CloningAbhorrent.description>Bringing new life into this world in a test tube is horrid, downright unethical.</QE_CloningAbhorrent.description>
+  <!-- EN: Approved -->
+  <QE_CloningApproved.label>Approved</QE_CloningApproved.label>
+  <!-- EN: Cloning is a velnerable task, bringing forth a new generation with great ease. -->
+  <QE_CloningApproved.description>Cloning is a velnerable task, bringing forth a new generation with great ease.</QE_CloningApproved.description>
+  <!-- EN: Neutral -->
+  <QE_CloningNeutral.label>Neutral</QE_CloningNeutral.label>
+  <!-- EN: Cloning is what it is. It is neither good, nor evil. -->
+  <QE_CloningNeutral.description>Cloning is what it is. It is neither good, nor evil.</QE_CloningNeutral.description>
+</LanguageData>

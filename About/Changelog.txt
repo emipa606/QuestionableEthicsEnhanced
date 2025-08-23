@@ -1,5 +1,9 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.6.0 - Mod updated for 1.6 and passed autotests
+Used DeepL to update translations for ChineseSimplified, French, German, Japanese, Russian
+
+
 1.5.9 - Fix for the issue in the last update when biotech is not active
 
 

@@ -6,8 +6,8 @@ namespace QEthics;
 public class QEE_HediffComp_CyberSuppressed : HediffComp
 {
     //caches they should disrupt, for hopeful minor improvements.
-    public readonly bool shouldDisrupt = QEESettings.instance.neuralDisrupt;
-    public int i = 1;
+    private readonly bool shouldDisrupt = QEESettings.instance.neuralDisrupt;
+    private int i = 1;
 
     public override void CompPostTick(ref float var)
     {

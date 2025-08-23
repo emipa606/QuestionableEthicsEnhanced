@@ -53,7 +53,7 @@ public static class PawnUtility
     }
 
     //this is a modified version of vanilla's RestUtility.IsValidBedFor() that adds medical bed checks
-    public static bool IsValidMedicalBed(Thing bedThing, Pawn sleeper, Pawn traveler, bool sleeperWillBePrisoner,
+    private static bool IsValidMedicalBed(Thing bedThing, Pawn sleeper, Pawn traveler, bool sleeperWillBePrisoner,
         bool checkSocialProperness, bool ignoreOtherReservations = false)
     {
         if (bedThing is not Building_Bed building_Bed)
@@ -161,7 +161,7 @@ public static class PawnUtility
         return false;
     }
 
-    public static void Reset()
+    private static void Reset()
     {
         bedDefsBestToWorst_Medical = (from d in DefDatabase<ThingDef>.AllDefs
             where d.IsBed

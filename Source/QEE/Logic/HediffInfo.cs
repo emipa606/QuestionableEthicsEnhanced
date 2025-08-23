@@ -137,7 +137,7 @@ public class HediffInfo : IExposable, IEquatable<HediffInfo>
         }
 
         //get the value of the 'powersKnown' field from the Hediff
-        var powersValue = PsychicAwakeningCompat.powersKnownField.GetValue(h);
+        var powersValue = PsychicAwakeningCompat.PowersKnownField.GetValue(h);
 
         if (powersValue != null)
         {

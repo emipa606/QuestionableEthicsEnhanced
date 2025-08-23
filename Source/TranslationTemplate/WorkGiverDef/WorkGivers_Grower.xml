@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: fill clone vat -->
+  <QE_OrderProcessor_PawnVat.label>fill clone vat</QE_OrderProcessor_PawnVat.label>
+  <!-- EN: filling -->
+  <QE_OrderProcessor_PawnVat.gerund>filling</QE_OrderProcessor_PawnVat.gerund>
+  <!-- EN: fill -->
+  <QE_OrderProcessor_PawnVat.verb>fill</QE_OrderProcessor_PawnVat.verb>
+  <!-- EN: extract product from organ vat -->
+  <QE_OrganVat_Extract_Product.label>extract product from organ vat</QE_OrganVat_Extract_Product.label>
+  <!-- EN: extracting -->
+  <QE_OrganVat_Extract_Product.gerund>extracting</QE_OrganVat_Extract_Product.gerund>
+  <!-- EN: extract -->
+  <QE_OrganVat_Extract_Product.verb>extract</QE_OrganVat_Extract_Product.verb>
+  <!-- EN: fill organ vat -->
+  <QE_OrganVat_Fill.label>fill organ vat</QE_OrganVat_Fill.label>
+  <!-- EN: filling -->
+  <QE_OrganVat_Fill.gerund>filling</QE_OrganVat_Fill.gerund>
+  <!-- EN: fill -->
+  <QE_OrganVat_Fill.verb>fill</QE_OrganVat_Fill.verb>
+  <!-- EN: maintain organ vat -->
+  <QE_OrganVat_Maintain.label>maintain organ vat</QE_OrganVat_Maintain.label>
+  <!-- EN: maintaining -->
+  <QE_OrganVat_Maintain.gerund>maintaining</QE_OrganVat_Maintain.gerund>
+  <!-- EN: maintain -->
+  <QE_OrganVat_Maintain.verb>maintain</QE_OrganVat_Maintain.verb>
+  <!-- EN: maintain a clone vat -->
+  <QE_PawnGrower_Maintain.label>maintain a clone vat</QE_PawnGrower_Maintain.label>
+  <!-- EN: maintaining -->
+  <QE_PawnGrower_Maintain.gerund>maintaining</QE_PawnGrower_Maintain.gerund>
+  <!-- EN: maintain -->
+  <QE_PawnGrower_Maintain.verb>maintain</QE_PawnGrower_Maintain.verb>
+  <!-- EN: extract clone from clone vat -->
+  <QE_PawnVat_Extract.label>extract clone from clone vat</QE_PawnVat_Extract.label>
+  <!-- EN: extracting -->
+  <QE_PawnVat_Extract.gerund>extracting</QE_PawnVat_Extract.gerund>
+  <!-- EN: extract -->
+  <QE_PawnVat_Extract.verb>extract</QE_PawnVat_Extract.verb>
+</LanguageData>

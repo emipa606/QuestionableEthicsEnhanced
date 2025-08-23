@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: applying TargetB to TargetA. -->
+  <QE_ApplyBrainScanTemplate.reportString>applying TargetB to TargetA.</QE_ApplyBrainScanTemplate.reportString>
+  <!-- EN: salvaging genome from TargetA. -->
+  <QE_SalvageCropseGenome.reportString>salvaging genome from TargetA.</QE_SalvageCropseGenome.reportString>
+</LanguageData>

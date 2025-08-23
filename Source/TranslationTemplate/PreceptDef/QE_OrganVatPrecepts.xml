@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Unethical -->
+  <QE_OrganGrowingAbhorrent.label>Unethical</QE_OrganGrowingAbhorrent.label>
+  <!-- EN: We should not grow organs in vats for transplant. -->
+  <QE_OrganGrowingAbhorrent.description>We should not grow organs in vats for transplant.</QE_OrganGrowingAbhorrent.description>
+  <!-- EN: Approved -->
+  <QE_OrganGrowingApproved.label>Approved</QE_OrganGrowingApproved.label>
+  <!-- EN: Think of the lifes we could save like this. Instead of ripping hearts from people to save others, or clunky prosthetics...we can just...grow them -->
+  <QE_OrganGrowingApproved.description>Think of the lifes we could save like this. Instead of ripping hearts from people to save others, or clunky prosthetics...we can just...grow them</QE_OrganGrowingApproved.description>
+  <!-- EN: Neutral -->
+  <QE_OrganGrowingNeutral.label>Neutral</QE_OrganGrowingNeutral.label>
+  <!-- EN: Vat grown organs are a useful tool for survival. Should we really complain beyond that? -->
+  <QE_OrganGrowingNeutral.description>Vat grown organs are a useful tool for survival. Should we really complain beyond that?</QE_OrganGrowingNeutral.description>
+</LanguageData>

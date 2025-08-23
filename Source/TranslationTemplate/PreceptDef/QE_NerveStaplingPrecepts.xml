@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: abhorrent -->
+  <QE_NerveStaplingAbhorrent.label>abhorrent</QE_NerveStaplingAbhorrent.label>
+  <!-- EN: Taking away the free will of someone, and reducing them just to manual labor is incredibly and undeniably unethical. -->
+  <QE_NerveStaplingAbhorrent.description>Taking away the free will of someone, and reducing them just to manual labor is incredibly and undeniably unethical.</QE_NerveStaplingAbhorrent.description>
+  <!-- EN: No one deserves to lose their free will. -->
+  <QE_NerveStaplingAbhorrent.comps.2.description>No one deserves to lose their free will.</QE_NerveStaplingAbhorrent.comps.2.description>
+  <!-- EN: It is even worse taking the free will of one of our own. -->
+  <QE_NerveStaplingAbhorrent.comps.3.description>It is even worse taking the free will of one of our own.</QE_NerveStaplingAbhorrent.comps.3.description>
+  <!-- EN: Approved -->
+  <QE_NerveStaplingApproved.label>Approved</QE_NerveStaplingApproved.label>
+  <!-- EN: It is such an increase in effeciency. And besides, its not like they care anymore, right...? -->
+  <QE_NerveStaplingApproved.description>It is such an increase in effeciency. And besides, its not like they care anymore, right...?</QE_NerveStaplingApproved.description>
+  <!-- EN: It is honorable for a colonist to serve us unyieldingly. Unfortante if needed, but honorable. -->
+  <QE_NerveStaplingApproved.comps.2.description>It is honorable for a colonist to serve us unyieldingly. Unfortante if needed, but honorable.</QE_NerveStaplingApproved.comps.2.description>
+  <!-- EN: Removing their resistance greatly increases efficiency, as well as removes some of the ambiguity of keeping an objecting person. -->
+  <QE_NerveStaplingApproved.comps.3.description>Removing their resistance greatly increases efficiency, as well as removes some of the ambiguity of keeping an objecting person.</QE_NerveStaplingApproved.comps.3.description>
+  <!-- EN: Neutral -->
+  <QE_NerveStaplingNeutral.label>Neutral</QE_NerveStaplingNeutral.label>
+  <!-- EN: Nerve stapling is merely what it is. It is nothing exceptional to do anything to survive. -->
+  <QE_NerveStaplingNeutral.description>Nerve stapling is merely what it is. It is nothing exceptional to do anything to survive.</QE_NerveStaplingNeutral.description>
+  <!-- EN: Outsiders Only -->
+  <QE_NerveStaplingOutsidersOnly.label>Outsiders Only</QE_NerveStaplingOutsidersOnly.label>
+  <!-- EN: It is abhorrent to staple one of our own, but an outsider is fair game. -->
+  <QE_NerveStaplingOutsidersOnly.description>It is abhorrent to staple one of our own, but an outsider is fair game.</QE_NerveStaplingOutsidersOnly.description>
+  <!-- EN: It is unacceptable to staple one of our own when outsiders can work for us instead. -->
+  <QE_NerveStaplingOutsidersOnly.comps.0.description>It is unacceptable to staple one of our own when outsiders can work for us instead.</QE_NerveStaplingOutsidersOnly.comps.0.description>
+</LanguageData>

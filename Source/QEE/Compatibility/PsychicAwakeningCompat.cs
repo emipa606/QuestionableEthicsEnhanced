@@ -8,7 +8,7 @@ namespace QEthics;
 public static class PsychicAwakeningCompat
 {
     public static Type HediffPsychicAwakenedType, PsychicPowerDefType;
-    public static FieldInfo powersKnownField;
+    public static FieldInfo PowersKnownField;
 
     /// <summary>
     ///     Instantiate any Types that exist in the other mod for later use in the QEE codebase.
@@ -31,10 +31,10 @@ public static class PsychicAwakeningCompat
                 return false;
             }
 
-            powersKnownField =
+            PowersKnownField =
                 HediffPsychicAwakenedType.GetField("powersKnown", BindingFlags.Public | BindingFlags.Instance);
 
-            if (powersKnownField != null)
+            if (PowersKnownField != null)
             {
                 return true;
             }

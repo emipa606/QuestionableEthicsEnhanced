@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>QE_ClonedSomeoneUnethical</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>cloned someone</label>
+        <description>We brought new life to this world in a test tube. We are playing god with forces we don't understand.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_GenomeSequenceUnethical</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>sequenced genome</label>
+        <description>We have recorded one of the few unique features of a person. And to what end?</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_GenomeSequencedCorpse_Unethical</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>sequenced genome from corpse</label>
+        <description>We should let the dead rest, not try to copy them in a vague fasimile.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <!--Approved-->
+  <ThoughtDef>
+    <defName>QE_ClonedApproved</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>cloned someone</label>
+        <description>Today is a joyous day, we created a new being. This is to be celebrated.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_GenomeSequenceApproved</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>sequenced genome</label>
+        <description>We have preserved someones genome for future use.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>QE_CorpseGenome_Approved</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>sequenced genome from corpse</label>
+        <description>We have preserved the genes of the fallen. These lets us remember them.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>
