@@ -21,7 +21,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// <summary>
     ///     Internal container representation of stored items.
     /// </summary>
-    public ThingOwner innerContainer;
+    public ThingOwner<Thing> innerContainer;
 
     /// <summary>
     ///     The crafter order processor. Is set by the player during Idle status.
@@ -102,7 +102,8 @@ public abstract class Building_GrowerBase : Building, IThingHolder
 
         Scribe_Values.Look(ref craftingProgress, "craftingProgress");
         Scribe_Values.Look(ref status, "status");
-        Scribe_Deep.Look(ref innerContainer, "innerContainer", this, false, LookMode.Deep);
+        // Use the ThingOwner-specific overload so Scribe sets the parent correctly and doesn't use Activator
+        Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
         Scribe_Deep.Look(ref orderProcessor, "orderProcessor", this);
         /*if(Scribe.mode == LoadSaveMode.LoadingVars)
         {

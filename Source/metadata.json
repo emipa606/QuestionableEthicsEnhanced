@@ -8,11 +8,11 @@
     "cloning",
     " organ manipulation"
   ],
-  "LastXmlCleaning": "2025-08-23T19:56:07.1347505+02:00",
+  "LastXmlCleaning": "2025-08-30T21:36:51.4412211+02:00",
   "Patches": true,
   "Defs": true,
   "Assemblies": true,
-  "LinesOfCode": 343558,
+  "LinesOfCode": 343686,
   "LinesOfXML": 150289,
   "CodeBaseSize": 90
 }

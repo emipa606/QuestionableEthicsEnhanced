@@ -40,7 +40,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// <summary>
     ///     Internal container representation of stored items.
     /// </summary>
-    public ThingOwner ingredientContainer;
+    public ThingOwner<Thing> ingredientContainer;
 
 
     /// <summary>
@@ -170,7 +170,8 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
 
         Scribe_Values.Look(ref craftingProgress, "craftingProgress");
         Scribe_Values.Look(ref status, "status");
-        Scribe_Deep.Look(ref ingredientContainer, "ingredientContainer", this, false, LookMode.Deep);
+        // Use the ThingOwner-specific overload
+        Scribe_Deep.Look(ref ingredientContainer, "ingredientContainer", this);
         Scribe_Values.Look(ref scientistMaintenance, "scientistMaintenance");
         Scribe_Values.Look(ref doctorMaintenance, "doctorMaintenance");
         Scribe_Defs.Look(ref activeRecipe, "activeRecipe");
@@ -199,14 +200,13 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         //Ingredients: Needed
         if (status == CrafterStatus.Filling)
         {
-            builder.Append("QE_GrowerIngredientsNeeded".Translate() + ": " + FormatCachedIngredients());
+            builder.Append("QE_GrowerIngredientsNeeded".Translate() + ": " + formatCachedIngredients());
         }
 
         return builder.ToString().TrimEndNewlines();
     }
 
-
-    private string FormatCachedIngredients(string format = "{0} x {1}", char delimiter = ',')
+    private string formatCachedIngredients(string format = "{0} x {1}", char delimiter = ',')
     {
         var builder = new StringBuilder();
 
