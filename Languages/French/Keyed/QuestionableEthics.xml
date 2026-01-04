@@ -11,7 +11,7 @@
   <QE_GrowerIngredientsNeeded>Besoin de</QE_GrowerIngredientsNeeded>
   <QE_GrowerIngredientsFilled>Rempli</QE_GrowerIngredientsFilled>
   <QE_VatGrowerProduct>Produit</QE_VatGrowerProduct>
-  <QE_VatGrowerMaintenance>Maintenance : {Scientifique. Docteur</QE_VatGrowerMaintenance>
+  <QE_VatGrowerMaintenance>Maintenance : {0} Scientifique, {1} Docteur</QE_VatGrowerMaintenance>
   <QE_VatGrowerCleanlinessMult>Multiplicateur de maintenance de la propreté : {0}</QE_VatGrowerCleanlinessMult>
   <QE_VatGrowerDaysRemaining>jours restants</QE_VatGrowerDaysRemaining>
   <QE_VatGrowerHoursRemaining>heures restantes</QE_VatGrowerHoursRemaining>

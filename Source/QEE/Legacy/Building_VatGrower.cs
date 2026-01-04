@@ -32,8 +32,6 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
     /// </summary>
     private float scientistMaintenance;
 
-    private VatGrowerProperties vatGrowerPropsInt;
-
     static Building_VatGrower()
     {
         cleanlinessCurve.Add(-5.0f, 5.00f);
@@ -51,20 +49,20 @@ public class Building_VatGrower : Building_GrowerBase, IMaintainableGrower
     {
         get
         {
-            if (vatGrowerPropsInt != null)
+            if (field != null)
             {
-                return vatGrowerPropsInt;
+                return field;
             }
 
-            vatGrowerPropsInt = def.GetModExtension<VatGrowerProperties>();
+            field = def.GetModExtension<VatGrowerProperties>();
 
             //Fallback; Is defaults.
-            if (vatGrowerPropsInt == null)
+            if (field == null)
             {
-                vatGrowerPropsInt = new VatGrowerProperties();
+                field = new VatGrowerProperties();
             }
 
-            return vatGrowerPropsInt;
+            return field;
         }
     }
 

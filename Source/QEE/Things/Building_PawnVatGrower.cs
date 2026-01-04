@@ -35,8 +35,6 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     /// </summary>
     private float scientistMaintenance;
 
-    private VatGrowerProperties vatGrowerPropsInt;
-
     static Building_PawnVatGrower()
     {
         cleanlinessCurve.Add(-5.0f, 5.00f);
@@ -61,20 +59,15 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     {
         get
         {
-            if (vatGrowerPropsInt != null)
+            if (field != null)
             {
-                return vatGrowerPropsInt;
+                return field;
             }
-
-            vatGrowerPropsInt = def.GetModExtension<VatGrowerProperties>();
 
             //Fallback; Is defaults.
-            if (vatGrowerPropsInt == null)
-            {
-                vatGrowerPropsInt = new VatGrowerProperties();
-            }
+            field = def.GetModExtension<VatGrowerProperties>() ?? new VatGrowerProperties();
 
-            return vatGrowerPropsInt;
+            return field;
         }
     }
 
@@ -363,8 +356,11 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             if (tempPawn != null && tempPawn.RaceProps.Humanlike)
             {
                 Find.LetterStack.ReceiveLetter("QE_LetterHumanlikeGrownLabel".Translate(),
-                    "QE_LetterHumanlikeGrownDescription".Translate(tempPawn.Named("PAWN")), LetterDefOf.PositiveEvent,
+                    "QE_LetterHumanlikeGrownDescription".Translate(tempPawn.Named("PAWN")),
+                    LetterDefOf.PositiveEvent,
                     new LookTargets(tempPawn));
+                QEEMod.TryLog($"Sending normal letter for {tempPawn.LabelShort}");
+
                 TaleRecorder.RecordTale(QETaleDefOf.QE_Vatgrown, tempPawn);
 
                 if (QEESettings.instance.giveCloneNegativeThought)
@@ -426,10 +422,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         }
 
         var hediffComp_Disappears = (hediff as HediffWithComps)?.GetComp<HediffComp_Disappears>();
-        if (hediffComp_Disappears != null)
-        {
-            hediffComp_Disappears.ticksToDisappear = new IntRange(2000, 4000).RandomInRange * 60;
-        }
+        hediffComp_Disappears?.ticksToDisappear = new IntRange(2000, 4000).RandomInRange * 60;
     }
 
 
@@ -618,12 +611,9 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
         var genomeRequest =
             orderProcessor.desiredIngredients.FirstOrDefault(req => req.HasThing && req.thing is GenomeSequence);
-        if (genomeRequest != null)
-        {
-            //Update Thing we got a request for.
-            genomeRequest.thing = genome;
-            //orderProcessor.Notify_ContentsChanged();
-        }
+        //Update Thing we got a request for.
+        genomeRequest?.thing = genome;
+        //orderProcessor.Notify_ContentsChanged();
     }
 
     protected override void Notify_ThingLostInOrderProcessor()

@@ -450,6 +450,7 @@ public static class GenomeUtility
         }
 
         pawn?.Drawer.renderer.SetAllGraphicsDirty();
+
         return pawn;
     }
 

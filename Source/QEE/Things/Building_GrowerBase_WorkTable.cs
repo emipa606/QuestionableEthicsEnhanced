@@ -24,6 +24,10 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// </summary>
     public BillProcessor billProc;
 
+    private bool checkedAffectedComp;
+
+    private CompAffectedByFacilities compAffectedByFacilities;
+
     /// <summary>
     ///     Current progress being made during crafting.
     /// </summary>
@@ -34,8 +38,6 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// </summary>
     protected float doctorMaintenance = 0.25f;
 
-
-    private GrowerProperties growerPropsInt;
 
     /// <summary>
     ///     Internal container representation of stored items.
@@ -76,20 +78,15 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     {
         get
         {
-            if (growerPropsInt != null)
+            if (field != null)
             {
-                return growerPropsInt;
+                return field;
             }
-
-            growerPropsInt = def.GetModExtension<GrowerProperties>();
 
             //Fallback; Is defaults.
-            if (growerPropsInt == null)
-            {
-                growerPropsInt = new GrowerProperties();
-            }
+            field = def.GetModExtension<GrowerProperties>() ?? new GrowerProperties();
 
-            return growerPropsInt;
+            return field;
         }
     }
 
@@ -100,7 +97,7 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
     /// </summary>
     protected abstract int TicksNeededToCraft { get; }
 
-    protected int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
+    protected int TicksLeftToCraft => (int)((TicksNeededToCraft - craftingProgress) / getAffectedBy());
 
     protected float CraftingProgressPercent
     {
@@ -326,6 +323,41 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         billProc.UpdateAvailIngredientsCache();
     }
 
+    private float getAffectedBy()
+    {
+        switch (checkedAffectedComp)
+        {
+            case true when compAffectedByFacilities == null:
+                return 1;
+            case false when !def.HasComp<CompAffectedByFacilities>():
+                checkedAffectedComp = true;
+                return 1;
+        }
+
+        var returnValue = 1f;
+        compAffectedByFacilities ??= GetComp<CompAffectedByFacilities>();
+
+        foreach (var thing in compAffectedByFacilities.LinkedFacilitiesListForReading)
+        {
+            if (!compAffectedByFacilities.IsFacilityActive(thing))
+            {
+                continue;
+            }
+
+            var statoffset = thing.def.GetCompProperties<CompProperties_Facility>().statOffsets
+                .FirstOrDefault(modifier => modifier.stat.defName.Contains("GrowthVatSpeed"));
+
+            if (statoffset != null)
+            {
+                returnValue += statoffset.value;
+            }
+        }
+
+
+        QEEMod.TryLog($"Modified growthspeed for {this}: {returnValue}");
+        return returnValue;
+    }
+
     /// <summary>
     ///     Crafting tick.
     /// </summary>
@@ -336,7 +368,9 @@ public abstract class Building_GrowerBase_WorkTable : Building_WorkTable, IThing
         if (PowerTrader == null || PowerTrader.PowerOn)
         {
             powerModifier = 1f;
-            craftingProgress += 60;
+            var progressStep = 60;
+            progressStep = (int)(progressStep * getAffectedBy());
+            craftingProgress += progressStep;
             if (craftingProgress >= TicksNeededToCraft)
             {
                 craftingProgress = TicksNeededToCraft;

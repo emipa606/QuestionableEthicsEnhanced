@@ -112,7 +112,8 @@ public static class IngredientUtility
 
             var copy = new ThingOrderRequest(filterCopy)
             {
-                amount = (int)(ingredientCount.GetBaseCount() * QEESettings.instance.organTotalResourcesFloat)
+                amount = Math.Max((int)(ingredientCount.GetBaseCount() * QEESettings.instance.organTotalResourcesFloat),
+                    1)
             };
 
             orderProcessor.desiredIngredients.Add(copy);
@@ -309,7 +310,7 @@ public static class IngredientUtility
 
     public static int TotalCountForIngredient(RecipeDef recipe, IngredientCount ingCount)
     {
-        return (int)(ingCount.CountRequiredOfFor(ingCount.FixedIngredient, recipe) *
-                     QEESettings.instance.organTotalResourcesFloat);
+        return Math.Max((int)(ingCount.CountRequiredOfFor(ingCount.FixedIngredient, recipe) *
+                              QEESettings.instance.organTotalResourcesFloat), 1);
     }
 } //end class IngredientUtility

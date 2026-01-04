@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="kathanon_GrowthAccelerator_GrowthVatAccelerator"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationConditional">
+      <xpath>/Defs/ThingDef[defName="QE_Building_OrganVat" or defName="QE_PawnVat"]/comps/li[@Class="CompProperties_AffectedByFacilities"]</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="QE_Building_OrganVat" or defName="QE_PawnVat"]/comps/li[@Class="CompProperties_AffectedByFacilities"]</xpath>
+        <value>
+          <linkableFacilities>
+            <li>kathanon_GrowthAccelerator_GrowthVatAccelerator</li>
+          </linkableFacilities>
+        </value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="QE_Building_OrganVat" or defName="QE_PawnVat"]/comps</xpath>
+        <value>
+          <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+              <li>kathanon_GrowthAccelerator_GrowthVatAccelerator</li>
+            </linkableFacilities>
+          </li>
+        </value>
+      </nomatch>
+    </match>
+  </Operation>
+</Patch>

@@ -136,7 +136,7 @@
   <QE_MessagestapledPawnEnslaved>{0}に隷属させられた。 {1}てんしんはんだん</QE_MessagestapledPawnEnslaved>
   <QE_UseFillingGraphic>食材の充填を視覚化する</QE_UseFillingGraphic>
   <QE_UseFillingGraphicTooltip>桶が満杯になるまで空として表示される代わりに、桶が資源で満杯になるまで表示される。</QE_UseFillingGraphicTooltip>
-  <QE_MessageCloningFailedAnomaly>ゲノム配列の異常によりクローニングに大失敗。</QE_MessageCloningFailedAnomaly>
+  <QE_MessageCloningFailedAnomaly>異常なゲノム配列によりクローン作成は惨憺たる失敗に終わり、{0}は壊れた駒の残骸として出現した</QE_MessageCloningFailedAnomaly>
   <QE_GenomeSequencerRejectExcludedHediffShort>ゲノムシークエンシングを除くのヘディフ</QE_GenomeSequencerRejectExcludedHediffShort>
   <QE_BrainScanningRejectExcludedHediffShort>脳スキャンを除くのヘディフ</QE_BrainScanningRejectExcludedHediffShort>
   <QE_TemplatingRejectExcludedRaceShort>無効レース</QE_TemplatingRejectExcludedRaceShort>

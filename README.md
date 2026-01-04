@@ -1,6 +1,6 @@
 # [Questionable Ethics Enhanced (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2850854272)
 
-![Image](https://i.imgur.com/buuPQel.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of KongMDs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1787359789
@@ -18,9 +18,9 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2566962342
 
 Choose your ethics, ideology support integrated. Precepts are implemented at least on a first pass basis. Nerve stapling now also can automatically knock out pawns with more violent thoughts. Nerve staple's enslave and max suppression. Now also allows brain scanning to copy pawn ideology.
 
-![Image](https://i.imgur.com/pufA0kM.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.imgur.com/Z4GOv8H.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn manipulation features to Rimworld. See the Change Notes tab in Steam Workshop or the Github repository for info on the latest updates.
 
@@ -39,8 +39,8 @@ Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn m
 
 
 
-[img]https://i.imgur.com/Sr8GRm1.jpg][/img]
-[img]https://i.imgur.com/7HhYJby.jpg][/img]
+[img]https://img.litet.net/Sr8GRm1.jpg][/img]
+[img]https://img.litet.net/7HhYJby.jpg][/img]
 
 # Changes to Questionable Ethics mechanics
 
@@ -113,13 +113,13 @@ This mod patches in changes to vanilla organ defs, but does not remove anything 
 
 If you run into errors when adding this mod to your modlist, please let me know in the comments. This mod includes a Debug Mode toggle in the Mod Settings, which I would recommend setting to Enabled, if you have problems.
 
-![Image](https://i.imgur.com/PwoNOj4.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
+-  Always post your log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404)
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.

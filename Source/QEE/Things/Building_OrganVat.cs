@@ -13,8 +13,6 @@ namespace QEthics;
 /// </summary>
 public class Building_OrganVat : Building_GrowerBase_WorkTable
 {
-    private VatGrowerProperties vatGrowerPropsInt;
-
     /// <summary>
     ///     Ticks required to craft organ. Takes organGrowthRate ModSetting into account.
     /// </summary>
@@ -25,20 +23,15 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
     {
         get
         {
-            if (vatGrowerPropsInt != null)
+            if (field != null)
             {
-                return vatGrowerPropsInt;
+                return field;
             }
-
-            vatGrowerPropsInt = def.GetModExtension<VatGrowerProperties>();
 
             //Fallback; Is defaults.
-            if (vatGrowerPropsInt == null)
-            {
-                vatGrowerPropsInt = new VatGrowerProperties();
-            }
+            field = def.GetModExtension<VatGrowerProperties>() ?? new VatGrowerProperties();
 
-            return vatGrowerPropsInt;
+            return field;
         }
     }
 

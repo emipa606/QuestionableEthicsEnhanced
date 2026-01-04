@@ -11,12 +11,14 @@ namespace QEthics;
 /// </summary>
 public abstract class Building_GrowerBase : Building, IThingHolder
 {
+    private bool checkedAffectedComp;
+
+    private CompAffectedByFacilities compAffectedByFacilities;
+
     /// <summary>
     ///     Current progress being made during crafting.
     /// </summary>
     protected int craftingProgress;
-
-    private GrowerProperties growerPropsInt;
 
     /// <summary>
     ///     Internal container representation of stored items.
@@ -46,20 +48,15 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     {
         get
         {
-            if (growerPropsInt != null)
+            if (field != null)
             {
-                return growerPropsInt;
+                return field;
             }
-
-            growerPropsInt = def.GetModExtension<GrowerProperties>();
 
             //Fallback; Is defaults.
-            if (growerPropsInt == null)
-            {
-                growerPropsInt = new GrowerProperties();
-            }
+            field = def.GetModExtension<GrowerProperties>() ?? new GrowerProperties();
 
-            return growerPropsInt;
+            return field;
         }
     }
 
@@ -70,7 +67,7 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     /// </summary>
     protected abstract int TicksNeededToCraft { get; }
 
-    protected int TicksLeftToCraft => TicksNeededToCraft - craftingProgress;
+    protected int TicksLeftToCraft => (int)((TicksNeededToCraft - craftingProgress) / getAffectedBy());
 
     protected float CraftingProgressPercent
     {
@@ -145,6 +142,41 @@ public abstract class Building_GrowerBase : Building, IThingHolder
     protected virtual string TransformStatusLabel(string label)
     {
         return label;
+    }
+
+    private float getAffectedBy()
+    {
+        switch (checkedAffectedComp)
+        {
+            case true when compAffectedByFacilities == null:
+                return 1;
+            case false when !def.HasComp<CompAffectedByFacilities>():
+                checkedAffectedComp = true;
+                return 1;
+        }
+
+        var returnValue = 1f;
+        compAffectedByFacilities ??= GetComp<CompAffectedByFacilities>();
+
+        foreach (var thing in compAffectedByFacilities.LinkedFacilitiesListForReading)
+        {
+            if (!compAffectedByFacilities.IsFacilityActive(thing))
+            {
+                continue;
+            }
+
+            var statoffset = thing.def.GetCompProperties<CompProperties_Facility>().statOffsets
+                .FirstOrDefault(modifier => modifier.stat.defName.Contains("GrowthVatSpeed"));
+
+            if (statoffset != null)
+            {
+                returnValue += statoffset.value;
+            }
+        }
+
+
+        QEEMod.TryLog($"Modified growthspeed for {this}: {returnValue}");
+        return returnValue;
     }
 
     public override void Tick()
@@ -246,7 +278,11 @@ public abstract class Building_GrowerBase : Building, IThingHolder
             return;
         }
 
-        craftingProgress += 60;
+        var progressStep = 60;
+        progressStep = (int)(progressStep * getAffectedBy());
+
+        craftingProgress += progressStep;
+
         if (craftingProgress < TicksNeededToCraft)
         {
             return;
