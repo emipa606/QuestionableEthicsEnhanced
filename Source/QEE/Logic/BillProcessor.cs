@@ -63,6 +63,9 @@ public class BillProcessor : IExposable
         {
             _activeBill = value;
             _activeBillID = value.GetUniqueLoadID();
+            // Active bill changes which ingredients are actually desired (we only want to track requests for the active bill).
+            // Keep the request cache in sync so ingredient selection doesn't accidentally use data from other queued bills.
+            UpdateDesiredRequests();
         }
     }
 
