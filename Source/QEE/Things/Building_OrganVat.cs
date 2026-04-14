@@ -160,10 +160,8 @@ public class Building_OrganVat : Building_GrowerBase_WorkTable
     /// <param name="billToUse"></param>
     public override void Notify_FillingStarted(Bill billToUse)
     {
-        //update Bill Processor
-        //IngredientUtility.UpdateBillProcessorDesiredIng(billProc, billToUse);
-
-        //TODO - is this necessary?
+        // Ensure the bill processor's desired-ingredient cache is in sync with the (already-selected) active bill.
+        // This prevents ingredient selection from being influenced by other queued bills on the same vat.
         billProc.UpdateDesiredRequests();
 
         //Initialize maintenance
