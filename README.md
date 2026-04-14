@@ -39,8 +39,8 @@ Questionable Ethics Enhanced (QEE) is a content mod that adds cloning and pawn m
 
 
 
-[img]https://img.litet.net/Sr8GRm1.jpg][/img]
-[img]https://img.litet.net/7HhYJby.jpg][/img]
+![Image](https://img.litet.net/Sr8GRm1.jpg)
+![Image](https://img.litet.net/7HhYJby.jpg)
 
 # Changes to Questionable Ethics mechanics
 
@@ -127,4 +127,4 @@ If you run into errors when adding this mod to your modlist, please let me know 
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/QuestionableEthicsEnhanced?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2850854272) | tags: cloning,  organ manipulation
+[![Image](https://img.shields.io/github/v/release/emipa606/QuestionableEthicsEnhanced?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2850854272) | tags: organ manipulation, cloning

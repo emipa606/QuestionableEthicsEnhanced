@@ -40,48 +40,6 @@ public static class ThingFilterUtility
         return result;
     }
 
-    public static int TotalStackCountForFilterInContainer(this ThingFilter filter, ThingOwner thingOwner)
-    {
-        if (filter == null)
-        {
-            return 0;
-        }
-
-        if (thingOwner.Count <= 0)
-        {
-            return 0;
-        }
-
-        var result = 0;
-        foreach (var def in filter.AllowedThingDefs)
-        {
-            result += thingOwner.TotalStackCountOfDef(def);
-        }
-
-        return result;
-    }
-
-    public static int TotalStackCountForFilterInList(this ThingFilter filter, IList<Thing> thingList)
-    {
-        if (filter == null)
-        {
-            return 0;
-        }
-
-        if (thingList.Count <= 0)
-        {
-            return 0;
-        }
-
-        var result = 0;
-        foreach (var def in filter.AllowedThingDefs)
-        {
-            result += thingList.TotalStackCountOfDefInList(def);
-        }
-
-        return result;
-    }
-
     private static int TotalStackCountOfDefInList(this IList<Thing> thingList, ThingDef def)
     {
         if (thingList.Count <= 0)
@@ -99,5 +57,50 @@ public static class ThingFilterUtility
         }
 
         return result;
+    }
+
+    extension(ThingFilter filter)
+    {
+        public int TotalStackCountForFilterInContainer(ThingOwner thingOwner)
+        {
+            if (filter == null)
+            {
+                return 0;
+            }
+
+            if (thingOwner.Count <= 0)
+            {
+                return 0;
+            }
+
+            var result = 0;
+            foreach (var def in filter.AllowedThingDefs)
+            {
+                result += thingOwner.TotalStackCountOfDef(def);
+            }
+
+            return result;
+        }
+
+        public int TotalStackCountForFilterInList(IList<Thing> thingList)
+        {
+            if (filter == null)
+            {
+                return 0;
+            }
+
+            if (thingList.Count <= 0)
+            {
+                return 0;
+            }
+
+            var result = 0;
+            foreach (var def in filter.AllowedThingDefs)
+            {
+                result += thingList.TotalStackCountOfDefInList(def);
+            }
+
+            return result;
+        }
     }
 }

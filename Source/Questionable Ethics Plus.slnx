@@ -6,4 +6,85 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="QEE/QEthics.csproj" />
+  <Folder Name="/XML/1.6/Defs/ThoughtDefs/">
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_BrainScanningPrecept.xml" />
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_CloningPrecept.xml" />
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_Cyberslaving.xml" />
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_Memory_VatgrownClone.xml" />
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_OrganGrowingPrecept.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/HediffDefs/">
+    <File Path="../1.6/Defs/HediffDefs/Hediffs_Clone.xml" />
+    <File Path="../1.6/Defs/HediffDefs/Hediffs_Cyberslaving.xml" />
+    <File Path="../1.6/Defs/HediffDefs/Hediffs_NeuralDisruption.xml" />
+    <File Path="../1.6/Defs/HediffDefs/Hediffs_Rejection.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/WorkGiverDefs/">
+    <File Path="../1.6/Defs/WorkGiverDefs/WorkGivers_Grower.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/SpecialDefs/">
+    <File Path="../1.6/Defs/SpecialDefs/Backstories_OrganismVat.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/JobDefs/">
+    <File Path="../1.6/Defs/JobDefs/Jobs_Cloning.xml" />
+    <File Path="../1.6/Defs/JobDefs/Jobs_Grower.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ResearchDefs/">
+    <File Path="../1.6/Defs/ResearchDefs/Research_QuestionableEthics.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThingDefs/">
+    <File Path="../1.6/Defs/ThingDefs/Buildings_Vats.xml" />
+    <File Path="../1.6/Defs/ThingDefs/Items_BodyParts_QE.xml" />
+    <File Path="../1.6/Defs/ThingDefs/Items_BrainScanning.xml" />
+    <File Path="../1.6/Defs/ThingDefs/Items_GenomeSequencer.xml" />
+    <File Path="../1.6/Defs/ThingDefs/Items_Implants_Cyberslaving.xml" />
+    <File Path="../1.6/Defs/ThingDefs/Resources_Grower.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/WorkTypeDefs/">
+    <File Path="../1.6/Defs/WorkTypeDefs/WorkTypes_QuestionableEthics.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/TaleDefs/">
+    <File Path="../1.6/Defs/TaleDefs/Tales_Vatgrown.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/PreceptDefs/">
+    <File Path="../1.6/Defs/PreceptDefs/QE_BrainScanPrecepts.xml" />
+    <File Path="../1.6/Defs/PreceptDefs/QE_CloningPrecepts.xml" />
+    <File Path="../1.6/Defs/PreceptDefs/QE_NerveStaplingPrecepts.xml" />
+    <File Path="../1.6/Defs/PreceptDefs/QE_OrganVatPrecepts.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/QuestionableEthics.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/RecipeDefs/">
+    <File Path="../1.6/Defs/RecipeDefs/Recipe_Surgery_Installations_Cyberslaving.xml" />
+    <File Path="../1.6/Defs/RecipeDefs/Recipes_BrainScanning.xml" />
+    <File Path="../1.6/Defs/RecipeDefs/Recipes_GenomeSequence.xml" />
+    <File Path="../1.6/Defs/RecipeDefs/Recipes_Nutrients.xml" />
+    <File Path="../1.6/Defs/RecipeDefs/Recipes_OrganVat.xml" />
+    <File Path="../1.6/Defs/RecipeDefs/Recipes_Surgery_Installations_QE.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/HistoryTypeDefs/">
+    <File Path="../1.6/Defs/HistoryTypeDefs/HistoryEventDefs.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Patches/">
+    <File Path="../1.6/Patches/Add_Surgeries.xml" />
+    <File Path="../1.6/Patches/Compat_Arachne.xml" />
+    <File Path="../1.6/Patches/Compat_LOTR_Dwarves.xml" />
+    <File Path="../1.6/Patches/Compat_LOTR_Elves.xml" />
+    <File Path="../1.6/Patches/Compat_LOTR_Hobbits.xml" />
+    <File Path="../1.6/Patches/Compat_Mutants.xml" />
+    <File Path="../1.6/Patches/Compat_PsychicAwakening.xml" />
+    <File Path="../1.6/Patches/Compat_The_Witcher_Trials_Continued.xml" />
+    <File Path="../1.6/Patches/Compat_Xenohumans.xml" />
+    <File Path="../1.6/Patches/Ideology_Features.xml" />
+    <File Path="../1.6/Patches/Patch_Children.xml" />
+    <File Path="../1.6/Patches/Patch_Compatibility_TiberiumRim.xml" />
+    <File Path="../1.6/Patches/Patch_GrowthAccelerator.xml" />
+    <File Path="../1.6/Patches/Patch_Organs.xml" />
+    <File Path="../1.6/Patches/Patch_Relations.xml" />
+    <File Path="../1.6/Patches/Patch_VPNE.xml" />
+  </Folder>
 </Solution>

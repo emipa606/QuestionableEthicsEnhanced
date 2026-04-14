@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.6.3 - Fixed bill handling, thanks erhan1209
+
+
 1.6.2 - Fixed minimal values. Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2994273559]Growth Accelerator[/url]
 Used DeepL to update translations for French, Japanese
 

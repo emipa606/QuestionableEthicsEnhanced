@@ -39,48 +39,6 @@ public static class IngredientUtility
         return result;
     }
 
-    public static string FormatIngredientsInThingOrderProcessor(this ThingOrderProcessor orderProcessor,
-        string format = "{0} x {1}", char delimiter = ',')
-    {
-        var builder = new StringBuilder();
-
-        //Ingredients Wanted
-        foreach (var ingredient in orderProcessor.desiredIngredients)
-        {
-            builder.Append(string.Format(format, ingredient.LabelCap, ingredient.amount));
-            if (orderProcessor.desiredIngredients.Count <= 1 || ingredient == orderProcessor.desiredIngredients.Last())
-            {
-                continue;
-            }
-
-            builder.Append(delimiter);
-            builder.Append(' ');
-        }
-
-        return builder.ToString().TrimEndNewlines();
-    }
-
-    public static string FormatCachedIngredientsInThingOrderProcessor(this ThingOrderProcessor orderProcessor,
-        string format = "{0} x {1}", char delimiter = ',')
-    {
-        var builder = new StringBuilder();
-
-        //Ingredients Requested
-        foreach (var request in orderProcessor.PendingRequests)
-        {
-            builder.Append(string.Format(format, request.LabelCap, request.amount));
-            if (orderProcessor.PendingRequests.Count() <= 1 || request == orderProcessor.PendingRequests.Last())
-            {
-                continue;
-            }
-
-            builder.Append(delimiter);
-            builder.Append(' ');
-        }
-
-        return builder.ToString().TrimEndNewlines();
-    }
-
     public static string FormatIngredientsInThingOwner(this ThingOwner thingOwner, string format = "{0} x {1}",
         char delimiter = ',')
     {
@@ -312,5 +270,49 @@ public static class IngredientUtility
     {
         return Math.Max((int)(ingCount.CountRequiredOfFor(ingCount.FixedIngredient, recipe) *
                               QEESettings.instance.organTotalResourcesFloat), 1);
+    }
+
+    extension(ThingOrderProcessor orderProcessor)
+    {
+        public string FormatIngredientsInThingOrderProcessor(string format = "{0} x {1}", char delimiter = ',')
+        {
+            var builder = new StringBuilder();
+
+            //Ingredients Wanted
+            foreach (var ingredient in orderProcessor.desiredIngredients)
+            {
+                builder.Append(string.Format(format, ingredient.LabelCap, ingredient.amount));
+                if (orderProcessor.desiredIngredients.Count <= 1 ||
+                    ingredient == orderProcessor.desiredIngredients.Last())
+                {
+                    continue;
+                }
+
+                builder.Append(delimiter);
+                builder.Append(' ');
+            }
+
+            return builder.ToString().TrimEndNewlines();
+        }
+
+        public string FormatCachedIngredientsInThingOrderProcessor(string format = "{0} x {1}", char delimiter = ',')
+        {
+            var builder = new StringBuilder();
+
+            //Ingredients Requested
+            foreach (var request in orderProcessor.PendingRequests)
+            {
+                builder.Append(string.Format(format, request.LabelCap, request.amount));
+                if (orderProcessor.PendingRequests.Count() <= 1 || request == orderProcessor.PendingRequests.Last())
+                {
+                    continue;
+                }
+
+                builder.Append(delimiter);
+                builder.Append(' ');
+            }
+
+            return builder.ToString().TrimEndNewlines();
+        }
     }
 } //end class IngredientUtility
