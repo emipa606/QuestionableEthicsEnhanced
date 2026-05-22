@@ -323,7 +323,15 @@ public static class GenomeUtility
         if (pawn?.story is { } storyTracker)
         {
             QEEMod.TryLog("Setting Pawn_StoryTracker attributes for generated pawn.");
-            storyTracker.bodyType = genomeSequence.bodyType;
+            if (genomeSequence.bodyType != null)
+            {
+                storyTracker.bodyType = genomeSequence.bodyType;
+            }
+            else if (storyTracker.bodyType == null)
+            {
+                storyTracker.bodyType = pawn.gender == Gender.Female ? BodyTypeDefOf.Female : BodyTypeDefOf.Male;
+            }
+
             //sanity check to remove possibility of an Undefined crownType
             if (genomeSequence.crownType == null)
             {

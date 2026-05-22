@@ -29,6 +29,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
     private Material renderMaterial;
 
     private RenderTexture renderTexture;
+    private bool pawnRenderFailed;
 
     /// <summary>
     ///     From 0.0 to 1.0. If the maintenance is below 50% there is a chance for failure.
@@ -117,6 +118,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
         //Reset stuff
         pawnBeingGrown = null;
+        pawnRenderFailed = false;
 
         pawnKindToGrow = genome.pawnKindDef;
         status = CrafterStatus.Filling;
@@ -159,6 +161,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
             pawnBeingGrown.Rotation = Rotation.Opposite;
         }
 
+        pawnRenderFailed = false;
         return true;
     }
 
@@ -205,6 +208,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
                     PortraitsCache.PortraitsCacheUpdate();
                     lastLifestageAge = pawnBeingGrown.ageTracker.CurLifeStageRace;
                     renderTexture = null;
+                    renderMaterial = null;
                 }
             }
 
@@ -297,6 +301,7 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
         orderProcessor.Reset();
         renderTexture = null;
         renderMaterial = null;
+        pawnRenderFailed = false;
         lastLifestageAge = null;
         status = CrafterStatus.Idle;
         pawnKindToGrow = null;
@@ -484,55 +489,51 @@ public class Building_PawnVatGrower : Building_GrowerBase, IMaintainableGrower
 
         //Draw product
         drawAltitude += new Vector3(0f, 0.005f, 0f);
-        if (status is CrafterStatus.Crafting or CrafterStatus.Finished && pawnBeingGrown != null)
+        if (status is CrafterStatus.Crafting or CrafterStatus.Finished && pawnBeingGrown != null && !pawnRenderFailed)
         {
-            //code has been commented out as a seemingly nonworking pawn renderer? Legacy switch has been added
-            if (QEESettings.instance.oldCloningRender)
+            try
             {
                 if (pawnBeingGrown.RaceProps.Humanlike)
                 {
-                    QEEMod.TryLog("Pawn being grown is humanoid");
-                    if (renderTexture == null)
+                    var portraitSize = 256f;
+                    var portraitTexture = PortraitsCache.Get(
+                        pawnBeingGrown,
+                        new Vector2(portraitSize, portraitSize),
+                        Rotation.Opposite,
+                        cameraOffset: default,
+                        cameraZoom: 1.15f,
+                        supersample: true,
+                        compensateForUIScale: false,
+                        renderHeadgear: false,
+                        renderClothes: false,
+                        healthStateOverride: PawnHealthState.Mobile);
+
+                    if (renderTexture != portraitTexture || renderMaterial == null)
                     {
-                        QEEMod.TryLog("Pawn being grown is nulltexture");
-                        var size = 256;
-                        var renderTextureTemp = new RenderTexture(size, size, 24);
-                        //Find.PortraitRenderer.RenderPortrait(pawnBeingGrown, renderTextureTemp, default(Vector3), 1f);
-
-                        renderTexture = renderTextureTemp;
-                        var tempTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-                        RenderTexture.active = renderTexture;
-                        tempTexture.ReadPixels(new Rect(0, 0, size, size), 0, 0);
-                        tempTexture.Apply();
-                        RenderTexture.active = null;
-
-                        var req2 = new MaterialRequest(tempTexture)
+                        renderTexture = portraitTexture;
+                        renderMaterial = MaterialPool.MatFrom(new MaterialRequest(renderTexture)
                         {
-                            shader = ShaderDatabase.Mote
-                        };
-                        renderMaterial = MaterialPool.MatFrom(req2);
-
-                        //QEEMod.TryLog("DrawAt: New render texture");
+                            shader = ShaderDatabase.Cutout
+                        });
                     }
 
                     var scale = (0.2f + (CraftingProgressPercent * 0.8f)) * 1.75f;
-
                     var scaleVector = new Vector3(scale, 1f, scale);
                     var matrix = default(Matrix4x4);
                     matrix.SetTRS(drawAltitude + VatGrowerProps.productOffset, Quaternion.AngleAxis(0f, Vector3.up),
                         scaleVector);
 
                     Graphics.DrawMesh(MeshPool.plane10, matrix, renderMaterial, 0);
-                    //pawnBeingGrown.DrawAt(drawAltitude);
                 }
                 else
                 {
                     pawnBeingGrown.DrawNowAt(drawAltitude + VatGrowerProps.productOffset);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                pawnBeingGrown.DrawNowAt(drawAltitude + VatGrowerProps.productOffset);
+                pawnRenderFailed = true;
+                Log.Error($"[QEE] Pawn vat render failed for {pawnBeingGrown?.LabelShort ?? "unknown"}. Rendering vat shell only. Exception: {ex}");
             }
         }
 
