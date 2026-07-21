@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_BrainScanned_Approved.stages.brain_scanned_someone.label>alguém teve o cérebro escaneado</QE_BrainScanned_Approved.stages.brain_scanned_someone.label>
+  <QE_BrainScanned_Approved.stages.brain_scanned_someone.description>Permitimos que alguém tivesse sua memória e conhecimento preservados. O que poderia ser mais importante?</QE_BrainScanned_Approved.stages.brain_scanned_someone.description>
+  <QE_BrainScanned_Unethical.stages.brain_scanned_someone.label>alguém teve o cérebro escaneado</QE_BrainScanned_Unethical.stages.brain_scanned_someone.label>
+  <QE_BrainScanned_Unethical.stages.brain_scanned_someone.description>Criamos uma cópia de uma pessoa. Isto não é uma nave, não deveríamos precisar discutir isso.</QE_BrainScanned_Unethical.stages.brain_scanned_someone.description>
+  <QE_BrainUpload_Unethical.stages.applied_brain_scan.label>escaneamento cerebral aplicado</QE_BrainUpload_Unethical.stages.applied_brain_scan.label>
+  <QE_BrainUpload_Unethical.stages.applied_brain_scan.description>Nós... nós registramos e depois sobrescrevemos os pensamentos de uma pessoa. Isso... isso é... abominável.</QE_BrainUpload_Unethical.stages.applied_brain_scan.description>
+  <QE_BrainUploaded_Approved.stages.brain_scanned_someone.label>alguém teve o cérebro escaneado</QE_BrainUploaded_Approved.stages.brain_scanned_someone.label>
+  <QE_BrainUploaded_Approved.stages.brain_scanned_someone.description>Transmitimos pensamentos, habilidades e memórias de um indivíduo para outro.</QE_BrainUploaded_Approved.stages.brain_scanned_someone.description>
+</LanguageData>

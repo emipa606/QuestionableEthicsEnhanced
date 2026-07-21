@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_NerveStapled.stages.nerve_stapled.label>grampeado neuralmente</QE_NerveStapled.stages.nerve_stapled.label>
+  <QE_NerveStapled.stages.nerve_stapled.description>Sinto-me estranho. Devo obedecer.</QE_NerveStapled.stages.nerve_stapled.description>
+  <QE_NerveStapledColonist.stages.nerve_stapled_colonist.label>colono grampeado neuralmente</QE_NerveStapledColonist.stages.nerve_stapled_colonist.label>
+  <QE_NerveStapledColonist.stages.nerve_stapled_colonist.description>Isto é horrível. Acabamos de roubar o livre-arbítrio de um dos nossos.</QE_NerveStapledColonist.stages.nerve_stapled_colonist.description>
+  <QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.label>colono grampeado neuralmente</QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.label>
+  <QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.description>É lamentável que tenha sido um dos nossos, mas eles deveriam se sentir honrados em nos servir.</QE_NerveStapledColonist_Approved.stages.nerve_stapled_colonist.description>
+  <QE_NerveStapledMe.stages.nerve_stapled_me.label>fui grampeado neuralmente</QE_NerveStapledMe.stages.nerve_stapled_me.label>
+  <QE_NerveStapledPawn.stages.nerve_stapled_someone.label>alguém grampeado neuralmente</QE_NerveStapledPawn.stages.nerve_stapled_someone.label>
+  <QE_NerveStapledPawn.stages.nerve_stapled_someone.description>Isto é horrível. Acabamos de roubar o livre-arbítrio de alguém.</QE_NerveStapledPawn.stages.nerve_stapled_someone.description>
+  <QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.label>alguém grampeado neuralmente</QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.label>
+  <QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.description>O que poderia ser mais honroso do que nos servir pelo resto de suas vidas, sem qualquer resistência?</QE_NerveStapledPawn_Approved.stages.nerve_stapled_someone.description>
+  <QE_NerveStapledResistance.stages.nerve_stapled_resistance.label>grampeado neuralmente (resistência)</QE_NerveStapledResistance.stages.nerve_stapled_resistance.label>
+  <QE_NerveStapledResistance.stages.nerve_stapled_resistance.description>Ugh! Devo resistir. De algum jeito...</QE_NerveStapledResistance.stages.nerve_stapled_resistance.description>
+  <QE_RecentlyNerveStapled.stages.recently_nerve_stapled.label>grampeado neuralmente recentemente</QE_RecentlyNerveStapled.stages.recently_nerve_stapled.label>
+  <QE_RecentlyNerveStapled.stages.recently_nerve_stapled.description>AHHH! O que está acontecendo comigo!?</QE_RecentlyNerveStapled.stages.recently_nerve_stapled.description>
+</LanguageData>

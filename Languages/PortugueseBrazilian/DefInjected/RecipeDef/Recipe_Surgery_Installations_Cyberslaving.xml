@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_InstallNerveStaple.label>instalar grampo neural</QE_InstallNerveStaple.label>
+  <QE_InstallNerveStaple.description>Instala um grampo neural, escravizando a vítima à força e a suprimindo permanentemente. Encerra automaticamente qualquer sinal de surto mental.</QE_InstallNerveStaple.description>
+  <QE_InstallNerveStaple.jobString>Grampeando os nervos.</QE_InstallNerveStaple.jobString>
+  <QE_Make_NerveStaples.label>fabricar grampos neurais</QE_Make_NerveStaples.label>
+  <QE_Make_NerveStaples.description>Fabrica um grampo neural.</QE_Make_NerveStaples.description>
+  <QE_Make_NerveStaples.jobString>Fabricando grampos neurais.</QE_Make_NerveStaples.jobString>
+</LanguageData>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_AdvancedRefining.label>refino avançado</QE_AdvancedRefining.label>
+  <QE_AdvancedRefining.description>Sintetize massa proteica a partir de solução nutritiva na Refinaria de Biocombustível. Avanços na química tornaram possível sequestrar processos biológicos naturais dessa forma.</QE_AdvancedRefining.description>
+  <QE_BrainScanning.label>escaneamento de ondas cerebrais</QE_BrainScanning.label>
+  <QE_BrainScanning.description>Crie um escâner cerebral na Bancada de Usinagem capaz de mapear as ondas cerebrais de um colono. O modelo cerebral preserva as proficiências de habilidade e as paixões do colono. Aplique o modelo em clones recém-criados para deixá-los prontos rapidamente, ou use-o em outros colonos para aumentar sua eficácia.</QE_BrainScanning.description>
+  <QE_Distillation.label>destilação biológica</QE_Distillation.label>
+  <QE_Distillation.description>Destile solução nutritiva e massa proteica na Refinaria de Biocombustível. Ambas são de importância vital ao cultivar tecido vivo em cubas.</QE_Distillation.description>
+  <QE_Edibles.label>comestíveis</QE_Edibles.label>
+  <QE_Edibles.description>Crie carne sintética e pasta nutritiva em fogões de cozinha.</QE_Edibles.description>
+  <QE_GenomeSequencing.label>sequenciamento de genoma</QE_GenomeSequencing.label>
+  <QE_GenomeSequencing.description>Crie Sequenciadores de Genoma na Bancada de Usinagem. Clique com o botão direito no sequenciador e escolha um colono vivo ou morto para sequenciar sua constituição genética por meio de cirurgia.</QE_GenomeSequencing.description>
+  <QE_NerveStapling.label>grampeamento neural</QE_NerveStapling.label>
+  <QE_NerveStapling.description>Crie um implante cerebral de alto custo na Bancada de Usinagem que estimula os centros de controle do cérebro, permitindo que um colono seja facilmente controlado. Ele pode transformar o prisioneiro mais indisciplinado em um escravo submisso, mas é considerado atroz por muitas sociedades civilizadas. Como efeito colateral, a capacidade de aprendizado do colono é gravemente prejudicada.</QE_NerveStapling.description>
+  <QE_Neutroamine.label>síntese de neutroamina</QE_Neutroamine.label>
+  <QE_Neutroamine.description>Sintetize neutroamina a partir de solução nutritiva e massa proteica combinando habilmente células-tronco com organismos bioengenheirados. A neutroamina agora pode ser fabricada no Laboratório de Drogas.</QE_Neutroamine.description>
+  <QE_OrganVat.label>cuba de órgãos</QE_OrganVat.label>
+  <QE_OrganVat.description>Construa Cubas de Órgãos que cultivam órgãos com solução nutritiva e massa proteica. O primeiro passo para entender como cultivar seres vivos completos é cultivar partes deles.</QE_OrganVat.description>
+  <QE_OrganVat_Bones.label>ossos naturais</QE_OrganVat_Bones.label>
+  <QE_OrganVat_Bones.description>Cultive ossos na Cuba de Órgãos.</QE_OrganVat_Bones.description>
+  <QE_OrganVat_InternalOrgans.label>órgãos internos naturais</QE_OrganVat_InternalOrgans.label>
+  <QE_OrganVat_InternalOrgans.description>Cultive órgãos internos naturais na Cuba de Órgãos.</QE_OrganVat_InternalOrgans.description>
+  <QE_OrganVat_Limbs.label>membros naturais</QE_OrganVat_Limbs.label>
+  <QE_OrganVat_Limbs.description>Cultive braços, mãos, pernas e pés naturais na Cuba de Órgãos.</QE_OrganVat_Limbs.description>
+  <QE_OrganVat_SensoryOrgans.label>órgãos sensoriais naturais</QE_OrganVat_SensoryOrgans.label>
+  <QE_OrganVat_SensoryOrgans.description>Cultive olhos, orelhas e narizes naturais na Cuba de Órgãos.</QE_OrganVat_SensoryOrgans.description>
+  <QE_VatGrownBeings.label>cuba de clones</QE_VatGrownBeings.label>
+  <QE_VatGrownBeings.description>Cultive um ser vivo em uma Cuba de Clones. Seres maiores precisam de mais nutrientes e proteínas para crescer. Os clones serão criados sem pontos de habilidade e com paixões aleatórias, mas pesquisas futuras podem modificar isso sem treinamento.</QE_VatGrownBeings.description>
+</LanguageData>

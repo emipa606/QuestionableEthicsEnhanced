@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Meat_QESynthMeat.label>carne sintética</Meat_QESynthMeat.label>
+  <Meat_QESynthMeat.description>Parece carne, incluindo vários tendões e placas de gordura. O sabor, no entanto, deixa muito a desejar.</Meat_QESynthMeat.description>
+  <QE_NutrientSolution.label>solução nutritiva</QE_NutrientSolution.label>
+  <QE_NutrientSolution.description>Uma mistura de água, aminoácidos, gorduras e vitaminas usada para cultivar clones ou órgãos.</QE_NutrientSolution.description>
+  <QE_ProteinMash.label>massa proteica</QE_ProteinMash.label>
+  <QE_ProteinMash.description>Proteínas de diferentes fontes misturadas em uma massa repugnante. Perfeita para cultivar órgãos e seres vivos.</QE_ProteinMash.description>
+</LanguageData>

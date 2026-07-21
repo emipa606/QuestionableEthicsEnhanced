@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_BrainTemplated.label>modelo cerebral aplicado</QE_BrainTemplated.label>
+  <QE_BrainTemplated.description>Um modelo cerebral foi aplicado em algum momento do passado desta pessoa. (Se você quiser aplicar outro e estiver usando o modo debug para ver isto, remover este hediff deve permitir que você faça isso.)</QE_BrainTemplated.description>
+  <QE_CloneStatus.label>clone</QE_CloneStatus.label>
+  <QE_CloneStatus.description>Clone</QE_CloneStatus.description>
+  <QE_Headache.label>dor de cabeça</QE_Headache.label>
+  <QE_Headache.description>Dor de cabeça</QE_Headache.description>
+</LanguageData>

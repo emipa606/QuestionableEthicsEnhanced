@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BrainScan.label>Um cérebro foi escaneado para futuro carregamento</BrainScan.label>
+  <BrainUploaded.label>Um cérebro foi carregado em um clone.</BrainUploaded.label>
+  <GenomeSalvagedFromCorpse.label>Um genoma foi sequenciado a partir de um cadáver.</GenomeSalvagedFromCorpse.label>
+  <GenomeSequenced.label>Um genoma foi sequenciado em preparação para os esforços de clonagem.</GenomeSequenced.label>
+  <NerveStapledColonist.label>Um colono recebeu um grampo neural.</NerveStapledColonist.label>
+  <NerveStapledPawn.label>Um colono recebeu um grampo neural.</NerveStapledPawn.label>
+  <OrganGrown.label>Um órgão foi finalizado em uma cuba.</OrganGrown.label>
+  <PawnCloned.label>Um novo clone foi criado, recém-saído da cuba.</PawnCloned.label>
+</LanguageData>

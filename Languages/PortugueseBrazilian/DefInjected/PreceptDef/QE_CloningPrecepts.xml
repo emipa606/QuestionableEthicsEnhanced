@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_CloningAbhorrent.label>Antiético</QE_CloningAbhorrent.label>
+  <QE_CloningAbhorrent.description>Trazer nova vida a este mundo em um tubo de ensaio é horrível, absolutamente antiético.</QE_CloningAbhorrent.description>
+  <QE_CloningApproved.label>Aprovado</QE_CloningApproved.label>
+  <QE_CloningApproved.description>A clonagem é uma tarefa valiosa, gerando uma nova geração com grande facilidade.</QE_CloningApproved.description>
+  <QE_CloningNeutral.label>Neutro</QE_CloningNeutral.label>
+  <QE_CloningNeutral.description>A clonagem é o que é. Não é nem boa, nem má.</QE_CloningNeutral.description>
+</LanguageData>

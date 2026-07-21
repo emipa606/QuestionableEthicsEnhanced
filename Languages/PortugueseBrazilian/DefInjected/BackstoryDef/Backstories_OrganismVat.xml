@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Backstory_ColonyVatgrown.description>[PAWN_nameDef] foi cultivado em uma cuba de clonagem. [PAWN_pronoun] emergiu da cuba sem nenhuma habilidade, mas tem um grande potencial de aprendizado.</Backstory_ColonyVatgrown.description>
+  <Backstory_ColonyVatgrown.title>clone de cuba da colônia</Backstory_ColonyVatgrown.title>
+  <Backstory_ColonyVatgrown.titleFemale>clone de cuba da colônia</Backstory_ColonyVatgrown.titleFemale>
+  <Backstory_ColonyVatgrown.titleShort>clone de cuba</Backstory_ColonyVatgrown.titleShort>
+  <Backstory_ColonyVatgrown.titleShortFemale>clone de cuba</Backstory_ColonyVatgrown.titleShortFemale>
+</LanguageData>

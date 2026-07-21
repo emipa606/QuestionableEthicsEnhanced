@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_NeuralDisruption.label>Perturbação neural</QE_NeuralDisruption.label>
+  <QE_NeuralDisruption.description>Um grampo neural decidiu suprimir temporariamente a consciência da pessoa.</QE_NeuralDisruption.description>
+  <QE_NeuralDisruption.stages.Recovering.label>Recuperando</QE_NeuralDisruption.stages.Recovering.label>
+  <QE_NeuralDisruption.stages.Reconnecting.label>Reconectando</QE_NeuralDisruption.stages.Reconnecting.label>
+  <QE_NeuralDisruption.stages.Disrupting.label>Perturbando</QE_NeuralDisruption.stages.Disrupting.label>
+</LanguageData>

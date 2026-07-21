@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Make_NutrientSolutionFromOrganics.label>fabricar solução nutritiva a partir de matéria orgânica</Make_NutrientSolutionFromOrganics.label>
+  <Make_NutrientSolutionFromOrganics.description>Fabrica um lote de solução nutritiva extraindo nutrientes de matérias-primas orgânicas.</Make_NutrientSolutionFromOrganics.description>
+  <Make_NutrientSolutionFromOrganics.jobString>Refinando solução nutritiva a partir de matéria orgânica.</Make_NutrientSolutionFromOrganics.jobString>
+  <Make_ProteinMashFromNutrientSolution.label>fabricar massa proteica a partir de solução nutritiva</Make_ProteinMashFromNutrientSolution.label>
+  <Make_ProteinMashFromNutrientSolution.description>Fabrica um lote de massa proteica refinando ainda mais a solução nutritiva. Esse processo é lento e consome muitos nutrientes por causa das enzimas necessárias para sintetizar proteína.</Make_ProteinMashFromNutrientSolution.description>
+  <Make_ProteinMashFromNutrientSolution.jobString>Sintetizando massa proteica a partir de solução nutritiva.</Make_ProteinMashFromNutrientSolution.jobString>
+  <Make_ProteinMashFromOrganics.label>fabricar massa proteica a partir de matéria orgânica</Make_ProteinMashFromOrganics.label>
+  <Make_ProteinMashFromOrganics.description>Fabrica um lote de massa proteica extraindo proteína de matérias-primas ricas em proteína.</Make_ProteinMashFromOrganics.description>
+  <Make_ProteinMashFromOrganics.jobString>Refinando massa proteica a partir de matéria orgânica.</Make_ProteinMashFromOrganics.jobString>
+  <Make_QENeutroamine.label>fabricar neutroamina a partir de solução nutritiva e massa proteica</Make_QENeutroamine.label>
+  <Make_QENeutroamine.description>Fabrica neutroamina.</Make_QENeutroamine.description>
+  <Make_QENeutroamine.jobString>Sintetizando neutroamina a partir de solução nutritiva e massa proteica.</Make_QENeutroamine.jobString>
+  <Make_QENutrientPaste.label>fabricar refeição de pasta nutritiva a partir de solução nutritiva</Make_QENutrientPaste.label>
+  <Make_QENutrientPaste.description>Fabrica uma refeição de pasta nutritiva.</Make_QENutrientPaste.description>
+  <Make_QENutrientPaste.jobString>Sintetizando refeição de pasta nutritiva a partir de solução nutritiva.</Make_QENutrientPaste.jobString>
+  <Make_QESynthMeat.label>fabricar carne sintética a partir de massa proteica</Make_QESynthMeat.label>
+  <Make_QESynthMeat.description>Fabrica um lote de carne sintética crua.</Make_QESynthMeat.description>
+  <Make_QESynthMeat.jobString>Sintetizando carne sintética a partir de massa proteica.</Make_QESynthMeat.jobString>
+</LanguageData>

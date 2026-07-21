@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_BrainScanning.label>escanear cérebro</QE_BrainScanning.label>
+  <QE_BrainScanning.description>Escaneia exaustivamente o cérebro do paciente. Ele ficará bastante tonto após a cirurgia. Fazer isso em seres de facções neutras ou aliadas será considerado uma violação.</QE_BrainScanning.description>
+  <QE_BrainScanning.jobString>Escaneando o cérebro.</QE_BrainScanning.jobString>
+  <QE_Make_BrainScanner.label>fabricar escâner cerebral</QE_Make_BrainScanner.label>
+  <QE_Make_BrainScanner.description>Fabrica um escâner cerebral.</QE_Make_BrainScanner.description>
+  <QE_Make_BrainScanner.jobString>Fabricando um escâner cerebral.</QE_Make_BrainScanner.jobString>
+</LanguageData>

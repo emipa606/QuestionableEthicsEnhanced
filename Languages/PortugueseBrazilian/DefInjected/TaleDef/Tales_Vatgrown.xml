@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_Vatgrown.label>clone de cuba</QE_Vatgrown.label>
+    <li>tale_noun->[PAWN_nameDef] nascendo em uma cuba de clonagem</li>
+    <li>image->[PAWN_nameFull] emergindo da cuba de clonagem [circumstance_group]</li>
+    <li>image->[PAWN_nameFull] sendo gerado artificialmente em uma cuba de clonagem [circumstance_group]</li>
+    <li>circumstance_phrase->com um olhar vazio</li>
+    <li>circumstance_phrase->com uma expressão de admiração</li>
+    <li>circumstance_phrase->com um olhar confiante</li>
+    <li>circumstance_phrase->completamente nu</li>
+    <li>circumstance_phrase->coberto de gosma nutritiva</li>
+    <li>circumstance_phrase->tocando hesitantemente [PAWN_possessive] rosto</li>
+    <li>desc_sentence->[PAWN_pronoun] parece totalmente alheio ao que está ao redor de [PAWN_objective].</li>
+    <li>desc_sentence->[PAWN_pronoun] está incrivelmente confuso com [PAWN_possessive] novo ambiente.</li>
+    <li>desc_sentence->[PAWN_pronoun] quer voltar à segurança da cuba de clonagem.</li>
+    <li>desc_sentence->[PAWN_pronoun] não faz ideia do que está acontecendo.</li>
+    <li>desc_sentence->[PAWN_pronoun] faz algumas tentativas confusas de falar.</li>
+    <li>desc_sentence->[PAWN_pronoun] começa a chorar histericamente ao ver [Animal] pela primeira vez.</li>
+    <li>desc_sentence->[Animal] observa com curiosidade.</li>
+    <li>desc_sentence->[Animal] observa com nojo.</li>
+    <li>desc_sentence->[PersonJob] observa a cena maravilhado.</li>
+    <li>desc_sentence->[PersonJob] observa com um olhar de medo.</li>
+    <li>desc_sentence->[PersonJob] observa com um olhar de luxúria.</li>
+</LanguageData>

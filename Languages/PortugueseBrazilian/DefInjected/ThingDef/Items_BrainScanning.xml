@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_BrainScanner.label>escâner cerebral</QE_BrainScanner.label>
+  <QE_BrainScanner.description>Um conjunto de ferramentas usado para mapear as ondas cerebrais de seres vivos. Um cirurgião o utiliza para mapear metodicamente o cérebro do paciente em um modelo cerebral. Quando usado em humanos, captura suas proficiências em habilidades e paixões. Quando usado em animais, captura seu adestramento.</QE_BrainScanner.description>
+  <QE_BrainScannerFilled.label>modelo cerebral</QE_BrainScannerFilled.label>
+  <QE_BrainScannerFilled.description>Um bloco de dados preenchido com a rede neural completa do cérebro de um ser vivo. Com uma pessoa selecionada, clique com o botão direito neste item e selecione outra pessoa para aplicar o modelo. Este escaneamento é reutilizável</QE_BrainScannerFilled.description>
+</LanguageData>

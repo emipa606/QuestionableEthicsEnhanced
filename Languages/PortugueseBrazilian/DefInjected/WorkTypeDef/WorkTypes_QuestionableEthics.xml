@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_MaintainVat.description>Faz a manutenção de cubas de organismos usando conhecimento médico e analítico.</QE_MaintainVat.description>
+  <QE_MaintainVat.gerundLabel>fazendo manutenção</QE_MaintainVat.gerundLabel>
+  <QE_MaintainVat.labelShort>Manutenção de cuba</QE_MaintainVat.labelShort>
+  <QE_MaintainVat.pawnLabel>Biólogo</QE_MaintainVat.pawnLabel>
+  <QE_MaintainVat.verb>Fazer manutenção</QE_MaintainVat.verb>
+</LanguageData>

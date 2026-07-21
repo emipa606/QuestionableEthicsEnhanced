@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_OrganGrowing_Approved.stages.grew_organ_in_vat.label>cultivou um órgão em cuba</QE_OrganGrowing_Approved.stages.grew_organ_in_vat.label>
+  <QE_OrganGrowing_Approved.stages.grew_organ_in_vat.description>Cultivamos um órgão sem extraí-lo de um ser vivo. Isto pode salvar muitas vidas.</QE_OrganGrowing_Approved.stages.grew_organ_in_vat.description>
+  <QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.label>cultivou um órgão em cuba</QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.label>
+  <QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.description>Criamos um órgão artificial, cultivado em uma cuba, e o chamamos de natural.</QE_OrganGrowing_Unethical.stages.grew_organ_in_vat.description>
+</LanguageData>
