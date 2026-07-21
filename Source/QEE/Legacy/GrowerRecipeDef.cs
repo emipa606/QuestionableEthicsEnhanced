@@ -6,19 +6,12 @@ namespace QEthics;
 /// <summary>
 ///     Recipe for a Grower.
 /// </summary>
-public class GrowerRecipeDef : Def
+public class GrowerRecipeDef : RecipeDef
 {
     /// <summary>
     ///     How long it take to craft the recipe.
     /// </summary>
     public readonly int craftingTime = 1;
-
-    //public ThingFilter fixedIngredientFilter = new ThingFilter();
-
-    /// <summary>
-    ///     What ingredients the recipe need in order to start being produced.
-    /// </summary>
-    public readonly List<IngredientCount> ingredients = [];
 
     /// <summary>
     ///     Useful when sorting by order.
@@ -33,7 +26,7 @@ public class GrowerRecipeDef : Def
     /// <summary>
     ///     Users that can use this recipe.
     /// </summary>
-    private readonly List<ThingDef> recipeUsers = [];
+    private readonly List<ThingDef> strecipeUsers = [];
 
     /// <summary>
     ///     How much maintenance is drained per tick during crafting.

@@ -1,5 +1,8 @@
 # Changelog for QuestionableEthicsEnhanced
 
+1.6.5 - Brazilian Portuguese translation, thanks heinrikdev
+
+
 1.6.4 - Non standard head types are redered correctly in the grower
 
 
