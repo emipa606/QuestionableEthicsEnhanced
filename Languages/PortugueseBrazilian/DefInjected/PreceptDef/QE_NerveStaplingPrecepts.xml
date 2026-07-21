@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_NerveStaplingAbhorrent.label>abominável</QE_NerveStaplingAbhorrent.label>
+  <QE_NerveStaplingAbhorrent.description>Tirar o livre-arbítrio de alguém e reduzi-lo a mero trabalho braçal é incrivelmente e inegavelmente antiético.</QE_NerveStaplingAbhorrent.description>
+  <QE_NerveStaplingAbhorrent.comps.2.description>Ninguém merece perder o livre-arbítrio.</QE_NerveStaplingAbhorrent.comps.2.description>
+  <QE_NerveStaplingAbhorrent.comps.3.description>É ainda pior tirar o livre-arbítrio de um dos nossos.</QE_NerveStaplingAbhorrent.comps.3.description>
+  <QE_NerveStaplingApproved.label>Aprovado</QE_NerveStaplingApproved.label>
+  <QE_NerveStaplingApproved.description>É um aumento e tanto de eficiência. E, afinal, não é como se eles ainda se importassem, certo...?</QE_NerveStaplingApproved.description>
+  <QE_NerveStaplingApproved.comps.2.description>É honroso um colono nos servir sem hesitação. Infeliz, se necessário, mas honroso.</QE_NerveStaplingApproved.comps.2.description>
+  <QE_NerveStaplingApproved.comps.3.description>Remover a resistência deles aumenta muito a eficiência, além de eliminar parte da ambiguidade de manter uma pessoa que se opõe.</QE_NerveStaplingApproved.comps.3.description>
+  <QE_NerveStaplingNeutral.label>Neutro</QE_NerveStaplingNeutral.label>
+  <QE_NerveStaplingNeutral.description>O grampeamento neural é apenas o que é. Não há nada de excepcional em fazer o que for preciso para sobreviver.</QE_NerveStaplingNeutral.description>
+  <QE_NerveStaplingOutsidersOnly.label>Apenas forasteiros</QE_NerveStaplingOutsidersOnly.label>
+  <QE_NerveStaplingOutsidersOnly.description>É abominável grampear um dos nossos, mas um forasteiro está liberado.</QE_NerveStaplingOutsidersOnly.description>
+  <QE_NerveStaplingOutsidersOnly.comps.0.description>É inaceitável grampear um dos nossos quando forasteiros podem trabalhar para nós no lugar.</QE_NerveStaplingOutsidersOnly.comps.0.description>
+</LanguageData>

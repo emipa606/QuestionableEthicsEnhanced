@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_InstallNaturalArm.label>instalar braço</QE_InstallNaturalArm.label>
+  <QE_InstallNaturalArm.description>Instala um braço biológico.</QE_InstallNaturalArm.description>
+  <QE_InstallNaturalArm.jobString>Instalando braço.</QE_InstallNaturalArm.jobString>
+  <QE_InstallNaturalEar.label>instalar orelha</QE_InstallNaturalEar.label>
+  <QE_InstallNaturalEar.description>Instala uma orelha biológica.</QE_InstallNaturalEar.description>
+  <QE_InstallNaturalEar.jobString>Instalando orelha.</QE_InstallNaturalEar.jobString>
+  <QE_InstallNaturalEye.label>instalar olho</QE_InstallNaturalEye.label>
+  <QE_InstallNaturalEye.description>Instala um olho biológico.</QE_InstallNaturalEye.description>
+  <QE_InstallNaturalEye.jobString>Instalando olho.</QE_InstallNaturalEye.jobString>
+  <QE_InstallNaturalFoot.label>instalar pé</QE_InstallNaturalFoot.label>
+  <QE_InstallNaturalFoot.description>Instala um pé biológico.</QE_InstallNaturalFoot.description>
+  <QE_InstallNaturalFoot.jobString>Instalando pé.</QE_InstallNaturalFoot.jobString>
+  <QE_InstallNaturalHand.label>instalar mão</QE_InstallNaturalHand.label>
+  <QE_InstallNaturalHand.description>Instala uma mão biológica.</QE_InstallNaturalHand.description>
+  <QE_InstallNaturalHand.jobString>Instalando mão.</QE_InstallNaturalHand.jobString>
+  <QE_InstallNaturalJaw.label>instalar mandíbula</QE_InstallNaturalJaw.label>
+  <QE_InstallNaturalJaw.description>Instala uma mandíbula biológica.</QE_InstallNaturalJaw.description>
+  <QE_InstallNaturalJaw.jobString>Instalando mandíbula.</QE_InstallNaturalJaw.jobString>
+  <QE_InstallNaturalLeg.label>instalar perna</QE_InstallNaturalLeg.label>
+  <QE_InstallNaturalLeg.description>Instala uma perna biológica.</QE_InstallNaturalLeg.description>
+  <QE_InstallNaturalLeg.jobString>Instalando perna.</QE_InstallNaturalLeg.jobString>
+  <QE_InstallNaturalNose.label>instalar nariz</QE_InstallNaturalNose.label>
+  <QE_InstallNaturalNose.description>Instala um nariz biológico.</QE_InstallNaturalNose.description>
+  <QE_InstallNaturalNose.jobString>Instalando nariz.</QE_InstallNaturalNose.jobString>
+  <QE_InstallNaturalPelvis.label>instalar pelve</QE_InstallNaturalPelvis.label>
+  <QE_InstallNaturalPelvis.description>Instala uma pelve biológica.</QE_InstallNaturalPelvis.description>
+  <QE_InstallNaturalPelvis.jobString>Instalando pelve.</QE_InstallNaturalPelvis.jobString>
+  <QE_InstallNaturalSpine.label>instalar coluna vertebral</QE_InstallNaturalSpine.label>
+  <QE_InstallNaturalSpine.description>Instala uma coluna vertebral biológica.</QE_InstallNaturalSpine.description>
+  <QE_InstallNaturalSpine.jobString>Instalando coluna vertebral.</QE_InstallNaturalSpine.jobString>
+  <QE_InstallNaturalStomach.label>instalar estômago</QE_InstallNaturalStomach.label>
+  <QE_InstallNaturalStomach.description>Instala um estômago biológico.</QE_InstallNaturalStomach.description>
+  <QE_InstallNaturalStomach.jobString>Instalando estômago.</QE_InstallNaturalStomach.jobString>
+  <QE_InstallNaturalTongue.label>instalar língua</QE_InstallNaturalTongue.label>
+  <QE_InstallNaturalTongue.description>Instala uma língua biológica.</QE_InstallNaturalTongue.description>
+  <QE_InstallNaturalTongue.jobString>Instalando língua.</QE_InstallNaturalTongue.jobString>
+</LanguageData>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_ClonedApproved.stages.cloned_someone.label>clonou alguém</QE_ClonedApproved.stages.cloned_someone.label>
+  <QE_ClonedApproved.stages.cloned_someone.description>Hoje é um dia de alegria, criamos um novo ser. Isto deve ser celebrado.</QE_ClonedApproved.stages.cloned_someone.description>
+  <QE_ClonedSomeoneUnethical.stages.cloned_someone.label>clonou alguém</QE_ClonedSomeoneUnethical.stages.cloned_someone.label>
+  <QE_ClonedSomeoneUnethical.stages.cloned_someone.description>Trouxemos uma nova vida a este mundo em um tubo de ensaio. Estamos brincando de Deus com forças que não compreendemos.</QE_ClonedSomeoneUnethical.stages.cloned_someone.description>
+  <QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.label>genoma sequenciado a partir de um cadáver</QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.label>
+  <QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.description>Preservamos os genes dos que tombaram. Isto nos permite lembrar deles.</QE_CorpseGenome_Approved.stages.sequenced_genome_from_corpse.description>
+  <QE_GenomeSequenceApproved.stages.sequenced_genome.label>genoma sequenciado</QE_GenomeSequenceApproved.stages.sequenced_genome.label>
+  <QE_GenomeSequenceApproved.stages.sequenced_genome.description>Preservamos o genoma de alguém para uso futuro.</QE_GenomeSequenceApproved.stages.sequenced_genome.description>
+  <QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.label>genoma sequenciado a partir de um cadáver</QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.label>
+  <QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.description>Deveríamos deixar os mortos descansarem, não tentar copiá-los em um fac-símile vago.</QE_GenomeSequencedCorpse_Unethical.stages.sequenced_genome_from_corpse.description>
+  <QE_GenomeSequenceUnethical.stages.sequenced_genome.label>genoma sequenciado</QE_GenomeSequenceUnethical.stages.sequenced_genome.label>
+  <QE_GenomeSequenceUnethical.stages.sequenced_genome.description>Registramos uma das poucas características únicas de uma pessoa. E para quê?</QE_GenomeSequenceUnethical.stages.sequenced_genome.description>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_DepositIntoGrowerJob.reportString>enchendo TargetA com TargetB.</QE_DepositIntoGrowerJob.reportString>
+  <QE_ExtractFromGrowerJob.reportString>extraindo de TargetA.</QE_ExtractFromGrowerJob.reportString>
+  <QE_ExtractProductFromGrowerJob.reportString>extraindo de TargetA.</QE_ExtractProductFromGrowerJob.reportString>
+  <QE_GrowerMaintenanceJob_Intellectual.reportString>monitorando e ajustando TargetA.</QE_GrowerMaintenanceJob_Intellectual.reportString>
+  <QE_GrowerMaintenanceJob_Medicine.reportString>regulando valores de TargetA.</QE_GrowerMaintenanceJob_Medicine.reportString>
+  <QE_LoadGrowerJob.reportString>enchendo TargetA com TargetB.</QE_LoadGrowerJob.reportString>
+  <QE_MaintainGrowerJob_Intellectual.reportString>monitorando e ajustando TargetA.</QE_MaintainGrowerJob_Intellectual.reportString>
+  <QE_MaintainGrowerJob_Medicine.reportString>regulando valores de TargetA.</QE_MaintainGrowerJob_Medicine.reportString>
+</LanguageData>

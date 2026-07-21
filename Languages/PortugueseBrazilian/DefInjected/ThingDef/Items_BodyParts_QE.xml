@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_Organ_Arm.label>braço</QE_Organ_Arm.label>
+  <QE_Organ_Arm.description>Um braço humano biológico. Preso ao ombro, permite carregar e manipular objetos.</QE_Organ_Arm.description>
+  <QE_Organ_Ear.label>orelha</QE_Organ_Ear.label>
+  <QE_Organ_Ear.description>Uma orelha humana biológica. Capta as ondas sonoras do ar e as transforma em sinais elétricos para o cérebro.</QE_Organ_Ear.description>
+  <QE_Organ_Eye.label>olho</QE_Organ_Eye.label>
+  <QE_Organ_Eye.description>Um olho humano biológico. Capta a luz e a transmite ao cérebro.</QE_Organ_Eye.description>
+  <QE_Organ_Foot.label>pé</QE_Organ_Foot.label>
+  <QE_Organ_Foot.description>Um pé humano biológico. Amortece os movimentos para baixo e é ótimo para escalda-pés.</QE_Organ_Foot.description>
+  <QE_Organ_Hand.label>mão</QE_Organ_Hand.label>
+  <QE_Organ_Hand.description>Uma mão humana biológica. Ótima para segurar armas e realizar cirurgias.</QE_Organ_Hand.description>
+  <QE_Organ_Jaw.label>mandíbula</QE_Organ_Jaw.label>
+  <QE_Organ_Jaw.description>Uma mandíbula humana biológica. Completa com língua e dentes, permite mastigar e sentir o sabor adequadamente.</QE_Organ_Jaw.description>
+  <QE_Organ_Leg.label>perna</QE_Organ_Leg.label>
+  <QE_Organ_Leg.description>Uma perna humana biológica. Presa à pelve, proporciona locomoção.</QE_Organ_Leg.description>
+  <QE_Organ_Nose.label>nariz</QE_Organ_Nose.label>
+  <QE_Organ_Nose.description>Um nariz humano biológico. Tem uma aparência bonita e permite cheirar e sentir o sabor.</QE_Organ_Nose.description>
+  <QE_Organ_Pelvis.label>pelve</QE_Organ_Pelvis.label>
+  <QE_Organ_Pelvis.description>Uma pelve humana biológica. As pernas e a coluna vertebral se prendem a ela.</QE_Organ_Pelvis.description>
+  <QE_Organ_Spine.label>coluna vertebral</QE_Organ_Spine.label>
+  <QE_Organ_Spine.description>Uma coluna vertebral humana biológica. Sustenta as costas.</QE_Organ_Spine.description>
+  <QE_Organ_Stomach.label>estômago</QE_Organ_Stomach.label>
+  <QE_Organ_Stomach.description>Um estômago humano biológico. Decompõe os alimentos em nutrientes, com a ajuda de ácidos e enzimas.</QE_Organ_Stomach.description>
+  <QE_Organ_Tongue.label>língua</QE_Organ_Tongue.label>
+  <QE_Organ_Tongue.description>Uma língua humana biológica. Permite comodidades como falar e sentir o sabor.</QE_Organ_Tongue.description>
+</LanguageData>

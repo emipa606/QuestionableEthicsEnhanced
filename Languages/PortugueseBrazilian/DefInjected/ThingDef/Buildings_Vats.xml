@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_Building_OrganVat.label>cuba de órgãos</QE_Building_OrganVat.label>
+  <QE_Building_OrganVat.description>Uma cuba para cultivar diversos órgãos naturais a partir de pasta nutritiva e massa proteica. Requer manutenção regular por um cientista e um médico qualificados. Uma sala estéril reduz significativamente a manutenção necessária. Se a cuba perder energia, ela perderá manutenção rapidamente.</QE_Building_OrganVat.description>
+  <QE_OrganVat.label>cuba de órgãos (legado)</QE_OrganVat.label>
+  <QE_OrganVat.description>Este edifício foi atualizado na versão mais recente do Questionable Ethics Enhanced. Ele continuará funcionando, mas não terá suporte em atualizações futuras. Construa uma nova cuba de órgãos (ou substitua esta usando ferramentas de depuração) para ver as mudanças!</QE_OrganVat.description>
+  <QE_PawnVat.label>cuba de clones</QE_PawnVat.label>
+  <QE_PawnVat.description>Uma cuba enorme para cultivar clones de organismos a partir de pasta nutritiva e massa proteica. Requer manutenção regular por um cientista e um médico qualificados. Uma sala estéril reduz significativamente a manutenção necessária. Se a cuba perder energia, ela perderá manutenção rapidamente.</QE_PawnVat.description>
+</LanguageData>

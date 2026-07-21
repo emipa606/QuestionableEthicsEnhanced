@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Grower Building -->
+  <QE_GrowerCraftingProgress>Status</QE_GrowerCraftingProgress>
+  <!-- Status -->
+  <QE_GrowerStatus>Status</QE_GrowerStatus>
+  <QE_GrowerStatus_Idle>Ocioso</QE_GrowerStatus_Idle>
+  <QE_GrowerStatus_Filling>Enchendo por</QE_GrowerStatus_Filling>
+  <QE_GrowerStatus_Crafting>Cultivando</QE_GrowerStatus_Crafting>
+  <QE_GrowerStatus_Finished>Concluído</QE_GrowerStatus_Finished>
+  <!-- Ingredients -->
+  <QE_GrowerIngredientsNeeded>Necessário</QE_GrowerIngredientsNeeded>
+  <QE_GrowerIngredientsFilled>Preenchido</QE_GrowerIngredientsFilled>
+  <!-- Vat grower -->
+  <QE_VatGrowerProduct>Produto</QE_VatGrowerProduct>
+  <QE_VatGrowerMaintenance>Manutenção: {0} Cientista, {1} Médico</QE_VatGrowerMaintenance>
+  <QE_VatGrowerCleanlinessMult>Multiplicador de manut. por limpeza: {0}</QE_VatGrowerCleanlinessMult>
+  <QE_VatGrowerDaysRemaining>dias restantes</QE_VatGrowerDaysRemaining>
+  <QE_VatGrowerHoursRemaining>horas restantes</QE_VatGrowerHoursRemaining>
+  <QE_VatGrowerNoLivingBeing>nenhum ser vivo</QE_VatGrowerNoLivingBeing>
+  <QE_VatGrowerNoRecipe>nenhuma receita</QE_VatGrowerNoRecipe>
+  <!-- Gizmos -->
+  <QE_VatGrowerStartCraftingGizmoLabel>Iniciar cultivo</QE_VatGrowerStartCraftingGizmoLabel>
+  <QE_VatGrowerStartCraftingGizmoDescription>Selecione um órgão para cultivar. Os colonos começarão a encher a cuba com os ingredientes necessários.</QE_VatGrowerStartCraftingGizmoDescription>
+  <QE_VatGrowerStartCraftingFloatMenuDisabled>{0} (Requer pesquisa: {1})</QE_VatGrowerStartCraftingFloatMenuDisabled>
+  <QE_VatGrowerStopCraftingGizmoLabel>Parar cultivo</QE_VatGrowerStopCraftingGizmoLabel>
+  <QE_VatGrowerStopCraftingGizmoDescription>Interrompe o processo de cultivo. Devolve os ingredientes inseridos caso o processo ainda não tenha começado.</QE_VatGrowerStopCraftingGizmoDescription>
+  <QE_CustomNameCompGizmoLabel>Definir nome personalizado</QE_CustomNameCompGizmoLabel>
+  <QE_CustomNameCompGizmoDescription>Define um nome personalizado que pode ser facilmente identificado.</QE_CustomNameCompGizmoDescription>
+  <QE_VatGrowerGenomesHint>Nenhum genoma disponível. Obtenha-os fabricando 'Genome Sequencers' em bancadas de usinagem e depois use-os.</QE_VatGrowerGenomesHint>
+  <QE_VatGrowerDebugFinishGrowing>DEBUG: Finish growing</QE_VatGrowerDebugFinishGrowing>
+  <QE_VatGrowerDebugFinishGrowingDescription>Termina instantaneamente o cultivo do colono.</QE_VatGrowerDebugFinishGrowingDescription>
+  <!-- UI -->
+  <QE_CustomNameCompDialogTitle>Definir nome personalizado para {0}</QE_CustomNameCompDialogTitle>
+  <!-- Genome Sequencer -->
+  <QE_GenomeSequencerDescription_Name>Nome da fonte</QE_GenomeSequencerDescription_Name>
+  <QE_GenomeSequencerDescription_Race>Raça</QE_GenomeSequencerDescription_Race>
+  <QE_GenomeSequencerDescription_Gender>Gênero</QE_GenomeSequencerDescription_Gender>
+  <QE_GenomeSequencerDescription_Traits>Traços</QE_GenomeSequencerDescription_Traits>
+  <QE_GenomeSequencerSalvage>Recuperar genoma do cadáver ({0} de chance)</QE_GenomeSequencerSalvage>
+  <!-- Alerts -->
+  <QE_AlertMaintenanceRequiredLabel>Manutenção de cuba necessária</QE_AlertMaintenanceRequiredLabel>
+  <QE_AlertMaintenanceRequiredExplanation>Estes cultivadores precisam de manutenção ou perderão o que estão cultivando e os materiais serão desperdiçados!\n\nEnvie um médico ou pesquisador para fazer a manutenção imediatamente.</QE_AlertMaintenanceRequiredExplanation>
+  <!-- Messages -->
+  <QE_MessageGrowingDone>O cultivo de {0} foi concluído.</QE_MessageGrowingDone>
+  <!-- Letters -->
+  <QE_LetterHumanlikeGrownLabel>Clone de cuba criado</QE_LetterHumanlikeGrownLabel>
+  <QE_LetterHumanlikeGrownDescription>Dê as boas-vindas ao clone de cuba {PAWN_labelShort} na colônia!\n\n{PAWN_pronoun} não possui habilidades naturais, mas você pode aplicar um modelo cerebral em {PAWN_objective} para dar a {PAWN_objective} um conjunto de habilidades imediatamente.</QE_LetterHumanlikeGrownDescription>
+  <!-- Brain scanning -->
+  <QE_BrainScanningRejectNoValidBed>{0} é um alvo válido, mas nenhuma cama disponível foi encontrada.</QE_BrainScanningRejectNoValidBed>
+  <QE_BrainScanningRejectDead>{PAWN_labelShort} foi rejeitado porque {PAWN_pronoun} está morto e não tem atividade cerebral.</QE_BrainScanningRejectDead>
+  <QE_BrainScanningRejectNotClone>{PAWN_labelShort} foi rejeitado porque {PAWN_pronoun} não é um clone.</QE_BrainScanningRejectNotClone>
+  <QE_BrainScanningRejectAlreadyTemplated>{PAWN_labelShort} foi rejeitado porque {PAWN_pronoun} já possui um modelo cerebral.</QE_BrainScanningRejectAlreadyTemplated>
+  <QE_BrainScanningRejectExcludedHediff>{PAWN_labelShort} foi rejeitado porque {PAWN_pronoun} tem um hediff que exclui {PAWN_objective} do escaneamento cerebral.</QE_BrainScanningRejectExcludedHediff>
+  <QE_BrainScanningRejectExcludedRace>{0} não é uma raça válida para escaneamento cerebral.</QE_BrainScanningRejectExcludedRace>
+  <QE_BrainScanningRejectNotAnimal>{0} foi rejeitado porque este modelo só pode ser aplicado em animais.</QE_BrainScanningRejectNotAnimal>
+  <QE_BrainScanningRejectNotHumanlike>{0} foi rejeitado porque este modelo não pode ser aplicado em um animal.</QE_BrainScanningRejectNotHumanlike>
+  <QE_BrainScanningApplyTemplate>Aplicar modelo cerebral</QE_BrainScanningApplyTemplate>
+  <QE_BrainScanningFloatMenuLabel>Aplicar modelo cerebral em {0}</QE_BrainScanningFloatMenuLabel>
+  <QE_BrainScanningFloatMenuLabelDisabled>{0} (Sem cama)</QE_BrainScanningFloatMenuLabelDisabled>
+  <QE_BrainScanDescription_BackshortChild>História de infância</QE_BrainScanDescription_BackshortChild>
+  <QE_BrainScanDescription_BackshortAdult>História de vida adulta</QE_BrainScanDescription_BackshortAdult>
+  <QE_BrainScanDescription_Skills>Habilidades armazenadas (paixões indicadas com asteriscos)</QE_BrainScanDescription_Skills>
+  <QE_BrainScanDescription_Training>Adestramento armazenado</QE_BrainScanDescription_Training>
+  <QE_BrainTemplatingComplete>Modelo cerebral aplicado com sucesso em {PAWN_labelShort}.</QE_BrainTemplatingComplete>
+  <!-- Bed validation checks for applying brain templates. Enable debug logging in the Mod Settings to see these in the log. -->
+  <QE_BedInvalid>{0} não é uma cama válida</QE_BedInvalid>
+  <QE_BedIsNotMedical>Cama inválida '{0}'. Motivo - a cama não é médica</QE_BedIsNotMedical>
+  <QE_BedUnreachableBySurgeon>Cama inválida '{0}'. Motivo - {SURGEON_labelShort} não consegue alcançá-la ou reservá-la</QE_BedUnreachableBySurgeon>
+  <QE_BedTooDangerous>Cama inválida '{0}'. Motivo - perigosa demais para {PATIENT_labelShort}</QE_BedTooDangerous>
+  <QE_BedSurgeonAlreadyReserved>Cama inválida '{0}'. Motivo - a cama já está reservada por {SURGEON_labelShort}</QE_BedSurgeonAlreadyReserved>
+  <QE_BedOccupied>Cama inválida '{0}'. Motivo - a cama já está ocupada</QE_BedOccupied>
+  <QE_BedForbidden>Cama inválida '{0}'. Motivo - a cama está proibida</QE_BedForbidden>
+  <QE_BedIsBurning>Cama inválida '{0}'. Motivo - a cama está pegando fogo</QE_BedIsBurning>
+  <QE_BedImproperForPrisoner>Cama inválida '{0}'. Motivo - {PATIENT_labelShort} é prisioneiro, cama não é para prisioneiros</QE_BedImproperForPrisoner>
+  <QE_BedNotInPrisonCell>Cama inválida '{0}'. Motivo - {PATIENT_labelShort} é prisioneiro, cama não está em cela de prisão</QE_BedNotInPrisonCell>
+  <QE_BedImproperFaction>Cama inválida '{0}'. Motivo - a cama não pertence à facção de {SURGEON_labelShort}</QE_BedImproperFaction>
+  <QE_PrisonerBedForNonPrisoner>Cama inválida '{0}'. Motivo - {PATIENT_labelShort} não é prisioneiro, cama é para prisioneiros</QE_PrisonerBedForNonPrisoner>
+  <QE_BedHasAnotherOwner>Cama inválida '{0}'. Motivo - a cama pertence a outro colono</QE_BedHasAnotherOwner>
+  <QE_BedSelected>{0} foi selecionada para a operação de aplicação de modelo cerebral</QE_BedSelected>
+  <!-- Mod settings -->
+  <QE_OrganGrowthDuration>Multiplicador de crescimento de órgãos</QE_OrganGrowthDuration>
+  <QE_OrganGrowthDurationTooltip>Valores maiores = mais tempo necessário para cultivar órgãos. Padrão = 1.0</QE_OrganGrowthDurationTooltip>
+  <QE_UseFillingGraphic>Visualizar preenchimento de ingredientes</QE_UseFillingGraphic>
+  <QE_UseFillingGraphicTooltip>Mostrará a cuba se enchendo de recursos em vez de aparecer vazia até estar cheia</QE_UseFillingGraphicTooltip>
+  <QE_OrganIngredientMult>Multiplicador total de ingredientes de órgãos</QE_OrganIngredientMult>
+  <QE_OrganIngredientMultTooltip>Valores maiores = mais ingredientes necessários para cultivar órgãos. Padrão = 1.0</QE_OrganIngredientMultTooltip>
+  <QE_CloneGrowthDuration>Multiplicador de crescimento de clones</QE_CloneGrowthDuration>
+  <QE_CloneGrowthDurationTooltip>Valores maiores = mais tempo necessário para cultivar clones. Padrão = 1.0</QE_CloneGrowthDurationTooltip>
+  <QE_CloneIngredientMult>Multiplicador total de ingredientes de clones</QE_CloneIngredientMult>
+  <QE_CloneIngredientMultTooltip>Valores maiores = mais ingredientes necessários para cultivar clones. Padrão = 1.0</QE_CloneIngredientMultTooltip>
+  <QE_VatMaintTime>Tempo entre manutenções da cuba</QE_VatMaintTime>
+  <QE_VatMaintTimeTooltip>Valores maiores = manutenção necessária com menos frequência. Padrão = 1.0</QE_VatMaintTimeTooltip>
+  <QE_DebugLogging>Registro de depuração</QE_DebugLogging>
+  <QE_DebugLoggingTooltip>Ativa o registro de depuração para o mod. Útil caso você encontre comportamentos inesperados com o mod. Padrão: Desativado</QE_DebugLoggingTooltip>
+  <QE_MaintenanceWorkThreshold>Atribuir tarefa de manutenção da cuba</QE_MaintenanceWorkThreshold>
+  <QE_MaintenanceWorkThresholdTooltip>Atribui a um colono a tarefa 'Manter Cuba' neste percentual de manutenção restante. Padrão: 40%</QE_MaintenanceWorkThresholdTooltip>
+  <QE_GiveCloneNegativeThought>Dar aos novos clones o pensamento negativo 'clone de cuba'</QE_GiveCloneNegativeThought>
+  <QE_GiveCloneNegativeThoughtTooltip>Quando um clone humanoide é cultivado, dá a ele um pensamento negativo temporário para indicar confusão com o novo ambiente. Padrão: Ativado</QE_GiveCloneNegativeThoughtTooltip>
+  <QE_NeuralDisrupt>Ativa a Perturbação Neural em colonos que se rebelam enquanto estão com grampo neural.</QE_NeuralDisrupt>
+  <QE_NeuralDisruptTooltip>Se o grampeamento neural deve ou não encerrar surtos mentais violentos</QE_NeuralDisruptTooltip>
+  <QE_OldCloningRender>Usar processo de renderização legado</QE_OldCloningRender>
+  <QE_OldCloningRenderTooltip>Este é um modo de renderização obsoleto, mantido apenas por possível compatibilidade.</QE_OldCloningRenderTooltip>
+  <QE_DoIdeologyFeatures>Ativar Recursos de Ideologia (REINÍCIO NECESSÁRIO)</QE_DoIdeologyFeatures>
+  <QE_DoIdeologyFeaturesTooltip>Se deve ou não usar o recurso de ideologia. Requer reinício</QE_DoIdeologyFeaturesTooltip>
+  <QE_CurrentModVersion>Versão do mod instalada: {0}</QE_CurrentModVersion>
+  <!-- version 1.02 Patch -->
+  <QE_BlankGenomeTemplateName>Não Use Isto</QE_BlankGenomeTemplateName>
+  <QE_BlankGenomeTemplateDescription>Este modelo foi gerado por meio de um evento do jogo ou de comandos de depuração. Ele é inutilizável na cuba de clones.</QE_BlankGenomeTemplateDescription>
+  <!-- version 1.03 Patch -->
+  <QE_GenomeSequencerDescription_Hair>Cabelo</QE_GenomeSequencerDescription_Hair>
+  <QE_CloningPawnNullMessage>O clone na Cuba de Clones está corrompido e as tentativas de corrigi-lo falharam. Abortando o processo de clonagem, devolvendo os ingredientes e reiniciando a cuba.</QE_CloningPawnNullMessage>
+  <QE_CloningMaintFailMessage>O processo de clonagem falhou para o clone de {SOURCEPAWNNAME}. Motivo - Cuba sem manutenção</QE_CloningMaintFailMessage>
+  <QE_CloningMaintFailFallbackMessage>O processo de clonagem falhou. Motivo - Cuba sem manutenção</QE_CloningMaintFailFallbackMessage>
+  <QE_OrgaVatMaintFailMessage>A criação de {ORGANNAME} falhou. Motivo - Cuba sem manutenção</QE_OrgaVatMaintFailMessage>
+  <QE_OrgaVatMaintFailFallbackMessage>A criação do órgão falhou. Motivo - Cuba sem manutenção</QE_OrgaVatMaintFailFallbackMessage>
+  <QE_MaxCloningTime>Tempo máximo de clonagem (dias)</QE_MaxCloningTime>
+  <QE_MaxCloningTimeTooltip>Um clone não crescerá por mais dias do que este número em uma Cuba de Clones. Padrão = 60</QE_MaxCloningTimeTooltip>
+  <!-- version 1.1.0 Patch -->
+  <QE_OrganVatDebugFinishGrowingDescription>Termina instantaneamente o cultivo do órgão.</QE_OrganVatDebugFinishGrowingDescription>
+  <QE_JobFailReasonNoBillsQueued>Nenhuma tarefa na fila no momento</QE_JobFailReasonNoBillsQueued>
+  <QE_JobFailReasonPawnRestriction>A tarefa está restrita ao colono {0}</QE_JobFailReasonPawnRestriction>
+  <QE_JobFailReasonGrowerBusy>Já está cultivando uma receita</QE_JobFailReasonGrowerBusy>
+  <QE_JobFailReasonNoIngredients>Nenhum ingrediente disponível. Verificado apenas a cada poucos segundos</QE_JobFailReasonNoIngredients>
+  <QE_JobFailReasonRecentIngSearch>A busca por ingredientes falhou recentemente para esta tarefa</QE_JobFailReasonRecentIngSearch>
+  <QE_JobFailReasonWorkTypeMismatch>O WorkType da receita não corresponde ao tipo no workgiver</QE_JobFailReasonWorkTypeMismatch>
+  <QE_JobFailReasonShouldDoFalse>A tarefa está suspensa ou a TargetCount é zero</QE_JobFailReasonShouldDoFalse>
+  <QE_JobFailReasonGeneric>O colono não pode fazer esta tarefa</QE_JobFailReasonGeneric>
+  <QE_IngredientCheckInterval>Intervalo de varredura do mapa por ingredientes (segundos)</QE_IngredientCheckInterval>
+  <QE_IngredientCheckIntervalDescription>[Desempenho] As Cubas de Órgãos varrerão o mapa em busca de ingredientes disponíveis neste intervalo. Elas só verificam ingredientes quando Ociosas ou Enchendo. Padrão = 3 segundos</QE_IngredientCheckIntervalDescription>
+  <!-- version 1.2.0 Patch -->
+  <QE_BrainScanningRejectWrongKind>{0} foi rejeitado porque este modelo só pode ser aplicado à raça '{1}'</QE_BrainScanningRejectWrongKind>
+  <QE_BrainTemplatingRequiresClone>A cirurgia de Modelo Cerebral requer Clone</QE_BrainTemplatingRequiresClone>
+  <QE_BrainTemplatingRequiresCloneTooltip>Quando ativado, só permite que Modelos Cerebrais sejam aplicados em colonos com o hediff 'Clone'. Padrão = true</QE_BrainTemplatingRequiresCloneTooltip>
+  <!-- version 1.3.0 Patch -->
+  <QE_GenomeSequencerDescription_Hediffs>Hediffs</QE_GenomeSequencerDescription_Hediffs>
+  <QE_MessagestapledPawnEnslaved>{0} foi escravizado por {1} usando um grampo neural</QE_MessagestapledPawnEnslaved>
+  <QE_MessageCloningFailedAnomaly>A clonagem falhou terrivelmente devido a uma sequência de genoma anormal; {0} surgiu como um colono desfigurado e disforme</QE_MessageCloningFailedAnomaly>
+  <!-- version 1.5.8 Patch -->
+  <QE_GenomeSequencerRejectExcludedHediffShort>hediffs que impedem o sequenciamento de genoma</QE_GenomeSequencerRejectExcludedHediffShort>
+  <QE_BrainScanningRejectExcludedHediffShort>hediffs que impedem o escaneamento cerebral</QE_BrainScanningRejectExcludedHediffShort>
+  <QE_TemplatingRejectExcludedRaceShort>raça não válida</QE_TemplatingRejectExcludedRaceShort>
+  <QE_BrainScanDescription_Expertises>Especializações armazenadas</QE_BrainScanDescription_Expertises>
+  <QE_VatGrowerDebugFill>DEBUG: Fill fluid</QE_VatGrowerDebugFill>
+</LanguageData>

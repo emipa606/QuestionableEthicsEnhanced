@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_OrderProcessor_PawnVat.label>encher cuba de clones</QE_OrderProcessor_PawnVat.label>
+  <QE_OrderProcessor_PawnVat.gerund>enchendo</QE_OrderProcessor_PawnVat.gerund>
+  <QE_OrderProcessor_PawnVat.verb>encher</QE_OrderProcessor_PawnVat.verb>
+  <QE_OrganVat_Extract_Product.label>extrair produto da cuba de órgãos</QE_OrganVat_Extract_Product.label>
+  <QE_OrganVat_Extract_Product.gerund>extraindo</QE_OrganVat_Extract_Product.gerund>
+  <QE_OrganVat_Extract_Product.verb>extrair</QE_OrganVat_Extract_Product.verb>
+  <QE_OrganVat_Fill.label>encher cuba de órgãos</QE_OrganVat_Fill.label>
+  <QE_OrganVat_Fill.gerund>enchendo</QE_OrganVat_Fill.gerund>
+  <QE_OrganVat_Fill.verb>encher</QE_OrganVat_Fill.verb>
+  <QE_OrganVat_Maintain.label>fazer manutenção da cuba de órgãos</QE_OrganVat_Maintain.label>
+  <QE_OrganVat_Maintain.gerund>fazendo manutenção</QE_OrganVat_Maintain.gerund>
+  <QE_OrganVat_Maintain.verb>fazer manutenção</QE_OrganVat_Maintain.verb>
+  <QE_PawnGrower_Maintain.label>fazer manutenção de uma cuba de clones</QE_PawnGrower_Maintain.label>
+  <QE_PawnGrower_Maintain.gerund>fazendo manutenção</QE_PawnGrower_Maintain.gerund>
+  <QE_PawnGrower_Maintain.verb>fazer manutenção</QE_PawnGrower_Maintain.verb>
+  <QE_PawnVat_Extract.label>extrair clone da cuba de clones</QE_PawnVat_Extract.label>
+  <QE_PawnVat_Extract.gerund>extraindo</QE_PawnVat_Extract.gerund>
+  <QE_PawnVat_Extract.verb>extrair</QE_PawnVat_Extract.verb>
+</LanguageData>

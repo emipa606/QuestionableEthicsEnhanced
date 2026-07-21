@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_GenomeSequencing.label>sequenciar genoma</QE_GenomeSequencing.label>
+  <QE_GenomeSequencing.description>Sequencia o genoma de um ser vivo. Fazer isso em seres de facções neutras ou aliadas será considerado uma violação.</QE_GenomeSequencing.description>
+  <QE_GenomeSequencing.jobString>Sequenciando o genoma.</QE_GenomeSequencing.jobString>
+  <QE_Make_GenomeSequencer.label>fabricar sequenciador de genoma</QE_Make_GenomeSequencer.label>
+  <QE_Make_GenomeSequencer.description>Fabrica um sequenciador de genoma.</QE_Make_GenomeSequencer.description>
+  <QE_Make_GenomeSequencer.jobString>Fabricando um sequenciador de genoma.</QE_Make_GenomeSequencer.jobString>
+</LanguageData>

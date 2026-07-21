@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_BrainScanningAbhorrent.label>Antiético</QE_BrainScanningAbhorrent.label>
+  <QE_BrainScanningAbhorrent.description>O escaneamento cerebral é imoral. Sem falar em carregá-lo, usá-lo e apagar a mente de um clone.</QE_BrainScanningAbhorrent.description>
+  <QE_BrainScanningApproved.label>Aprovado</QE_BrainScanningApproved.label>
+  <QE_BrainScanningApproved.description>O escaneamento cerebral preserva a mente dos nossos, transferindo habilidades e conhecimentos adiante para um novo ser, mesmo que o original morra.</QE_BrainScanningApproved.description>
+  <QE_BrainScanningNeutral.label>Neutro</QE_BrainScanningNeutral.label>
+  <QE_BrainScanningNeutral.description>Enquanto o escaneamento cerebral for tão perfeito quanto é... que importa? O conhecimento pode fazer diferença na nossa própria sobrevivência.</QE_BrainScanningNeutral.description>
+</LanguageData>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_Natural_Arm.label>braço natural</QE_Natural_Arm.label>
+  <QE_Natural_Arm.jobString>Realizando uma receita desconhecida.</QE_Natural_Arm.jobString>
+  <QE_Natural_Ear.label>orelha natural</QE_Natural_Ear.label>
+  <QE_Natural_Ear.jobString>Realizando uma receita desconhecida.</QE_Natural_Ear.jobString>
+  <QE_Natural_Eye.label>olho natural</QE_Natural_Eye.label>
+  <QE_Natural_Eye.jobString>Realizando uma receita desconhecida.</QE_Natural_Eye.jobString>
+  <QE_Natural_Foot.label>pé natural</QE_Natural_Foot.label>
+  <QE_Natural_Foot.jobString>Realizando uma receita desconhecida.</QE_Natural_Foot.jobString>
+  <QE_Natural_Hand.label>mão natural</QE_Natural_Hand.label>
+  <QE_Natural_Hand.jobString>Realizando uma receita desconhecida.</QE_Natural_Hand.jobString>
+  <QE_Natural_Heart.label>coração natural</QE_Natural_Heart.label>
+  <QE_Natural_Heart.jobString>Realizando uma receita desconhecida.</QE_Natural_Heart.jobString>
+  <QE_Natural_Jaw.label>mandíbula natural</QE_Natural_Jaw.label>
+  <QE_Natural_Jaw.jobString>Realizando uma receita desconhecida.</QE_Natural_Jaw.jobString>
+  <QE_Natural_Kidney.label>rim natural</QE_Natural_Kidney.label>
+  <QE_Natural_Kidney.jobString>Realizando uma receita desconhecida.</QE_Natural_Kidney.jobString>
+  <QE_Natural_Leg.label>perna natural</QE_Natural_Leg.label>
+  <QE_Natural_Leg.jobString>Realizando uma receita desconhecida.</QE_Natural_Leg.jobString>
+  <QE_Natural_Liver.label>fígado natural</QE_Natural_Liver.label>
+  <QE_Natural_Liver.jobString>Realizando uma receita desconhecida.</QE_Natural_Liver.jobString>
+  <QE_Natural_Lung.label>pulmão natural</QE_Natural_Lung.label>
+  <QE_Natural_Lung.jobString>Realizando uma receita desconhecida.</QE_Natural_Lung.jobString>
+  <QE_Natural_Nose.label>nariz natural</QE_Natural_Nose.label>
+  <QE_Natural_Nose.jobString>Realizando uma receita desconhecida.</QE_Natural_Nose.jobString>
+  <QE_Natural_Pelvis.label>pelve natural</QE_Natural_Pelvis.label>
+  <QE_Natural_Pelvis.jobString>Realizando uma receita desconhecida.</QE_Natural_Pelvis.jobString>
+  <QE_Natural_Spine.label>coluna vertebral natural</QE_Natural_Spine.label>
+  <QE_Natural_Spine.jobString>Realizando uma receita desconhecida.</QE_Natural_Spine.jobString>
+  <QE_Natural_Stomach.label>estômago natural</QE_Natural_Stomach.label>
+  <QE_Natural_Stomach.jobString>Realizando uma receita desconhecida.</QE_Natural_Stomach.jobString>
+  <QE_Natural_Tongue.label>língua natural</QE_Natural_Tongue.label>
+  <QE_Natural_Tongue.jobString>Realizando uma receita desconhecida.</QE_Natural_Tongue.jobString>
+</LanguageData>

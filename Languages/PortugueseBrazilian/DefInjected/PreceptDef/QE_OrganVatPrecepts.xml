@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <QE_OrganGrowingAbhorrent.label>Antiético</QE_OrganGrowingAbhorrent.label>
+  <QE_OrganGrowingAbhorrent.description>Não deveríamos cultivar órgãos em cubas para transplante.</QE_OrganGrowingAbhorrent.description>
+  <QE_OrganGrowingApproved.label>Aprovado</QE_OrganGrowingApproved.label>
+  <QE_OrganGrowingApproved.description>Pense nas vidas que poderíamos salvar assim. Em vez de arrancar corações das pessoas para salvar outras, ou usar próteses desajeitadas... podemos simplesmente... cultivá-los</QE_OrganGrowingApproved.description>
+  <QE_OrganGrowingNeutral.label>Neutro</QE_OrganGrowingNeutral.label>
+  <QE_OrganGrowingNeutral.description>Órgãos cultivados em cuba são uma ferramenta útil para a sobrevivência. Deveríamos mesmo reclamar além disso?</QE_OrganGrowingNeutral.description>
+</LanguageData>
