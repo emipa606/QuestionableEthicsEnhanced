@@ -20,6 +20,7 @@ public class Alert_GrowerMaintenance : Alert_Critical
     private static IEnumerable<Building> growersNeedingMaintenance()
     {
         const float maintenanceAlertPercent = 0.20f;
+        if (Find.CurrentMap == null) return [];
         return Find.CurrentMap.listerBuildings.allBuildingsColonist.Where(building =>
             building is Building_GrowerBase { status: CrafterStatus.Crafting }
                 and IMaintainableGrower maintainable &&
